@@ -208,16 +208,17 @@
             // 
             // MenuMainLogout
             // 
+            this.MenuMainLogout.Enabled = false;
             this.MenuMainLogout.Name = "MenuMainLogout";
             this.MenuMainLogout.Size = new System.Drawing.Size(180, 22);
-            this.MenuMainLogout.Text = "&Kijelentkezés";
+            this.MenuMainLogout.Text = "Ki&jelentkezés";
             this.MenuMainLogout.Click += new System.EventHandler(this.MenuMainLogout_Click);
             // 
             // MenuMainQuit
             // 
             this.MenuMainQuit.Name = "MenuMainQuit";
             this.MenuMainQuit.Size = new System.Drawing.Size(180, 22);
-            this.MenuMainQuit.Text = "Kilépés";
+            this.MenuMainQuit.Text = "&Kilépés";
             this.MenuMainQuit.Click += new System.EventHandler(this.MenuMainQuit_Click);
             // 
             // MainForm
@@ -232,6 +233,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DiceTravel";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.usersTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             this.mainToolStripContainer.ContentPanel.ResumeLayout(false);

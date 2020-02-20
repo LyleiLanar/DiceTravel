@@ -4,7 +4,7 @@ using System.Data;
 
 namespace DiceTravel
 {
-    class User
+    public class User
     {
         public string Id { get; }
         public string LoginName { get; }

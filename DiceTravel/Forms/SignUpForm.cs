@@ -5,17 +5,17 @@ using System.Windows.Forms;
 
 namespace DiceTravel
 {
-    public partial class SignUp : Form
+    public partial class SignUpForm : Form
     {
         private enum SignUpError
         {
             NO_ERROR, MISSING_LOGINNAME, MISSING_PASSWORD, NOT_SAME_PASSWORD, USED_LOGINNAME
         }
-        String sql;
-        String connString;
-        SignUpError signUpError;
+        private String sql;
+        private string connString;
+        private SignUpError signUpError;
 
-        public SignUp()
+        public SignUpForm()
         {
             InitializeComponent();
             this.sql = "";
@@ -23,18 +23,18 @@ namespace DiceTravel
             this.signUpError = SignUpError.NO_ERROR;
         }
 
-        private void btnSignInBack_Click(object sender, EventArgs e)
+        private void BtnSignInBack_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
 
-        private void btnSignInReg_Click(object sender, EventArgs e)
+        private void BtnSignInReg_Click(object sender, EventArgs e)
         {
             sql = "SELECT * FROM users";
             DataTable table = new DataTable();
             MySqlDataAdapter dptr = new MySqlDataAdapter(sql, connString);
-            String loginName = inputSignUpLoginName.Text;
-            String password = inputSignUpPassword.Text;
+            String loginName = IinputSignUpLoginName.Text;
+            String password = InputSignUpPassword.Text;
 
             signUpError = SignUpError.NO_ERROR;
 
@@ -46,7 +46,7 @@ namespace DiceTravel
 
             if (loginNames.Rows[0]["t"].ToString() != "0") { signUpError = SignUpError.USED_LOGINNAME; }
             if (loginName == "") { signUpError = SignUpError.MISSING_LOGINNAME; }
-            if (password != inputSignUpPasswordAgain.Text) { signUpError = SignUpError.NOT_SAME_PASSWORD; }
+            if (password != InputSignUpPasswordAgain.Text) { signUpError = SignUpError.NOT_SAME_PASSWORD; }
             if (password == "") { signUpError = SignUpError.MISSING_PASSWORD; }
 
             switch (signUpError)
@@ -55,7 +55,7 @@ namespace DiceTravel
                     dptr.Fill(table);
                     DataRow newRow = table.NewRow();
                     table.Rows.Add(newRow);
-                    dptr.InsertCommand = new MySqlCommand($"INSERT INTO `dice_travel`.`users` (`login_name`, `pswd`,`sur_name`,`first_name`,`birth_date`) VALUES ('{loginName}', '{password}','{inputSignUpSurname.Text}','{inputSignUpFirstName.Text}','{datePickerSignUpBirthDate.Value.Date.ToString("yyy-MM-dd")}');", new MySqlConnection(connString));
+                    dptr.InsertCommand = new MySqlCommand($"INSERT INTO `dice_travel`.`users` (`login_name`, `pswd`,`sur_name`,`first_name`,`birth_date`) VALUES ('{loginName}', '{password}','{InputSignUpSurname.Text}','{InputSignUpFirstName.Text}','{DatePickerSignUpBirthDate.Value.Date.ToString("yyy-MM-dd")}');", new MySqlConnection(connString));
                     dptr.InsertCommand.Dispose();
                     dptr.Update(table);
                     MessageBox.Show("Üdvözlünk a DiceTravelben! Kérlek jelentkezz be!", "Siker!", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
+using DiceTravel.Util;
 
 namespace DiceTravel
 {
-    public partial class Login : Form
+    public partial class LoginForm : Form
     {
         private enum LoginError
         {
@@ -12,31 +13,29 @@ namespace DiceTravel
 
         private LoginError loginError;
 
-        public Login()
+        public LoginForm()
         {
             InitializeComponent();
         }
-
         private void BtnSignUpBack_Click(object sender, EventArgs e)
         {
             this.Dispose();
             loginError = LoginError.NO_ERROR;
         }
-
         private void BtnSignUpLogin_Click(object sender, EventArgs e)
         {
-
-            Program.LogInUser(inputLoginLoginName.Text, inputLoginPassword.Text);
+            
+            ActiveUserStore.LogInUser(inputLoginLoginName.Text, inputLoginPassword.Text);
             loginError = LoginError.NO_ERROR;
 
-            if (Program.ActiveUser == null) { loginError = LoginError.NOT_VALID_USER; }
+            if (ActiveUserStore.ActiveUser == null) { loginError = LoginError.NOT_VALID_USER; }
             if (inputLoginLoginName.Text == "") { loginError = LoginError.MISSING_LOGINNAME; }
             if (inputLoginPassword.Text == "") { loginError = LoginError.MISSING_PASSWORD; }
 
             switch (loginError)
             {
                 case LoginError.NO_ERROR:
-                    MessageBox.Show("Sikeres bejelentkezés", "Király!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Sikeres bejelentkezés", "Király!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Dispose();
                     break;
 
@@ -56,6 +55,7 @@ namespace DiceTravel
                     MessageBox.Show("Ismeretlen hiba a regisztráció folyamán!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     break;
             }
+
             inputLoginLoginName.Text = "";
             inputLoginPassword.Text = "";
 

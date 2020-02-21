@@ -89,6 +89,9 @@
     </Compile>
     <Compile Include="Util\ActiveUserStore.cs" />
     <Compile Include="Util\DBDriver.cs" />
+    <EmbeddedResource Include="Forms\JourneyForms\JourneyCreateForm.resx">
+      <DependentUpon>JourneyCreateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>

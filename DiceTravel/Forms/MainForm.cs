@@ -1,4 +1,5 @@
 ﻿using DiceTravel.Util;
+using DiceTravel.Forms.JourneyForms;
 using System;
 using System.Windows.Forms;
 
@@ -36,12 +37,14 @@ namespace DiceTravel
             GrpBxUserData.Visible = false;
             GrpBxMainFrame.Visible = false;
             MenuMainLogout.Enabled = false;
+            MenuMe.Enabled = false;
         }
         public void ActivateControls()
         {
             GrpBxUserData.Visible = true;
             GrpBxMainFrame.Visible = true;
             MenuMainLogout.Enabled = true;
+            MenuMe.Enabled = true;
         }
         public void RefreshMainFormUserData()
         {
@@ -73,6 +76,11 @@ namespace DiceTravel
                 e.Cancel = true;
             }
         }
-
+        private void MenuMeNewJourney_Click(object sender, EventArgs e)
+        {
+             JourneyCreateForm journeyCreateForm = new JourneyCreateForm();
+            journeyCreateForm.Text = Properties.Settings.Default.projectName + " - New Journey";
+            journeyCreateForm.Show();
+        }
     }
 }

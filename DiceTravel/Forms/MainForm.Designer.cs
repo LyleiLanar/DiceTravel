@@ -196,8 +196,8 @@
             this.MenuMainQuit});
             this.MenuMain.Name = "MenuMain";
             this.MenuMain.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.M)));
-            this.MenuMain.Size = new System.Drawing.Size(63, 20);
-            this.MenuMain.Text = "Főmenü";
+            this.MenuMain.Size = new System.Drawing.Size(46, 20);
+            this.MenuMain.Text = "Main";
             // 
             // MenuMainLogin
             // 
@@ -236,10 +236,11 @@
             this.MenuMeNewJourney,
             this.MenuMeNewEntry,
             this.MenuMeGoalReached});
+            this.MenuMe.Enabled = false;
             this.MenuMe.Name = "MenuMe";
             this.MenuMe.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.M)));
-            this.MenuMe.Size = new System.Drawing.Size(32, 20);
-            this.MenuMe.Text = "Én";
+            this.MenuMe.Size = new System.Drawing.Size(36, 20);
+            this.MenuMe.Text = "Me";
             // 
             // MenuMeMyFlow
             // 
@@ -257,7 +258,8 @@
             // 
             this.MenuMeNewJourney.Name = "MenuMeNewJourney";
             this.MenuMeNewJourney.Size = new System.Drawing.Size(180, 22);
-            this.MenuMeNewJourney.Text = "Új Ut&azás";
+            this.MenuMeNewJourney.Text = "&New Journey";
+            this.MenuMeNewJourney.Click += new System.EventHandler(this.MenuMeNewJourney_Click);
             // 
             // MenuMeNewEntry
             // 

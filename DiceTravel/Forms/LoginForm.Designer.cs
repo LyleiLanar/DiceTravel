@@ -105,7 +105,7 @@
             this.btnSignUpBack.UseVisualStyleBackColor = true;
             this.btnSignUpBack.Click += new System.EventHandler(this.BtnSignUpBack_Click);
             // 
-            // Login
+            // LoginForm
             // 
             this.AcceptButton = this.btnSignUpLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -125,9 +125,9 @@
             this.MaximumSize = new System.Drawing.Size(250, 200);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(250, 200);
-            this.Name = "Login";
+            this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Properties.Settings.Default.projectName;";
+            this.Text = "Bejelentkezés";
             this.ResumeLayout(false);
             this.PerformLayout();
 

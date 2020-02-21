@@ -14,7 +14,6 @@
                 return false;
             }
         }
-
         static public void LogOutUser()
         {
             ActiveUser = null;
@@ -26,5 +25,6 @@
             ActiveUser = User.GetAuthenticatedUser(loginName, password);
             Program.mainForm.RefreshMainFormUserData();
         }
+    
     }
 }

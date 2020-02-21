@@ -78,9 +78,16 @@ namespace DiceTravel
         }
         private void MenuMeNewJourney_Click(object sender, EventArgs e)
         {
-             JourneyCreateForm journeyCreateForm = new JourneyCreateForm();
-            journeyCreateForm.Text = Properties.Settings.Default.projectName + " - New Journey";
-            journeyCreateForm.Show();
+            if (ActiveUserStore.IsThereActiveUser && !ActiveUserStore.ActiveUser.IsThereActiveJourney())
+            {
+                JourneyCreateForm journeyCreateForm = new JourneyCreateForm();
+                journeyCreateForm.Text = Properties.Settings.Default.projectName + " - New Journey";
+                journeyCreateForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("You've already started a journey!", "Journey cannot start...", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
     }
 }

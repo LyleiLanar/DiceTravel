@@ -1,7 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using DiceTravel.Util;
 using System;
 using System.Data;
-using DiceTravel.Util;
 
 namespace DiceTravel
 {
@@ -12,16 +11,6 @@ namespace DiceTravel
         public string Surname { get; }
         public string Firstname { get; }
         public string BirthDate { get; }
-
-        public User(string id, string loginName, string surname, string firstname, string birthDate)
-        {
-            Id = id;
-            LoginName = loginName;
-            Surname = surname;
-            Firstname = firstname;
-            BirthDate = birthDate;
-        }
-
         static public User GetAuthenticatedUser(string loginName, string password)
         {
             String sql = $"SELECT * FROM users WHERE login_name LIKE '{loginName}'";
@@ -42,6 +31,30 @@ namespace DiceTravel
                 return null;
             }
             return null;
+        }
+
+        public User(string id, string loginName, string surname, string firstname, string birthDate)
+        {
+            Id = id;
+            LoginName = loginName;
+            Surname = surname;
+            Firstname = firstname;
+            BirthDate = birthDate;
+        }
+
+        public bool IsThereActiveJourney()
+        {
+            string userId = ActiveUserStore.ActiveUser.Id;
+            string queryString = $"SELECT count(*) as db FROM dice_travel.journeys WHERE visibility = 0 AND user_id = {userId};";
+
+            DataTable table = DBDriver.ReadQuery(queryString);
+
+            if (table.Rows[0]["db"].ToString() == "0")
+            {
+                return false;
+            }
+            return true;
+
         }
     }
 }

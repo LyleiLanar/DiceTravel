@@ -41,19 +41,25 @@
             this.TxtUserDataBirthDate = new System.Windows.Forms.Label();
             this.TxtUserDataRealName = new System.Windows.Forms.Label();
             this.TxtUserDataLoginName = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.MenuMain = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMainLogin = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMainSignin = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMainLogout = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMainQuit = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuMe = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuMeMyFlow = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuMeMyJourneys = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuMeNewJourney = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuMeNewEntry = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuMeGoalReached = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.usersTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.mainToolStripContainer.ContentPanel.SuspendLayout();
             this.mainToolStripContainer.TopToolStripPanel.SuspendLayout();
             this.mainToolStripContainer.SuspendLayout();
             this.GrpBxUserData.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // usersTable
@@ -87,7 +93,7 @@
             // 
             // mainToolStripContainer.TopToolStripPanel
             // 
-            this.mainToolStripContainer.TopToolStripPanel.Controls.Add(this.menuStrip1);
+            this.mainToolStripContainer.TopToolStripPanel.Controls.Add(this.menuStrip);
             // 
             // GrpBxMainFrame
             // 
@@ -169,16 +175,17 @@
             this.TxtUserDataLoginName.Text = "-";
             this.TxtUserDataLoginName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // menuStrip1
+            // menuStrip
             // 
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuMain});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1484, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuMain,
+            this.MenuMe});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(1484, 24);
+            this.menuStrip.TabIndex = 0;
+            this.menuStrip.Text = "menuStrip1";
             // 
             // MenuMain
             // 
@@ -221,6 +228,49 @@
             this.MenuMainQuit.Text = "&Kilépés";
             this.MenuMainQuit.Click += new System.EventHandler(this.MenuMainQuit_Click);
             // 
+            // MenuMe
+            // 
+            this.MenuMe.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuMeMyFlow,
+            this.MenuMeMyJourneys,
+            this.MenuMeNewJourney,
+            this.MenuMeNewEntry,
+            this.MenuMeGoalReached});
+            this.MenuMe.Name = "MenuMe";
+            this.MenuMe.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.M)));
+            this.MenuMe.Size = new System.Drawing.Size(32, 20);
+            this.MenuMe.Text = "Én";
+            // 
+            // MenuMeMyFlow
+            // 
+            this.MenuMeMyFlow.Name = "MenuMeMyFlow";
+            this.MenuMeMyFlow.Size = new System.Drawing.Size(180, 22);
+            this.MenuMeMyFlow.Text = "&Folyamom";
+            // 
+            // MenuMeMyJourneys
+            // 
+            this.MenuMeMyJourneys.Name = "MenuMeMyJourneys";
+            this.MenuMeMyJourneys.Size = new System.Drawing.Size(180, 22);
+            this.MenuMeMyJourneys.Text = "&Utazásaim";
+            // 
+            // MenuMeNewJourney
+            // 
+            this.MenuMeNewJourney.Name = "MenuMeNewJourney";
+            this.MenuMeNewJourney.Size = new System.Drawing.Size(180, 22);
+            this.MenuMeNewJourney.Text = "Új Ut&azás";
+            // 
+            // MenuMeNewEntry
+            // 
+            this.MenuMeNewEntry.Name = "MenuMeNewEntry";
+            this.MenuMeNewEntry.Size = new System.Drawing.Size(180, 22);
+            this.MenuMeNewEntry.Text = "&Bejegyzés írása";
+            // 
+            // MenuMeGoalReached
+            // 
+            this.MenuMeGoalReached.Name = "MenuMeGoalReached";
+            this.MenuMeGoalReached.Size = new System.Drawing.Size(180, 22);
+            this.MenuMeGoalReached.Text = "&Elértem a célomat!";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -229,7 +279,7 @@
             this.ClientSize = new System.Drawing.Size(1484, 761);
             this.Controls.Add(this.mainToolStripContainer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DiceTravel";
@@ -243,8 +293,8 @@
             this.mainToolStripContainer.PerformLayout();
             this.GrpBxUserData.ResumeLayout(false);
             this.GrpBxUserData.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -254,7 +304,7 @@
         private System.Windows.Forms.BindingSource usersBindingSource;
         private UsersTableTableAdapters.usersTableAdapter usersTableAdapter;
         private System.Windows.Forms.ToolStripContainer mainToolStripContainer;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem MenuMain;
         private System.Windows.Forms.ToolStripMenuItem MenuMainLogin;
         private System.Windows.Forms.ToolStripMenuItem MenuMainSignin;
@@ -267,6 +317,12 @@
         private System.Windows.Forms.Label TxtMainFormUserDataName;
         public System.Windows.Forms.GroupBox GrpBxUserData;
         public System.Windows.Forms.GroupBox GrpBxMainFrame;
+        private System.Windows.Forms.ToolStripMenuItem MenuMe;
+        private System.Windows.Forms.ToolStripMenuItem MenuMeMyFlow;
+        private System.Windows.Forms.ToolStripMenuItem MenuMeMyJourneys;
+        private System.Windows.Forms.ToolStripMenuItem MenuMeNewJourney;
+        private System.Windows.Forms.ToolStripMenuItem MenuMeNewEntry;
+        private System.Windows.Forms.ToolStripMenuItem MenuMeGoalReached;
     }
 }
 

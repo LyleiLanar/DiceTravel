@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using DiceTravel.Util;
 
 namespace DiceTravel
 {
@@ -26,10 +27,8 @@ namespace DiceTravel
             String sql = $"SELECT * FROM users WHERE login_name LIKE '{loginName}'";
             String connString = Properties.Settings.Default.dice_travelConnString;
 
-            DataTable table = new DataTable();
-            MySqlDataAdapter dptr = new MySqlDataAdapter(sql, connString);
+            DataTable table = DBDriver.ReadQuery(sql);
 
-            dptr.Fill(table);
             try
             {
                 DataRow userRow = table.Rows[0];

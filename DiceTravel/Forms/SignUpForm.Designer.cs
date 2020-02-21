@@ -102,7 +102,7 @@
             this.BtnSignUpReg.TabIndex = 6;
             this.BtnSignUpReg.Text = "Kész";
             this.BtnSignUpReg.UseVisualStyleBackColor = true;
-            this.BtnSignUpReg.Click += new System.EventHandler(this.BtnSignInReg_Click);
+            this.BtnSignUpReg.Click += new System.EventHandler(this.BtnSignUpReg_Click);
             // 
             // BtnSignUpBack
             // 
@@ -114,7 +114,7 @@
             this.BtnSignUpBack.TabIndex = 7;
             this.BtnSignUpBack.Text = "Vissza";
             this.BtnSignUpBack.UseVisualStyleBackColor = true;
-            this.BtnSignUpBack.Click += new System.EventHandler(this.BtnSignInBack_Click);
+            this.BtnSignUpBack.Click += new System.EventHandler(this.BtnSignUpBack_Click);
             // 
             // TxtSignUpSurname
             // 

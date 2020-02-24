@@ -34,17 +34,18 @@
             this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.usersTableAdapter = new DiceTravel.UsersTableTableAdapters.usersTableAdapter();
             this.mainToolStripContainer = new System.Windows.Forms.ToolStripContainer();
-            this.GrpBxMainFrame = new System.Windows.Forms.GroupBox();
             this.GrpBxUserData = new System.Windows.Forms.GroupBox();
+            this.InputTest = new System.Windows.Forms.TextBox();
             this.TxtMainFormUserDataBirthDate = new System.Windows.Forms.Label();
             this.TxtMainFormUserDataName = new System.Windows.Forms.Label();
             this.TxtUserDataBirthDate = new System.Windows.Forms.Label();
             this.TxtUserDataRealName = new System.Windows.Forms.Label();
             this.TxtUserDataLoginName = new System.Windows.Forms.Label();
+            this.GrpBxMainFrame = new System.Windows.Forms.GroupBox();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.MenuMain = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMainLogin = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuMainSignin = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuMainSignUp = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMainLogout = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMainQuit = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMe = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,6 +54,7 @@
             this.MenuMeNewJourney = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMeNewEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMeGoalReached = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.usersTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.mainToolStripContainer.ContentPanel.SuspendLayout();
@@ -81,8 +83,8 @@
             // 
             // mainToolStripContainer.ContentPanel
             // 
-            this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxMainFrame);
             this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxUserData);
+            this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxMainFrame);
             this.mainToolStripContainer.ContentPanel.Size = new System.Drawing.Size(1484, 737);
             this.mainToolStripContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainToolStripContainer.Location = new System.Drawing.Point(0, 0);
@@ -95,52 +97,48 @@
             // 
             this.mainToolStripContainer.TopToolStripPanel.Controls.Add(this.menuStrip);
             // 
-            // GrpBxMainFrame
-            // 
-            this.GrpBxMainFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.GrpBxMainFrame.Location = new System.Drawing.Point(3, 3);
-            this.GrpBxMainFrame.Name = "GrpBxMainFrame";
-            this.GrpBxMainFrame.Size = new System.Drawing.Size(1188, 731);
-            this.GrpBxMainFrame.TabIndex = 2;
-            this.GrpBxMainFrame.TabStop = false;
-            this.GrpBxMainFrame.Visible = false;
-            // 
             // GrpBxUserData
             // 
             this.GrpBxUserData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.GrpBxUserData.Controls.Add(this.InputTest);
             this.GrpBxUserData.Controls.Add(this.TxtMainFormUserDataBirthDate);
             this.GrpBxUserData.Controls.Add(this.TxtMainFormUserDataName);
             this.GrpBxUserData.Controls.Add(this.TxtUserDataBirthDate);
             this.GrpBxUserData.Controls.Add(this.TxtUserDataRealName);
             this.GrpBxUserData.Controls.Add(this.TxtUserDataLoginName);
-            this.GrpBxUserData.Location = new System.Drawing.Point(1197, 3);
+            this.GrpBxUserData.Location = new System.Drawing.Point(3, 3);
             this.GrpBxUserData.Name = "GrpBxUserData";
             this.GrpBxUserData.Size = new System.Drawing.Size(284, 731);
             this.GrpBxUserData.TabIndex = 1;
             this.GrpBxUserData.TabStop = false;
-            this.GrpBxUserData.Text = "Adataim";
+            this.GrpBxUserData.Text = "MyData";
             this.GrpBxUserData.Visible = false;
+            // 
+            // InputTest
+            // 
+            this.InputTest.Location = new System.Drawing.Point(83, 164);
+            this.InputTest.Name = "InputTest";
+            this.InputTest.Size = new System.Drawing.Size(100, 20);
+            this.InputTest.TabIndex = 7;
             // 
             // TxtMainFormUserDataBirthDate
             // 
             this.TxtMainFormUserDataBirthDate.AutoSize = true;
             this.TxtMainFormUserDataBirthDate.Location = new System.Drawing.Point(6, 99);
             this.TxtMainFormUserDataBirthDate.Name = "TxtMainFormUserDataBirthDate";
-            this.TxtMainFormUserDataBirthDate.Size = new System.Drawing.Size(84, 13);
+            this.TxtMainFormUserDataBirthDate.Size = new System.Drawing.Size(65, 13);
             this.TxtMainFormUserDataBirthDate.TabIndex = 6;
-            this.TxtMainFormUserDataBirthDate.Text = "Születési dátum:";
+            this.TxtMainFormUserDataBirthDate.Text = "Date of birth";
             // 
             // TxtMainFormUserDataName
             // 
             this.TxtMainFormUserDataName.AutoSize = true;
             this.TxtMainFormUserDataName.Location = new System.Drawing.Point(6, 57);
             this.TxtMainFormUserDataName.Name = "TxtMainFormUserDataName";
-            this.TxtMainFormUserDataName.Size = new System.Drawing.Size(30, 13);
+            this.TxtMainFormUserDataName.Size = new System.Drawing.Size(38, 13);
             this.TxtMainFormUserDataName.TabIndex = 5;
-            this.TxtMainFormUserDataName.Text = "Név:";
+            this.TxtMainFormUserDataName.Text = "Name:";
             // 
             // TxtUserDataBirthDate
             // 
@@ -175,6 +173,18 @@
             this.TxtUserDataLoginName.Text = "-";
             this.TxtUserDataLoginName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // GrpBxMainFrame
+            // 
+            this.GrpBxMainFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GrpBxMainFrame.Location = new System.Drawing.Point(293, 3);
+            this.GrpBxMainFrame.Name = "GrpBxMainFrame";
+            this.GrpBxMainFrame.Size = new System.Drawing.Size(1188, 734);
+            this.GrpBxMainFrame.TabIndex = 2;
+            this.GrpBxMainFrame.TabStop = false;
+            this.GrpBxMainFrame.Visible = false;
+            // 
             // menuStrip
             // 
             this.menuStrip.Dock = System.Windows.Forms.DockStyle.None;
@@ -191,7 +201,7 @@
             // 
             this.MenuMain.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuMainLogin,
-            this.MenuMainSignin,
+            this.MenuMainSignUp,
             this.MenuMainLogout,
             this.MenuMainQuit});
             this.MenuMain.Name = "MenuMain";
@@ -203,29 +213,29 @@
             // 
             this.MenuMainLogin.Name = "MenuMainLogin";
             this.MenuMainLogin.Size = new System.Drawing.Size(180, 22);
-            this.MenuMainLogin.Text = "&Bejelentkezés";
+            this.MenuMainLogin.Text = "Login";
             this.MenuMainLogin.Click += new System.EventHandler(this.MenuMainLogin_Click);
             // 
-            // MenuMainSignin
+            // MenuMainSignUp
             // 
-            this.MenuMainSignin.Name = "MenuMainSignin";
-            this.MenuMainSignin.Size = new System.Drawing.Size(180, 22);
-            this.MenuMainSignin.Text = "&Regisztráció";
-            this.MenuMainSignin.Click += new System.EventHandler(this.MenuMainSignin_Click);
+            this.MenuMainSignUp.Name = "MenuMainSignUp";
+            this.MenuMainSignUp.Size = new System.Drawing.Size(180, 22);
+            this.MenuMainSignUp.Text = "SignUp";
+            this.MenuMainSignUp.Click += new System.EventHandler(this.MenuMainSignUp_Click);
             // 
             // MenuMainLogout
             // 
             this.MenuMainLogout.Enabled = false;
             this.MenuMainLogout.Name = "MenuMainLogout";
             this.MenuMainLogout.Size = new System.Drawing.Size(180, 22);
-            this.MenuMainLogout.Text = "Ki&jelentkezés";
+            this.MenuMainLogout.Text = "LogOut";
             this.MenuMainLogout.Click += new System.EventHandler(this.MenuMainLogout_Click);
             // 
             // MenuMainQuit
             // 
             this.MenuMainQuit.Name = "MenuMainQuit";
             this.MenuMainQuit.Size = new System.Drawing.Size(180, 22);
-            this.MenuMainQuit.Text = "&Kilépés";
+            this.MenuMainQuit.Text = "Exit";
             this.MenuMainQuit.Click += new System.EventHandler(this.MenuMainQuit_Click);
             // 
             // MenuMe
@@ -246,13 +256,13 @@
             // 
             this.MenuMeMyFlow.Name = "MenuMeMyFlow";
             this.MenuMeMyFlow.Size = new System.Drawing.Size(180, 22);
-            this.MenuMeMyFlow.Text = "&Folyamom";
+            this.MenuMeMyFlow.Text = "MyFlow";
             // 
             // MenuMeMyJourneys
             // 
             this.MenuMeMyJourneys.Name = "MenuMeMyJourneys";
             this.MenuMeMyJourneys.Size = new System.Drawing.Size(180, 22);
-            this.MenuMeMyJourneys.Text = "&Utazásaim";
+            this.MenuMeMyJourneys.Text = "MyJourneys";
             // 
             // MenuMeNewJourney
             // 
@@ -265,13 +275,18 @@
             // 
             this.MenuMeNewEntry.Name = "MenuMeNewEntry";
             this.MenuMeNewEntry.Size = new System.Drawing.Size(180, 22);
-            this.MenuMeNewEntry.Text = "&Bejegyzés írása";
+            this.MenuMeNewEntry.Text = "New Entry";
             // 
             // MenuMeGoalReached
             // 
             this.MenuMeGoalReached.Name = "MenuMeGoalReached";
             this.MenuMeGoalReached.Size = new System.Drawing.Size(180, 22);
-            this.MenuMeGoalReached.Text = "&Elértem a célomat!";
+            this.MenuMeGoalReached.Text = "Goal reached!";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // MainForm
             // 
@@ -309,7 +324,7 @@
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem MenuMain;
         private System.Windows.Forms.ToolStripMenuItem MenuMainLogin;
-        private System.Windows.Forms.ToolStripMenuItem MenuMainSignin;
+        private System.Windows.Forms.ToolStripMenuItem MenuMainSignUp;
         private System.Windows.Forms.ToolStripMenuItem MenuMainLogout;
         private System.Windows.Forms.ToolStripMenuItem MenuMainQuit;
         public System.Windows.Forms.Label TxtUserDataLoginName;
@@ -325,6 +340,8 @@
         private System.Windows.Forms.ToolStripMenuItem MenuMeNewJourney;
         private System.Windows.Forms.ToolStripMenuItem MenuMeNewEntry;
         private System.Windows.Forms.ToolStripMenuItem MenuMeGoalReached;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.TextBox InputTest;
     }
 }
 

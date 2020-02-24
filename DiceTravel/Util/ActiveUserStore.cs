@@ -3,6 +3,7 @@
     static public class ActiveUserStore
     {
         static public User ActiveUser { get; private set; }
+
         static public bool IsThereActiveUser
         {
             get

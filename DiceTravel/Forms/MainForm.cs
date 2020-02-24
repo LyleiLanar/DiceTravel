@@ -12,10 +12,12 @@ namespace DiceTravel
             InitializeComponent();
         }
 
-        private void MenuMainSignin_Click(object sender, EventArgs e)
+        private void MenuMainSignUp_Click(object sender, EventArgs e)
         {
-            SignUpForm si = new SignUpForm();
-            si.Text = Properties.Settings.Default.projectName + " - Regisztráció";
+            SignUpForm si = new SignUpForm
+            {
+                Text = Properties.Settings.Default.projectName + " - Regisztráció"
+            };
             si.Show();
         }
         private void MenuMainQuit_Click(object sender, EventArgs e)
@@ -24,8 +26,10 @@ namespace DiceTravel
         }
         private void MenuMainLogin_Click(object sender, EventArgs e)
         {
-            LoginForm login = new LoginForm();
-            login.Text = Properties.Settings.Default.projectName + " - Belépés";
+            LoginForm login = new LoginForm
+            {
+                Text = Properties.Settings.Default.projectName + " - Belépés"
+            };
             login.Show();
         }
         private void MenuMainLogout_Click(object sender, EventArgs e)
@@ -37,6 +41,7 @@ namespace DiceTravel
             GrpBxUserData.Visible = false;
             GrpBxMainFrame.Visible = false;
             MenuMainLogout.Enabled = false;
+            MenuMainSignUp.Enabled = true;
             MenuMe.Enabled = false;
         }
         public void ActivateControls()
@@ -44,6 +49,7 @@ namespace DiceTravel
             GrpBxUserData.Visible = true;
             GrpBxMainFrame.Visible = true;
             MenuMainLogout.Enabled = true;
+            MenuMainSignUp.Enabled = false;
             MenuMe.Enabled = true;
         }
         public void RefreshMainFormUserData()
@@ -56,6 +62,7 @@ namespace DiceTravel
                 TxtUserDataLoginName.Text = user.LoginName;
                 TxtUserDataRealName.Text = user.Surname + user.Firstname;
                 TxtUserDataBirthDate.Text = user.BirthDate.Substring(0, 12);
+                InputTest.Text = ActiveUserStore.ActiveUser.GetActiveJourneyId().ToString();
             }
             else
             {
@@ -69,6 +76,7 @@ namespace DiceTravel
         {
             if (MessageBox.Show("Biztos kilépsz az alkalmazásból", "Megondoltad?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
+                ActiveUserStore.LogOutUser();
                 this.Dispose();
             }
             else
@@ -80,8 +88,10 @@ namespace DiceTravel
         {
             if (ActiveUserStore.IsThereActiveUser && !ActiveUserStore.ActiveUser.IsThereActiveJourney())
             {
-                JourneyCreateForm journeyCreateForm = new JourneyCreateForm();
-                journeyCreateForm.Text = Properties.Settings.Default.projectName + " - New Journey";
+                JourneyCreateForm journeyCreateForm = new JourneyCreateForm
+                {
+                    Text = Properties.Settings.Default.projectName + " - New Journey"
+                };
                 journeyCreateForm.Show();
             }
             else

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignUpForm));
-            this.IinputSignUpLoginName = new System.Windows.Forms.TextBox();
+            this.InputSignUpLoginName = new System.Windows.Forms.TextBox();
             this.InputSignUpPassword = new System.Windows.Forms.TextBox();
             this.TxtSignUpTitle = new System.Windows.Forms.Label();
             this.TxtSignUpLoginName = new System.Windows.Forms.Label();
@@ -46,13 +46,13 @@
             this.DatePickerSignUpBirthDate = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
-            // IinputSignUpLoginName
+            // InputSignUpLoginName
             // 
-            this.IinputSignUpLoginName.Location = new System.Drawing.Point(106, 58);
-            this.IinputSignUpLoginName.MaxLength = 20;
-            this.IinputSignUpLoginName.Name = "IinputSignUpLoginName";
-            this.IinputSignUpLoginName.Size = new System.Drawing.Size(100, 20);
-            this.IinputSignUpLoginName.TabIndex = 0;
+            this.InputSignUpLoginName.Location = new System.Drawing.Point(106, 58);
+            this.InputSignUpLoginName.MaxLength = 20;
+            this.InputSignUpLoginName.Name = "InputSignUpLoginName";
+            this.InputSignUpLoginName.Size = new System.Drawing.Size(100, 20);
+            this.InputSignUpLoginName.TabIndex = 0;
             // 
             // InputSignUpPassword
             // 
@@ -210,7 +210,7 @@
             this.Controls.Add(this.TxtSignUpLoginName);
             this.Controls.Add(this.TxtSignUpTitle);
             this.Controls.Add(this.InputSignUpPassword);
-            this.Controls.Add(this.IinputSignUpLoginName);
+            this.Controls.Add(this.InputSignUpLoginName);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(250, 330);
@@ -224,7 +224,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox IinputSignUpLoginName;
+        private System.Windows.Forms.TextBox InputSignUpLoginName;
         private System.Windows.Forms.TextBox InputSignUpPassword;
         private System.Windows.Forms.Label TxtSignUpLoginName;
         private System.Windows.Forms.Label TxtSignUpPassword;

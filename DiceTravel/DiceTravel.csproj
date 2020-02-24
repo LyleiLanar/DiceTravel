@@ -55,6 +55,8 @@
     <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Entity.cs" />
+    <Compile Include="Classes\Journey.cs" />
     <Compile Include="Forms\JourneyForms\JourneyCreateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +91,8 @@
     </Compile>
     <Compile Include="Util\ActiveUserStore.cs" />
     <Compile Include="Util\DBDriver.cs" />
+    <Compile Include="Util\EntityCreationException.cs" />
+    <Compile Include="Util\ValidationException.cs" />
     <EmbeddedResource Include="Forms\JourneyForms\JourneyCreateForm.resx">
       <DependentUpon>JourneyCreateForm.cs</DependentUpon>
     </EmbeddedResource>

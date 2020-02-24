@@ -26,12 +26,9 @@ namespace DiceTravel.Forms.JourneyForms
         private void BtnJourneyCreateStart_Click(object sender, EventArgs e)
         {
 
-
-
                 string userId = $"{ActiveUserStore.ActiveUser.Id}";
                 string title = $"{this.InputJourneyCreateJourneyTitle.Text}";
                 string startLocation = $"{this.InputJourneyCreateJourneyStartLocation.Text}";
-                string startDate = $"{DateTime.Now}";
                 string visibility = "0";
 
                 if (this.RBtnJourneyCreateVisibilityPrivate.Checked) { visibility = "0"; }

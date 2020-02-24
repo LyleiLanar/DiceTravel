@@ -16,8 +16,11 @@ namespace DiceTravel
         {
             SignUpForm si = new SignUpForm
             {
-                Text = Properties.Settings.Default.projectName + " - Regisztráció"
+                Text = Properties.Settings.Default.projectName + " - Registration"            
             };
+
+            si.DatePickerSignUpBirthDate.Value = DateTime.Now;
+            si.DatePickerSignUpBirthDate.MaxDate = DateTime.Now;
             si.Show();
         }
         private void MenuMainQuit_Click(object sender, EventArgs e)
@@ -28,7 +31,7 @@ namespace DiceTravel
         {
             LoginForm login = new LoginForm
             {
-                Text = Properties.Settings.Default.projectName + " - Belépés"
+                Text = Properties.Settings.Default.projectName + " - LogIn"
             };
             login.Show();
         }
@@ -36,19 +39,21 @@ namespace DiceTravel
         {
             ActiveUserStore.LogOutUser();
         }
-        public void DeactivateControls()
+        public void ChangeControlsAvailabilityAfterLogout()
         {
             GrpBxUserData.Visible = false;
             GrpBxMainFrame.Visible = false;
             MenuMainLogout.Enabled = false;
+            MenuMainLogin.Enabled = true;
             MenuMainSignUp.Enabled = true;
             MenuMe.Enabled = false;
         }
-        public void ActivateControls()
+        public void ChangeControlsAvailabilityAfterLogin()
         {
             GrpBxUserData.Visible = true;
             GrpBxMainFrame.Visible = true;
             MenuMainLogout.Enabled = true;
+            MenuMainLogin.Enabled = false;
             MenuMainSignUp.Enabled = false;
             MenuMe.Enabled = true;
         }
@@ -58,15 +63,15 @@ namespace DiceTravel
 
             if (ActiveUserStore.IsThereActiveUser)
             {
-                Program.mainForm.ActivateControls();
+                Program.mainForm.ChangeControlsAvailabilityAfterLogin();
                 TxtUserDataLoginName.Text = user.LoginName;
                 TxtUserDataRealName.Text = user.Surname + user.Firstname;
                 TxtUserDataBirthDate.Text = user.BirthDate.Substring(0, 12);
-                InputTest.Text = ActiveUserStore.ActiveUser.GetActiveJourneyId().ToString();
+                InputTest.Text = ActiveUserStore.GetActiveJourneyId().ToString();
             }
             else
             {
-                Program.mainForm.DeactivateControls();
+                Program.mainForm.ChangeControlsAvailabilityAfterLogout();
                 TxtUserDataLoginName.Text = "-";
                 TxtUserDataRealName.Text = "-";
                 TxtUserDataBirthDate.Text = "-";
@@ -74,7 +79,7 @@ namespace DiceTravel
         }
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Biztos kilépsz az alkalmazásból", "Megondoltad?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            if (MessageBox.Show("Do you want to exit?", "EXIT", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
                 ActiveUserStore.LogOutUser();
                 this.Dispose();
@@ -86,17 +91,18 @@ namespace DiceTravel
         }
         private void MenuMeNewJourney_Click(object sender, EventArgs e)
         {
-            if (ActiveUserStore.IsThereActiveUser && !ActiveUserStore.ActiveUser.IsThereActiveJourney())
+            if (ActiveUserStore.IsThereActiveUser && !ActiveUserStore.IsThereActiveJourney())
             {
                 JourneyCreateForm journeyCreateForm = new JourneyCreateForm
                 {
                     Text = Properties.Settings.Default.projectName + " - New Journey"
+                   
                 };
                 journeyCreateForm.Show();
             }
             else
             {
-                MessageBox.Show("You've already started a journey!", "Journey cannot start...", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("You've already started a journey!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
     }

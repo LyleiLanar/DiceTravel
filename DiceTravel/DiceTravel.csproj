@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Classes\Entity.cs" />
     <Compile Include="Classes\Journey.cs" />
+    <Compile Include="Classes\Trip.cs" />
     <Compile Include="Forms\JourneyForms\JourneyCreateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +93,7 @@
     <Compile Include="Util\ActiveUserStore.cs" />
     <Compile Include="Util\DBDriver.cs" />
     <Compile Include="Util\EntityCreationException.cs" />
+    <Compile Include="Util\UserAuthenticator.cs" />
     <Compile Include="Util\ValidationException.cs" />
     <EmbeddedResource Include="Forms\JourneyForms\JourneyCreateForm.resx">
       <DependentUpon>JourneyCreateForm.cs</DependentUpon>

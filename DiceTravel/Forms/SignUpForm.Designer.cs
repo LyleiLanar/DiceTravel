@@ -35,7 +35,7 @@
             this.TxtSignUpLoginName = new System.Windows.Forms.Label();
             this.TxtSignUpPassword = new System.Windows.Forms.Label();
             this.BtnSignUpReg = new System.Windows.Forms.Button();
-            this.BtnSignUpBack = new System.Windows.Forms.Button();
+            this.BtnSignUpCancel = new System.Windows.Forms.Button();
             this.TxtSignUpSurname = new System.Windows.Forms.Label();
             this.InputSignUpSurname = new System.Windows.Forms.TextBox();
             this.InputSignUpFirstName = new System.Windows.Forms.TextBox();
@@ -72,26 +72,26 @@
             this.TxtSignUpTitle.Name = "TxtSignUpTitle";
             this.TxtSignUpTitle.Size = new System.Drawing.Size(200, 33);
             this.TxtSignUpTitle.TabIndex = 5;
-            this.TxtSignUpTitle.Text = "Regisztráció";
+            this.TxtSignUpTitle.Text = "SignUp";
             this.TxtSignUpTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TxtSignUpLoginName
             // 
             this.TxtSignUpLoginName.AutoSize = true;
-            this.TxtSignUpLoginName.Location = new System.Drawing.Point(16, 61);
+            this.TxtSignUpLoginName.Location = new System.Drawing.Point(31, 61);
             this.TxtSignUpLoginName.Name = "TxtSignUpLoginName";
-            this.TxtSignUpLoginName.Size = new System.Drawing.Size(88, 13);
+            this.TxtSignUpLoginName.Size = new System.Drawing.Size(69, 13);
             this.TxtSignUpLoginName.TabIndex = 6;
-            this.TxtSignUpLoginName.Text = "Felhasználónév*:";
+            this.TxtSignUpLoginName.Text = "Login name*:";
             // 
             // TxtSignUpPassword
             // 
             this.TxtSignUpPassword.AutoSize = true;
-            this.TxtSignUpPassword.Location = new System.Drawing.Point(61, 87);
+            this.TxtSignUpPassword.Location = new System.Drawing.Point(44, 87);
             this.TxtSignUpPassword.Name = "TxtSignUpPassword";
-            this.TxtSignUpPassword.Size = new System.Drawing.Size(43, 13);
+            this.TxtSignUpPassword.Size = new System.Drawing.Size(60, 13);
             this.TxtSignUpPassword.TabIndex = 7;
-            this.TxtSignUpPassword.Text = "Jelszó*:";
+            this.TxtSignUpPassword.Text = "Password*:";
             // 
             // BtnSignUpReg
             // 
@@ -100,34 +100,34 @@
             this.BtnSignUpReg.Name = "BtnSignUpReg";
             this.BtnSignUpReg.Size = new System.Drawing.Size(75, 23);
             this.BtnSignUpReg.TabIndex = 6;
-            this.BtnSignUpReg.Text = "Kész";
+            this.BtnSignUpReg.Text = "SignUp";
             this.BtnSignUpReg.UseVisualStyleBackColor = true;
             this.BtnSignUpReg.Click += new System.EventHandler(this.BtnSignUpReg_Click);
             // 
-            // BtnSignUpBack
+            // BtnSignUpCancel
             // 
-            this.BtnSignUpBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSignUpBack.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnSignUpBack.Location = new System.Drawing.Point(64, 256);
-            this.BtnSignUpBack.Name = "BtnSignUpBack";
-            this.BtnSignUpBack.Size = new System.Drawing.Size(75, 23);
-            this.BtnSignUpBack.TabIndex = 7;
-            this.BtnSignUpBack.Text = "Vissza";
-            this.BtnSignUpBack.UseVisualStyleBackColor = true;
-            this.BtnSignUpBack.Click += new System.EventHandler(this.BtnSignUpBack_Click);
+            this.BtnSignUpCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSignUpCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BtnSignUpCancel.Location = new System.Drawing.Point(64, 256);
+            this.BtnSignUpCancel.Name = "BtnSignUpCancel";
+            this.BtnSignUpCancel.Size = new System.Drawing.Size(75, 23);
+            this.BtnSignUpCancel.TabIndex = 7;
+            this.BtnSignUpCancel.Text = "Cancel";
+            this.BtnSignUpCancel.UseVisualStyleBackColor = true;
+            this.BtnSignUpCancel.Click += new System.EventHandler(this.BtnSignUpCancel_Click);
             // 
             // TxtSignUpSurname
             // 
             this.TxtSignUpSurname.AutoSize = true;
-            this.TxtSignUpSurname.Location = new System.Drawing.Point(37, 152);
+            this.TxtSignUpSurname.Location = new System.Drawing.Point(44, 152);
             this.TxtSignUpSurname.Name = "TxtSignUpSurname";
-            this.TxtSignUpSurname.Size = new System.Drawing.Size(67, 13);
+            this.TxtSignUpSurname.Size = new System.Drawing.Size(61, 13);
             this.TxtSignUpSurname.TabIndex = 10;
-            this.TxtSignUpSurname.Text = "Vezetéknév:";
+            this.TxtSignUpSurname.Text = "First name: ";
             // 
             // InputSignUpSurname
             // 
-            this.InputSignUpSurname.Location = new System.Drawing.Point(106, 149);
+            this.InputSignUpSurname.Location = new System.Drawing.Point(106, 175);
             this.InputSignUpSurname.MaxLength = 20;
             this.InputSignUpSurname.Name = "InputSignUpSurname";
             this.InputSignUpSurname.Size = new System.Drawing.Size(100, 20);
@@ -135,7 +135,7 @@
             // 
             // InputSignUpFirstName
             // 
-            this.InputSignUpFirstName.Location = new System.Drawing.Point(106, 175);
+            this.InputSignUpFirstName.Location = new System.Drawing.Point(106, 149);
             this.InputSignUpFirstName.MaxLength = 20;
             this.InputSignUpFirstName.Name = "InputSignUpFirstName";
             this.InputSignUpFirstName.Size = new System.Drawing.Size(100, 20);
@@ -144,29 +144,29 @@
             // TxtSignUpFirstName
             // 
             this.TxtSignUpFirstName.AutoSize = true;
-            this.TxtSignUpFirstName.Location = new System.Drawing.Point(41, 178);
+            this.TxtSignUpFirstName.Location = new System.Drawing.Point(48, 178);
             this.TxtSignUpFirstName.Name = "TxtSignUpFirstName";
-            this.TxtSignUpFirstName.Size = new System.Drawing.Size(63, 13);
+            this.TxtSignUpFirstName.Size = new System.Drawing.Size(52, 13);
             this.TxtSignUpFirstName.TabIndex = 14;
-            this.TxtSignUpFirstName.Text = "Keresztnév:";
+            this.TxtSignUpFirstName.Text = "Surname:";
             // 
             // TxtSignUpBirthDate
             // 
             this.TxtSignUpBirthDate.AutoSize = true;
-            this.TxtSignUpBirthDate.Location = new System.Drawing.Point(20, 210);
+            this.TxtSignUpBirthDate.Location = new System.Drawing.Point(32, 210);
             this.TxtSignUpBirthDate.Name = "TxtSignUpBirthDate";
-            this.TxtSignUpBirthDate.Size = new System.Drawing.Size(84, 13);
+            this.TxtSignUpBirthDate.Size = new System.Drawing.Size(68, 13);
             this.TxtSignUpBirthDate.TabIndex = 15;
-            this.TxtSignUpBirthDate.Text = "Születési dátum:";
+            this.TxtSignUpBirthDate.Text = "Date of birth:";
             // 
             // TxtSignUpPasswordAgain
             // 
             this.TxtSignUpPasswordAgain.AutoSize = true;
-            this.TxtSignUpPasswordAgain.Location = new System.Drawing.Point(41, 113);
+            this.TxtSignUpPasswordAgain.Location = new System.Drawing.Point(15, 113);
             this.TxtSignUpPasswordAgain.Name = "TxtSignUpPasswordAgain";
-            this.TxtSignUpPasswordAgain.Size = new System.Drawing.Size(63, 13);
+            this.TxtSignUpPasswordAgain.Size = new System.Drawing.Size(89, 13);
             this.TxtSignUpPasswordAgain.TabIndex = 16;
-            this.TxtSignUpPasswordAgain.Text = "Jelszó újra*:";
+            this.TxtSignUpPasswordAgain.Text = "Password again*:";
             // 
             // InputSignUpPasswordAgain
             // 
@@ -180,7 +180,7 @@
             // 
             this.DatePickerSignUpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DatePickerSignUpBirthDate.Location = new System.Drawing.Point(106, 204);
-            this.DatePickerSignUpBirthDate.MaxDate = new System.DateTime(2020, 2, 19, 0, 0, 0, 0);
+            this.DatePickerSignUpBirthDate.MaxDate = new System.DateTime(3000, 2, 19, 0, 0, 0, 0);
             this.DatePickerSignUpBirthDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.DatePickerSignUpBirthDate.Name = "DatePickerSignUpBirthDate";
             this.DatePickerSignUpBirthDate.Size = new System.Drawing.Size(100, 20);
@@ -194,7 +194,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.CancelButton = this.BtnSignUpBack;
+            this.CancelButton = this.BtnSignUpCancel;
             this.ClientSize = new System.Drawing.Size(234, 291);
             this.Controls.Add(this.DatePickerSignUpBirthDate);
             this.Controls.Add(this.InputSignUpPasswordAgain);
@@ -204,7 +204,7 @@
             this.Controls.Add(this.InputSignUpFirstName);
             this.Controls.Add(this.InputSignUpSurname);
             this.Controls.Add(this.TxtSignUpSurname);
-            this.Controls.Add(this.BtnSignUpBack);
+            this.Controls.Add(this.BtnSignUpCancel);
             this.Controls.Add(this.BtnSignUpReg);
             this.Controls.Add(this.TxtSignUpPassword);
             this.Controls.Add(this.TxtSignUpLoginName);
@@ -230,7 +230,7 @@
         private System.Windows.Forms.Label TxtSignUpPassword;
         private System.Windows.Forms.Button BtnSignUpReg;
         private System.Windows.Forms.Label TxtSignUpTitle;
-        private System.Windows.Forms.Button BtnSignUpBack;
+        private System.Windows.Forms.Button BtnSignUpCancel;
         private System.Windows.Forms.Label TxtSignUpSurname;
         private System.Windows.Forms.TextBox InputSignUpSurname;
         private System.Windows.Forms.TextBox InputSignUpFirstName;
@@ -238,6 +238,6 @@
         private System.Windows.Forms.Label TxtSignUpBirthDate;
         private System.Windows.Forms.Label TxtSignUpPasswordAgain;
         private System.Windows.Forms.TextBox InputSignUpPasswordAgain;
-        private System.Windows.Forms.DateTimePicker DatePickerSignUpBirthDate;
+        public System.Windows.Forms.DateTimePicker DatePickerSignUpBirthDate;
     }
 }

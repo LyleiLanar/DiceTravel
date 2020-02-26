@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace DiceTravel.Util
 {
@@ -15,7 +16,6 @@ namespace DiceTravel.Util
 
             return table;
         }
-
         public static void InsertRow(string queryString, string insertCommand)
         {
             MySqlDataAdapter adapter = new MySqlDataAdapter(queryString, connString);
@@ -26,6 +26,17 @@ namespace DiceTravel.Util
                 using (adapter.InsertCommand = new MySqlCommand(insertCommand, connection))
                 {
                     adapter.InsertCommand.ExecuteNonQuery();
+                }
+            }
+        }
+        public static void DeleteRow(string deleteCommand)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connString))
+            {
+                connection.Open();
+                using (MySqlCommand cmd = new MySqlCommand(deleteCommand, connection))
+                {
+                    cmd.ExecuteNonQuery();
                 }
             }
         }

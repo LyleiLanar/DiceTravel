@@ -25,7 +25,7 @@ namespace DiceTravel.Util
         static public void LogInUser(string loginName, string password)
         {
             ActiveUser = UserAuthenticator.GetAuthenticatedUser(loginName, password);
-            Program.mainForm.RefreshMainFormUserData();
+            Program.mainForm.RefreshMainForm();
         }
         static public bool IsThereActiveJourney()
         {

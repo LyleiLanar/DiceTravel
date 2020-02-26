@@ -73,6 +73,7 @@
             this.inputLoginLoginName.Name = "inputLoginLoginName";
             this.inputLoginLoginName.Size = new System.Drawing.Size(100, 20);
             this.inputLoginLoginName.TabIndex = 3;
+            this.inputLoginLoginName.Text = "Patrik";
             // 
             // inputLoginPassword
             // 
@@ -81,6 +82,7 @@
             this.inputLoginPassword.PasswordChar = '*';
             this.inputLoginPassword.Size = new System.Drawing.Size(100, 20);
             this.inputLoginPassword.TabIndex = 4;
+            this.inputLoginPassword.Text = "1234";
             // 
             // btnSignUpLogin
             // 

@@ -1,6 +1,7 @@
 ﻿using DiceTravel.Classes;
 using DiceTravel.Util;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace DiceTravel
@@ -45,9 +46,20 @@ namespace DiceTravel
         }
         public override void Validation()
         {
-
             if (LoginName == "") { throw new ValidationException("Missing 'Login Name'!"); }
+       }
+        public List<Journey> GetJourneys()
+        {
+            List<Journey> journeys = new List<Journey>();
+            string getJourneyCommand = $"SELECT * FROM journeys WHERE user_id = {Id};";
+            DataTable dataTable = DBDriver.ReadQuery(getJourneyCommand);
 
+            foreach (DataRow row in dataTable.Rows)
+            {
+                journeys.Add(new Journey(row));
+            }
+
+            return journeys;
         }
 
         //static methods

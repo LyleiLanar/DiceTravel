@@ -35,9 +35,9 @@
             this.InputJourneyCreateJourneyTitle = new System.Windows.Forms.TextBox();
             this.InputJourneyCreateJourneyStartLocation = new System.Windows.Forms.TextBox();
             this.GrpBxJourneyCreateVisibility = new System.Windows.Forms.GroupBox();
-            this.RBtnJourneyCreateVisibilityPrivate = new System.Windows.Forms.RadioButton();
-            this.RBtnJourneyCreateVisibilityOnlyFriends = new System.Windows.Forms.RadioButton();
             this.RBtnJourneyCreateVisibilityPublic = new System.Windows.Forms.RadioButton();
+            this.RBtnJourneyCreateVisibilityOnlyFriends = new System.Windows.Forms.RadioButton();
+            this.RBtnJourneyCreateVisibilityPrivate = new System.Windows.Forms.RadioButton();
             this.BtnJourneyCreateStart = new System.Windows.Forms.Button();
             this.BtnJourneyCreateCancel = new System.Windows.Forms.Button();
             this.GrpBxJourneyCreateVisibility.SuspendLayout();
@@ -99,6 +99,26 @@
             this.GrpBxJourneyCreateVisibility.TabStop = false;
             this.GrpBxJourneyCreateVisibility.Text = "Visibility: ";
             // 
+            // RBtnJourneyCreateVisibilityPublic
+            // 
+            this.RBtnJourneyCreateVisibilityPublic.AutoSize = true;
+            this.RBtnJourneyCreateVisibilityPublic.Location = new System.Drawing.Point(6, 67);
+            this.RBtnJourneyCreateVisibilityPublic.Name = "RBtnJourneyCreateVisibilityPublic";
+            this.RBtnJourneyCreateVisibilityPublic.Size = new System.Drawing.Size(54, 17);
+            this.RBtnJourneyCreateVisibilityPublic.TabIndex = 2;
+            this.RBtnJourneyCreateVisibilityPublic.Text = "Public";
+            this.RBtnJourneyCreateVisibilityPublic.UseVisualStyleBackColor = true;
+            // 
+            // RBtnJourneyCreateVisibilityOnlyFriends
+            // 
+            this.RBtnJourneyCreateVisibilityOnlyFriends.AutoSize = true;
+            this.RBtnJourneyCreateVisibilityOnlyFriends.Location = new System.Drawing.Point(6, 43);
+            this.RBtnJourneyCreateVisibilityOnlyFriends.Name = "RBtnJourneyCreateVisibilityOnlyFriends";
+            this.RBtnJourneyCreateVisibilityOnlyFriends.Size = new System.Drawing.Size(83, 17);
+            this.RBtnJourneyCreateVisibilityOnlyFriends.TabIndex = 1;
+            this.RBtnJourneyCreateVisibilityOnlyFriends.Text = "Only Friends";
+            this.RBtnJourneyCreateVisibilityOnlyFriends.UseVisualStyleBackColor = true;
+            // 
             // RBtnJourneyCreateVisibilityPrivate
             // 
             this.RBtnJourneyCreateVisibilityPrivate.AutoSize = true;
@@ -111,33 +131,13 @@
             this.RBtnJourneyCreateVisibilityPrivate.Text = "Private";
             this.RBtnJourneyCreateVisibilityPrivate.UseVisualStyleBackColor = true;
             // 
-            // RBtnJourneyCreateVisibilityOnlyFriends
-            // 
-            this.RBtnJourneyCreateVisibilityOnlyFriends.AutoSize = true;
-            this.RBtnJourneyCreateVisibilityOnlyFriends.Location = new System.Drawing.Point(6, 43);
-            this.RBtnJourneyCreateVisibilityOnlyFriends.Name = "RBtnJourneyCreateVisibilityOnlyFriends";
-            this.RBtnJourneyCreateVisibilityOnlyFriends.Size = new System.Drawing.Size(83, 17);
-            this.RBtnJourneyCreateVisibilityOnlyFriends.TabIndex = 1;
-            this.RBtnJourneyCreateVisibilityOnlyFriends.Text = "Only Friends";
-            this.RBtnJourneyCreateVisibilityOnlyFriends.UseVisualStyleBackColor = true;
-            // 
-            // RBtnJourneyCreateVisibilityPublic
-            // 
-            this.RBtnJourneyCreateVisibilityPublic.AutoSize = true;
-            this.RBtnJourneyCreateVisibilityPublic.Location = new System.Drawing.Point(6, 67);
-            this.RBtnJourneyCreateVisibilityPublic.Name = "RBtnJourneyCreateVisibilityPublic";
-            this.RBtnJourneyCreateVisibilityPublic.Size = new System.Drawing.Size(54, 17);
-            this.RBtnJourneyCreateVisibilityPublic.TabIndex = 2;
-            this.RBtnJourneyCreateVisibilityPublic.Text = "Public";
-            this.RBtnJourneyCreateVisibilityPublic.UseVisualStyleBackColor = true;
-            // 
             // BtnJourneyCreateStart
             // 
             this.BtnJourneyCreateStart.Location = new System.Drawing.Point(127, 121);
             this.BtnJourneyCreateStart.Name = "BtnJourneyCreateStart";
             this.BtnJourneyCreateStart.Size = new System.Drawing.Size(95, 23);
             this.BtnJourneyCreateStart.TabIndex = 7;
-            this.BtnJourneyCreateStart.Text = "Start!";
+            this.BtnJourneyCreateStart.Text = "Set goal";
             this.BtnJourneyCreateStart.UseVisualStyleBackColor = true;
             this.BtnJourneyCreateStart.Click += new System.EventHandler(this.BtnJourneyCreateStart_Click);
             // 

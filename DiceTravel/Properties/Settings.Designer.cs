@@ -41,5 +41,14 @@ namespace DiceTravel.Properties {
                 return ((string)(this["projectName"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1988-11-08")]
+        public string nullDate {
+            get {
+                return ((string)(this["nullDate"]));
+            }
+        }
     }
 }

@@ -1,32 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DiceTravel.Util;
+using System;
+using System.Data;
 
 namespace DiceTravel.Classes
 {
-    class Trip : Entity
+    public class Trip : Entity
     {
+        public int Id { get; set; }
+        public int JourneyId { get; set; }
+        public int SerialNumber { get; set; }
+        public string EndLocation { get; set; }
+        public string EndDate { get; set; }
+        public int Visibility { get; set; }
 
-
+        public Trip(DataRow dataRow)
+        {
+            Id = Int32.Parse(dataRow["id"].ToString());
+            JourneyId = Int32.Parse(dataRow["journey_id"].ToString());
+            SerialNumber = Int32.Parse(dataRow["serial_number"].ToString());
+            EndLocation = dataRow["end_location"].ToString();
+            EndDate = dataRow["end_date"].ToString();
+            Visibility = Int32.Parse(dataRow["visibility"].ToString());
+        }
         public Trip()
         {
         }
 
+        //entityMethods
+        public void DeleteItself()
+        {
+            string deleteCommand = $"DELETE FROM trips WHERE id = {this.Id}";
+            DBDriver.DeleteRow(deleteCommand);
+        }
+
         public override string GetInsertSql()
         {
-            throw new NotImplementedException();
+            string activeJourneyId = ActiveUserStore.GetActiveJourneyId().ToString();
+            return $"INSERT INTO `dice_travel`.`trips` (`journey_id`, `serial_number`,`end_location`,`end_date`,`visibility`) " +
+                                  $"VALUES ('{activeJourneyId}', '{SerialNumber}','{EndLocation}','{EndDate}','{Visibility}');";
         }
-
         public override string GetTableQueryString()
         {
-            throw new NotImplementedException();
+            return "SELECT * FROM trips";
         }
-
         public override void Validation()
         {
-            throw new NotImplementedException();
+            if (JourneyId == 0) { throw new ValidationException("Missing journeyId!"); }
+            if (EndLocation == "") { throw new ValidationException("Missing Goal location!"); }
         }
     }
 }

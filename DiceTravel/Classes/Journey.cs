@@ -1,10 +1,11 @@
 ﻿using DiceTravel.Util;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace DiceTravel.Classes
 {
-    class Journey : Entity
+    public class Journey : Entity
     {
         public Journey()
         {
@@ -17,8 +18,8 @@ namespace DiceTravel.Classes
             Title = dataRow["title"].ToString();
             StartLocation = dataRow["start_location"].ToString();
             StartDate = dataRow["start_date"].ToString();
-            Closed = dataRow["closed"].ToString();
-            Visibility = dataRow["visibility"].ToString();
+            Closed = Int32.Parse(dataRow["closed"].ToString());
+            Visibility = Int32.Parse(dataRow["visibility"].ToString());
         }
 
         //Properties
@@ -27,23 +28,75 @@ namespace DiceTravel.Classes
         public string Title { get; set; }
         public string StartLocation { get; set; }
         public string StartDate { get; set; }
-        public string Closed { get; set; }
-        public string Visibility { get; set; }
-        
+        public int Closed { get; set; }
+        public int Visibility { get; set; }
+
+        public string GetVisibilityAsString
+        {
+            get
+            {
+                if (Visibility == 2)
+                {
+                    return "Public";
+                }
+                if (Visibility == 1)
+                {
+                    return "OnlyFriends";
+                }
+
+                return "Private";
+            }
+        }
+
         //entityMethods
-        public Journey GetJourney_ById(int id)
+        static public Journey GetJourney_ById(int id)
         {
             string query = $"SELECT * FROM journeys WHERE id = {id};";
-
-            return new Journey(DBDriver.ReadQuery(query).Rows[0]);
+            DataTable dataTable = DBDriver.ReadQuery(query);
+            if (dataTable != null && dataTable.Rows.Count > 0)
+            {
+                return new Journey(dataTable.Rows[0]);
+            }
+            return null;
         }
-        public DataTable GetJourneys_ByUser(int userId)
+        public List<Trip> GetTrips()
         {
-            string query = $"SELECT * FROM journeys WHERE user_id = {userId};";
-            return DBDriver.ReadQuery(query);
+            List<Trip> trips = new List<Trip>();
+            string getTripsCommand = $"SELECT * FROM trips WHERE journey_id = {Id}";
+
+            DataTable dataTable = DBDriver.ReadQuery(getTripsCommand);
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                trips.Add(new Trip(row));
+            }
+
+            return trips;
+        }
+        public void DeleteItself()
+        {
+            List<Trip> tripsToDelete = GetTrips();
+
+            foreach (Trip trip in tripsToDelete)
+            {
+                trip.DeleteItself();
+            }
+
+            DBDriver.DeleteRow($"DELETE FROM journeys WHERE id = {ActiveUserStore.GetActiveJourneyId()}");
+            Program.mainForm.RefreshMainForm();
         }
 
         //Methods
+        public int GetLastTripId()
+        {
+            string lastTripQuery = $"SELECT id FROM trips WHERE journey_id = {this.Id} ORDER BY serial_number DESC LIMIT 1;";
+
+            DataTable dataTable = DBDriver.ReadQuery(lastTripQuery);
+
+            return Int32.Parse(dataTable.Rows[0]["id"].ToString());
+
+
+        }
         public override string GetInsertSql()
         {
             return $"INSERT INTO `dice_travel`.`journeys` (`user_id`, `title`,`start_location`,`start_date`,`closed`,`visibility`) " +
@@ -56,10 +109,8 @@ namespace DiceTravel.Classes
         public override void Validation()
         {
             if (UserId == 0) { throw new ValidationException("Missing userID!"); }
+            if (Title == "") { throw new ValidationException("Missing title!"); }
             if (StartLocation == "") { throw new ValidationException("Missing Start location!"); }
         }
     }
-
-
-
 }

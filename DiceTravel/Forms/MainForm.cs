@@ -95,33 +95,49 @@ namespace DiceTravel
         private void RefreshMainFormActiveJourneyData()
         {
             Journey activeJourney = Journey.GetJourney_ById(ActiveUserStore.GetActiveJourneyId());
+            string activeJourneyInfo;
+            string activeJourneyTitle;
 
             if (activeJourney != null)
             {
-                TxtUserDataJourneyTitle.Visible = true;
-                TxtMainFormJourneyDataStartDate.Visible = true;
-                TxtMainFormJourneyDataStartLocation.Visible = true;
-                TxtMainFormJourneyDataVisibility.Visible = true;
+                switch (activeJourney.Visibility)
+                {
+                    case 0:
+                        PctBxActiveJourneyVisibility.Image = Properties.Resources.icoVisibilityPrivate.ToBitmap();
+                        break;
 
+                    case 1:
+                        PctBxActiveJourneyVisibility.Image = Properties.Resources.icoVisibilityFriends.ToBitmap();
+                        break;
+
+                    case 2:
+                        PctBxActiveJourneyVisibility.Image = Properties.Resources.icoVisibilityPublic.ToBitmap();
+                        break;
+
+                    default:
+                        PctBxActiveJourneyVisibility.Image = Properties.Resources.icoError.ToBitmap();
+                        break;
+                }
+            }
+ 
+            if (activeJourney != null)
+            {
+                activeJourneyTitle = activeJourney.Title;
+                activeJourneyInfo = $"({activeJourney.StartLocation})";
                 BtnMyJourneyDelete.Enabled = true;
                 BtnNewJourney.Enabled = false;
-
-                TxtUserDataJourneyTitle.Text = activeJourney.Title;
-                TxtMainFormJourneyDataStartLocation.Text = activeJourney.StartLocation;
-                TxtMainFormJourneyDataStartDate.Text = activeJourney.StartDate;
-                TxtMainFormJourneyDataVisibility.Text = activeJourney.GetVisibilityAsString;
+                PctBxActiveJourneyVisibility.Visible = true;
             }
             else
             {
-                TxtUserDataJourneyTitle.Visible = false;
-                TxtMainFormJourneyDataStartDate.Visible = false;
-                TxtMainFormJourneyDataStartLocation.Visible = false;
-                TxtMainFormJourneyDataVisibility.Visible = false;
-
+                activeJourneyTitle = "No active Journey!";
+                activeJourneyInfo = "Start a new one!";
                 BtnMyJourneyDelete.Enabled = false;
                 BtnNewJourney.Enabled = true;
-
+                PctBxActiveJourneyVisibility.Visible = false;
             }
+            TxtUserDataJourneyInfo.Text = activeJourneyInfo;
+            TxtUserDataJourneyTitle.Text = activeJourneyTitle;
         }
         private void RefreshMainFormUserData()
         {

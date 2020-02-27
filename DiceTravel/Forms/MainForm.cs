@@ -151,7 +151,7 @@ namespace DiceTravel
         private void RefreshNextDestiantionData()
         {
             Journey activeJourney = ActiveUserStore.GetActiveJourney();
-            if (activeJourney !=null)
+            if (activeJourney != null)
             {
                 Trip activeTrip = ActiveUserStore.GetActiveJourney().GetLastTrip();
                 if (activeTrip == null && activeJourney.Closed != 0)
@@ -161,12 +161,10 @@ namespace DiceTravel
                 }
 
                 TxtNextDestTitle.Text = activeTrip.EndLocation;
-                TxtNextDestInfo.Text = "";
             }
             else
             {
                 TxtNextDestTitle.Text = "No active Journey!";
-                TxtNextDestInfo.Text = "Start a new one!";
             }
 
         }
@@ -174,7 +172,10 @@ namespace DiceTravel
         //journey methods
         private void BtnMyJourneyDelete_Click(object sender, EventArgs e)
         {
-            Journey.GetJourney_ById(ActiveUserStore.GetActiveJourneyId()).DeleteItself();
+            if (MessageBox.Show("All progress will be lost!\r\nAre you sure to delete this Journey?", "Attention!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                Journey.GetJourney_ById(ActiveUserStore.GetActiveJourneyId()).DeleteItself();
+            }
         }
 
         private void BtnNewJourney_Click(object sender, EventArgs e)

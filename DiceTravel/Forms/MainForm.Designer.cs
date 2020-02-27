@@ -39,7 +39,6 @@
             this.TxtNextDestTitle = new System.Windows.Forms.RichTextBox();
             this.BtnNextDestReached = new System.Windows.Forms.Button();
             this.PctBxNextDestVisibility = new System.Windows.Forms.PictureBox();
-            this.TxtNextDestInfo = new System.Windows.Forms.Label();
             this.GrpBxActiveJourneyData = new System.Windows.Forms.GroupBox();
             this.TxtActiveJourneyTitle = new System.Windows.Forms.RichTextBox();
             this.PctBxActiveJourneyVisibility = new System.Windows.Forms.PictureBox();
@@ -118,10 +117,9 @@
             this.GrpBxNextDestinationData.Controls.Add(this.TxtNextDestTitle);
             this.GrpBxNextDestinationData.Controls.Add(this.BtnNextDestReached);
             this.GrpBxNextDestinationData.Controls.Add(this.PctBxNextDestVisibility);
-            this.GrpBxNextDestinationData.Controls.Add(this.TxtNextDestInfo);
             this.GrpBxNextDestinationData.Location = new System.Drawing.Point(4, 235);
             this.GrpBxNextDestinationData.Name = "GrpBxNextDestinationData";
-            this.GrpBxNextDestinationData.Size = new System.Drawing.Size(228, 121);
+            this.GrpBxNextDestinationData.Size = new System.Drawing.Size(228, 87);
             this.GrpBxNextDestinationData.TabIndex = 4;
             this.GrpBxNextDestinationData.TabStop = false;
             this.GrpBxNextDestinationData.Text = "Next destination";
@@ -129,9 +127,9 @@
             // 
             // BtnNextDestCancel
             // 
-            this.BtnNextDestCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnNextDestCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.BtnNextDestCancel.Enabled = false;
-            this.BtnNextDestCancel.Location = new System.Drawing.Point(174, 19);
+            this.BtnNextDestCancel.Location = new System.Drawing.Point(172, 58);
             this.BtnNextDestCancel.Name = "BtnNextDestCancel";
             this.BtnNextDestCancel.Size = new System.Drawing.Size(48, 23);
             this.BtnNextDestCancel.TabIndex = 16;
@@ -143,7 +141,7 @@
             this.TxtNextDestTitle.BackColor = System.Drawing.SystemColors.Control;
             this.TxtNextDestTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TxtNextDestTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TxtNextDestTitle.Location = new System.Drawing.Point(46, 49);
+            this.TxtNextDestTitle.Location = new System.Drawing.Point(46, 19);
             this.TxtNextDestTitle.Name = "TxtNextDestTitle";
             this.TxtNextDestTitle.ReadOnly = true;
             this.TxtNextDestTitle.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
@@ -153,8 +151,9 @@
             // 
             // BtnNextDestReached
             // 
+            this.BtnNextDestReached.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.BtnNextDestReached.Enabled = false;
-            this.BtnNextDestReached.Location = new System.Drawing.Point(6, 19);
+            this.BtnNextDestReached.Location = new System.Drawing.Point(6, 58);
             this.BtnNextDestReached.Name = "BtnNextDestReached";
             this.BtnNextDestReached.Size = new System.Drawing.Size(103, 23);
             this.BtnNextDestReached.TabIndex = 17;
@@ -163,23 +162,12 @@
             // 
             // PctBxNextDestVisibility
             // 
-            this.PctBxNextDestVisibility.Location = new System.Drawing.Point(6, 49);
+            this.PctBxNextDestVisibility.Location = new System.Drawing.Point(6, 19);
             this.PctBxNextDestVisibility.Name = "PctBxNextDestVisibility";
             this.PctBxNextDestVisibility.Size = new System.Drawing.Size(33, 33);
             this.PctBxNextDestVisibility.TabIndex = 18;
             this.PctBxNextDestVisibility.TabStop = false;
             this.PctBxNextDestVisibility.WaitOnLoad = true;
-            // 
-            // TxtNextDestInfo
-            // 
-            this.TxtNextDestInfo.AutoSize = true;
-            this.TxtNextDestInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TxtNextDestInfo.Location = new System.Drawing.Point(45, 74);
-            this.TxtNextDestInfo.Name = "TxtNextDestInfo";
-            this.TxtNextDestInfo.Size = new System.Drawing.Size(70, 20);
-            this.TxtNextDestInfo.TabIndex = 16;
-            this.TxtNextDestInfo.Text = "Location";
-            this.TxtNextDestInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // GrpBxActiveJourneyData
             // 
@@ -434,7 +422,6 @@
             this.mainToolStripContainer.ResumeLayout(false);
             this.mainToolStripContainer.PerformLayout();
             this.GrpBxNextDestinationData.ResumeLayout(false);
-            this.GrpBxNextDestinationData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctBxNextDestVisibility)).EndInit();
             this.GrpBxActiveJourneyData.ResumeLayout(false);
             this.GrpBxActiveJourneyData.PerformLayout();
@@ -481,7 +468,6 @@
         private System.Windows.Forms.RichTextBox TxtNextDestTitle;
         private System.Windows.Forms.Button BtnNextDestReached;
         private System.Windows.Forms.PictureBox PctBxNextDestVisibility;
-        public System.Windows.Forms.Label TxtNextDestInfo;
     }
 }
 

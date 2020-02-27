@@ -148,6 +148,7 @@
             // BtnJourneyCreateCancel
             // 
             this.BtnJourneyCreateCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnJourneyCreateCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnJourneyCreateCancel.Location = new System.Drawing.Point(127, 203);
             this.BtnJourneyCreateCancel.Name = "BtnJourneyCreateCancel";
             this.BtnJourneyCreateCancel.Size = new System.Drawing.Size(95, 23);
@@ -171,12 +172,14 @@
             this.InputJourneyCreateJourneyFirstDest.MaxLength = 20;
             this.InputJourneyCreateJourneyFirstDest.Name = "InputJourneyCreateJourneyFirstDest";
             this.InputJourneyCreateJourneyFirstDest.Size = new System.Drawing.Size(100, 20);
-            this.InputJourneyCreateJourneyFirstDest.TabIndex = 10;
+            this.InputJourneyCreateJourneyFirstDest.TabIndex = 6;
             // 
             // JourneyCreateForm
             // 
+            this.AcceptButton = this.BtnJourneyCreateStart;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.BtnJourneyCreateCancel;
             this.ClientSize = new System.Drawing.Size(234, 247);
             this.Controls.Add(this.InputJourneyCreateJourneyFirstDest);
             this.Controls.Add(this.TxtJourneyCreateJourneyFirstDest);

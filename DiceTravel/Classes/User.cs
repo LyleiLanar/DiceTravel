@@ -26,14 +26,13 @@ namespace DiceTravel
             Firstname = dataRow["first_name"].ToString();
             BirthDate = dataRow["birth_date"].ToString();
         }
-
         public User()
         {
 
         }
 
         //methods
-       
+
         public override string GetInsertSql()
         {
             return $"INSERT INTO `dice_travel`.`users` (`login_name`, `pswd`,`sur_name`,`first_name`,`birth_date`) " +
@@ -47,7 +46,7 @@ namespace DiceTravel
         public override void Validation()
         {
             if (LoginName == "") { throw new ValidationException("Missing 'Login Name'!"); }
-       }
+        }
         public List<Journey> GetJourneys()
         {
             List<Journey> journeys = new List<Journey>();
@@ -74,6 +73,6 @@ namespace DiceTravel
             string query = $"SELECT * FROM users WHERE login_name like '{loginName}'";
             DataTable table = DBDriver.ReadQuery(query);
             return new User(table.Rows[0]);
-        }      
+        }
     }
 }

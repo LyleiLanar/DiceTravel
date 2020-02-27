@@ -25,7 +25,7 @@ namespace DiceTravel.Classes
         public Trip()
         {
         }
-
+        
         //entityMethods
         public void DeleteItself()
         {

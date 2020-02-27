@@ -8,11 +8,11 @@ namespace DiceTravel.Forms.JourneyForms
 {
     public partial class JourneyCreateForm : Form
     {
-        TripCreateForm newTrip;
+        TripCreateForm tripCreateFrom;
 
         public JourneyCreateForm()
         {
-            newTrip = new TripCreateForm();
+            tripCreateFrom = new TripCreateForm();
             InitializeComponent();
         }
 
@@ -32,35 +32,48 @@ namespace DiceTravel.Forms.JourneyForms
                 Visibility = 0
             };
 
-            Trip newTrip = new Trip()
-            {
-                EndLocation = TxtJourneyCreateJourneyFirstDest.Text,
-                JourneyId = newJourney.Id,
-                Visibility = newJourney.Visibility,
-
-            };
-
             if (this.RBtnJourneyCreateVisibilityPrivate.Checked) { newJourney.Visibility = 0; }
             if (this.RBtnJourneyCreateVisibilityOnlyFriends.Checked) { newJourney.Visibility = 1; }
             if (this.RBtnJourneyCreateVisibilityPublic.Checked) { newJourney.Visibility = 2; }
+
+            Trip newTrip = new Trip()
+            {
+                EndLocation = InputJourneyCreateJourneyFirstDest.Text,
+                EndDate = Properties.Settings.Default.nullDate,
+                Visibility = newJourney.Visibility,
+            };
 
             try
             {
                 Validation(newJourney);
                 DBDriver.InsertRow(newJourney.GetTableQueryString(), newJourney.GetInsertSql());
-                Program.mainForm.RefreshMainForm();
-                this.Dispose();
+                try
+                {
+                    newTrip.JourneyId = ActiveUserStore.GetActiveJourneyId();
+                    Validation(newTrip);
+                    DBDriver.InsertRow(newTrip.GetTableQueryString(), newTrip.GetInsertSql());
+                    Program.mainForm.RefreshMainForm();
+                    this.Dispose();
+                }
+                catch (ValidationException ex)
+                {
+                    newJourney.DeleteItself();
+                    MessageBox.Show(ex.Message, "Journey creation error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             catch (ValidationException ex)
             {
                 MessageBox.Show(ex.Message, "Journey creation error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
         private void Validation(Journey newJourney)
         {
-            newJourney.Validation();      
-            //nincs mit validálni egyelőre form szinten.
+            newJourney.Validation();
+        }
+        private void Validation(Trip newTrip)
+        {
+            newTrip.Validation();
         }
     }
+
 }

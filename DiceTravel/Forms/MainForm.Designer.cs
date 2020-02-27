@@ -34,12 +34,18 @@
             this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.usersTableAdapter = new DiceTravel.UsersTableTableAdapters.usersTableAdapter();
             this.mainToolStripContainer = new System.Windows.Forms.ToolStripContainer();
+            this.GrpBxNextDestinationData = new System.Windows.Forms.GroupBox();
+            this.BtnNextDestCancel = new System.Windows.Forms.Button();
+            this.TxtNextDestTitle = new System.Windows.Forms.RichTextBox();
+            this.BtnNextDestReached = new System.Windows.Forms.Button();
+            this.PctBxNextDestVisibility = new System.Windows.Forms.PictureBox();
+            this.TxtNextDestInfo = new System.Windows.Forms.Label();
             this.GrpBxActiveJourneyData = new System.Windows.Forms.GroupBox();
-            this.TxtUserDataJourneyTitle = new System.Windows.Forms.RichTextBox();
+            this.TxtActiveJourneyTitle = new System.Windows.Forms.RichTextBox();
             this.PctBxActiveJourneyVisibility = new System.Windows.Forms.PictureBox();
-            this.BtnNewJourney = new System.Windows.Forms.Button();
-            this.BtnMyJourneyDelete = new System.Windows.Forms.Button();
-            this.TxtUserDataJourneyInfo = new System.Windows.Forms.Label();
+            this.BtnActiveJourneyNewJourney = new System.Windows.Forms.Button();
+            this.BtnActiveJourneyDelete = new System.Windows.Forms.Button();
+            this.TxtActiveJourneyInfo = new System.Windows.Forms.Label();
             this.GrpBxUserData = new System.Windows.Forms.GroupBox();
             this.TxtMainFormUserDataBirthDate = new System.Windows.Forms.Label();
             this.TxtUserDataBirthDate = new System.Windows.Forms.Label();
@@ -63,6 +69,8 @@
             this.mainToolStripContainer.ContentPanel.SuspendLayout();
             this.mainToolStripContainer.TopToolStripPanel.SuspendLayout();
             this.mainToolStripContainer.SuspendLayout();
+            this.GrpBxNextDestinationData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PctBxNextDestVisibility)).BeginInit();
             this.GrpBxActiveJourneyData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctBxActiveJourneyVisibility)).BeginInit();
             this.GrpBxUserData.SuspendLayout();
@@ -88,6 +96,7 @@
             // 
             // mainToolStripContainer.ContentPanel
             // 
+            this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxNextDestinationData);
             this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxActiveJourneyData);
             this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxUserData);
             this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxMainFrame);
@@ -103,13 +112,82 @@
             // 
             this.mainToolStripContainer.TopToolStripPanel.Controls.Add(this.menuStrip);
             // 
+            // GrpBxNextDestinationData
+            // 
+            this.GrpBxNextDestinationData.Controls.Add(this.BtnNextDestCancel);
+            this.GrpBxNextDestinationData.Controls.Add(this.TxtNextDestTitle);
+            this.GrpBxNextDestinationData.Controls.Add(this.BtnNextDestReached);
+            this.GrpBxNextDestinationData.Controls.Add(this.PctBxNextDestVisibility);
+            this.GrpBxNextDestinationData.Controls.Add(this.TxtNextDestInfo);
+            this.GrpBxNextDestinationData.Location = new System.Drawing.Point(4, 235);
+            this.GrpBxNextDestinationData.Name = "GrpBxNextDestinationData";
+            this.GrpBxNextDestinationData.Size = new System.Drawing.Size(228, 121);
+            this.GrpBxNextDestinationData.TabIndex = 4;
+            this.GrpBxNextDestinationData.TabStop = false;
+            this.GrpBxNextDestinationData.Text = "Next destination";
+            this.GrpBxNextDestinationData.Visible = false;
+            // 
+            // BtnNextDestCancel
+            // 
+            this.BtnNextDestCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnNextDestCancel.Enabled = false;
+            this.BtnNextDestCancel.Location = new System.Drawing.Point(174, 19);
+            this.BtnNextDestCancel.Name = "BtnNextDestCancel";
+            this.BtnNextDestCancel.Size = new System.Drawing.Size(48, 23);
+            this.BtnNextDestCancel.TabIndex = 16;
+            this.BtnNextDestCancel.Text = "Cancel";
+            this.BtnNextDestCancel.UseVisualStyleBackColor = true;
+            // 
+            // TxtNextDestTitle
+            // 
+            this.TxtNextDestTitle.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtNextDestTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtNextDestTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.TxtNextDestTitle.Location = new System.Drawing.Point(46, 49);
+            this.TxtNextDestTitle.Name = "TxtNextDestTitle";
+            this.TxtNextDestTitle.ReadOnly = true;
+            this.TxtNextDestTitle.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.TxtNextDestTitle.Size = new System.Drawing.Size(176, 22);
+            this.TxtNextDestTitle.TabIndex = 19;
+            this.TxtNextDestTitle.Text = "TITLE";
+            // 
+            // BtnNextDestReached
+            // 
+            this.BtnNextDestReached.Enabled = false;
+            this.BtnNextDestReached.Location = new System.Drawing.Point(6, 19);
+            this.BtnNextDestReached.Name = "BtnNextDestReached";
+            this.BtnNextDestReached.Size = new System.Drawing.Size(103, 23);
+            this.BtnNextDestReached.TabIndex = 17;
+            this.BtnNextDestReached.Text = "I\'m here!";
+            this.BtnNextDestReached.UseVisualStyleBackColor = true;
+            // 
+            // PctBxNextDestVisibility
+            // 
+            this.PctBxNextDestVisibility.Location = new System.Drawing.Point(6, 49);
+            this.PctBxNextDestVisibility.Name = "PctBxNextDestVisibility";
+            this.PctBxNextDestVisibility.Size = new System.Drawing.Size(33, 33);
+            this.PctBxNextDestVisibility.TabIndex = 18;
+            this.PctBxNextDestVisibility.TabStop = false;
+            this.PctBxNextDestVisibility.WaitOnLoad = true;
+            // 
+            // TxtNextDestInfo
+            // 
+            this.TxtNextDestInfo.AutoSize = true;
+            this.TxtNextDestInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.TxtNextDestInfo.Location = new System.Drawing.Point(45, 74);
+            this.TxtNextDestInfo.Name = "TxtNextDestInfo";
+            this.TxtNextDestInfo.Size = new System.Drawing.Size(70, 20);
+            this.TxtNextDestInfo.TabIndex = 16;
+            this.TxtNextDestInfo.Text = "Location";
+            this.TxtNextDestInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // GrpBxActiveJourneyData
             // 
-            this.GrpBxActiveJourneyData.Controls.Add(this.TxtUserDataJourneyTitle);
+            this.GrpBxActiveJourneyData.Controls.Add(this.TxtActiveJourneyTitle);
             this.GrpBxActiveJourneyData.Controls.Add(this.PctBxActiveJourneyVisibility);
-            this.GrpBxActiveJourneyData.Controls.Add(this.BtnNewJourney);
-            this.GrpBxActiveJourneyData.Controls.Add(this.BtnMyJourneyDelete);
-            this.GrpBxActiveJourneyData.Controls.Add(this.TxtUserDataJourneyInfo);
+            this.GrpBxActiveJourneyData.Controls.Add(this.BtnActiveJourneyNewJourney);
+            this.GrpBxActiveJourneyData.Controls.Add(this.BtnActiveJourneyDelete);
+            this.GrpBxActiveJourneyData.Controls.Add(this.TxtActiveJourneyInfo);
             this.GrpBxActiveJourneyData.Location = new System.Drawing.Point(4, 113);
             this.GrpBxActiveJourneyData.Name = "GrpBxActiveJourneyData";
             this.GrpBxActiveJourneyData.Size = new System.Drawing.Size(228, 115);
@@ -118,18 +196,18 @@
             this.GrpBxActiveJourneyData.Text = "Active journey";
             this.GrpBxActiveJourneyData.Visible = false;
             // 
-            // TxtUserDataJourneyTitle
+            // TxtActiveJourneyTitle
             // 
-            this.TxtUserDataJourneyTitle.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtUserDataJourneyTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TxtUserDataJourneyTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TxtUserDataJourneyTitle.Location = new System.Drawing.Point(46, 49);
-            this.TxtUserDataJourneyTitle.Name = "TxtUserDataJourneyTitle";
-            this.TxtUserDataJourneyTitle.ReadOnly = true;
-            this.TxtUserDataJourneyTitle.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.TxtUserDataJourneyTitle.Size = new System.Drawing.Size(176, 22);
-            this.TxtUserDataJourneyTitle.TabIndex = 15;
-            this.TxtUserDataJourneyTitle.Text = "TITLE";
+            this.TxtActiveJourneyTitle.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtActiveJourneyTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtActiveJourneyTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.TxtActiveJourneyTitle.Location = new System.Drawing.Point(46, 49);
+            this.TxtActiveJourneyTitle.Name = "TxtActiveJourneyTitle";
+            this.TxtActiveJourneyTitle.ReadOnly = true;
+            this.TxtActiveJourneyTitle.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.TxtActiveJourneyTitle.Size = new System.Drawing.Size(176, 22);
+            this.TxtActiveJourneyTitle.TabIndex = 15;
+            this.TxtActiveJourneyTitle.Text = "TITLE";
             // 
             // PctBxActiveJourneyVisibility
             // 
@@ -138,40 +216,41 @@
             this.PctBxActiveJourneyVisibility.Size = new System.Drawing.Size(33, 33);
             this.PctBxActiveJourneyVisibility.TabIndex = 14;
             this.PctBxActiveJourneyVisibility.TabStop = false;
+            this.PctBxActiveJourneyVisibility.WaitOnLoad = true;
             // 
-            // BtnNewJourney
+            // BtnActiveJourneyNewJourney
             // 
-            this.BtnNewJourney.Enabled = false;
-            this.BtnNewJourney.Location = new System.Drawing.Point(6, 19);
-            this.BtnNewJourney.Name = "BtnNewJourney";
-            this.BtnNewJourney.Size = new System.Drawing.Size(103, 23);
-            this.BtnNewJourney.TabIndex = 13;
-            this.BtnNewJourney.Text = "Start new Journey!";
-            this.BtnNewJourney.UseVisualStyleBackColor = true;
-            this.BtnNewJourney.Click += new System.EventHandler(this.BtnNewJourney_Click);
+            this.BtnActiveJourneyNewJourney.Enabled = false;
+            this.BtnActiveJourneyNewJourney.Location = new System.Drawing.Point(6, 19);
+            this.BtnActiveJourneyNewJourney.Name = "BtnActiveJourneyNewJourney";
+            this.BtnActiveJourneyNewJourney.Size = new System.Drawing.Size(103, 23);
+            this.BtnActiveJourneyNewJourney.TabIndex = 13;
+            this.BtnActiveJourneyNewJourney.Text = "Start new Journey!";
+            this.BtnActiveJourneyNewJourney.UseVisualStyleBackColor = true;
+            this.BtnActiveJourneyNewJourney.Click += new System.EventHandler(this.BtnNewJourney_Click);
             // 
-            // BtnMyJourneyDelete
+            // BtnActiveJourneyDelete
             // 
-            this.BtnMyJourneyDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnMyJourneyDelete.Enabled = false;
-            this.BtnMyJourneyDelete.Location = new System.Drawing.Point(174, 19);
-            this.BtnMyJourneyDelete.Name = "BtnMyJourneyDelete";
-            this.BtnMyJourneyDelete.Size = new System.Drawing.Size(48, 23);
-            this.BtnMyJourneyDelete.TabIndex = 12;
-            this.BtnMyJourneyDelete.Text = "Delete";
-            this.BtnMyJourneyDelete.UseVisualStyleBackColor = true;
-            this.BtnMyJourneyDelete.Click += new System.EventHandler(this.BtnMyJourneyDelete_Click);
+            this.BtnActiveJourneyDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnActiveJourneyDelete.Enabled = false;
+            this.BtnActiveJourneyDelete.Location = new System.Drawing.Point(174, 19);
+            this.BtnActiveJourneyDelete.Name = "BtnActiveJourneyDelete";
+            this.BtnActiveJourneyDelete.Size = new System.Drawing.Size(48, 23);
+            this.BtnActiveJourneyDelete.TabIndex = 12;
+            this.BtnActiveJourneyDelete.Text = "Delete";
+            this.BtnActiveJourneyDelete.UseVisualStyleBackColor = true;
+            this.BtnActiveJourneyDelete.Click += new System.EventHandler(this.BtnMyJourneyDelete_Click);
             // 
-            // TxtUserDataJourneyInfo
+            // TxtActiveJourneyInfo
             // 
-            this.TxtUserDataJourneyInfo.AutoSize = true;
-            this.TxtUserDataJourneyInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TxtUserDataJourneyInfo.Location = new System.Drawing.Point(45, 74);
-            this.TxtUserDataJourneyInfo.Name = "TxtUserDataJourneyInfo";
-            this.TxtUserDataJourneyInfo.Size = new System.Drawing.Size(70, 20);
-            this.TxtUserDataJourneyInfo.TabIndex = 7;
-            this.TxtUserDataJourneyInfo.Text = "Location";
-            this.TxtUserDataJourneyInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TxtActiveJourneyInfo.AutoSize = true;
+            this.TxtActiveJourneyInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.TxtActiveJourneyInfo.Location = new System.Drawing.Point(45, 74);
+            this.TxtActiveJourneyInfo.Name = "TxtActiveJourneyInfo";
+            this.TxtActiveJourneyInfo.Size = new System.Drawing.Size(70, 20);
+            this.TxtActiveJourneyInfo.TabIndex = 7;
+            this.TxtActiveJourneyInfo.Text = "Location";
+            this.TxtActiveJourneyInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // GrpBxUserData
             // 
@@ -354,6 +433,9 @@
             this.mainToolStripContainer.TopToolStripPanel.PerformLayout();
             this.mainToolStripContainer.ResumeLayout(false);
             this.mainToolStripContainer.PerformLayout();
+            this.GrpBxNextDestinationData.ResumeLayout(false);
+            this.GrpBxNextDestinationData.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PctBxNextDestVisibility)).EndInit();
             this.GrpBxActiveJourneyData.ResumeLayout(false);
             this.GrpBxActiveJourneyData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctBxActiveJourneyVisibility)).EndInit();
@@ -389,11 +471,17 @@
         private System.Windows.Forms.ToolStripMenuItem MenuMeGoalReached;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.GroupBox GrpBxActiveJourneyData;
-        public System.Windows.Forms.Label TxtUserDataJourneyInfo;
-        private System.Windows.Forms.Button BtnNewJourney;
-        private System.Windows.Forms.Button BtnMyJourneyDelete;
+        public System.Windows.Forms.Label TxtActiveJourneyInfo;
+        private System.Windows.Forms.Button BtnActiveJourneyNewJourney;
+        private System.Windows.Forms.Button BtnActiveJourneyDelete;
         private System.Windows.Forms.PictureBox PctBxActiveJourneyVisibility;
-        private System.Windows.Forms.RichTextBox TxtUserDataJourneyTitle;
+        private System.Windows.Forms.RichTextBox TxtActiveJourneyTitle;
+        private System.Windows.Forms.GroupBox GrpBxNextDestinationData;
+        private System.Windows.Forms.Button BtnNextDestCancel;
+        private System.Windows.Forms.RichTextBox TxtNextDestTitle;
+        private System.Windows.Forms.Button BtnNextDestReached;
+        private System.Windows.Forms.PictureBox PctBxNextDestVisibility;
+        public System.Windows.Forms.Label TxtNextDestInfo;
     }
 }
 

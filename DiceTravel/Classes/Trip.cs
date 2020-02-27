@@ -32,7 +32,7 @@ namespace DiceTravel.Classes
             string deleteCommand = $"DELETE FROM trips WHERE id = {this.Id}";
             DBDriver.DeleteRow(deleteCommand);
         }
-
+        
         public override string GetInsertSql()
         {
             string activeJourneyId = ActiveUserStore.GetActiveJourneyId().ToString();

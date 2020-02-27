@@ -40,6 +40,8 @@
             this.RBtnJourneyCreateVisibilityPrivate = new System.Windows.Forms.RadioButton();
             this.BtnJourneyCreateStart = new System.Windows.Forms.Button();
             this.BtnJourneyCreateCancel = new System.Windows.Forms.Button();
+            this.TxtJourneyCreateJourneyFirstDest = new System.Windows.Forms.Label();
+            this.InputJourneyCreateJourneyFirstDest = new System.Windows.Forms.TextBox();
             this.GrpBxJourneyCreateVisibility.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,10 +91,11 @@
             // 
             // GrpBxJourneyCreateVisibility
             // 
+            this.GrpBxJourneyCreateVisibility.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.GrpBxJourneyCreateVisibility.Controls.Add(this.RBtnJourneyCreateVisibilityPublic);
             this.GrpBxJourneyCreateVisibility.Controls.Add(this.RBtnJourneyCreateVisibilityOnlyFriends);
             this.GrpBxJourneyCreateVisibility.Controls.Add(this.RBtnJourneyCreateVisibilityPrivate);
-            this.GrpBxJourneyCreateVisibility.Location = new System.Drawing.Point(21, 108);
+            this.GrpBxJourneyCreateVisibility.Location = new System.Drawing.Point(21, 145);
             this.GrpBxJourneyCreateVisibility.Name = "GrpBxJourneyCreateVisibility";
             this.GrpBxJourneyCreateVisibility.Size = new System.Drawing.Size(100, 90);
             this.GrpBxJourneyCreateVisibility.TabIndex = 6;
@@ -133,7 +136,8 @@
             // 
             // BtnJourneyCreateStart
             // 
-            this.BtnJourneyCreateStart.Location = new System.Drawing.Point(127, 121);
+            this.BtnJourneyCreateStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnJourneyCreateStart.Location = new System.Drawing.Point(127, 173);
             this.BtnJourneyCreateStart.Name = "BtnJourneyCreateStart";
             this.BtnJourneyCreateStart.Size = new System.Drawing.Size(95, 23);
             this.BtnJourneyCreateStart.TabIndex = 7;
@@ -143,7 +147,8 @@
             // 
             // BtnJourneyCreateCancel
             // 
-            this.BtnJourneyCreateCancel.Location = new System.Drawing.Point(127, 151);
+            this.BtnJourneyCreateCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnJourneyCreateCancel.Location = new System.Drawing.Point(127, 203);
             this.BtnJourneyCreateCancel.Name = "BtnJourneyCreateCancel";
             this.BtnJourneyCreateCancel.Size = new System.Drawing.Size(95, 23);
             this.BtnJourneyCreateCancel.TabIndex = 8;
@@ -151,11 +156,30 @@
             this.BtnJourneyCreateCancel.UseVisualStyleBackColor = true;
             this.BtnJourneyCreateCancel.Click += new System.EventHandler(this.BtnJourneyCreateCancel_Click);
             // 
+            // TxtJourneyCreateJourneyFirstDest
+            // 
+            this.TxtJourneyCreateJourneyFirstDest.AutoSize = true;
+            this.TxtJourneyCreateJourneyFirstDest.Location = new System.Drawing.Point(10, 111);
+            this.TxtJourneyCreateJourneyFirstDest.Name = "TxtJourneyCreateJourneyFirstDest";
+            this.TxtJourneyCreateJourneyFirstDest.Size = new System.Drawing.Size(83, 13);
+            this.TxtJourneyCreateJourneyFirstDest.TabIndex = 9;
+            this.TxtJourneyCreateJourneyFirstDest.Text = "First destination:";
+            // 
+            // InputJourneyCreateJourneyFirstDest
+            // 
+            this.InputJourneyCreateJourneyFirstDest.Location = new System.Drawing.Point(99, 108);
+            this.InputJourneyCreateJourneyFirstDest.MaxLength = 20;
+            this.InputJourneyCreateJourneyFirstDest.Name = "InputJourneyCreateJourneyFirstDest";
+            this.InputJourneyCreateJourneyFirstDest.Size = new System.Drawing.Size(100, 20);
+            this.InputJourneyCreateJourneyFirstDest.TabIndex = 10;
+            // 
             // JourneyCreateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(234, 207);
+            this.ClientSize = new System.Drawing.Size(234, 247);
+            this.Controls.Add(this.InputJourneyCreateJourneyFirstDest);
+            this.Controls.Add(this.TxtJourneyCreateJourneyFirstDest);
             this.Controls.Add(this.BtnJourneyCreateCancel);
             this.Controls.Add(this.BtnJourneyCreateStart);
             this.Controls.Add(this.GrpBxJourneyCreateVisibility);
@@ -190,5 +214,7 @@
         private System.Windows.Forms.RadioButton RBtnJourneyCreateVisibilityPrivate;
         private System.Windows.Forms.Button BtnJourneyCreateStart;
         private System.Windows.Forms.Button BtnJourneyCreateCancel;
+        private System.Windows.Forms.Label TxtJourneyCreateJourneyFirstDest;
+        private System.Windows.Forms.TextBox InputJourneyCreateJourneyFirstDest;
     }
 }

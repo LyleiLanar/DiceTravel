@@ -32,6 +32,14 @@ namespace DiceTravel.Forms.JourneyForms
                 Visibility = 0
             };
 
+            Trip newTrip = new Trip()
+            {
+                EndLocation = TxtJourneyCreateJourneyFirstDest.Text,
+                JourneyId = newJourney.Id,
+                Visibility = newJourney.Visibility,
+
+            };
+
             if (this.RBtnJourneyCreateVisibilityPrivate.Checked) { newJourney.Visibility = 0; }
             if (this.RBtnJourneyCreateVisibilityOnlyFriends.Checked) { newJourney.Visibility = 1; }
             if (this.RBtnJourneyCreateVisibilityPublic.Checked) { newJourney.Visibility = 2; }
@@ -39,8 +47,6 @@ namespace DiceTravel.Forms.JourneyForms
             try
             {
                 Validation(newJourney);
-                newTrip.Show();
-
                 DBDriver.InsertRow(newJourney.GetTableQueryString(), newJourney.GetInsertSql());
                 Program.mainForm.RefreshMainForm();
                 this.Dispose();
@@ -49,10 +55,11 @@ namespace DiceTravel.Forms.JourneyForms
             {
                 MessageBox.Show(ex.Message, "Journey creation error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
         }
         private void Validation(Journey newJourney)
         {
-            newJourney.Validation();
+            newJourney.Validation();      
             //nincs mit validálni egyelőre form szinten.
         }
     }

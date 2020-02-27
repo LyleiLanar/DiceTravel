@@ -25,9 +25,10 @@ namespace DiceTravel.Forms.TripForms
             newTrip.JourneyId = ActiveUserStore.GetActiveJourneyId();
             newTrip.EndLocation = InputTripCreateTripEndLocation.Text;
             newTrip.EndDate = Properties.Settings.Default.nullDate;
+
             try
             {
-            newTrip.SerialNumber = Journey.GetJourney_ById(newTrip.JourneyId).GetLastTripId()+1;
+            newTrip.SerialNumber = Journey.GetJourney_ById(newTrip.JourneyId).GetLastTrip().Id+1;
             }
             catch (IndexOutOfRangeException)
             {

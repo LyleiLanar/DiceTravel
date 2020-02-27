@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TripCreateForm));
             this.TxtTripCreateFormTitle = new System.Windows.Forms.Label();
             this.BtnTripCreateCancel = new System.Windows.Forms.Button();
-            this.BtnTripCreateStart = new System.Windows.Forms.Button();
+            this.BtnTripCreateDestination = new System.Windows.Forms.Button();
             this.GrpBxTripCreateVisibility = new System.Windows.Forms.GroupBox();
             this.RBtnTripCreateVisibilityPublic = new System.Windows.Forms.RadioButton();
             this.RBtnTripCreateVisibilityOnlyFriends = new System.Windows.Forms.RadioButton();
@@ -61,15 +61,15 @@
             this.BtnTripCreateCancel.Text = "Cancel";
             this.BtnTripCreateCancel.UseVisualStyleBackColor = true;
             // 
-            // BtnTripCreateStart
+            // BtnTripCreateDestination
             // 
-            this.BtnTripCreateStart.Location = new System.Drawing.Point(124, 94);
-            this.BtnTripCreateStart.Name = "BtnTripCreateStart";
-            this.BtnTripCreateStart.Size = new System.Drawing.Size(95, 23);
-            this.BtnTripCreateStart.TabIndex = 14;
-            this.BtnTripCreateStart.Text = "Start!";
-            this.BtnTripCreateStart.UseVisualStyleBackColor = true;
-            this.BtnTripCreateStart.Click += new System.EventHandler(this.BtnTripCreateStart_Click);
+            this.BtnTripCreateDestination.Location = new System.Drawing.Point(124, 94);
+            this.BtnTripCreateDestination.Name = "BtnTripCreateDestination";
+            this.BtnTripCreateDestination.Size = new System.Drawing.Size(95, 23);
+            this.BtnTripCreateDestination.TabIndex = 14;
+            this.BtnTripCreateDestination.Text = "Start!";
+            this.BtnTripCreateDestination.UseVisualStyleBackColor = true;
+            this.BtnTripCreateDestination.Click += new System.EventHandler(this.BtnTripCreateStart_Click);
             // 
             // GrpBxTripCreateVisibility
             // 
@@ -138,7 +138,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(234, 181);
             this.Controls.Add(this.BtnTripCreateCancel);
-            this.Controls.Add(this.BtnTripCreateStart);
+            this.Controls.Add(this.BtnTripCreateDestination);
             this.Controls.Add(this.GrpBxTripCreateVisibility);
             this.Controls.Add(this.InputTripCreateTripEndLocation);
             this.Controls.Add(this.TxtTripCreateTripEndLocation_Label);
@@ -160,7 +160,7 @@
 
         private System.Windows.Forms.Label TxtTripCreateFormTitle;
         private System.Windows.Forms.Button BtnTripCreateCancel;
-        private System.Windows.Forms.Button BtnTripCreateStart;
+        private System.Windows.Forms.Button BtnTripCreateDestination;
         private System.Windows.Forms.GroupBox GrpBxTripCreateVisibility;
         private System.Windows.Forms.RadioButton RBtnTripCreateVisibilityPublic;
         private System.Windows.Forms.RadioButton RBtnTripCreateVisibilityOnlyFriends;

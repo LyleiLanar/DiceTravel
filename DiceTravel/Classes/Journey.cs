@@ -87,13 +87,13 @@ namespace DiceTravel.Classes
         }
 
         //Methods
-        public int GetLastTripId()
+        public Trip GetLastTrip()
         {
-            string lastTripQuery = $"SELECT id FROM trips WHERE journey_id = {this.Id} ORDER BY serial_number DESC LIMIT 1;";
+            string lastTripQuery = $"SELECT * FROM trips WHERE journey_id = {this.Id} ORDER BY serial_number DESC LIMIT 1;";
 
             DataTable dataTable = DBDriver.ReadQuery(lastTripQuery);
 
-            return Int32.Parse(dataTable.Rows[0]["id"].ToString());
+            return new Trip(dataTable.Rows[0]);
 
 
         }

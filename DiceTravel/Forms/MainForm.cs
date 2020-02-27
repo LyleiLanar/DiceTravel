@@ -1,5 +1,6 @@
 ﻿using DiceTravel.Classes;
 using DiceTravel.Forms.JourneyForms;
+using DiceTravel.Forms.TripForms;
 using DiceTravel.Util;
 using System;
 using System.Windows.Forms;
@@ -63,6 +64,7 @@ namespace DiceTravel
         {
             GrpBxUserData.Visible = false;
             GrpBxActiveJourneyData.Visible = false;
+            GrpBxNextDestinationData.Visible = false;
             GrpBxMainFrame.Visible = false;
             MenuMainLogout.Enabled = false;
             MenuMainLogin.Enabled = true;
@@ -73,6 +75,7 @@ namespace DiceTravel
         {
             GrpBxUserData.Visible = true;
             GrpBxActiveJourneyData.Visible = true;
+            GrpBxNextDestinationData.Visible = true;
             GrpBxMainFrame.Visible = true;
             MenuMainLogout.Enabled = true;
             MenuMainLogin.Enabled = false;
@@ -84,22 +87,37 @@ namespace DiceTravel
             if (ActiveUserStore.IsThereActiveUser)
             {
                 Program.mainForm.ChangeControlsAvailabilityAfterLogin();
-                RefreshMainFormActiveJourneyData();
-                RefreshMainFormUserData();
+                RefreshUserData();
+                RefreshActiveJourneyData();
+                RefreshNextDestiantionData();
             }
             else
             {
                 Program.mainForm.ChangeControlsAvailabilityAfterLogout();
             }
         }
-        private void RefreshMainFormActiveJourneyData()
+
+
+        private void RefreshUserData()
         {
-            Journey activeJourney = Journey.GetJourney_ById(ActiveUserStore.GetActiveJourneyId());
+            User user = ActiveUserStore.ActiveUser;
+
+            TxtUserDataLoginName.Text = user.LoginName;
+            TxtUserDataBirthDate.Text = user.BirthDate.Substring(0, 12);
+        }
+        private void RefreshActiveJourneyData()
+        {
+            Journey activeJourney = ActiveUserStore.GetActiveJourney();
             string activeJourneyInfo;
             string activeJourneyTitle;
 
             if (activeJourney != null)
             {
+                activeJourneyTitle = activeJourney.Title;
+                activeJourneyInfo = $"({activeJourney.StartLocation})";
+                BtnActiveJourneyDelete.Enabled = true;
+                BtnActiveJourneyNewJourney.Enabled = false;
+
                 switch (activeJourney.Visibility)
                 {
                     case 0:
@@ -119,32 +137,38 @@ namespace DiceTravel
                         break;
                 }
             }
- 
-            if (activeJourney != null)
-            {
-                activeJourneyTitle = activeJourney.Title;
-                activeJourneyInfo = $"({activeJourney.StartLocation})";
-                BtnMyJourneyDelete.Enabled = true;
-                BtnNewJourney.Enabled = false;
-                PctBxActiveJourneyVisibility.Visible = true;
-            }
             else
             {
                 activeJourneyTitle = "No active Journey!";
                 activeJourneyInfo = "Start a new one!";
-                BtnMyJourneyDelete.Enabled = false;
-                BtnNewJourney.Enabled = true;
-                PctBxActiveJourneyVisibility.Visible = false;
+                BtnActiveJourneyDelete.Enabled = false;
+                BtnActiveJourneyNewJourney.Enabled = true;
+                PctBxActiveJourneyVisibility.Image = Properties.Resources.icoError.ToBitmap();
             }
-            TxtUserDataJourneyInfo.Text = activeJourneyInfo;
-            TxtUserDataJourneyTitle.Text = activeJourneyTitle;
+            TxtActiveJourneyInfo.Text = activeJourneyInfo;
+            TxtActiveJourneyTitle.Text = activeJourneyTitle;
         }
-        private void RefreshMainFormUserData()
+        private void RefreshNextDestiantionData()
         {
-            User user = ActiveUserStore.ActiveUser;
+            Journey activeJourney = ActiveUserStore.GetActiveJourney();
+            if (activeJourney !=null)
+            {
+                Trip activeTrip = ActiveUserStore.GetActiveJourney().GetLastTrip();
+                if (activeTrip == null && activeJourney.Closed != 0)
+                {
+                    new TripCreateForm().Show();
+                    RefreshMainForm();
+                }
 
-            TxtUserDataLoginName.Text = user.LoginName;
-            TxtUserDataBirthDate.Text = user.BirthDate.Substring(0, 12);
+                TxtNextDestTitle.Text = activeTrip.EndLocation;
+                TxtNextDestInfo.Text = "";
+            }
+            else
+            {
+                TxtNextDestTitle.Text = "No active Journey!";
+                TxtNextDestInfo.Text = "Start a new one!";
+            }
+
         }
 
         //journey methods
@@ -161,7 +185,7 @@ namespace DiceTravel
         //misc methods
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Do you want to exit?", "Are you sure? Really?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            if (MessageBox.Show("Do you want to exit?\r\nYou will be logged out!", "Are you sure? Really?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
                 ActiveUserStore.LogOutUser();
                 this.Dispose();

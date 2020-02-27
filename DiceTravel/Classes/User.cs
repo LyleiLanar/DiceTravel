@@ -60,6 +60,30 @@ namespace DiceTravel
 
             return journeys;
         }
+        public Journey GetActiveJourney()
+        {
+            Journey activeJourney = null;
+
+            if (IsThereActiveJourney())
+            {
+                string queryString = $"SELECT * FROM dice_travel.journeys WHERE user_id = {this.Id};";
+
+                DataTable table = DBDriver.ReadQuery(queryString);
+                activeJourney = new Journey(table.Rows[0]);
+            }
+            return activeJourney;
+        }
+        public bool IsThereActiveJourney()
+        {
+            string queryString = $"SELECT count(*) as db FROM dice_travel.journeys WHERE closed = 0 AND user_id = {this.Id};";
+            DataTable table = DBDriver.ReadQuery(queryString);
+
+            if (table.Rows[0]["db"].ToString() == "0")
+            {
+                return false;
+            }
+            return true;
+        }
 
         //static methods
         static public User GetUser_ById(int id)

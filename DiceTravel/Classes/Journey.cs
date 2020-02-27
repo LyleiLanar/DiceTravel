@@ -82,7 +82,7 @@ namespace DiceTravel.Classes
                 trip.DeleteItself();
             }
 
-            DBDriver.DeleteRow($"DELETE FROM journeys WHERE id = {ActiveUserStore.GetActiveJourneyId()}");
+            DBDriver.DeleteRow($"DELETE FROM journeys WHERE id = {ActiveUserStore.GetActiveJourney().Id}");
             Program.mainForm.RefreshMainForm();
         }
 

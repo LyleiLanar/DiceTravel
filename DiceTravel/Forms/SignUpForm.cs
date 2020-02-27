@@ -16,6 +16,7 @@ namespace DiceTravel
         //Methods
         private void BtnSignUpCancel_Click(object sender, EventArgs e)
         {
+            Program.mainFormActivate();
             this.Dispose();
         }
         private void BtnSignUpReg_Click(object sender, EventArgs e)
@@ -32,6 +33,7 @@ namespace DiceTravel
                 Validation(user);
 
                 DBDriver.InsertRow(user.GetTableQueryString(), user.GetInsertSql());
+                Program.mainFormActivate();
                 this.Dispose();
             }
             catch (ValidationException ex)

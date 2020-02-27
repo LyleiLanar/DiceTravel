@@ -12,6 +12,7 @@ namespace DiceTravel
         }
         private void BtnSignUpCancel_Click(object sender, EventArgs e)
         {
+            Program.mainFormActivate();
             this.Dispose();
         }
         private void BtnSignUpLogin_Click(object sender, EventArgs e)
@@ -20,6 +21,8 @@ namespace DiceTravel
             {
                 this.Validation();
                 ActiveUserStore.LogInUser(inputLoginLoginName.Text, inputLoginPassword.Text);
+                Program.mainForm.Enabled = true;
+                Program.mainFormActivate();
                 this.Dispose();
             }
             catch (ValidationException ex)

@@ -1,5 +1,4 @@
 ﻿using DiceTravel.Classes;
-using System.Data;
 
 namespace DiceTravel.Util
 {
@@ -30,41 +29,11 @@ namespace DiceTravel.Util
         }
         static public bool IsThereActiveJourney()
         {
-
-            int userId = ActiveUserStore.ActiveUser.Id;
-            string queryString = $"SELECT count(*) as db FROM dice_travel.journeys WHERE closed = 0 AND user_id = {userId};";
-
-            DataTable table = DBDriver.ReadQuery(queryString);
-
-            if (table.Rows[0]["db"].ToString() == "0")
-            {
-                return false;
-            }
-            return true;
-
-        }
-        static public int GetActiveJourneyId()
-        {
-            Journey journey = GetActiveJourney();
-            if (journey != null)
-            {
-                return journey.Id;
-            }
-            return -1;
+            return ActiveUser.IsThereActiveJourney();
         }
         static public Journey GetActiveJourney()
         {
-            Journey activeJourney = null;
-
-            if (IsThereActiveJourney())
-            {
-                int userId = ActiveUserStore.ActiveUser.Id;
-                string queryString = $"SELECT * FROM dice_travel.journeys WHERE user_id = {userId};";
-
-                DataTable table = DBDriver.ReadQuery(queryString);
-                activeJourney = new Journey(table.Rows[0]);
-            }
-            return activeJourney;
+            return ActiveUser.GetActiveJourney();
         }
     }
 }

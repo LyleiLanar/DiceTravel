@@ -22,7 +22,7 @@ namespace DiceTravel.Forms.TripForms
         private void BtnTripCreateStart_Click(object sender, EventArgs e)
         {
             Trip newTrip = new Trip();
-            newTrip.JourneyId = ActiveUserStore.GetActiveJourneyId();
+            newTrip.JourneyId = ActiveUserStore.GetActiveJourney().Id;
             newTrip.EndLocation = InputTripCreateTripEndLocation.Text;
             newTrip.EndDate = Properties.Settings.Default.nullDate;
 

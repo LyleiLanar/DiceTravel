@@ -18,6 +18,7 @@ namespace DiceTravel.Forms.JourneyForms
 
         private void BtnJourneyCreateCancel_Click(object sender, EventArgs e)
         {
+            Program.mainFormActivate();
             this.Dispose();
         }
         private void BtnJourneyCreateStart_Click(object sender, EventArgs e)
@@ -49,10 +50,11 @@ namespace DiceTravel.Forms.JourneyForms
                 DBDriver.InsertRow(newJourney.GetTableQueryString(), newJourney.GetInsertSql());
                 try
                 {
-                    newTrip.JourneyId = ActiveUserStore.GetActiveJourneyId();
+                    newTrip.JourneyId = ActiveUserStore.GetActiveJourney().Id;
                     Validation(newTrip);
                     DBDriver.InsertRow(newTrip.GetTableQueryString(), newTrip.GetInsertSql());
                     Program.mainForm.RefreshMainForm();
+                    Program.mainFormActivate();
                     this.Dispose();
                 }
                 catch (ValidationException ex)

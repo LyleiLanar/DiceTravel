@@ -15,6 +15,15 @@ namespace DiceTravel
             mainForm = new MainForm();
             Application.Run(mainForm);
         }
-       
+
+        public static void mainFormActivate()
+        {
+            mainForm.Enabled = true;
+        }
+        public static void mainFormDeactivate()
+        {
+            mainForm.Enabled = false; ;
+        }
+
     }
 }

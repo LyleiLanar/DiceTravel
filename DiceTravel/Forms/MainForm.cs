@@ -17,6 +17,7 @@ namespace DiceTravel
         //mainMenu methods
         private void MenuMainSignUp_Click(object sender, EventArgs e)
         {
+            Program.mainFormDeactivate();
             SignUpForm signUpForm = new SignUpForm
             {
                 Text = Properties.Settings.Default.projectName + " - Registration"
@@ -32,6 +33,7 @@ namespace DiceTravel
         }
         private void MenuMainLogin_Click(object sender, EventArgs e)
         {
+            Program.mainFormDeactivate();
             LoginForm login = new LoginForm
             {
                 Text = Properties.Settings.Default.projectName + " - LogIn"
@@ -44,6 +46,7 @@ namespace DiceTravel
         }
         private void MenuMeNewJourney_Click(object sender, EventArgs e)
         {
+            Program.mainFormDeactivate();
             if (ActiveUserStore.IsThereActiveUser && !ActiveUserStore.IsThereActiveJourney())
             {
                 JourneyCreateForm journeyCreateForm = new JourneyCreateForm
@@ -96,8 +99,6 @@ namespace DiceTravel
                 Program.mainForm.ChangeControlsAvailabilityAfterLogout();
             }
         }
-
-
         private void RefreshUserData()
         {
             User user = ActiveUserStore.ActiveUser;
@@ -174,7 +175,7 @@ namespace DiceTravel
         {
             if (MessageBox.Show("All progress will be lost!\r\nAre you sure to delete this Journey?", "Attention!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                Journey.GetJourney_ById(ActiveUserStore.GetActiveJourneyId()).DeleteItself();
+                Journey.GetJourney_ById(ActiveUserStore.GetActiveJourney().Id).DeleteItself();
             }
         }
 

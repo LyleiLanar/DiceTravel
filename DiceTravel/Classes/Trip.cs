@@ -35,7 +35,7 @@ namespace DiceTravel.Classes
         
         public override string GetInsertSql()
         {
-            string activeJourneyId = ActiveUserStore.GetActiveJourneyId().ToString();
+            string activeJourneyId = ActiveUserStore.GetActiveJourney().Id.ToString();
             return $"INSERT INTO `dice_travel`.`trips` (`journey_id`, `serial_number`,`end_location`,`end_date`,`visibility`) " +
                                   $"VALUES ('{activeJourneyId}', '{SerialNumber}','{EndLocation}','{EndDate}','{Visibility}');";
         }

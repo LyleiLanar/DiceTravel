@@ -106,6 +106,8 @@ namespace DiceTravel
             TxtUserDataLoginName.Text = user.LoginName;
             TxtUserDataBirthDate.Text = user.BirthDate.Substring(0, 12);
         }
+
+        //journey methods
         private void RefreshActiveJourneyData()
         {
             Journey activeJourney = ActiveUserStore.GetActiveJourney();
@@ -118,6 +120,7 @@ namespace DiceTravel
                 activeJourneyInfo = $"({activeJourney.StartLocation})";
                 BtnActiveJourneyDelete.Enabled = true;
                 BtnActiveJourneyNewJourney.Enabled = false;
+                BtnNextDestReached.Enabled = true;
 
                 switch (activeJourney.Visibility)
                 {
@@ -144,11 +147,26 @@ namespace DiceTravel
                 activeJourneyInfo = "Start a new one!";
                 BtnActiveJourneyDelete.Enabled = false;
                 BtnActiveJourneyNewJourney.Enabled = true;
+                BtnNextDestReached.Enabled = false;
                 PctBxActiveJourneyVisibility.Image = Properties.Resources.icoError.ToBitmap();
+                PctBxNextDestVisibility.Image = Properties.Resources.icoError.ToBitmap();
             }
             TxtActiveJourneyInfo.Text = activeJourneyInfo;
             TxtActiveJourneyTitle.Text = activeJourneyTitle;
         }
+        private void BtnMyJourneyDelete_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("All progress will be lost!\r\nAre you sure to delete this Journey?", "Attention!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                Journey.GetJourney_ById(ActiveUserStore.GetActiveJourney().Id).DeleteItself();
+            }
+        }
+        private void BtnNewJourney_Click(object sender, EventArgs e)
+        {
+            MenuMeNewJourney_Click(sender, e);
+        }
+
+        //trip methods
         private void RefreshNextDestiantionData()
         {
             Journey activeJourney = ActiveUserStore.GetActiveJourney();
@@ -160,7 +178,24 @@ namespace DiceTravel
                     new TripCreateForm().Show();
                     RefreshMainForm();
                 }
+                switch (activeTrip.Visibility)
+                {
+                    case 0:
+                        PctBxNextDestVisibility.Image = Properties.Resources.icoVisibilityPrivate.ToBitmap();
+                        break;
 
+                    case 1:
+                        PctBxNextDestVisibility.Image = Properties.Resources.icoVisibilityFriends.ToBitmap();
+                        break;
+
+                    case 2:
+                        PctBxNextDestVisibility.Image = Properties.Resources.icoVisibilityPublic.ToBitmap();
+                        break;
+
+                    default:
+                        PctBxNextDestVisibility.Image = Properties.Resources.icoError.ToBitmap();
+                        break;
+                }
                 TxtNextDestTitle.Text = activeTrip.EndLocation;
             }
             else
@@ -169,19 +204,9 @@ namespace DiceTravel
             }
 
         }
-
-        //journey methods
-        private void BtnMyJourneyDelete_Click(object sender, EventArgs e)
+        private void BtnNextDestReached_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("All progress will be lost!\r\nAre you sure to delete this Journey?", "Attention!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-            {
-                Journey.GetJourney_ById(ActiveUserStore.GetActiveJourney().Id).DeleteItself();
-            }
-        }
-
-        private void BtnNewJourney_Click(object sender, EventArgs e)
-        {
-            MenuMeNewJourney_Click(sender, e);
+            new TripCreateForm().Show();
         }
 
         //misc methods

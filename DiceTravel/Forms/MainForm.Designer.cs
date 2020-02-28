@@ -34,6 +34,7 @@
             this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.usersTableAdapter = new DiceTravel.UsersTableTableAdapters.usersTableAdapter();
             this.mainToolStripContainer = new System.Windows.Forms.ToolStripContainer();
+            this.BtnNewEntry = new System.Windows.Forms.Button();
             this.GrpBxNextDestinationData = new System.Windows.Forms.GroupBox();
             this.BtnNextDestCancel = new System.Windows.Forms.Button();
             this.TxtNextDestTitle = new System.Windows.Forms.RichTextBox();
@@ -95,6 +96,7 @@
             // 
             // mainToolStripContainer.ContentPanel
             // 
+            this.mainToolStripContainer.ContentPanel.Controls.Add(this.BtnNewEntry);
             this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxNextDestinationData);
             this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxActiveJourneyData);
             this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxUserData);
@@ -110,6 +112,17 @@
             // mainToolStripContainer.TopToolStripPanel
             // 
             this.mainToolStripContainer.TopToolStripPanel.Controls.Add(this.menuStrip);
+            // 
+            // BtnNewEntry
+            // 
+            this.BtnNewEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.BtnNewEntry.Location = new System.Drawing.Point(3, 328);
+            this.BtnNewEntry.Name = "BtnNewEntry";
+            this.BtnNewEntry.Size = new System.Drawing.Size(229, 46);
+            this.BtnNewEntry.TabIndex = 5;
+            this.BtnNewEntry.Text = "New Entry";
+            this.BtnNewEntry.UseVisualStyleBackColor = true;
+            this.BtnNewEntry.Visible = false;
             // 
             // GrpBxNextDestinationData
             // 
@@ -159,6 +172,7 @@
             this.BtnNextDestReached.TabIndex = 17;
             this.BtnNextDestReached.Text = "I\'m here!";
             this.BtnNextDestReached.UseVisualStyleBackColor = true;
+            this.BtnNextDestReached.Click += new System.EventHandler(this.BtnNextDestReached_Click);
             // 
             // PctBxNextDestVisibility
             // 
@@ -270,9 +284,9 @@
             this.TxtUserDataBirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.TxtUserDataBirthDate.Location = new System.Drawing.Point(8, 67);
             this.TxtUserDataBirthDate.Name = "TxtUserDataBirthDate";
-            this.TxtUserDataBirthDate.Size = new System.Drawing.Size(14, 20);
+            this.TxtUserDataBirthDate.Size = new System.Drawing.Size(101, 20);
             this.TxtUserDataBirthDate.TabIndex = 4;
-            this.TxtUserDataBirthDate.Text = "-";
+            this.TxtUserDataBirthDate.Text = "BIRTHDATE";
             this.TxtUserDataBirthDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TxtUserDataLoginName
@@ -281,9 +295,9 @@
             this.TxtUserDataLoginName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.TxtUserDataLoginName.Location = new System.Drawing.Point(8, 16);
             this.TxtUserDataLoginName.Name = "TxtUserDataLoginName";
-            this.TxtUserDataLoginName.Size = new System.Drawing.Size(17, 24);
+            this.TxtUserDataLoginName.Size = new System.Drawing.Size(132, 24);
             this.TxtUserDataLoginName.TabIndex = 2;
-            this.TxtUserDataLoginName.Text = "-";
+            this.TxtUserDataLoginName.Text = "LOGINNAME";
             this.TxtUserDataLoginName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // GrpBxMainFrame
@@ -325,14 +339,14 @@
             // MenuMainLogin
             // 
             this.MenuMainLogin.Name = "MenuMainLogin";
-            this.MenuMainLogin.Size = new System.Drawing.Size(114, 22);
+            this.MenuMainLogin.Size = new System.Drawing.Size(180, 22);
             this.MenuMainLogin.Text = "Login";
             this.MenuMainLogin.Click += new System.EventHandler(this.MenuMainLogin_Click);
             // 
             // MenuMainSignUp
             // 
             this.MenuMainSignUp.Name = "MenuMainSignUp";
-            this.MenuMainSignUp.Size = new System.Drawing.Size(114, 22);
+            this.MenuMainSignUp.Size = new System.Drawing.Size(180, 22);
             this.MenuMainSignUp.Text = "SignUp";
             this.MenuMainSignUp.Click += new System.EventHandler(this.MenuMainSignUp_Click);
             // 
@@ -340,14 +354,14 @@
             // 
             this.MenuMainLogout.Enabled = false;
             this.MenuMainLogout.Name = "MenuMainLogout";
-            this.MenuMainLogout.Size = new System.Drawing.Size(114, 22);
+            this.MenuMainLogout.Size = new System.Drawing.Size(180, 22);
             this.MenuMainLogout.Text = "LogOut";
             this.MenuMainLogout.Click += new System.EventHandler(this.MenuMainLogout_Click);
             // 
             // MenuMainQuit
             // 
             this.MenuMainQuit.Name = "MenuMainQuit";
-            this.MenuMainQuit.Size = new System.Drawing.Size(114, 22);
+            this.MenuMainQuit.Size = new System.Drawing.Size(180, 22);
             this.MenuMainQuit.Text = "Exit";
             this.MenuMainQuit.Click += new System.EventHandler(this.MenuMainQuit_Click);
             // 
@@ -468,6 +482,7 @@
         private System.Windows.Forms.RichTextBox TxtNextDestTitle;
         private System.Windows.Forms.Button BtnNextDestReached;
         private System.Windows.Forms.PictureBox PctBxNextDestVisibility;
+        private System.Windows.Forms.Button BtnNewEntry;
     }
 }
 

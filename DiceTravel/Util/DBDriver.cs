@@ -1,6 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Data;
-using System.Data.SqlClient;
 
 namespace DiceTravel.Util
 {
@@ -8,14 +7,6 @@ namespace DiceTravel.Util
     {
         static readonly string connString = Properties.Settings.Default.dice_travelConnString;
 
-        public static DataTable ReadQuery(string queryString)
-        {
-            DataTable table = new DataTable();
-            MySqlDataAdapter adapter = new MySqlDataAdapter(queryString, connString);
-            adapter.Fill(table);
-
-            return table;
-        }
         public static void InsertRow(string queryString, string insertCommand)
         {
             MySqlDataAdapter adapter = new MySqlDataAdapter(queryString, connString);
@@ -29,6 +20,18 @@ namespace DiceTravel.Util
                 }
             }
         }
+        public static DataTable ReadQuery(string queryString)
+        {
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(queryString, connString);
+            adapter.Fill(table);
+
+            return table;
+        }
+        public static void UpdateRow(string updateCommand)
+        {
+            // el kell készíteni az Update parancsot
+        }
         public static void DeleteRow(string deleteCommand)
         {
             using (MySqlConnection connection = new MySqlConnection(connString))
@@ -40,5 +43,19 @@ namespace DiceTravel.Util
                 }
             }
         }
+
+        public static void runCommand(MySqlCommand sqlCommand)
+        {                
+                MySqlConnection myConnection = new MySqlConnection(connString);
+
+                string myInsertQuery = "INSERT INTO Orders (id, customerId, amount) Values(1001, 23, 30.66)";
+                MySqlCommand myCommand = new MySqlCommand(myInsertQuery);
+                myCommand.Connection = myConnection;
+                myConnection.Open();
+                myCommand.ExecuteNonQuery();
+                myCommand.Connection.Close();
+            
+        }
+
     }
 }

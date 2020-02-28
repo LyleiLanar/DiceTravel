@@ -28,7 +28,7 @@ namespace DiceTravel.Forms.TripForms
 
             try
             {
-            newTrip.SerialNumber = Journey.GetJourney_ById(newTrip.JourneyId).GetLastTrip().Id+1;
+            newTrip.SerialNumber = Journey.GetJourney_ById(newTrip.JourneyId).GetLastTrip().SerialNumber+1;
             }
             catch (IndexOutOfRangeException)
             {
@@ -56,6 +56,15 @@ namespace DiceTravel.Forms.TripForms
         {
             newTrip.Validation();
             //nincs mit validálni egyelőre form szinten.
+        }
+
+        private void BtnTripCreateEndJourney_Click(object sender, EventArgs e)
+        {
+            //ide kell az update parancs. Update-elni kell az akctive Journey-t és close kell neki
+            //a LastTrip dátumát be kell állítani
+            //majd frissítjük a main formot
+            //aktiváljuk a main formot
+            //bezárjuk ezt a formot.
         }
     }
     }

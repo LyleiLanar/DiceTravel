@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dice_travelDataSet" targetNamespace="http://tempuri.org/dice_travelDataSet.xsd" xmlns:mstns="http://tempuri.org/dice_travelDataSet.xsd" xmlns="http://tempuri.org/dice_travelDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="dice_travelConnString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="dice_travelConnString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DiceTravel.Properties.Settings.GlobalReference.Default.dice_travelConnString" Provider="MySql.Data.MySqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="journeysTableAdapter" GeneratorDataComponentClassName="journeysTableAdapter" Name="journeys" UserDataComponentName="journeysTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dice_travelConnString (Settings)" DbObjectName="dice_travel.journeys" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `title`, `start_location`, `start_date`, `closed`, `visibility` FROM `journeys`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="title" DataSetColumn="title" />
+              <Mapping SourceColumn="start_location" DataSetColumn="start_location" />
+              <Mapping SourceColumn="start_date" DataSetColumn="start_date" />
+              <Mapping SourceColumn="closed" DataSetColumn="closed" />
+              <Mapping SourceColumn="visibility" DataSetColumn="visibility" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dice_travelDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="dice_travelDataSet" msprop:Generator_UserDSName="dice_travelDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="journeys" msprop:Generator_TableClassName="journeysDataTable" msprop:Generator_TableVarName="tablejourneys" msprop:Generator_TablePropName="journeys" msprop:Generator_RowDeletingName="journeysRowDeleting" msprop:Generator_RowChangingName="journeysRowChanging" msprop:Generator_RowEvHandlerName="journeysRowChangeEventHandler" msprop:Generator_RowDeletedName="journeysRowDeleted" msprop:Generator_UserTableName="journeys" msprop:Generator_RowChangedName="journeysRowChanged" msprop:Generator_RowEvArgName="journeysRowChangeEvent" msprop:Generator_RowClassName="journeysRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="title" msprop:Generator_ColumnVarNameInTable="columntitle" msprop:Generator_ColumnPropNameInRow="title" msprop:Generator_ColumnPropNameInTable="titleColumn" msprop:Generator_UserColumnName="title">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="start_location" msprop:Generator_ColumnVarNameInTable="columnstart_location" msprop:Generator_ColumnPropNameInRow="start_location" msprop:Generator_ColumnPropNameInTable="start_locationColumn" msprop:Generator_UserColumnName="start_location">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="start_date" msprop:Generator_ColumnVarNameInTable="columnstart_date" msprop:Generator_ColumnPropNameInRow="start_date" msprop:Generator_ColumnPropNameInTable="start_dateColumn" msprop:Generator_UserColumnName="start_date" type="xs:dateTime" />
+              <xs:element name="closed" msprop:Generator_ColumnVarNameInTable="columnclosed" msprop:Generator_ColumnPropNameInRow="closed" msprop:Generator_ColumnPropNameInTable="closedColumn" msprop:Generator_UserColumnName="closed" type="xs:int" />
+              <xs:element name="visibility" msprop:Generator_ColumnVarNameInTable="columnvisibility" msprop:Generator_ColumnPropNameInRow="visibility" msprop:Generator_ColumnPropNameInTable="visibilityColumn" msprop:Generator_UserColumnName="visibility" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

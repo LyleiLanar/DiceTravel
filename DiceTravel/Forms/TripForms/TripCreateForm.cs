@@ -21,6 +21,10 @@ namespace DiceTravel.Forms.TripForms
 
         private void BtnTripCreateStart_Click(object sender, EventArgs e)
         {
+            Trip oldTrip = ActiveUserStore.GetActiveJourney().GetLastTrip();
+            oldTrip.EndDate = DateTime.Now.ToString("yyy-MM-dd HH:mm:ss");
+            oldTrip.UpdateItself();
+
             Trip newTrip = new Trip();
             newTrip.JourneyId = ActiveUserStore.GetActiveJourney().Id;
             newTrip.EndLocation = InputTripCreateTripEndLocation.Text;
@@ -48,7 +52,7 @@ namespace DiceTravel.Forms.TripForms
             }
             catch (ValidationException ex)
             {
-                MessageBox.Show(ex.Message, "Goal validation error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "Trip validation error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private void Validation(Trip newTrip)
@@ -58,18 +62,19 @@ namespace DiceTravel.Forms.TripForms
         }
 
         private void BtnTripCreateEndJourney_Click(object sender, EventArgs e)
-        {            
+        {                     
             Journey journey = ActiveUserStore.GetActiveJourney();
+            Trip trip = journey.GetLastTrip();
+
             journey.Closed = 1;
             journey.UpdateItself();
+
+            trip.EndDate = DateTime.Now.ToString("yyy-MM-dd HH:mm:ss");
+            trip.UpdateItself();
+
             Program.mainForm.UpdateData();
             Program.mainForm.Activate();
             this.Dispose();
-            //ide kell az update parancs. Update-elni kell az akctive Journey-t és close kell neki
-            //a LastTrip dátumát be kell állítani
-            //majd frissítjük a main formot
-            //aktiváljuk a main formot
-            //bezárjuk ezt a formot.
         }
     }
     }

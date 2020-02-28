@@ -64,6 +64,15 @@
             this.MenuMeNewEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMeGoalReached = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dice_travelDataSet = new DiceTravel.dice_travelDataSet();
+            this.journeysBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.journeysTableAdapter = new DiceTravel.dice_travelDataSetTableAdapters.journeysTableAdapter();
+            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startlocationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.closedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.visibilityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.usersTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.mainToolStripContainer.ContentPanel.SuspendLayout();
@@ -74,7 +83,11 @@
             this.GrpBxActiveJourneyData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctBxActiveJourneyVisibility)).BeginInit();
             this.GrpBxUserData.SuspendLayout();
+            this.GrpBxMainFrame.SuspendLayout();
             this.menuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dice_travelDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.journeysBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // usersTable
@@ -305,6 +318,7 @@
             this.GrpBxMainFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.GrpBxMainFrame.Controls.Add(this.dataGridView1);
             this.GrpBxMainFrame.Location = new System.Drawing.Point(238, 3);
             this.GrpBxMainFrame.Name = "GrpBxMainFrame";
             this.GrpBxMainFrame.Size = new System.Drawing.Size(1243, 734);
@@ -339,14 +353,14 @@
             // MenuMainLogin
             // 
             this.MenuMainLogin.Name = "MenuMainLogin";
-            this.MenuMainLogin.Size = new System.Drawing.Size(180, 22);
+            this.MenuMainLogin.Size = new System.Drawing.Size(114, 22);
             this.MenuMainLogin.Text = "Login";
             this.MenuMainLogin.Click += new System.EventHandler(this.MenuMainLogin_Click);
             // 
             // MenuMainSignUp
             // 
             this.MenuMainSignUp.Name = "MenuMainSignUp";
-            this.MenuMainSignUp.Size = new System.Drawing.Size(180, 22);
+            this.MenuMainSignUp.Size = new System.Drawing.Size(114, 22);
             this.MenuMainSignUp.Text = "SignUp";
             this.MenuMainSignUp.Click += new System.EventHandler(this.MenuMainSignUp_Click);
             // 
@@ -354,14 +368,14 @@
             // 
             this.MenuMainLogout.Enabled = false;
             this.MenuMainLogout.Name = "MenuMainLogout";
-            this.MenuMainLogout.Size = new System.Drawing.Size(180, 22);
+            this.MenuMainLogout.Size = new System.Drawing.Size(114, 22);
             this.MenuMainLogout.Text = "LogOut";
             this.MenuMainLogout.Click += new System.EventHandler(this.MenuMainLogout_Click);
             // 
             // MenuMainQuit
             // 
             this.MenuMainQuit.Name = "MenuMainQuit";
-            this.MenuMainQuit.Size = new System.Drawing.Size(180, 22);
+            this.MenuMainQuit.Size = new System.Drawing.Size(114, 22);
             this.MenuMainQuit.Text = "Exit";
             this.MenuMainQuit.Click += new System.EventHandler(this.MenuMainQuit_Click);
             // 
@@ -415,6 +429,74 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.titleDataGridViewTextBoxColumn,
+            this.startlocationDataGridViewTextBoxColumn,
+            this.startdateDataGridViewTextBoxColumn,
+            this.closedDataGridViewTextBoxColumn,
+            this.visibilityDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.journeysBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(7, 16);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(545, 150);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // dice_travelDataSet
+            // 
+            this.dice_travelDataSet.DataSetName = "dice_travelDataSet";
+            this.dice_travelDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // journeysBindingSource
+            // 
+            this.journeysBindingSource.DataMember = "journeys";
+            this.journeysBindingSource.DataSource = this.dice_travelDataSet;
+            // 
+            // journeysTableAdapter
+            // 
+            this.journeysTableAdapter.ClearBeforeFill = true;
+            // 
+            // titleDataGridViewTextBoxColumn
+            // 
+            this.titleDataGridViewTextBoxColumn.DataPropertyName = "title";
+            this.titleDataGridViewTextBoxColumn.HeaderText = "title";
+            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // startlocationDataGridViewTextBoxColumn
+            // 
+            this.startlocationDataGridViewTextBoxColumn.DataPropertyName = "start_location";
+            this.startlocationDataGridViewTextBoxColumn.HeaderText = "start_location";
+            this.startlocationDataGridViewTextBoxColumn.Name = "startlocationDataGridViewTextBoxColumn";
+            this.startlocationDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // startdateDataGridViewTextBoxColumn
+            // 
+            this.startdateDataGridViewTextBoxColumn.DataPropertyName = "start_date";
+            this.startdateDataGridViewTextBoxColumn.HeaderText = "start_date";
+            this.startdateDataGridViewTextBoxColumn.Name = "startdateDataGridViewTextBoxColumn";
+            this.startdateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // closedDataGridViewTextBoxColumn
+            // 
+            this.closedDataGridViewTextBoxColumn.DataPropertyName = "closed";
+            this.closedDataGridViewTextBoxColumn.HeaderText = "closed";
+            this.closedDataGridViewTextBoxColumn.Name = "closedDataGridViewTextBoxColumn";
+            this.closedDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // visibilityDataGridViewTextBoxColumn
+            // 
+            this.visibilityDataGridViewTextBoxColumn.DataPropertyName = "visibility";
+            this.visibilityDataGridViewTextBoxColumn.HeaderText = "visibility";
+            this.visibilityDataGridViewTextBoxColumn.Name = "visibilityDataGridViewTextBoxColumn";
+            this.visibilityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -428,6 +510,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DiceTravel";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.usersTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             this.mainToolStripContainer.ContentPanel.ResumeLayout(false);
@@ -442,8 +525,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.PctBxActiveJourneyVisibility)).EndInit();
             this.GrpBxUserData.ResumeLayout(false);
             this.GrpBxUserData.PerformLayout();
+            this.GrpBxMainFrame.ResumeLayout(false);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dice_travelDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.journeysBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -483,6 +570,15 @@
         private System.Windows.Forms.Button BtnNextDestReached;
         private System.Windows.Forms.PictureBox PctBxNextDestVisibility;
         private System.Windows.Forms.Button BtnNewEntry;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private dice_travelDataSet dice_travelDataSet;
+        private System.Windows.Forms.BindingSource journeysBindingSource;
+        private dice_travelDataSetTableAdapters.journeysTableAdapter journeysTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startlocationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startdateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn closedDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn visibilityDataGridViewTextBoxColumn;
     }
 }
 

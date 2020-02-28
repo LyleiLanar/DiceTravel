@@ -223,5 +223,12 @@ namespace DiceTravel
                 e.Cancel = true;
             }
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'dice_travelDataSet.journeys' table. You can move, or remove it, as needed.
+            this.journeysTableAdapter.Fill(this.dice_travelDataSet.journeys);
+
+        }
     }
 }

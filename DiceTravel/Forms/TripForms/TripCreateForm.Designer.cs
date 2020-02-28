@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TripCreateForm));
             this.TxtTripCreateFormTitle = new System.Windows.Forms.Label();
             this.BtnTripCreateEndJourney = new System.Windows.Forms.Button();
-            this.BtnTripCreateDestination = new System.Windows.Forms.Button();
+            this.BtnTripCreateTrip = new System.Windows.Forms.Button();
             this.GrpBxTripCreateVisibility = new System.Windows.Forms.GroupBox();
             this.RBtnTripCreateVisibilityPublic = new System.Windows.Forms.RadioButton();
             this.RBtnTripCreateVisibilityOnlyFriends = new System.Windows.Forms.RadioButton();
@@ -62,15 +62,15 @@
             this.BtnTripCreateEndJourney.UseVisualStyleBackColor = true;
             this.BtnTripCreateEndJourney.Click += new System.EventHandler(this.BtnTripCreateEndJourney_Click);
             // 
-            // BtnTripCreateDestination
+            // BtnTripCreateTrip
             // 
-            this.BtnTripCreateDestination.Location = new System.Drawing.Point(124, 94);
-            this.BtnTripCreateDestination.Name = "BtnTripCreateDestination";
-            this.BtnTripCreateDestination.Size = new System.Drawing.Size(95, 23);
-            this.BtnTripCreateDestination.TabIndex = 14;
-            this.BtnTripCreateDestination.Text = "Go here!";
-            this.BtnTripCreateDestination.UseVisualStyleBackColor = true;
-            this.BtnTripCreateDestination.Click += new System.EventHandler(this.BtnTripCreateStart_Click);
+            this.BtnTripCreateTrip.Location = new System.Drawing.Point(124, 94);
+            this.BtnTripCreateTrip.Name = "BtnTripCreateTrip";
+            this.BtnTripCreateTrip.Size = new System.Drawing.Size(95, 23);
+            this.BtnTripCreateTrip.TabIndex = 14;
+            this.BtnTripCreateTrip.Text = "Go here!";
+            this.BtnTripCreateTrip.UseVisualStyleBackColor = true;
+            this.BtnTripCreateTrip.Click += new System.EventHandler(this.BtnTripCreateStart_Click);
             // 
             // GrpBxTripCreateVisibility
             // 
@@ -139,7 +139,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(234, 181);
             this.Controls.Add(this.BtnTripCreateEndJourney);
-            this.Controls.Add(this.BtnTripCreateDestination);
+            this.Controls.Add(this.BtnTripCreateTrip);
             this.Controls.Add(this.GrpBxTripCreateVisibility);
             this.Controls.Add(this.InputTripCreateTripEndLocation);
             this.Controls.Add(this.TxtTripCreateTripEndLocation_Label);
@@ -161,7 +161,7 @@
 
         private System.Windows.Forms.Label TxtTripCreateFormTitle;
         private System.Windows.Forms.Button BtnTripCreateEndJourney;
-        private System.Windows.Forms.Button BtnTripCreateDestination;
+        private System.Windows.Forms.Button BtnTripCreateTrip;
         private System.Windows.Forms.GroupBox GrpBxTripCreateVisibility;
         private System.Windows.Forms.RadioButton RBtnTripCreateVisibilityPublic;
         private System.Windows.Forms.RadioButton RBtnTripCreateVisibilityOnlyFriends;

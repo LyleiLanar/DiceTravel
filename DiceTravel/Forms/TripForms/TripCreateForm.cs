@@ -43,7 +43,6 @@ namespace DiceTravel.Forms.TripForms
             {
                 Validation(newTrip);
                 newTrip.CreateItself();
-                //DBDriver.InsertRow(newTrip.GetTableQueryString(), newTrip.GetInsertSql());
                 Program.mainForm.UpdateData();
                 this.Dispose();
             }
@@ -59,7 +58,13 @@ namespace DiceTravel.Forms.TripForms
         }
 
         private void BtnTripCreateEndJourney_Click(object sender, EventArgs e)
-        {
+        {            
+            Journey journey = ActiveUserStore.GetActiveJourney();
+            journey.Closed = 1;
+            journey.UpdateItself();
+            Program.mainForm.UpdateData();
+            Program.mainForm.Activate();
+            this.Dispose();
             //ide kell az update parancs. Update-elni kell az akctive Journey-t és close kell neki
             //a LastTrip dátumát be kell állítani
             //majd frissítjük a main formot

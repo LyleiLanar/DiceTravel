@@ -47,14 +47,12 @@ namespace DiceTravel.Forms.JourneyForms
             try
             {
                 Validation(newJourney);
-                //DBDriver.InsertRow(newJourney.GetTableQueryString(), newJourney.GetInsertSql());
                 newJourney.CreateItself();
                 try
                 {
                     newTrip.JourneyId = ActiveUserStore.GetActiveJourney().Id;
                     Validation(newTrip);
                     newTrip.CreateItself();
-                    //DBDriver.InsertRow(newTrip.GetTableQueryString(), newTrip.GetInsertSql());
                     Program.mainForm.UpdateData();
                     Program.mainFormActivate();
                     this.Dispose();

@@ -18,7 +18,11 @@ namespace DiceTravel.Classes
             UserId = Int32.Parse(dataRow["user_id"].ToString());
             Title = dataRow["title"].ToString();
             StartLocation = dataRow["start_location"].ToString();
-            StartDate = dataRow["start_date"].ToString();
+
+            string dateString = dataRow["start_date"].ToString();
+            DateTime date = DateTime.Parse(dateString);
+            StartDate = date.ToString("yyy-MM-dd HH:mm:ss");
+
             Closed = Int32.Parse(dataRow["closed"].ToString());
             Visibility = Int32.Parse(dataRow["visibility"].ToString());
         }
@@ -77,8 +81,27 @@ namespace DiceTravel.Classes
         }
         public override void UpdateItself()
         {
-            throw new NotImplementedException();
-        }   
+            string query = "UPDATE `dice_travel`.`journeys` SET `user_id`=@user_id, `title`=@title,`start_location`=@start_location,`start_date`=@start_date,`closed`=@closed,`visibility`=@visibility WHERE id = @id";
+            MySqlCommand sqlCommand = CreateCommand(query);
+
+            sqlCommand.Parameters.Add("@id", MySqlDbType.Int32);
+            sqlCommand.Parameters.Add("@user_id", MySqlDbType.Int32);
+            sqlCommand.Parameters.Add("@title", MySqlDbType.VarChar, 50);
+            sqlCommand.Parameters.Add("@start_location", MySqlDbType.VarChar, 20);
+            sqlCommand.Parameters.Add("@start_date", MySqlDbType.DateTime);
+            sqlCommand.Parameters.Add("@closed", MySqlDbType.Int32);
+            sqlCommand.Parameters.Add("@visibility", MySqlDbType.Int32);
+
+            sqlCommand.Parameters["@id"].Value = Id;
+            sqlCommand.Parameters["@user_id"].Value = UserId;
+            sqlCommand.Parameters["@title"].Value = Title;
+            sqlCommand.Parameters["@start_location"].Value = StartLocation;
+            sqlCommand.Parameters["@start_date"].Value = StartDate;
+            sqlCommand.Parameters["@closed"].Value = Closed;
+            sqlCommand.Parameters["@visibility"].Value = Visibility;
+
+            RunSqlCommand(sqlCommand);
+        }
         public override void DeleteItself()
         {
             List<Trip> tripsToDelete = GetTrips();
@@ -114,7 +137,7 @@ namespace DiceTravel.Classes
             MySqlCommand sqlCommand = CreateCommand(getTripsCommand);
             sqlCommand.Parameters.Add("@journey_id", MySqlDbType.Int32);
             sqlCommand.Parameters["@journey_id"].Value = Id;
-            
+
             DataTable dataTable = ReadQueryTable(sqlCommand);
 
             List<Trip> trips = new List<Trip>();

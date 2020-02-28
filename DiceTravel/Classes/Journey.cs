@@ -1,4 +1,5 @@
 ﻿using DiceTravel.Util;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -22,7 +23,7 @@ namespace DiceTravel.Classes
             Visibility = Int32.Parse(dataRow["visibility"].ToString());
         }
 
-        //Properties
+        //Props
         public int Id { get; set; }
         public int UserId { get; set; }
         public string Title { get; set; }
@@ -30,7 +31,6 @@ namespace DiceTravel.Classes
         public string StartDate { get; set; }
         public int Closed { get; set; }
         public int Visibility { get; set; }
-
         public string GetVisibilityAsString
         {
             get
@@ -48,32 +48,38 @@ namespace DiceTravel.Classes
             }
         }
 
-        //entityMethods
-        static public Journey GetJourney_ById(int id)
+        //CRUD methods
+        public override void CreateItself()
         {
-            string query = $"SELECT * FROM journeys WHERE id = {id};";
-            DataTable dataTable = DBDriver.ReadQuery(query);
-            if (dataTable != null && dataTable.Rows.Count > 0)
-            {
-                return new Journey(dataTable.Rows[0]);
-            }
-            return null;
+            string query = "INSERT INTO `dice_travel`.`journeys` (`user_id`, `title`,`start_location`,`start_date`,`closed`,`visibility`) " +
+                                   "VALUES (@user_id, @title, @start_location, @start_date, @closed, @visibility);";
+            MySqlCommand sqlCommand = CreateCommand(query);
+
+            sqlCommand.Parameters.Add("@user_id", MySqlDbType.Int32);
+            sqlCommand.Parameters.Add("@title", MySqlDbType.VarChar, 50);
+            sqlCommand.Parameters.Add("@start_location", MySqlDbType.VarChar, 20);
+            sqlCommand.Parameters.Add("@start_date", MySqlDbType.DateTime);
+            sqlCommand.Parameters.Add("@closed", MySqlDbType.Int32);
+            sqlCommand.Parameters.Add("@visibility", MySqlDbType.Int32);
+
+            sqlCommand.Parameters["@user_id"].Value = ActiveUserStore.ActiveUser.Id;
+            sqlCommand.Parameters["@title"].Value = Title;
+            sqlCommand.Parameters["@start_location"].Value = StartLocation;
+            sqlCommand.Parameters["@start_date"].Value = StartDate;
+            sqlCommand.Parameters["@closed"].Value = Closed;
+            sqlCommand.Parameters["@visibility"].Value = Visibility;
+
+            RunSqlCommand(sqlCommand);
         }
-        public List<Trip> GetTrips()
+        static public Journey ReadJourney(MySqlCommand sqlCommand)
         {
-            List<Trip> trips = new List<Trip>();
-            string getTripsCommand = $"SELECT * FROM trips WHERE journey_id = {Id}";
-
-            DataTable dataTable = DBDriver.ReadQuery(getTripsCommand);
-
-            foreach (DataRow row in dataTable.Rows)
-            {
-                trips.Add(new Trip(row));
-            }
-
-            return trips;
+            return new Journey(ReadQueryTable(sqlCommand).Rows[0]);
         }
-        public void DeleteItself()
+        public override void UpdateItself()
+        {
+            throw new NotImplementedException();
+        }   
+        public override void DeleteItself()
         {
             List<Trip> tripsToDelete = GetTrips();
 
@@ -82,21 +88,17 @@ namespace DiceTravel.Classes
                 trip.DeleteItself();
             }
 
-            DBDriver.DeleteRow($"DELETE FROM journeys WHERE id = {ActiveUserStore.GetActiveJourney().Id}");
-            Program.mainForm.RefreshMainForm();
+            string query = "DELETE FROM journeys WHERE id = @id";
+
+            MySqlCommand sqlCommand = new MySqlCommand(query);
+            sqlCommand.Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString);
+            sqlCommand.Parameters.Add("@id", MySqlDbType.Int32);
+            sqlCommand.Parameters["@id"].Value = ActiveUserStore.GetActiveJourney().Id;
+
+            RunSqlCommand(sqlCommand);
         }
 
-        //Methods
-        public Trip GetLastTrip()
-        {
-            string lastTripQuery = $"SELECT * FROM trips WHERE journey_id = {this.Id} ORDER BY serial_number DESC LIMIT 1;";
-
-            DataTable dataTable = DBDriver.ReadQuery(lastTripQuery);
-
-            return new Trip(dataTable.Rows[0]);
-
-
-        }
+        //DB methods
         public override string GetInsertSql()
         {
             return $"INSERT INTO `dice_travel`.`journeys` (`user_id`, `title`,`start_location`,`start_date`,`closed`,`visibility`) " +
@@ -106,11 +108,58 @@ namespace DiceTravel.Classes
         {
             return "SELECT * FROM journeys";
         }
+        public List<Trip> GetTrips()
+        {
+            string getTripsCommand = $"SELECT * FROM trips WHERE journey_id = @journey_id";
+            MySqlCommand sqlCommand = CreateCommand(getTripsCommand);
+            sqlCommand.Parameters.Add("@journey_id", MySqlDbType.Int32);
+            sqlCommand.Parameters["@journey_id"].Value = Id;
+            
+            DataTable dataTable = ReadQueryTable(sqlCommand);
+
+            List<Trip> trips = new List<Trip>();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                trips.Add(new Trip(row));
+            }
+
+            return trips;
+        }
+        public Trip GetLastTrip()
+        {
+            string query = $"SELECT * FROM trips WHERE journey_id = @journey_id ORDER BY serial_number DESC LIMIT 1;";
+            MySqlCommand sqlCommand = CreateCommand(query);
+
+            sqlCommand.Parameters.Add("@journey_id", MySqlDbType.Int32);
+            sqlCommand.Parameters["@journey_id"].Value = Id;
+
+            DataTable dataTable = ReadQueryTable(sqlCommand);
+            return new Trip(dataTable.Rows[0]);
+        }
+
+        //misc methods
         public override void Validation()
         {
             if (UserId == 0) { throw new ValidationException("Missing userID!"); }
             if (Title == "") { throw new ValidationException("Missing title!"); }
             if (StartLocation == "") { throw new ValidationException("Missing Start location!"); }
         }
+
+        //static methods
+        static public Journey GetJourney_ById(int journeyId)
+        {
+            string query = $"SELECT * FROM journeys WHERE id = @id";
+            MySqlCommand sqlCommand = CreateCommand(query);
+            sqlCommand.Parameters.Add("@id", MySqlDbType.Int32);
+            sqlCommand.Parameters["@id"].Value = journeyId;
+
+            DataTable dataTable = ReadQueryTable(sqlCommand);
+            if (dataTable != null && dataTable.Rows.Count > 0)
+            {
+                return new Journey(dataTable.Rows[0]);
+            }
+            return null;
+        }
+
     }
 }

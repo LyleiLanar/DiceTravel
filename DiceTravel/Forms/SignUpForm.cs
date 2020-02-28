@@ -1,7 +1,9 @@
 ﻿using DiceTravel.Util;
+using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using System.Windows.Forms;
+using DiceTravel.Classes;
 
 namespace DiceTravel
 {
@@ -31,8 +33,8 @@ namespace DiceTravel
             try
             {
                 Validation(user);
-
-                DBDriver.InsertRow(user.GetTableQueryString(), user.GetInsertSql());
+                user.CreateItself();
+                //DBDriver.InsertRow(user.GetTableQueryString(), user.GetInsertSql());
                 Program.mainFormActivate();
                 this.Dispose();
             }
@@ -45,10 +47,15 @@ namespace DiceTravel
         {
             user.Validation();
 
-            string queryString = $"SELECT count(login_name) as t " +
-                $"FROM dice_travel.users where login_name like '{InputSignUpLoginName.Text}';";
-            DataTable countLoginNames = DBDriver.ReadQuery(queryString);
-            int sameLoginNamesAmount = Int32.Parse(countLoginNames.Rows[0]["t"].ToString());
+            string query = $"SELECT count(login_name) as t " +
+                $"FROM dice_travel.users where login_name like @login_name;";
+
+            MySqlCommand sqlCommand = Entity.CreateCommand(query);
+            sqlCommand.Parameters.Add("@login_name", MySqlDbType.VarChar,20);
+            sqlCommand.Parameters["@login_name"].Value = InputSignUpLoginName.Text;
+
+            DataTable table = Entity.ReadQueryTable(sqlCommand);
+            int sameLoginNamesAmount = Int32.Parse(table.Rows[0]["t"].ToString());
 
             if (sameLoginNamesAmount != 0) { throw new ValidationException("Used Login Name!"); }
             if (InputSignUpPassword.Text == "") { throw new ValidationException("Missing Password!"); }

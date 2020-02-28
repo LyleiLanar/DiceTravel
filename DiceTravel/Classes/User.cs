@@ -1,5 +1,6 @@
 ﻿using DiceTravel.Classes;
 using DiceTravel.Util;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -31,8 +32,50 @@ namespace DiceTravel
 
         }
 
-        //methods
+        //CRUD
+        public override void CreateItself()
+        {
+            string query = "INSERT INTO `dice_travel`.`users` (`login_name`, `pswd`,`sur_name`,`first_name`,`birth_date`) " +
+                                    $"VALUES (@login_name,@pswd,@sur_name,@first_name,@birth_date);";
 
+            MySqlCommand sqlCommand = new MySqlCommand(query);
+            sqlCommand.Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString);
+
+            sqlCommand.Parameters.Add("@login_name", MySqlDbType.VarChar,20);
+            sqlCommand.Parameters.Add("@pswd", MySqlDbType.VarChar,32);
+            sqlCommand.Parameters.Add("@sur_name", MySqlDbType.VarChar, 20);
+            sqlCommand.Parameters.Add("@first_name", MySqlDbType.VarChar, 1);
+            sqlCommand.Parameters.Add("@birth_date", MySqlDbType.Date);
+
+            sqlCommand.Parameters["@login_name"].Value = LoginName;
+            sqlCommand.Parameters["@pswd"].Value = Password;
+            sqlCommand.Parameters["@sur_name"].Value = Surname;
+            sqlCommand.Parameters["@first_name"].Value = Firstname;
+            sqlCommand.Parameters["@birth_date"].Value = BirthDate;
+
+            RunSqlCommand(sqlCommand);
+        }
+        static public User ReadUser(MySqlCommand sqlCommand)
+        {
+            return new User(ReadQueryTable(sqlCommand).Rows[0]);
+        }
+        public override void UpdateItself()
+        {
+            throw new NotImplementedException();
+        }
+        public override void DeleteItself()
+        {
+            string query = "DELETE FROM users WHERE id = @id";
+
+            MySqlCommand sqlCommand = new MySqlCommand(query);
+            sqlCommand.Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString);
+            sqlCommand.Parameters.Add("@id", MySqlDbType.Int32);
+            sqlCommand.Parameters["@id"].Value = this.Id;
+
+            RunSqlCommand(sqlCommand);
+        }
+
+        //entity methods
         public override string GetInsertSql()
         {
             return $"INSERT INTO `dice_travel`.`users` (`login_name`, `pswd`,`sur_name`,`first_name`,`birth_date`) " +
@@ -43,16 +86,16 @@ namespace DiceTravel
         {
             return "SELECT * FROM users";
         }
-        public override void Validation()
-        {
-            if (LoginName == "") { throw new ValidationException("Missing 'Login Name'!"); }
-        }
         public List<Journey> GetJourneys()
         {
-            List<Journey> journeys = new List<Journey>();
-            string getJourneyCommand = $"SELECT * FROM journeys WHERE user_id = {Id};";
-            DataTable dataTable = DBDriver.ReadQuery(getJourneyCommand);
+            string getTripsCommand = $"SELECT * FROM trips WHERE journey_id = @journey_id";
+            MySqlCommand sqlCommand = CreateCommand(getTripsCommand);
+            sqlCommand.Parameters.Add("@journey_id", MySqlDbType.Int32);
+            sqlCommand.Parameters["@journey_id"].Value = Id;
 
+            DataTable dataTable = ReadQueryTable(sqlCommand);
+
+            List<Journey> journeys = new List<Journey>();
             foreach (DataRow row in dataTable.Rows)
             {
                 journeys.Add(new Journey(row));
@@ -66,17 +109,24 @@ namespace DiceTravel
 
             if (IsThereActiveJourney())
             {
-                string queryString = $"SELECT * FROM dice_travel.journeys WHERE user_id = {this.Id};";
+                string query = $"SELECT * FROM dice_travel.journeys WHERE user_id = @Id;";
+                MySqlCommand sqlCommand = CreateCommand(query);
+                sqlCommand.Parameters.Add("@Id", MySqlDbType.Int32);
+                sqlCommand.Parameters["@Id"].Value = Id;
 
-                DataTable table = DBDriver.ReadQuery(queryString);
+                DataTable table = ReadQueryTable(sqlCommand);
                 activeJourney = new Journey(table.Rows[0]);
             }
             return activeJourney;
         }
         public bool IsThereActiveJourney()
         {
-            string queryString = $"SELECT count(*) as db FROM dice_travel.journeys WHERE closed = 0 AND user_id = {this.Id};";
-            DataTable table = DBDriver.ReadQuery(queryString);
+            string query = $"SELECT count(*) as db FROM dice_travel.journeys WHERE closed = 0 AND user_id = @Id;";
+            MySqlCommand sqlCommand = CreateCommand(query);
+            sqlCommand.Parameters.Add("@Id", MySqlDbType.Int32);
+            sqlCommand.Parameters["@Id"].Value = Id;
+
+            DataTable table = ReadQueryTable(sqlCommand);
 
             if (table.Rows[0]["db"].ToString() == "0")
             {
@@ -85,18 +135,33 @@ namespace DiceTravel
             return true;
         }
 
+        //misc methods
+        public override void Validation()
+        {
+            if (LoginName == "") { throw new ValidationException("Missing 'Login Name'!"); }
+        }
+
         //static methods
         static public User GetUser_ById(int id)
         {
-            string query = $"SELECT * FROM users WHERE id = {id}";
-            DataTable table = DBDriver.ReadQuery(query);
+            string query = $"SELECT * FROM users WHERE id = @Id";
+            MySqlCommand sqlCommand = CreateCommand(query);
+            sqlCommand.Parameters.Add("@Id", MySqlDbType.Int32);
+            sqlCommand.Parameters["@Id"].Value = id;
+
+            DataTable table = ReadQueryTable(sqlCommand);
             return new User(table.Rows[0]);
         }
         static public User GetUserBy_LoginName(string loginName)
         {
-            string query = $"SELECT * FROM users WHERE login_name like '{loginName}'";
-            DataTable table = DBDriver.ReadQuery(query);
+            string query = $"SELECT * FROM users WHERE login_name like @login_name";
+            MySqlCommand sqlCommand = CreateCommand(query);
+            sqlCommand.Parameters.Add("@login_name", MySqlDbType.VarChar,20);
+            sqlCommand.Parameters["@login_name"].Value = loginName;
+
+            DataTable table = ReadQueryTable(sqlCommand);
             return new User(table.Rows[0]);
         }
+
     }
 }

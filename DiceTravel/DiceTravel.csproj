@@ -98,7 +98,6 @@
       <DependentUpon>UsersTable.xsd</DependentUpon>
     </Compile>
     <Compile Include="Util\ActiveUserStore.cs" />
-    <Compile Include="Util\DBDriver.cs" />
     <Compile Include="Util\EntityCreationException.cs" />
     <Compile Include="Util\UserAuthenticator.cs" />
     <Compile Include="Util\ValidationException.cs" />

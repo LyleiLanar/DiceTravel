@@ -42,9 +42,9 @@ namespace DiceTravel.Forms.TripForms
             try
             {
                 Validation(newTrip);
-
-                DBDriver.InsertRow(newTrip.GetTableQueryString(), newTrip.GetInsertSql());
-                Program.mainForm.RefreshMainForm();
+                newTrip.CreateItself();
+                //DBDriver.InsertRow(newTrip.GetTableQueryString(), newTrip.GetInsertSql());
+                Program.mainForm.UpdateData();
                 this.Dispose();
             }
             catch (ValidationException ex)

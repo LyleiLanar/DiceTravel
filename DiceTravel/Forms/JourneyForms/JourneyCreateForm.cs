@@ -47,13 +47,15 @@ namespace DiceTravel.Forms.JourneyForms
             try
             {
                 Validation(newJourney);
-                DBDriver.InsertRow(newJourney.GetTableQueryString(), newJourney.GetInsertSql());
+                //DBDriver.InsertRow(newJourney.GetTableQueryString(), newJourney.GetInsertSql());
+                newJourney.CreateItself();
                 try
                 {
                     newTrip.JourneyId = ActiveUserStore.GetActiveJourney().Id;
                     Validation(newTrip);
-                    DBDriver.InsertRow(newTrip.GetTableQueryString(), newTrip.GetInsertSql());
-                    Program.mainForm.RefreshMainForm();
+                    newTrip.CreateItself();
+                    //DBDriver.InsertRow(newTrip.GetTableQueryString(), newTrip.GetInsertSql());
+                    Program.mainForm.UpdateData();
                     Program.mainFormActivate();
                     this.Dispose();
                 }
@@ -66,7 +68,7 @@ namespace DiceTravel.Forms.JourneyForms
             catch (ValidationException ex)
             {
                 MessageBox.Show(ex.Message, "Journey creation error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            }            
         }
         private void Validation(Journey newJourney)
         {

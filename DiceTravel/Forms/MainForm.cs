@@ -85,21 +85,21 @@ namespace DiceTravel
             MenuMainSignUp.Enabled = false;
             MenuMe.Enabled = true;
         }
-        public void RefreshMainForm()
+        public void UpdateData()
         {
             if (ActiveUserStore.IsThereActiveUser)
             {
                 Program.mainForm.ChangeControlsAvailabilityAfterLogin();
-                RefreshUserData();
-                RefreshActiveJourneyData();
-                RefreshNextDestiantionData();
+                UpdateUserData();
+                UpdateActiveJourneyData();
+                UpdateNextDestiantionData();
             }
             else
             {
                 Program.mainForm.ChangeControlsAvailabilityAfterLogout();
             }
         }
-        private void RefreshUserData()
+        private void UpdateUserData()
         {
             User user = ActiveUserStore.ActiveUser;
 
@@ -107,8 +107,8 @@ namespace DiceTravel
             TxtUserDataBirthDate.Text = user.BirthDate.Substring(0, 12);
         }
 
-        //journey methods
-        private void RefreshActiveJourneyData()
+        //journeyData methods
+        private void UpdateActiveJourneyData()
         {
             Journey activeJourney = ActiveUserStore.GetActiveJourney();
             string activeJourneyInfo;
@@ -160,14 +160,15 @@ namespace DiceTravel
             {
                 Journey.GetJourney_ById(ActiveUserStore.GetActiveJourney().Id).DeleteItself();
             }
+            Program.mainForm.UpdateData();
         }
         private void BtnNewJourney_Click(object sender, EventArgs e)
         {
             MenuMeNewJourney_Click(sender, e);
         }
 
-        //trip methods
-        private void RefreshNextDestiantionData()
+        //tripData methods
+        private void UpdateNextDestiantionData()
         {
             Journey activeJourney = ActiveUserStore.GetActiveJourney();
             if (activeJourney != null)
@@ -176,7 +177,7 @@ namespace DiceTravel
                 if (activeTrip == null && activeJourney.Closed != 0)
                 {
                     new TripCreateForm().Show();
-                    RefreshMainForm();
+                    UpdateData();
                 }
                 switch (activeTrip.Visibility)
                 {

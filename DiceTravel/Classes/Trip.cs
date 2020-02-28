@@ -1,4 +1,5 @@
 ﻿using DiceTravel.Util;
+using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 
@@ -6,6 +7,7 @@ namespace DiceTravel.Classes
 {
     public class Trip : Entity
     {
+        //props
         public int Id { get; set; }
         public int JourneyId { get; set; }
         public int SerialNumber { get; set; }
@@ -13,6 +15,7 @@ namespace DiceTravel.Classes
         public string EndDate { get; set; }
         public int Visibility { get; set; }
 
+        //constructors
         public Trip(DataRow dataRow)
         {
             Id = Int32.Parse(dataRow["id"].ToString());
@@ -25,14 +28,53 @@ namespace DiceTravel.Classes
         public Trip()
         {
         }
-        
-        //entityMethods
-        public void DeleteItself()
+
+        //CRUD
+
+        public override void CreateItself()
         {
-            string deleteCommand = $"DELETE FROM trips WHERE id = {this.Id}";
-            DBDriver.DeleteRow(deleteCommand);
+            string query = "INSERT INTO `dice_travel`.`trips` (`journey_id`, `serial_number`,`end_location`,`end_date`,`visibility`) " +
+                                  "VALUES (@journey_id, @serial_number, @end_location, @end_date, @visibility);";
+
+            MySqlCommand sqlCommand = new MySqlCommand(query);
+            sqlCommand.Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString);
+
+            sqlCommand.Parameters.Add("@journey_id", MySqlDbType.Int32);
+            sqlCommand.Parameters.Add("@serial_number", MySqlDbType.Int32);
+            sqlCommand.Parameters.Add("@end_location", MySqlDbType.VarChar, 20);
+            sqlCommand.Parameters.Add("@end_date", MySqlDbType.Timestamp, 1);
+            sqlCommand.Parameters.Add("@visibility", MySqlDbType.Int32);
+
+            sqlCommand.Parameters["@journey_id"].Value = ActiveUserStore.GetActiveJourney().Id;
+            sqlCommand.Parameters["@serial_number"].Value = SerialNumber;
+            sqlCommand.Parameters["@end_location"].Value = EndLocation;
+            sqlCommand.Parameters["@end_date"].Value = EndDate;
+            sqlCommand.Parameters["@visibility"].Value = Visibility;
+
+            RunSqlCommand(sqlCommand);
         }
+        static public Trip ReadTrip(MySqlCommand sqlCommand)
+        {
+            return new Trip(ReadQueryTable(sqlCommand).Rows[0]);
+        }
+        public override void UpdateItself()
+        {
+            throw new NotImplementedException();
+        }        
+        public override void DeleteItself()
+        {
+            string query = "DELETE FROM trips WHERE id = @id;";
+
+            MySqlCommand sqlCommand = new MySqlCommand(query);
+            sqlCommand.Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString);
+
+            sqlCommand.Parameters.Add("@id", MySqlDbType.Int32);
+            sqlCommand.Parameters["@id"].Value = Id;
+
+            RunSqlCommand(sqlCommand);
+        }        
         
+        //DB Methods
         public override string GetInsertSql()
         {
             string activeJourneyId = ActiveUserStore.GetActiveJourney().Id.ToString();
@@ -43,10 +85,13 @@ namespace DiceTravel.Classes
         {
             return "SELECT * FROM trips";
         }
+
+        //misc methods
         public override void Validation()
         {
             if (JourneyId == 0) { throw new ValidationException("Missing journeyId!"); }
             if (EndLocation == "") { throw new ValidationException("Missing Goal location!"); }
         }
+
     }
 }

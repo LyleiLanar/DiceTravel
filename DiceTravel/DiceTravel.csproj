@@ -59,6 +59,12 @@
     <Compile Include="Classes\Entry.cs" />
     <Compile Include="Classes\Journey.cs" />
     <Compile Include="Classes\Trip.cs" />
+    <Compile Include="Controls\JourneyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\JourneyControl.Designer.cs">
+      <DependentUpon>JourneyControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="dice_travelDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -106,6 +112,9 @@
     <Compile Include="Util\EntityCreationException.cs" />
     <Compile Include="Util\UserAuthenticator.cs" />
     <Compile Include="Util\ValidationException.cs" />
+    <EmbeddedResource Include="Controls\JourneyControl.resx">
+      <DependentUpon>JourneyControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\JourneyForms\JourneyCreateForm.resx">
       <DependentUpon>JourneyCreateForm.cs</DependentUpon>
     </EmbeddedResource>

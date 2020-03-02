@@ -88,10 +88,10 @@ namespace DiceTravel
         }
         public List<Journey> GetJourneys()
         {
-            string getTripsCommand = $"SELECT * FROM trips WHERE journey_id = @journey_id";
+            string getTripsCommand = $"SELECT * FROM dice_travel.journeys WHERE user_id = @user_id ORDER BY start_date DESC";
             MySqlCommand sqlCommand = CreateCommand(getTripsCommand);
-            sqlCommand.Parameters.Add("@journey_id", MySqlDbType.Int32);
-            sqlCommand.Parameters["@journey_id"].Value = Id;
+            sqlCommand.Parameters.Add("@user_id", MySqlDbType.Int32);
+            sqlCommand.Parameters["@user_id"].Value = Id;
 
             DataTable dataTable = ReadQueryTable(sqlCommand);
 

@@ -1,14 +1,17 @@
 ﻿using DiceTravel.Classes;
+using DiceTravel.Controls;
 using DiceTravel.Forms.JourneyForms;
 using DiceTravel.Forms.TripForms;
 using DiceTravel.Util;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace DiceTravel
 {
     public partial class MainForm : Form
-    {
+    {         
+
         public MainForm()
         {
             InitializeComponent();
@@ -39,6 +42,7 @@ namespace DiceTravel
                 Text = Properties.Settings.Default.projectName + " - LogIn"
             };
             login.Show();
+
         }
         private void MenuMainLogout_Click(object sender, EventArgs e)
         {
@@ -210,6 +214,31 @@ namespace DiceTravel
             new TripCreateForm().Show();
         }
 
+        //flowLayoutPanel
+        public void UpdatePanelWithJourneyFlow()
+        {
+            FlowLayoutPanel.Controls.Clear();
+            List<Journey> journeys = ActiveUserStore.ActiveUser.GetJourneys();
+
+            List<JourneyControl> journeyControls = new List<JourneyControl>();
+
+            foreach (Journey journey in journeys)
+            {
+                journeyControls.Add(new JourneyControl(journey));
+                FlowLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+            }
+
+            for (int i = 0; i < journeyControls.Count; i++)
+            {
+                JourneyControl control = journeyControls[i];
+                control.Name = $"JourneyControl_{i}";
+                control.SetContent();
+                control.Visible = true;
+                FlowLayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+                FlowLayoutPanel.Controls.Add(control, 0, i);
+            }
+        }
+
         //misc methods
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -224,11 +253,9 @@ namespace DiceTravel
             }
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void MenuMeMyJourneys_Click(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dice_travelDataSet.journeys' table. You can move, or remove it, as needed.
-            this.journeysTableAdapter.Fill(this.dice_travelDataSet.journeys);
-
+            Program.mainForm.UpdatePanelWithJourneyFlow();
         }
     }
 }

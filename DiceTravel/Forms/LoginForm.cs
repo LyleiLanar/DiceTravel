@@ -1,4 +1,5 @@
 ﻿using DiceTravel.Util;
+using DiceTravel.Controls;
 using System;
 using System.Windows.Forms;
 
@@ -23,6 +24,7 @@ namespace DiceTravel
                 ActiveUserStore.LogInUser(inputLoginLoginName.Text, inputLoginPassword.Text);
                 Program.mainForm.Enabled = true;
                 Program.mainFormActivate();
+                Program.mainForm.UpdatePanelWithJourneyFlow();
                 this.Dispose();
             }
             catch (ValidationException ex)
@@ -30,6 +32,8 @@ namespace DiceTravel
 
             catch (EntityCreationException ex)
             { MessageBox.Show(ex.Message, "Login Error!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); }
+
+
         }
 
         public void Validation()

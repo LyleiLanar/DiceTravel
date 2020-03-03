@@ -257,5 +257,10 @@ namespace DiceTravel
         {
             Program.mainForm.UpdatePanelWithJourneyFlow();
         }
+
+        private void GrpBxMainFrame_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

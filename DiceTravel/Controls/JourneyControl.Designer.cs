@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.TxtJourneyTitle = new System.Windows.Forms.Label();
-            this.BtnJourneyTrips = new System.Windows.Forms.Button();
             this.PctBxJourneyVisibility = new System.Windows.Forms.PictureBox();
             this.BtnJourneyOptions = new System.Windows.Forms.Button();
             this.TxtJourneyStartDate = new System.Windows.Forms.Label();
@@ -47,15 +46,6 @@
             this.TxtJourneyTitle.TabIndex = 0;
             this.TxtJourneyTitle.Text = "START";
             // 
-            // BtnJourneyTrips
-            // 
-            this.BtnJourneyTrips.Location = new System.Drawing.Point(410, 5);
-            this.BtnJourneyTrips.Name = "BtnJourneyTrips";
-            this.BtnJourneyTrips.Size = new System.Drawing.Size(55, 51);
-            this.BtnJourneyTrips.TabIndex = 2;
-            this.BtnJourneyTrips.Text = "Details";
-            this.BtnJourneyTrips.UseVisualStyleBackColor = true;
-            // 
             // PctBxJourneyVisibility
             // 
             this.PctBxJourneyVisibility.Location = new System.Drawing.Point(4, 5);
@@ -67,12 +57,14 @@
             // 
             // BtnJourneyOptions
             // 
-            this.BtnJourneyOptions.Location = new System.Drawing.Point(471, 5);
+            this.BtnJourneyOptions.BackColor = System.Drawing.SystemColors.Control;
+            this.BtnJourneyOptions.FlatAppearance.BorderSize = 0;
+            this.BtnJourneyOptions.Image = global::DiceTravel.Properties.Resources.icoSettings;
+            this.BtnJourneyOptions.Location = new System.Drawing.Point(484, 3);
             this.BtnJourneyOptions.Name = "BtnJourneyOptions";
-            this.BtnJourneyOptions.Size = new System.Drawing.Size(55, 51);
+            this.BtnJourneyOptions.Size = new System.Drawing.Size(42, 45);
             this.BtnJourneyOptions.TabIndex = 16;
-            this.BtnJourneyOptions.Text = "Options";
-            this.BtnJourneyOptions.UseVisualStyleBackColor = true;
+            this.BtnJourneyOptions.UseVisualStyleBackColor = false;
             // 
             // TxtJourneyStartDate
             // 
@@ -98,12 +90,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.TxtJourneyUserLoginName);
             this.Controls.Add(this.TxtJourneyStartDate);
             this.Controls.Add(this.BtnJourneyOptions);
             this.Controls.Add(this.PctBxJourneyVisibility);
-            this.Controls.Add(this.BtnJourneyTrips);
             this.Controls.Add(this.TxtJourneyTitle);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "JourneyControl";
             this.Size = new System.Drawing.Size(529, 62);
             ((System.ComponentModel.ISupportInitialize)(this.PctBxJourneyVisibility)).EndInit();
@@ -115,7 +108,6 @@
         #endregion
 
         private System.Windows.Forms.Label TxtJourneyTitle;
-        private System.Windows.Forms.Button BtnJourneyTrips;
         private System.Windows.Forms.PictureBox PctBxJourneyVisibility;
         private System.Windows.Forms.Button BtnJourneyOptions;
         private System.Windows.Forms.Label TxtJourneyStartDate;

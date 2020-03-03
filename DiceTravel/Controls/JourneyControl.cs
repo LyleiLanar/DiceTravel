@@ -1,9 +1,10 @@
 ﻿using DiceTravel.Classes;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace DiceTravel.Controls
 {
-    public partial class JourneyControl : UserControl
+    public partial class JourneyControl : FlowElementControl
     {
         public Journey Journey { get; }
 
@@ -42,6 +43,5 @@ namespace DiceTravel.Controls
                     break;
             }
         }
-
     }
 }

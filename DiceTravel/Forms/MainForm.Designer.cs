@@ -51,6 +51,7 @@
             this.TxtUserDataBirthDate = new System.Windows.Forms.Label();
             this.TxtUserDataLoginName = new System.Windows.Forms.Label();
             this.GrpBxMainFrame = new System.Windows.Forms.GroupBox();
+            this.TxtFlowDataFlowTitle = new System.Windows.Forms.Label();
             this.FlowLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.MenuMain = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,6 +69,7 @@
             this.dice_travelDataSet = new DiceTravel.dice_travelDataSet();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.journeysTableAdapter = new DiceTravel.dice_travelDataSetTableAdapters.journeysTableAdapter();
+            this.FlowContainer = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.usersTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.mainToolStripContainer.ContentPanel.SuspendLayout();
@@ -82,6 +84,7 @@
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.journeysBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dice_travelDataSet)).BeginInit();
+            this.FlowContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // usersTable
@@ -108,11 +111,11 @@
             this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxActiveJourneyData);
             this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxUserData);
             this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxMainFrame);
-            this.mainToolStripContainer.ContentPanel.Size = new System.Drawing.Size(798, 507);
+            this.mainToolStripContainer.ContentPanel.Size = new System.Drawing.Size(834, 507);
             this.mainToolStripContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainToolStripContainer.Location = new System.Drawing.Point(0, 0);
             this.mainToolStripContainer.Name = "mainToolStripContainer";
-            this.mainToolStripContainer.Size = new System.Drawing.Size(798, 531);
+            this.mainToolStripContainer.Size = new System.Drawing.Size(834, 531);
             this.mainToolStripContainer.TabIndex = 0;
             this.mainToolStripContainer.Text = "mainToolStripContainer";
             // 
@@ -310,13 +313,27 @@
             this.GrpBxMainFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.GrpBxMainFrame.Controls.Add(this.FlowLayoutPanel);
+            this.GrpBxMainFrame.Controls.Add(this.FlowContainer);
+            this.GrpBxMainFrame.Controls.Add(this.TxtFlowDataFlowTitle);
             this.GrpBxMainFrame.Location = new System.Drawing.Point(238, 3);
             this.GrpBxMainFrame.Name = "GrpBxMainFrame";
-            this.GrpBxMainFrame.Size = new System.Drawing.Size(557, 504);
+            this.GrpBxMainFrame.Size = new System.Drawing.Size(593, 492);
             this.GrpBxMainFrame.TabIndex = 2;
             this.GrpBxMainFrame.TabStop = false;
+            this.GrpBxMainFrame.Text = "Flow";
             this.GrpBxMainFrame.Visible = false;
+            this.GrpBxMainFrame.Enter += new System.EventHandler(this.GrpBxMainFrame_Enter);
+            // 
+            // TxtFlowDataFlowTitle
+            // 
+            this.TxtFlowDataFlowTitle.AutoSize = true;
+            this.TxtFlowDataFlowTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.TxtFlowDataFlowTitle.Location = new System.Drawing.Point(6, 16);
+            this.TxtFlowDataFlowTitle.Name = "TxtFlowDataFlowTitle";
+            this.TxtFlowDataFlowTitle.Size = new System.Drawing.Size(125, 24);
+            this.TxtFlowDataFlowTitle.TabIndex = 7;
+            this.TxtFlowDataFlowTitle.Text = "FLOWTITLE";
+            this.TxtFlowDataFlowTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FlowLayoutPanel
             // 
@@ -325,11 +342,12 @@
             this.FlowLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.OutsetPartial;
             this.FlowLayoutPanel.ColumnCount = 1;
             this.FlowLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.FlowLayoutPanel.Location = new System.Drawing.Point(6, 16);
+            this.FlowLayoutPanel.Location = new System.Drawing.Point(3, 3);
+            this.FlowLayoutPanel.MinimumSize = new System.Drawing.Size(50, 50);
             this.FlowLayoutPanel.Name = "FlowLayoutPanel";
             this.FlowLayoutPanel.RowCount = 1;
             this.FlowLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.FlowLayoutPanel.Size = new System.Drawing.Size(6, 6);
+            this.FlowLayoutPanel.Size = new System.Drawing.Size(50, 50);
             this.FlowLayoutPanel.TabIndex = 0;
             // 
             // menuStrip
@@ -340,7 +358,7 @@
             this.MenuMe});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(798, 24);
+            this.menuStrip.Size = new System.Drawing.Size(834, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -359,14 +377,14 @@
             // MenuMainLogin
             // 
             this.MenuMainLogin.Name = "MenuMainLogin";
-            this.MenuMainLogin.Size = new System.Drawing.Size(180, 22);
+            this.MenuMainLogin.Size = new System.Drawing.Size(114, 22);
             this.MenuMainLogin.Text = "Login";
             this.MenuMainLogin.Click += new System.EventHandler(this.MenuMainLogin_Click);
             // 
             // MenuMainSignUp
             // 
             this.MenuMainSignUp.Name = "MenuMainSignUp";
-            this.MenuMainSignUp.Size = new System.Drawing.Size(180, 22);
+            this.MenuMainSignUp.Size = new System.Drawing.Size(114, 22);
             this.MenuMainSignUp.Text = "SignUp";
             this.MenuMainSignUp.Click += new System.EventHandler(this.MenuMainSignUp_Click);
             // 
@@ -374,14 +392,14 @@
             // 
             this.MenuMainLogout.Enabled = false;
             this.MenuMainLogout.Name = "MenuMainLogout";
-            this.MenuMainLogout.Size = new System.Drawing.Size(180, 22);
+            this.MenuMainLogout.Size = new System.Drawing.Size(114, 22);
             this.MenuMainLogout.Text = "LogOut";
             this.MenuMainLogout.Click += new System.EventHandler(this.MenuMainLogout_Click);
             // 
             // MenuMainQuit
             // 
             this.MenuMainQuit.Name = "MenuMainQuit";
-            this.MenuMainQuit.Size = new System.Drawing.Size(180, 22);
+            this.MenuMainQuit.Size = new System.Drawing.Size(114, 22);
             this.MenuMainQuit.Text = "Exit";
             this.MenuMainQuit.Click += new System.EventHandler(this.MenuMainQuit_Click);
             // 
@@ -402,33 +420,33 @@
             // MenuMeMyFlow
             // 
             this.MenuMeMyFlow.Name = "MenuMeMyFlow";
-            this.MenuMeMyFlow.Size = new System.Drawing.Size(180, 22);
+            this.MenuMeMyFlow.Size = new System.Drawing.Size(146, 22);
             this.MenuMeMyFlow.Text = "MyFlow";
             // 
             // MenuMeMyJourneys
             // 
             this.MenuMeMyJourneys.Name = "MenuMeMyJourneys";
-            this.MenuMeMyJourneys.Size = new System.Drawing.Size(180, 22);
+            this.MenuMeMyJourneys.Size = new System.Drawing.Size(146, 22);
             this.MenuMeMyJourneys.Text = "MyJourneys";
             this.MenuMeMyJourneys.Click += new System.EventHandler(this.MenuMeMyJourneys_Click);
             // 
             // MenuMeNewJourney
             // 
             this.MenuMeNewJourney.Name = "MenuMeNewJourney";
-            this.MenuMeNewJourney.Size = new System.Drawing.Size(180, 22);
+            this.MenuMeNewJourney.Size = new System.Drawing.Size(146, 22);
             this.MenuMeNewJourney.Text = "&New Journey";
             this.MenuMeNewJourney.Click += new System.EventHandler(this.MenuMeNewJourney_Click);
             // 
             // MenuMeNewEntry
             // 
             this.MenuMeNewEntry.Name = "MenuMeNewEntry";
-            this.MenuMeNewEntry.Size = new System.Drawing.Size(180, 22);
+            this.MenuMeNewEntry.Size = new System.Drawing.Size(146, 22);
             this.MenuMeNewEntry.Text = "New Entry";
             // 
             // MenuMeGoalReached
             // 
             this.MenuMeGoalReached.Name = "MenuMeGoalReached";
-            this.MenuMeGoalReached.Size = new System.Drawing.Size(180, 22);
+            this.MenuMeGoalReached.Size = new System.Drawing.Size(146, 22);
             this.MenuMeGoalReached.Text = "Goal reached!";
             // 
             // journeysBindingSource
@@ -450,12 +468,21 @@
             // 
             this.journeysTableAdapter.ClearBeforeFill = true;
             // 
+            // FlowContainer
+            // 
+            this.FlowContainer.AutoScroll = true;
+            this.FlowContainer.Controls.Add(this.FlowLayoutPanel);
+            this.FlowContainer.Location = new System.Drawing.Point(7, 44);
+            this.FlowContainer.Name = "FlowContainer";
+            this.FlowContainer.Size = new System.Drawing.Size(580, 442);
+            this.FlowContainer.TabIndex = 8;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(798, 531);
+            this.ClientSize = new System.Drawing.Size(834, 531);
             this.Controls.Add(this.mainToolStripContainer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
@@ -483,6 +510,8 @@
             this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.journeysBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dice_travelDataSet)).EndInit();
+            this.FlowContainer.ResumeLayout(false);
+            this.FlowContainer.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -525,7 +554,9 @@
         private dice_travelDataSet dice_travelDataSet;
         private System.Windows.Forms.BindingSource journeysBindingSource;
         private dice_travelDataSetTableAdapters.journeysTableAdapter journeysTableAdapter;
-        private System.Windows.Forms.TableLayoutPanel FlowLayoutPanel;
+        public System.Windows.Forms.Label TxtFlowDataFlowTitle;
+        public System.Windows.Forms.TableLayoutPanel FlowLayoutPanel;
+        private System.Windows.Forms.FlowLayoutPanel FlowContainer;
     }
 }
 

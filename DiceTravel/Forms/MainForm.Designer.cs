@@ -35,7 +35,7 @@
             this.usersTableAdapter = new DiceTravel.UsersTableTableAdapters.usersTableAdapter();
             this.mainToolStripContainer = new System.Windows.Forms.ToolStripContainer();
             this.BtnNewEntry = new System.Windows.Forms.Button();
-            this.GrpBxNextDestinationData = new System.Windows.Forms.GroupBox();
+            this.GrpBxNextTripData = new System.Windows.Forms.GroupBox();
             this.BtnNextDestCancel = new System.Windows.Forms.Button();
             this.TxtNextDestTitle = new System.Windows.Forms.RichTextBox();
             this.BtnNextDestReached = new System.Windows.Forms.Button();
@@ -51,8 +51,9 @@
             this.TxtUserDataBirthDate = new System.Windows.Forms.Label();
             this.TxtUserDataLoginName = new System.Windows.Forms.Label();
             this.GrpBxMainFrame = new System.Windows.Forms.GroupBox();
-            this.TxtFlowDataFlowTitle = new System.Windows.Forms.Label();
+            this.FlowContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.FlowLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.TxtFlowDataFlowTitle = new System.Windows.Forms.Label();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.MenuMain = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMainLogin = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,22 +70,21 @@
             this.dice_travelDataSet = new DiceTravel.dice_travelDataSet();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.journeysTableAdapter = new DiceTravel.dice_travelDataSetTableAdapters.journeysTableAdapter();
-            this.FlowContainer = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.usersTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.mainToolStripContainer.ContentPanel.SuspendLayout();
             this.mainToolStripContainer.TopToolStripPanel.SuspendLayout();
             this.mainToolStripContainer.SuspendLayout();
-            this.GrpBxNextDestinationData.SuspendLayout();
+            this.GrpBxNextTripData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctBxNextDestVisibility)).BeginInit();
             this.GrpBxActiveJourneyData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctBxActiveJourneyVisibility)).BeginInit();
             this.GrpBxUserData.SuspendLayout();
             this.GrpBxMainFrame.SuspendLayout();
+            this.FlowContainer.SuspendLayout();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.journeysBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dice_travelDataSet)).BeginInit();
-            this.FlowContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // usersTable
@@ -107,7 +107,7 @@
             // mainToolStripContainer.ContentPanel
             // 
             this.mainToolStripContainer.ContentPanel.Controls.Add(this.BtnNewEntry);
-            this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxNextDestinationData);
+            this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxNextTripData);
             this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxActiveJourneyData);
             this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxUserData);
             this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxMainFrame);
@@ -134,19 +134,19 @@
             this.BtnNewEntry.UseVisualStyleBackColor = true;
             this.BtnNewEntry.Visible = false;
             // 
-            // GrpBxNextDestinationData
+            // GrpBxNextTripData
             // 
-            this.GrpBxNextDestinationData.Controls.Add(this.BtnNextDestCancel);
-            this.GrpBxNextDestinationData.Controls.Add(this.TxtNextDestTitle);
-            this.GrpBxNextDestinationData.Controls.Add(this.BtnNextDestReached);
-            this.GrpBxNextDestinationData.Controls.Add(this.PctBxNextDestVisibility);
-            this.GrpBxNextDestinationData.Location = new System.Drawing.Point(4, 235);
-            this.GrpBxNextDestinationData.Name = "GrpBxNextDestinationData";
-            this.GrpBxNextDestinationData.Size = new System.Drawing.Size(228, 87);
-            this.GrpBxNextDestinationData.TabIndex = 4;
-            this.GrpBxNextDestinationData.TabStop = false;
-            this.GrpBxNextDestinationData.Text = "Next destination";
-            this.GrpBxNextDestinationData.Visible = false;
+            this.GrpBxNextTripData.Controls.Add(this.BtnNextDestCancel);
+            this.GrpBxNextTripData.Controls.Add(this.TxtNextDestTitle);
+            this.GrpBxNextTripData.Controls.Add(this.BtnNextDestReached);
+            this.GrpBxNextTripData.Controls.Add(this.PctBxNextDestVisibility);
+            this.GrpBxNextTripData.Location = new System.Drawing.Point(4, 235);
+            this.GrpBxNextTripData.Name = "GrpBxNextTripData";
+            this.GrpBxNextTripData.Size = new System.Drawing.Size(228, 87);
+            this.GrpBxNextTripData.TabIndex = 4;
+            this.GrpBxNextTripData.TabStop = false;
+            this.GrpBxNextTripData.Text = "Next destination";
+            this.GrpBxNextTripData.Visible = false;
             // 
             // BtnNextDestCancel
             // 
@@ -324,6 +324,32 @@
             this.GrpBxMainFrame.Visible = false;
             this.GrpBxMainFrame.Enter += new System.EventHandler(this.GrpBxMainFrame_Enter);
             // 
+            // FlowContainer
+            // 
+            this.FlowContainer.AutoScroll = true;
+            this.FlowContainer.Controls.Add(this.FlowLayoutPanel);
+            this.FlowContainer.Location = new System.Drawing.Point(7, 44);
+            this.FlowContainer.Name = "FlowContainer";
+            this.FlowContainer.Size = new System.Drawing.Size(580, 442);
+            this.FlowContainer.TabIndex = 8;
+            // 
+            // FlowLayoutPanel
+            // 
+            this.FlowLayoutPanel.AutoScroll = true;
+            this.FlowLayoutPanel.AutoSize = true;
+            this.FlowLayoutPanel.ColumnCount = 1;
+            this.FlowLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.FlowLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.FlowLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.FlowLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.FlowLayoutPanel.Location = new System.Drawing.Point(3, 3);
+            this.FlowLayoutPanel.MinimumSize = new System.Drawing.Size(50, 50);
+            this.FlowLayoutPanel.Name = "FlowLayoutPanel";
+            this.FlowLayoutPanel.RowCount = 1;
+            this.FlowLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.FlowLayoutPanel.Size = new System.Drawing.Size(50, 50);
+            this.FlowLayoutPanel.TabIndex = 0;
+            // 
             // TxtFlowDataFlowTitle
             // 
             this.TxtFlowDataFlowTitle.AutoSize = true;
@@ -334,21 +360,6 @@
             this.TxtFlowDataFlowTitle.TabIndex = 7;
             this.TxtFlowDataFlowTitle.Text = "FLOWTITLE";
             this.TxtFlowDataFlowTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // FlowLayoutPanel
-            // 
-            this.FlowLayoutPanel.AutoScroll = true;
-            this.FlowLayoutPanel.AutoSize = true;
-            this.FlowLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.OutsetPartial;
-            this.FlowLayoutPanel.ColumnCount = 1;
-            this.FlowLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.FlowLayoutPanel.Location = new System.Drawing.Point(3, 3);
-            this.FlowLayoutPanel.MinimumSize = new System.Drawing.Size(50, 50);
-            this.FlowLayoutPanel.Name = "FlowLayoutPanel";
-            this.FlowLayoutPanel.RowCount = 1;
-            this.FlowLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.FlowLayoutPanel.Size = new System.Drawing.Size(50, 50);
-            this.FlowLayoutPanel.TabIndex = 0;
             // 
             // menuStrip
             // 
@@ -468,15 +479,6 @@
             // 
             this.journeysTableAdapter.ClearBeforeFill = true;
             // 
-            // FlowContainer
-            // 
-            this.FlowContainer.AutoScroll = true;
-            this.FlowContainer.Controls.Add(this.FlowLayoutPanel);
-            this.FlowContainer.Location = new System.Drawing.Point(7, 44);
-            this.FlowContainer.Name = "FlowContainer";
-            this.FlowContainer.Size = new System.Drawing.Size(580, 442);
-            this.FlowContainer.TabIndex = 8;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -497,7 +499,7 @@
             this.mainToolStripContainer.TopToolStripPanel.PerformLayout();
             this.mainToolStripContainer.ResumeLayout(false);
             this.mainToolStripContainer.PerformLayout();
-            this.GrpBxNextDestinationData.ResumeLayout(false);
+            this.GrpBxNextTripData.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PctBxNextDestVisibility)).EndInit();
             this.GrpBxActiveJourneyData.ResumeLayout(false);
             this.GrpBxActiveJourneyData.PerformLayout();
@@ -506,12 +508,12 @@
             this.GrpBxUserData.PerformLayout();
             this.GrpBxMainFrame.ResumeLayout(false);
             this.GrpBxMainFrame.PerformLayout();
+            this.FlowContainer.ResumeLayout(false);
+            this.FlowContainer.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.journeysBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dice_travelDataSet)).EndInit();
-            this.FlowContainer.ResumeLayout(false);
-            this.FlowContainer.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -545,7 +547,7 @@
         private System.Windows.Forms.Button BtnActiveJourneyDelete;
         private System.Windows.Forms.PictureBox PctBxActiveJourneyVisibility;
         private System.Windows.Forms.RichTextBox TxtActiveJourneyTitle;
-        private System.Windows.Forms.GroupBox GrpBxNextDestinationData;
+        private System.Windows.Forms.GroupBox GrpBxNextTripData;
         private System.Windows.Forms.Button BtnNextDestCancel;
         private System.Windows.Forms.RichTextBox TxtNextDestTitle;
         private System.Windows.Forms.Button BtnNextDestReached;

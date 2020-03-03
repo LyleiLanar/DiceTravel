@@ -115,10 +115,11 @@
       <DependentUpon>UsersTable.xsd</DependentUpon>
     </Compile>
     <Compile Include="Util\ActiveUserStore.cs" />
+    <Compile Include="Util\Exceptions\EntityCreationException - Copy.cs" />
     <Compile Include="Util\Exceptions\EntityCreationException.cs" />
     <Compile Include="Util\Exceptions\UserAuthenticator.cs" />
     <Compile Include="Util\Exceptions\ValidationException.cs" />
-    <Compile Include="Util\FormUpdater.cs" />
+    <Compile Include="Util\MainFormUpdater.cs" />
     <EmbeddedResource Include="Controls\FlowElementControl.resx">
       <DependentUpon>FlowElementControl.cs</DependentUpon>
     </EmbeddedResource>

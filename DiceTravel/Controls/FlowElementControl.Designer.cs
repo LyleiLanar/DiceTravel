@@ -35,8 +35,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "FlowElementControl";
+            this.MouseEnter += new System.EventHandler(this.FlowElementControl_MouseEnter);
             this.MouseLeave += new System.EventHandler(this.FlowElementControl_MouseLeave);
-            this.MouseHover += new System.EventHandler(this.FlowElementControl_MouseHover);
             this.ResumeLayout(false);
 
         }

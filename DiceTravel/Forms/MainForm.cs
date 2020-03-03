@@ -10,8 +10,7 @@ using System.Windows.Forms;
 namespace DiceTravel
 {
     public partial class MainForm : Form
-    {         
-
+    { 
         public MainForm()
         {
             InitializeComponent();
@@ -71,7 +70,7 @@ namespace DiceTravel
         {
             GrpBxUserData.Visible = false;
             GrpBxActiveJourneyData.Visible = false;
-            GrpBxNextDestinationData.Visible = false;
+            GrpBxNextTripData.Visible = false;
             GrpBxMainFrame.Visible = false;
             MenuMainLogout.Enabled = false;
             MenuMainLogin.Enabled = true;
@@ -82,7 +81,7 @@ namespace DiceTravel
         {
             GrpBxUserData.Visible = true;
             GrpBxActiveJourneyData.Visible = true;
-            GrpBxNextDestinationData.Visible = true;
+            GrpBxNextTripData.Visible = true;
             GrpBxMainFrame.Visible = true;
             MenuMainLogout.Enabled = true;
             MenuMainLogin.Enabled = false;
@@ -225,7 +224,7 @@ namespace DiceTravel
             foreach (Journey journey in journeys)
             {
                 journeyControls.Add(new JourneyControl(journey));
-                FlowLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                //FlowLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
             }
 
             for (int i = 0; i < journeyControls.Count; i++)

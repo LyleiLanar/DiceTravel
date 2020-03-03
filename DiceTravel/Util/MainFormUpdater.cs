@@ -5,34 +5,59 @@ using System.Windows.Forms;
 
 namespace DiceTravel.Util
 {
-    static public class FormUpdater
+    public class MainFormUpdater
     {
         public enum FlowType { Journey, NoFlow }
-        static public FlowType ActiveFlowType { get; private set; }
 
-        static public void SetDefaultFlowType()
+        private MainForm MainForm { get; }
+        public FlowType ActiveFlowType { get; private set; }
+        public MainFormUpdater(MainForm mainForm)
+        {
+            MainForm = mainForm;
+        }
+
+        public void SetDefaultFlowType()
         {
             ActiveFlowType = FlowType.Journey;
         }
-        static public void UpdateFlow()
+        public void Update()
+        {
+            UserDataUpdate();
+            ActiveJourneyDataUpdate();
+            TripDataUpdate();
+            FlowUpdate();
+        }
+
+        private void UserDataUpdate()
+        {
+
+        }
+        private void ActiveJourneyDataUpdate()
+        {
+
+        }
+        private void TripDataUpdate()
+        {
+
+        }
+        private void FlowUpdate()
         {
             switch (ActiveFlowType)
             {
                 case FlowType.Journey:
-                    MyJourneyFlowUpdate();
+                    FlowUpdate_MyJourney();
                     break;
 
                 case FlowType.NoFlow:
                     throw new System.Exception("Ez még nincs kész!");
-                    
+
                 default:
-                    throw new System.Exception("Missing flow type!");
+                    throw new MissingFlowTypeException("Missing flow type!");
             }
         }
-
-        static private void MyJourneyFlowUpdate()
+        private void FlowUpdate_MyJourney()
         {
-            Program.mainForm.FlowLayoutPanel.Controls.Clear();
+            MainForm.FlowLayoutPanel.Controls.Clear();
             List<Journey> journeys = ActiveUserStore.ActiveUser.GetJourneys();
 
             List<JourneyControl> journeyControls = new List<JourneyControl>();
@@ -40,7 +65,7 @@ namespace DiceTravel.Util
             foreach (Journey journey in journeys)
             {
                 journeyControls.Add(new JourneyControl(journey));
-                Program.mainForm.FlowLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                MainForm.FlowLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
             }
 
             for (int i = 0; i < journeyControls.Count; i++)
@@ -49,10 +74,9 @@ namespace DiceTravel.Util
                 control.Name = $"JourneyControl_{i}";
                 control.SetContent();
                 control.Visible = true;
-                Program.mainForm.FlowLayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-                Program.mainForm.FlowLayoutPanel.Controls.Add(control, 0, i);
+                MainForm.FlowLayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+                MainForm.FlowLayoutPanel.Controls.Add(control, 0, i);
             }
         }
-
     }
 }

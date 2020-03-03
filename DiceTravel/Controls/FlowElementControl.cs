@@ -17,15 +17,15 @@ namespace DiceTravel.Controls
             InitializeComponent();
         }
 
-        private void FlowElementControl_MouseHover(object sender, EventArgs e)
-        {
-            BackColor = SystemColors.ControlDark;
-        }
 
         private void FlowElementControl_MouseLeave(object sender, EventArgs e)
         {
             BackColor = SystemColors.Control;
         }
 
+        private void FlowElementControl_MouseEnter(object sender, EventArgs e)
+        {
+            BackColor = SystemColors.ControlLight;
+        }
     }
 }

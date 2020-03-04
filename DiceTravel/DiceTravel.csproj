@@ -55,10 +55,10 @@
     <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Entity.cs" />
-    <Compile Include="Classes\Entry.cs" />
-    <Compile Include="Classes\Journey.cs" />
-    <Compile Include="Classes\Trip.cs" />
+    <Compile Include="EntityClasses\Entity.cs" />
+    <Compile Include="EntityClasses\Entry.cs" />
+    <Compile Include="EntityClasses\Journey.cs" />
+    <Compile Include="EntityClasses\Trip.cs" />
     <Compile Include="Controls\FlowElementControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -108,7 +108,7 @@
     <Compile Include="Forms\UserForms\SignUpForm.Designer.cs">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\User.cs" />
+    <Compile Include="EntityClasses\User.cs" />
     <Compile Include="UsersTable.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -117,9 +117,8 @@
     <Compile Include="Util\ActiveUserStore.cs" />
     <Compile Include="Util\Exceptions\EntityCreationException - Copy.cs" />
     <Compile Include="Util\Exceptions\EntityCreationException.cs" />
-    <Compile Include="Util\Exceptions\UserAuthenticator.cs" />
     <Compile Include="Util\Exceptions\ValidationException.cs" />
-    <Compile Include="Util\MainFormUpdater.cs" />
+    <Compile Include="Util\FlowProvider.cs" />
     <EmbeddedResource Include="Controls\FlowElementControl.resx">
       <DependentUpon>FlowElementControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,6 +150,7 @@
     <EmbeddedResource Include="Forms\UserForms\SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DiceTravel.cd" />
     <None Include="dice_travelDataSet.xsc">
       <DependentUpon>dice_travelDataSet.xsd</DependentUpon>
     </None>

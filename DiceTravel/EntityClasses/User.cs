@@ -38,8 +38,10 @@ namespace DiceTravel
             string query = "INSERT INTO `dice_travel`.`users` (`login_name`, `pswd`,`sur_name`,`first_name`,`birth_date`) " +
                                     $"VALUES (@login_name,@pswd,@sur_name,@first_name,@birth_date);";
 
-            MySqlCommand sqlCommand = new MySqlCommand(query);
-            sqlCommand.Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString);
+            MySqlCommand sqlCommand = new MySqlCommand(query)
+            {
+                Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString)
+            };
 
             sqlCommand.Parameters.Add("@login_name", MySqlDbType.VarChar,20);
             sqlCommand.Parameters.Add("@pswd", MySqlDbType.VarChar,32);
@@ -67,8 +69,10 @@ namespace DiceTravel
         {
             string query = "DELETE FROM users WHERE id = @id";
 
-            MySqlCommand sqlCommand = new MySqlCommand(query);
-            sqlCommand.Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString);
+            MySqlCommand sqlCommand = new MySqlCommand(query)
+            {
+                Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString)
+            };
             sqlCommand.Parameters.Add("@id", MySqlDbType.Int32);
             sqlCommand.Parameters["@id"].Value = this.Id;
 

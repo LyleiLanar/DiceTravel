@@ -40,8 +40,10 @@ namespace DiceTravel.Classes
             string query = "INSERT INTO `dice_travel`.`trips` (`journey_id`, `serial_number`,`end_location`,`end_date`,`visibility`) " +
                                   "VALUES (@journey_id, @serial_number, @end_location, @end_date, @visibility);";
 
-            MySqlCommand sqlCommand = new MySqlCommand(query);
-            sqlCommand.Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString);
+            MySqlCommand sqlCommand = new MySqlCommand(query)
+            {
+                Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString)
+            };
 
             sqlCommand.Parameters.Add("@journey_id", MySqlDbType.Int32);
             sqlCommand.Parameters.Add("@serial_number", MySqlDbType.Int32);
@@ -64,10 +66,12 @@ namespace DiceTravel.Classes
         public override void UpdateItself()
         {
             string query = "UPDATE `dice_travel`.`trips` SET `journey_id`=@journey_id, `serial_number`=@serial_number,`end_location`=@end_location,`end_date`=@end_date,`visibility`=@visibility " +
-                "WHERE id = @id";                                
+                "WHERE id = @id";
 
-            MySqlCommand sqlCommand = new MySqlCommand(query);
-            sqlCommand.Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString);
+            MySqlCommand sqlCommand = new MySqlCommand(query)
+            {
+                Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString)
+            };
 
             sqlCommand.Parameters.Add("@id", MySqlDbType.Int32);
             sqlCommand.Parameters.Add("@journey_id", MySqlDbType.Int32);
@@ -89,8 +93,10 @@ namespace DiceTravel.Classes
         {
             string query = "DELETE FROM trips WHERE id = @id;";
 
-            MySqlCommand sqlCommand = new MySqlCommand(query);
-            sqlCommand.Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString);
+            MySqlCommand sqlCommand = new MySqlCommand(query)
+            {
+                Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString)
+            };
 
             sqlCommand.Parameters.Add("@id", MySqlDbType.Int32);
             sqlCommand.Parameters["@id"].Value = Id;

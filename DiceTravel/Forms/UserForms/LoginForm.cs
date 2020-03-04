@@ -12,8 +12,7 @@ namespace DiceTravel
         }
         private void BtnSignUpCancel_Click(object sender, EventArgs e)
         {
-            Program.mainFormActivate();
-            this.Dispose();
+            this.Close();
         }
         private void BtnSignUpLogin_Click(object sender, EventArgs e)
         {
@@ -22,9 +21,10 @@ namespace DiceTravel
                 this.Validation();
                 ActiveUserStore.LogInUser(inputLoginLoginName.Text, inputLoginPassword.Text);
                 Program.mainForm.Enabled = true;
-                Program.mainFormActivate();
-                Program.mainForm.UpdatePanelWithJourneyFlow();
-                this.Dispose();
+                Program.mainForm.FlowProvider.SetFlow_MyJourneys();
+                Program.mainForm.UpdateFlow();
+                Program.mainForm.UpdateData();
+                this.Close();
             }
             catch (ValidationException ex)
             { MessageBox.Show(ex.Message, "Login Error!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); }
@@ -37,7 +37,16 @@ namespace DiceTravel
         {
             if (inputLoginLoginName.Text == "" || inputLoginPassword.Text == "")
             { throw new ValidationException("Missing Login name or Password!"); }
+        }
 
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            Program.mainFormDeactivate();
+        }
+
+        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.mainFormActivate();
         }
     }
 }

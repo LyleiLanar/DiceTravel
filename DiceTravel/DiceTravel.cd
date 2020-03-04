@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DiceTravel.Classes.Entity">
+    <Position X="3.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACBEABAAAAAAAARAAAAAAgAAAgQ=</HashCode>
+      <FileName>EntityClasses\Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Classes.Entry">
+    <Position X="3" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AEACgAAEAABAAAAAACJAABCAAAAAAARAAAAAAAAAAAQ=</HashCode>
+      <FileName>EntityClasses\Entry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Classes.Journey">
+    <Position X="5.75" Y="4" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AEACAAAIAAAAIEAAACFAEBiAAAAAAARAAAAQAECAAAQ=</HashCode>
+      <FileName>EntityClasses\Journey.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Classes.Trip">
+    <Position X="0.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEACAQAAAAAAAAAAICBAABAgAAEAAARAAAAAAABAAAQ=</HashCode>
+      <FileName>EntityClasses\Trip.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Controls.FlowElementControl">
+    <Position X="0.5" Y="8.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAABAAAAAAAABAAAAA=</HashCode>
+      <FileName>Controls\FlowElementControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Controls.JourneyControl" Collapsed="true">
+    <Position X="0.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACIAACAAAACAAAASAAEAAAABEAAAAAAAAAE=</HashCode>
+      <FileName>Controls\JourneyControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Forms.JourneyForms.JourneyCreateForm" Collapsed="true">
+    <Position X="12.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAhEAAAACAAAAggBCCAAACOAABCAAAAAAAAgAACAAA=</HashCode>
+      <FileName>Forms\JourneyForms\JourneyCreateForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Forms.TripForms.TripCreateForm" Collapsed="true">
+    <Position X="10.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAACAAEAAAACCAAAgCAAAQAAGAAAAACABgAAA=</HashCode>
+      <FileName>Forms\TripForms\TripCreateForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Util.ActiveUserStore" Collapsed="true">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIQAAAgIAAAAAAAAAQAIAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Util\ActiveUserStore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Util.EntityCreationException" Collapsed="true">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Util\Exceptions\EntityCreationException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Util.MissingFlowTypeException" Collapsed="true">
+    <Position X="9" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Util\Exceptions\EntityCreationException - Copy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Util.ValidationException" Collapsed="true">
+    <Position X="12.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Util\Exceptions\ValidationException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

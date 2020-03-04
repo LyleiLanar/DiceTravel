@@ -35,7 +35,7 @@
             this.usersTableAdapter = new DiceTravel.UsersTableTableAdapters.usersTableAdapter();
             this.mainToolStripContainer = new System.Windows.Forms.ToolStripContainer();
             this.BtnNewEntry = new System.Windows.Forms.Button();
-            this.GrpBxNextTripData = new System.Windows.Forms.GroupBox();
+            this.GrpBxActiveTripData = new System.Windows.Forms.GroupBox();
             this.BtnNextDestCancel = new System.Windows.Forms.Button();
             this.TxtNextDestTitle = new System.Windows.Forms.RichTextBox();
             this.BtnNextDestReached = new System.Windows.Forms.Button();
@@ -75,7 +75,7 @@
             this.mainToolStripContainer.ContentPanel.SuspendLayout();
             this.mainToolStripContainer.TopToolStripPanel.SuspendLayout();
             this.mainToolStripContainer.SuspendLayout();
-            this.GrpBxNextTripData.SuspendLayout();
+            this.GrpBxActiveTripData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctBxNextDestVisibility)).BeginInit();
             this.GrpBxActiveJourneyData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctBxActiveJourneyVisibility)).BeginInit();
@@ -107,7 +107,7 @@
             // mainToolStripContainer.ContentPanel
             // 
             this.mainToolStripContainer.ContentPanel.Controls.Add(this.BtnNewEntry);
-            this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxNextTripData);
+            this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxActiveTripData);
             this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxActiveJourneyData);
             this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxUserData);
             this.mainToolStripContainer.ContentPanel.Controls.Add(this.GrpBxMainFrame);
@@ -134,19 +134,19 @@
             this.BtnNewEntry.UseVisualStyleBackColor = true;
             this.BtnNewEntry.Visible = false;
             // 
-            // GrpBxNextTripData
+            // GrpBxActiveTripData
             // 
-            this.GrpBxNextTripData.Controls.Add(this.BtnNextDestCancel);
-            this.GrpBxNextTripData.Controls.Add(this.TxtNextDestTitle);
-            this.GrpBxNextTripData.Controls.Add(this.BtnNextDestReached);
-            this.GrpBxNextTripData.Controls.Add(this.PctBxNextDestVisibility);
-            this.GrpBxNextTripData.Location = new System.Drawing.Point(4, 235);
-            this.GrpBxNextTripData.Name = "GrpBxNextTripData";
-            this.GrpBxNextTripData.Size = new System.Drawing.Size(228, 87);
-            this.GrpBxNextTripData.TabIndex = 4;
-            this.GrpBxNextTripData.TabStop = false;
-            this.GrpBxNextTripData.Text = "Next destination";
-            this.GrpBxNextTripData.Visible = false;
+            this.GrpBxActiveTripData.Controls.Add(this.BtnNextDestCancel);
+            this.GrpBxActiveTripData.Controls.Add(this.TxtNextDestTitle);
+            this.GrpBxActiveTripData.Controls.Add(this.BtnNextDestReached);
+            this.GrpBxActiveTripData.Controls.Add(this.PctBxNextDestVisibility);
+            this.GrpBxActiveTripData.Location = new System.Drawing.Point(4, 235);
+            this.GrpBxActiveTripData.Name = "GrpBxActiveTripData";
+            this.GrpBxActiveTripData.Size = new System.Drawing.Size(228, 87);
+            this.GrpBxActiveTripData.TabIndex = 4;
+            this.GrpBxActiveTripData.TabStop = false;
+            this.GrpBxActiveTripData.Text = "Next destination";
+            this.GrpBxActiveTripData.Visible = false;
             // 
             // BtnNextDestCancel
             // 
@@ -322,7 +322,6 @@
             this.GrpBxMainFrame.TabStop = false;
             this.GrpBxMainFrame.Text = "Flow";
             this.GrpBxMainFrame.Visible = false;
-            this.GrpBxMainFrame.Enter += new System.EventHandler(this.GrpBxMainFrame_Enter);
             // 
             // FlowContainer
             // 
@@ -499,7 +498,7 @@
             this.mainToolStripContainer.TopToolStripPanel.PerformLayout();
             this.mainToolStripContainer.ResumeLayout(false);
             this.mainToolStripContainer.PerformLayout();
-            this.GrpBxNextTripData.ResumeLayout(false);
+            this.GrpBxActiveTripData.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PctBxNextDestVisibility)).EndInit();
             this.GrpBxActiveJourneyData.ResumeLayout(false);
             this.GrpBxActiveJourneyData.PerformLayout();
@@ -547,7 +546,7 @@
         private System.Windows.Forms.Button BtnActiveJourneyDelete;
         private System.Windows.Forms.PictureBox PctBxActiveJourneyVisibility;
         private System.Windows.Forms.RichTextBox TxtActiveJourneyTitle;
-        private System.Windows.Forms.GroupBox GrpBxNextTripData;
+        private System.Windows.Forms.GroupBox GrpBxActiveTripData;
         private System.Windows.Forms.Button BtnNextDestCancel;
         private System.Windows.Forms.RichTextBox TxtNextDestTitle;
         private System.Windows.Forms.Button BtnNextDestReached;

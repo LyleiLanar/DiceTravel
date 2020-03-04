@@ -34,8 +34,10 @@ namespace DiceTravel.Classes
         }
         static public MySqlCommand CreateCommand(string sqlCommandString)
         {
-            MySqlCommand sqlCommand = new MySqlCommand(sqlCommandString);
-            sqlCommand.Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString);
+            MySqlCommand sqlCommand = new MySqlCommand(sqlCommandString)
+            {
+                Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString)
+            };
 
             return sqlCommand;
         }

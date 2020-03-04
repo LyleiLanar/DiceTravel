@@ -8,18 +8,16 @@ namespace DiceTravel.Forms.JourneyForms
 {
     public partial class JourneyCreateForm : Form
     {
-        TripCreateForm tripCreateFrom;
 
         public JourneyCreateForm()
         {
-            tripCreateFrom = new TripCreateForm();
             InitializeComponent();
         }
 
         private void BtnJourneyCreateCancel_Click(object sender, EventArgs e)
         {
             Program.mainFormActivate();
-            this.Dispose();
+            this.Close();
         }
         private void BtnJourneyCreateStart_Click(object sender, EventArgs e)
         {

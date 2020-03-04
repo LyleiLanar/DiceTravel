@@ -1,9 +1,11 @@
 ﻿using DiceTravel.Classes;
+using System;
 
 namespace DiceTravel.Util
 {
     static public class ActiveUserStore
     {
+        
         static public User ActiveUser { get; private set; }
 
         static public bool IsThereActiveUser
@@ -20,13 +22,10 @@ namespace DiceTravel.Util
         static public void LogOutUser()
         {
             ActiveUser = null;
-            Program.mainForm.ChangeControlsAvailabilityAfterLogout();
         }
         static public void LogInUser(string loginName, string password)
         {
-            ActiveUser = UserAuthenticator.GetAuthenticatedUser(loginName, password);
-            //felcsapunk egy eventet. event observer pattern, delegate.
-            Program.mainForm.UpdateData();
+            ActiveUser = GetAuthenticatedUser(loginName, password);
         }
         static public bool IsThereActiveJourney()
         {
@@ -36,5 +35,29 @@ namespace DiceTravel.Util
         {
             return ActiveUser.GetActiveJourney();
         }
+        static public User GetAuthenticatedUser(string loginName, string password)
+        {
+            try
+            {
+                User user = User.GetUserBy_LoginName(loginName);
+                try
+                {
+                    if (user.Password == password)
+                    {
+                        return user; 
+                    }
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    return null;
+                }
+            }
+            catch (Exception)
+            {
+                throw new EntityCreationException("Wrong Login name or Password!");
+            }
+            return null;
+        }
+
     }
 }

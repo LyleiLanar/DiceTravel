@@ -31,6 +31,7 @@ namespace DiceTravel.Classes
         public int Id { get; set; }
         public int UserId { get; set; }
         public string Title { get; set; }
+
         public string StartLocation { get; set; }
         public string StartDate { get; set; }
         public int Closed { get; set; }
@@ -113,8 +114,11 @@ namespace DiceTravel.Classes
 
             string query = "DELETE FROM journeys WHERE id = @id";
 
-            MySqlCommand sqlCommand = new MySqlCommand(query);
-            sqlCommand.Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString);
+            MySqlCommand sqlCommand = new MySqlCommand(query)
+            {
+                Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString)
+            };
+
             sqlCommand.Parameters.Add("@id", MySqlDbType.Int32);
             sqlCommand.Parameters["@id"].Value = ActiveUserStore.GetActiveJourney().Id;
 
@@ -183,6 +187,5 @@ namespace DiceTravel.Classes
             }
             return null;
         }
-
     }
 }

@@ -18,8 +18,7 @@ namespace DiceTravel
         //Methods
         private void BtnSignUpCancel_Click(object sender, EventArgs e)
         {
-            Program.mainFormActivate();
-            this.Dispose();
+            this.Close();
         }
         private void BtnSignUpReg_Click(object sender, EventArgs e)
         {
@@ -29,13 +28,10 @@ namespace DiceTravel
             user.Surname = InputSignUpSurname.Text;
             user.Firstname = InputSignUpFirstName.Text;
             user.BirthDate = DatePickerSignUpBirthDate.Value.Date.ToString("yyy-MM-dd");
-
             try
             {
                 Validation(user);
                 user.CreateItself();
-                //DBDriver.InsertRow(user.GetTableQueryString(), user.GetInsertSql());
-                Program.mainFormActivate();
                 this.Dispose();
             }
             catch (ValidationException ex)
@@ -60,6 +56,15 @@ namespace DiceTravel
             if (sameLoginNamesAmount != 0) { throw new ValidationException("Used Login Name!"); }
             if (InputSignUpPassword.Text == "") { throw new ValidationException("Missing Password!"); }
             if (InputSignUpPassword.Text != InputSignUpPasswordAgain.Text) { throw new ValidationException("Different Passwords!"); }
+        }
+
+        private void SignUpForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.mainFormActivate();
+        }
+        private void SignUpForm_Load(object sender, EventArgs e)
+        {
+            Program.mainFormDeactivate();
         }
     }
 }

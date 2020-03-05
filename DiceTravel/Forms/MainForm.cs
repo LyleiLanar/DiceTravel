@@ -11,10 +11,10 @@ namespace DiceTravel
 {
     public partial class MainForm : Form
     {
-        public FlowProvider FlowProvider { get; }
+        public FlowElementProvider FlowElementProvider { get; }
         public MainForm()
         {
-            FlowProvider = new FlowProvider();
+            FlowElementProvider = new FlowElementProvider();
             InitializeComponent();
         }
 
@@ -28,7 +28,7 @@ namespace DiceTravel
 
             signUpForm.DatePickerSignUpBirthDate.Value = DateTime.Now;
             signUpForm.DatePickerSignUpBirthDate.MaxDate = DateTime.Now;
-            signUpForm.Show();            
+            signUpForm.Show();
         }
         private void MenuMainQuit_Click(object sender, EventArgs e)
         {
@@ -61,6 +61,7 @@ namespace DiceTravel
                     Text = Properties.Settings.Default.projectName + " - New Journey"
 
                 };
+
                 journeyCreateForm.Show();
             }
             else
@@ -82,7 +83,7 @@ namespace DiceTravel
                 Program.mainForm.ChangeControlsAvailabilityAfterLogout();
             }
         }
-        
+
         //userData Formmethods
         private void UpdateUserData()
         {
@@ -169,6 +170,7 @@ namespace DiceTravel
             {
                 Journey.GetJourney_ById(ActiveUserStore.GetActiveJourney().Id).DeleteItself();
             }
+            Program.mainForm.DrawFlow();
             Program.mainForm.UpdateData();
         }
         private void BtnNewJourney_Click(object sender, EventArgs e)
@@ -220,18 +222,21 @@ namespace DiceTravel
         }
 
         //flowLayoutPanel
-        public void UpdateFlow()
+        public void DrawFlow()
         {
-            FlowLayoutPanel.Controls.Clear();            
+            FlowElementProvider.UpdateFlow();
+            FlowLayoutPanel.Controls.Clear();
             List<FlowElementControl> controls = new List<FlowElementControl>();
-                controls.AddRange(FlowProvider.FlowElements);
-            
+            controls.AddRange(FlowElementProvider.FlowElements);
+
             for (int i = 0; i < controls.Count; i++)
             {
                 FlowElementControl control = controls[i];
                 FlowLayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
                 FlowLayoutPanel.Controls.Add(control, 0, i);
             }
+
+            TxtFlowDataFlowTitle.Text = FlowElementProvider.FlowTitle;
         }
 
         //misc methods
@@ -239,17 +244,22 @@ namespace DiceTravel
         {
             if (MessageBox.Show("Do you want to exit?\r\nYou will be logged out!", "Are you sure? Really?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
-                ActiveUserStore.LogOutUser();               
+                ActiveUserStore.LogOutUser();
             }
             else
             {
                 e.Cancel = true;
             }
         }
-        private void MenuMeMyJourneys_Click(object sender, EventArgs e)
+        public void MenuMeMyJourneys_Click(object sender, EventArgs e)
         {
-            Program.mainForm.FlowProvider.SetFlow_MyJourneys();
-            Program.mainForm.UpdateFlow();
+            Program.mainForm.FlowElementProvider.SetFlow_JourneysByUser(ActiveUserStore.ActiveUser.Id);
+            Program.mainForm.DrawFlow();
+        }
+
+        private void BtnMyJourney_Click(object sender, EventArgs e)
+        {
+            MenuMeMyJourneys_Click(sender, e);
         }
     }
 }

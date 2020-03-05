@@ -20,9 +20,8 @@ namespace DiceTravel
             {
                 this.Validation();
                 ActiveUserStore.LogInUser(inputLoginLoginName.Text, inputLoginPassword.Text);
-                Program.mainForm.Enabled = true;
-                Program.mainForm.FlowProvider.SetFlow_MyJourneys();
-                Program.mainForm.UpdateFlow();
+                Program.mainForm.MenuMeMyJourneys_Click(sender, e);
+                //Program.mainForm.DrawFlow();
                 Program.mainForm.UpdateData();
                 this.Close();
             }

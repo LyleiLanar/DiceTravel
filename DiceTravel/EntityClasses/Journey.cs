@@ -126,15 +126,7 @@ namespace DiceTravel.Classes
         }
 
         //DB methods
-        public override string GetInsertSql()
-        {
-            return $"INSERT INTO `dice_travel`.`journeys` (`user_id`, `title`,`start_location`,`start_date`,`closed`,`visibility`) " +
-                                   $"VALUES ('{ActiveUserStore.ActiveUser.Id}', '{Title}','{StartLocation}','{StartDate}','{Closed}','{Visibility}');";
-        }
-        public override string GetTableQueryString()
-        {
-            return "SELECT * FROM journeys";
-        }
+
         public List<Trip> GetTrips()
         {
             string getTripsCommand = $"SELECT * FROM trips WHERE journey_id = @journey_id";

@@ -55,6 +55,12 @@
     <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\TripControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TripControl.Designer.cs">
+      <DependentUpon>TripControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="EntityClasses\Entity.cs" />
     <Compile Include="EntityClasses\Entry.cs" />
     <Compile Include="EntityClasses\Journey.cs" />
@@ -115,15 +121,18 @@
       <DependentUpon>UsersTable.xsd</DependentUpon>
     </Compile>
     <Compile Include="Util\ActiveUserStore.cs" />
-    <Compile Include="Util\Exceptions\EntityCreationException - Copy.cs" />
+    <Compile Include="Util\Exceptions\MissingFlowTypeException.cs" />
     <Compile Include="Util\Exceptions\EntityCreationException.cs" />
     <Compile Include="Util\Exceptions\ValidationException.cs" />
-    <Compile Include="Util\FlowProvider.cs" />
+    <Compile Include="Util\FlowElementProvider.cs" />
     <EmbeddedResource Include="Controls\FlowElementControl.resx">
       <DependentUpon>FlowElementControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\JourneyControl.resx">
       <DependentUpon>JourneyControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TripControl.resx">
+      <DependentUpon>TripControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\JourneyForms\JourneyCreateForm.resx">
       <DependentUpon>JourneyCreateForm.cs</DependentUpon>
@@ -200,6 +209,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Icons\icoSettings.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Util\FlowCreation\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icoMyJourneys.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icoDelete.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,8 +6,6 @@ namespace DiceTravel.Classes
     abstract public class Entity
     {
         //entity methods
-        abstract public string GetInsertSql();
-        abstract public string GetTableQueryString();
 
         //CRUD
         abstract public void CreateItself();

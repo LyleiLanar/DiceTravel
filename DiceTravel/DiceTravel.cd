@@ -29,7 +29,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DiceTravel.Controls.FlowElementControl">
-    <Position X="0.5" Y="8.5" Width="1.75" />
+    <Position X="1.5" Y="8.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAABAAAAAAAABAAAAA=</HashCode>
       <FileName>Controls\FlowElementControl.cs</FileName>
@@ -38,7 +38,7 @@
   <Class Name="DiceTravel.Controls.JourneyControl" Collapsed="true">
     <Position X="0.5" Y="11.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACIAACAAAACAAAASAAEAAAABEAAAAAAAAAE=</HashCode>
+      <HashCode>CAAAAAAAACIAACAAAACAAAASAAUAAAABEAAAAAAAAAE=</HashCode>
       <FileName>Controls\JourneyControl.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -82,6 +82,20 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Util\Exceptions\ValidationException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Controls.TripControl" Collapsed="true">
+    <Position X="2.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAECIAAQAAAACAAAACAAAQAAECAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\TripControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Util.FlowProvider">
+    <Position X="10" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAQAAAAAAAAAAEAAAABAAA=</HashCode>
+      <FileName>Util\FlowProvider.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

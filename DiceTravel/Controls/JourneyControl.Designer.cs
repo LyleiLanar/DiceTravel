@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.TxtJourneyTitle = new System.Windows.Forms.Label();
-            this.PctBxJourneyVisibility = new System.Windows.Forms.PictureBox();
-            this.BtnJourneyOptions = new System.Windows.Forms.Button();
             this.TxtJourneyStartDate = new System.Windows.Forms.Label();
             this.TxtJourneyUserLoginName = new System.Windows.Forms.Label();
+            this.BtnJourneyOptions = new System.Windows.Forms.Button();
+            this.PctBxJourneyVisibility = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.PctBxJourneyVisibility)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,26 +45,6 @@
             this.TxtJourneyTitle.Size = new System.Drawing.Size(66, 20);
             this.TxtJourneyTitle.TabIndex = 0;
             this.TxtJourneyTitle.Text = "START";
-            // 
-            // PctBxJourneyVisibility
-            // 
-            this.PctBxJourneyVisibility.Location = new System.Drawing.Point(4, 15);
-            this.PctBxJourneyVisibility.Name = "PctBxJourneyVisibility";
-            this.PctBxJourneyVisibility.Size = new System.Drawing.Size(33, 33);
-            this.PctBxJourneyVisibility.TabIndex = 15;
-            this.PctBxJourneyVisibility.TabStop = false;
-            this.PctBxJourneyVisibility.WaitOnLoad = true;
-            // 
-            // BtnJourneyOptions
-            // 
-            this.BtnJourneyOptions.BackColor = System.Drawing.SystemColors.Control;
-            this.BtnJourneyOptions.FlatAppearance.BorderSize = 0;
-            this.BtnJourneyOptions.Image = global::DiceTravel.Properties.Resources.icoSettings;
-            this.BtnJourneyOptions.Location = new System.Drawing.Point(486, 11);
-            this.BtnJourneyOptions.Name = "BtnJourneyOptions";
-            this.BtnJourneyOptions.Size = new System.Drawing.Size(42, 45);
-            this.BtnJourneyOptions.TabIndex = 16;
-            this.BtnJourneyOptions.UseVisualStyleBackColor = false;
             // 
             // TxtJourneyStartDate
             // 
@@ -86,6 +66,27 @@
             this.TxtJourneyUserLoginName.TabIndex = 18;
             this.TxtJourneyUserLoginName.Text = "NAME";
             // 
+            // BtnJourneyOptions
+            // 
+            this.BtnJourneyOptions.BackColor = System.Drawing.SystemColors.Control;
+            this.BtnJourneyOptions.FlatAppearance.BorderSize = 0;
+            this.BtnJourneyOptions.Image = global::DiceTravel.Properties.Resources.icoSettings;
+            this.BtnJourneyOptions.Location = new System.Drawing.Point(486, 11);
+            this.BtnJourneyOptions.Name = "BtnJourneyOptions";
+            this.BtnJourneyOptions.Size = new System.Drawing.Size(42, 45);
+            this.BtnJourneyOptions.TabIndex = 16;
+            this.BtnJourneyOptions.UseVisualStyleBackColor = false;
+            this.BtnJourneyOptions.Click += new System.EventHandler(this.BtnJourneyOptions_Click);
+            // 
+            // PctBxJourneyVisibility
+            // 
+            this.PctBxJourneyVisibility.Location = new System.Drawing.Point(4, 15);
+            this.PctBxJourneyVisibility.Name = "PctBxJourneyVisibility";
+            this.PctBxJourneyVisibility.Size = new System.Drawing.Size(33, 33);
+            this.PctBxJourneyVisibility.TabIndex = 15;
+            this.PctBxJourneyVisibility.TabStop = false;
+            this.PctBxJourneyVisibility.WaitOnLoad = true;
+            // 
             // JourneyControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -98,7 +99,8 @@
             this.Controls.Add(this.TxtJourneyTitle);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "JourneyControl";
-            this.Size = new System.Drawing.Size(531, 66);
+            this.Size = new System.Drawing.Size(537, 70);
+            this.Click += new System.EventHandler(this.JourneyControl_Click);
             ((System.ComponentModel.ISupportInitialize)(this.PctBxJourneyVisibility)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

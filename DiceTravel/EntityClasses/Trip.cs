@@ -105,16 +105,6 @@ namespace DiceTravel.Classes
         }        
         
         //DB Methods
-        public override string GetInsertSql()
-        {
-            string activeJourneyId = ActiveUserStore.GetActiveJourney().Id.ToString();
-            return $"INSERT INTO `dice_travel`.`trips` (`journey_id`, `serial_number`,`end_location`,`end_date`,`visibility`) " +
-                                  $"VALUES ('{activeJourneyId}', '{SerialNumber}','{EndLocation}','{EndDate}','{Visibility}');";
-        }
-        public override string GetTableQueryString()
-        {
-            return "SELECT * FROM trips";
-        }
 
         //misc methods
         public override void Validation()

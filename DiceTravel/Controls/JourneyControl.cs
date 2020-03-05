@@ -23,6 +23,10 @@ namespace DiceTravel.Controls
             TxtJourneyTitle.Text = Journey.Closed == 0 ? Journey.Title : Journey.Title + " (Closed)";
             TxtJourneyStartDate.Text = Journey.StartLocation + ", " + Journey.StartDate;
 
+            if (Journey.Closed == 0)
+            {
+                BorderStyle = BorderStyle.FixedSingle;
+            }
 
             switch (Journey.Visibility)
             {
@@ -42,6 +46,17 @@ namespace DiceTravel.Controls
                     PctBxJourneyVisibility.Image = Properties.Resources.icoError.ToBitmap();
                     break;
             }
+        }
+
+        private void BtnJourneyOptions_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void JourneyControl_Click(object sender, System.EventArgs e)
+        {
+            Program.mainForm.FlowElementProvider.SetFlow_TripsByJourney(this.Journey.Id);
+            Program.mainForm.DrawFlow();
         }
     }
 }

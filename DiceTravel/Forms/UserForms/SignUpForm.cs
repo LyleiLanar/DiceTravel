@@ -32,7 +32,7 @@ namespace DiceTravel
             {
                 Validation(user);
                 user.CreateItself();
-                this.Dispose();
+                this.Close();
             }
             catch (ValidationException ex)
             {

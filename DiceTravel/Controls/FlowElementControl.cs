@@ -17,13 +17,12 @@ namespace DiceTravel.Controls
             InitializeComponent();
         }
 
-
-        private void FlowElementControl_MouseLeave(object sender, EventArgs e)
+        protected virtual void FlowElementControl_MouseLeave(object sender, EventArgs e)
         {
             BackColor = SystemColors.Control;
         }
 
-        private void FlowElementControl_MouseEnter(object sender, EventArgs e)
+        protected virtual void FlowElementControl_MouseEnter(object sender, EventArgs e)
         {
             BackColor = SystemColors.ControlLight;
         }

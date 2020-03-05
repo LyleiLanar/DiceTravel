@@ -197,6 +197,8 @@
             this.Name = "JourneyCreateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "JourneyCreateForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.JourneyCreateForm_FormClosed);
+            this.Load += new System.EventHandler(this.JourneyCreateForm_Load);
             this.GrpBxJourneyCreateVisibility.ResumeLayout(false);
             this.GrpBxJourneyCreateVisibility.PerformLayout();
             this.ResumeLayout(false);

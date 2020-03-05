@@ -52,8 +52,8 @@ namespace DiceTravel.Forms.JourneyForms
                     Validation(newTrip);
                     newTrip.CreateItself();
                     Program.mainForm.UpdateData();
-                    Program.mainFormActivate();
-                    this.Dispose();
+                    Program.mainForm.DrawFlow();
+                    this.Close();
                 }
                 catch (ValidationException ex)
                 {
@@ -73,6 +73,16 @@ namespace DiceTravel.Forms.JourneyForms
         private void Validation(Trip newTrip)
         {
             newTrip.Validation();
+        }
+
+        private void JourneyCreateForm_Load(object sender, EventArgs e)
+        {
+            Program.mainFormDeactivate();
+        }
+
+        private void JourneyCreateForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.mainFormActivate();
         }
     }
 

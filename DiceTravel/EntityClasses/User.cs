@@ -80,16 +80,7 @@ namespace DiceTravel
         }
 
         //entity methods
-        public override string GetInsertSql()
-        {
-            return $"INSERT INTO `dice_travel`.`users` (`login_name`, `pswd`,`sur_name`,`first_name`,`birth_date`) " +
-                                    $"VALUES ('{LoginName}', '{Password}','{Surname}','{Firstname}','{BirthDate}');";
 
-        }
-        public override string GetTableQueryString()
-        {
-            return "SELECT * FROM users";
-        }
         public List<Journey> GetJourneys()
         {
             string getTripsCommand = $"SELECT * FROM dice_travel.journeys WHERE user_id = @user_id ORDER BY start_date DESC";

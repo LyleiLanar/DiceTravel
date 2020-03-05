@@ -29,15 +29,15 @@ namespace DiceTravel.Util
                         if (UserId != ActiveUserStore.ActiveUser.Id)
                         {
                             userLoginName = User.GetUser_ById(UserId).LoginName;
-                            return $"{userLoginName} Journeys";
+                            return $"{userLoginName} journeys:";
                         }
-                        return "My Journeys";
+                        return "My journeys:";
 
                     case FlowType.TripFlow:
 
                         userLoginName = User.GetUser_ById(UserId).LoginName;
                         journeyTitle = Journey.GetJourney_ById(JourneyId).Title;
-                        return $"{userLoginName} -> {journeyTitle} Trips";
+                        return $"{userLoginName}/{journeyTitle} trips:";
 
                     case FlowType.MainFlow:
                         throw new MissingFlowTypeException("Missing flowType");

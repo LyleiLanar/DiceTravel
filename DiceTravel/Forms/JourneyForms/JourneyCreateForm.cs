@@ -38,7 +38,7 @@ namespace DiceTravel.Forms.JourneyForms
             Trip newTrip = new Trip()
             {
                 EndLocation = InputJourneyCreateJourneyFirstDest.Text,
-                EndDate = Properties.Settings.Default.nullDate,
+                EndDate = DateTime.Parse(Properties.Settings.Default.nullDate),
                 Visibility = newJourney.Visibility,
             };
 

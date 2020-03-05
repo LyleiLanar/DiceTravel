@@ -12,19 +12,24 @@ namespace DiceTravel.Controls
 {
     public partial class FlowElementControl : UserControl
     {
+        protected System.Drawing.Color originalColor;
+        protected System.Drawing.Color highlightedColor;
+
         public FlowElementControl()
         {
+            highlightedColor = SystemColors.ControlLight;
+            originalColor = SystemColors.Control;
             InitializeComponent();
         }
 
         protected virtual void FlowElementControl_MouseLeave(object sender, EventArgs e)
         {
-            BackColor = SystemColors.Control;
+            BackColor = originalColor;
         }
 
         protected virtual void FlowElementControl_MouseEnter(object sender, EventArgs e)
         {
-            BackColor = SystemColors.ControlLight;
+            BackColor = highlightedColor;
         }
     }
 }

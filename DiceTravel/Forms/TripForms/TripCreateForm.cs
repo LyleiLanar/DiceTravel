@@ -22,14 +22,14 @@ namespace DiceTravel.Forms.TripForms
         private void BtnTripCreateStart_Click(object sender, EventArgs e)
         {
             Trip oldTrip = ActiveUserStore.GetActiveJourney().GetLastTrip();
-            oldTrip.EndDate = DateTime.Now.ToString("yyy-MM-dd HH:mm:ss");
+            oldTrip.EndDate = DateTime.Now;
             oldTrip.UpdateItself();
 
             Trip newTrip = new Trip
             {
                 JourneyId = ActiveUserStore.GetActiveJourney().Id,
                 EndLocation = InputTripCreateTripEndLocation.Text,
-                EndDate = Properties.Settings.Default.nullDate
+                EndDate = DateTime.Parse(Properties.Settings.Default.nullDate)
             };
 
             try
@@ -71,7 +71,7 @@ namespace DiceTravel.Forms.TripForms
             journey.Closed = 1;
             journey.UpdateItself();
 
-            trip.EndDate = DateTime.Now.ToString("yyy-MM-dd HH:mm:ss");
+            trip.EndDate = DateTime.Now;
             trip.UpdateItself();
 
             Program.mainForm.UpdateData();

@@ -8,10 +8,19 @@ namespace DiceTravel.Controls
     {
         public Journey Journey { get; }
 
-        public JourneyControl(Journey journey)
+        public JourneyControl(Journey journey) : base()
         {
             Journey = journey;
+
+            if (Journey.Closed == 0)
+            {
+                BorderStyle = BorderStyle.FixedSingle;
+                highlightedColor = SystemColors.ControlDarkDark;
+                originalColor = SystemColors.ControlDark;
+            }
+
             InitializeComponent();
+            BackColor = originalColor;
             SetContent();
         }
 
@@ -22,11 +31,6 @@ namespace DiceTravel.Controls
             TxtJourneyUserLoginName.Text = userLoginName;
             TxtJourneyTitle.Text = Journey.Closed == 0 ? Journey.Title : Journey.Title + " (Closed)";
             TxtJourneyStartDate.Text = Journey.StartLocation + ", " + Journey.StartDate;
-
-            if (Journey.Closed == 0)
-            {
-                BorderStyle = BorderStyle.FixedSingle;
-            }
 
             switch (Journey.Visibility)
             {

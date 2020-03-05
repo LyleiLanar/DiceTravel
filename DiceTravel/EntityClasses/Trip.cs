@@ -12,7 +12,7 @@ namespace DiceTravel.Classes
         public int JourneyId { get; set; }
         public int SerialNumber { get; set; }
         public string EndLocation { get; set; }
-        public string EndDate { get; set; }
+        public DateTime EndDate { get; set; }
         public int Visibility { get; set; }
 
         //constructors
@@ -25,7 +25,8 @@ namespace DiceTravel.Classes
 
             string dateString = dataRow["end_date"].ToString();
             DateTime date = DateTime.Parse(dateString);
-            EndDate = date.ToString("yyy-MM-dd HH:mm:ss");
+            //EndDate = date.ToString("yyy-MM-dd HH:mm:ss");
+            EndDate = date;
 
             Visibility = Int32.Parse(dataRow["visibility"].ToString());
         }

@@ -6,7 +6,7 @@ namespace DiceTravel.Util
 {
     public class FlowElementProvider
     {
-        public enum FlowType { NoFlow, JourneyFlow, MainFlow, TripFlow, EntryFlow }
+        public enum FlowType { NoFlow, JourneyFlow_ByUser, MainFlow, TripFlow_ByJourney, EntryFlow_ByTrip, StoryFlow }
         public FlowType Type { get; private set; }
         public int UserId { get; private set; }
         public int JourneyId { get; private set; }
@@ -26,7 +26,7 @@ namespace DiceTravel.Util
                     case FlowType.NoFlow:
                         return "NoFlow!";
 
-                    case FlowType.JourneyFlow:
+                    case FlowType.JourneyFlow_ByUser:
                         if (UserId != ActiveUserStore.ActiveUser.Id)
                         {
                             userLoginName = User.GetUser_ById(UserId).LoginName;
@@ -34,7 +34,7 @@ namespace DiceTravel.Util
                         }
                         return "My journeys:";
 
-                    case FlowType.TripFlow:
+                    case FlowType.TripFlow_ByJourney:
 
                         userLoginName = User.GetUser_ById(UserId).LoginName;
                         journeyTitle = Journey.GetJourney_ById(JourneyId).Title;
@@ -43,7 +43,7 @@ namespace DiceTravel.Util
                     case FlowType.MainFlow:
                         throw new MissingFlowTypeException("Missing flowType");
 
-                    case FlowType.EntryFlow:
+                    case FlowType.EntryFlow_ByTrip:
                         userLoginName = User.GetUser_ById(UserId).LoginName;
                         journeyTitle = Journey.GetJourney_ById(JourneyId).Title;
                         tripEndLocation = Trip.GetTrip_ById(TripId).EndLocation;
@@ -74,18 +74,18 @@ namespace DiceTravel.Util
                 case FlowType.NoFlow:
                     throw new MissingFlowTypeException("No flow type, cannot update the flow!");
 
-                case FlowType.JourneyFlow:
+                case FlowType.JourneyFlow_ByUser:
                     SetFlow_JourneysByUser(UserId);
                     break;
 
                 case FlowType.MainFlow:
                     break;
 
-                case FlowType.TripFlow:
+                case FlowType.TripFlow_ByJourney:
                     SetFlow_TripsByJourney(JourneyId);
                     break;
 
-                case FlowType.EntryFlow:
+                case FlowType.EntryFlow_ByTrip:
                     SetFlow_EntriesByTrip(TripId);
                     break;
 
@@ -115,7 +115,7 @@ namespace DiceTravel.Util
             UserId = userId;
             JourneyId = -1;
             TripId = -1;
-            Type = FlowType.JourneyFlow;
+            Type = FlowType.JourneyFlow_ByUser;
 
             //update the list
             FlowElements.Clear();
@@ -141,7 +141,7 @@ namespace DiceTravel.Util
             UserId = Journey.GetJourney_ById(journeyId).UserId;
             JourneyId = journeyId;
             TripId = -1;
-            Type = FlowType.TripFlow;
+            Type = FlowType.TripFlow_ByJourney;
 
             FlowElements.Clear();
             FlowElements.AddRange(tripControls);
@@ -166,7 +166,7 @@ namespace DiceTravel.Util
             JourneyId = Trip.GetTrip_ById(tripId).JourneyId;
             UserId = Journey.GetJourney_ById(JourneyId).UserId;
             TripId = tripId;
-            Type = FlowType.EntryFlow;
+            Type = FlowType.EntryFlow_ByTrip;
 
             FlowElements.Clear();
             FlowElements.AddRange(entryControls);

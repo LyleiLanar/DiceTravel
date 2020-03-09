@@ -15,7 +15,7 @@ namespace DiceTravel.Forms.TripForms
     public partial class TripUpdateForm : Form
     {
 
-        private Trip trip;
+        private readonly Trip trip;
 
         public TripUpdateForm()
         {

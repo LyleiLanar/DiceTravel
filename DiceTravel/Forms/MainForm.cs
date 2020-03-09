@@ -135,6 +135,7 @@ namespace DiceTravel
                 BtnNextTripReached.Enabled = true;
                 BtnActiveJourneyDelete.Enabled = true;
                 BtnNewEntry.Enabled = true;
+                BtnNextTripModify.Enabled = true;
 
                 switch (activeJourney.Visibility)
                 {
@@ -164,6 +165,7 @@ namespace DiceTravel
                 BtnNextTripReached.Enabled = false;
                 BtnActiveJourneyDelete.Enabled = false;
                 BtnNewEntry.Enabled = false;
+                BtnNextTripModify.Enabled = false;
                 PctBxActiveJourneyVisibility.Image = Properties.Resources.icoEmpty.ToBitmap();
                 PctBxNextTripVisibility.Image = Properties.Resources.icoEmpty.ToBitmap();
             }
@@ -291,6 +293,12 @@ namespace DiceTravel
         private void BtnNewEntry_Click(object sender, EventArgs e)
         {
             new EntryCreateForm().Show(); 
+        }
+
+        private void BtnAllEntries_Click(object sender, EventArgs e)
+        {
+            Program.mainForm.FlowElementProvider.SetFlow_JourneysByUser(ActiveUserStore.ActiveUser.Id);
+            Program.mainForm.DrawFlow();
         }
     }
 }

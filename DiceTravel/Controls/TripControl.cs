@@ -1,4 +1,5 @@
 ﻿using DiceTravel.Classes;
+using DiceTravel.Util;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -58,6 +59,13 @@ namespace DiceTravel.Controls
         private void TripControl_Click(object sender, EventArgs e)
         {
             Program.mainForm.FlowElementProvider.SetFlow_EntriesByTrip(Trip.Id);
+            Program.mainForm.DrawFlow();
+        }
+
+        private void BtnTripBackToJourney_Click(object sender, EventArgs e)
+        {
+            FlowElementProvider flowElementProvider = Program.mainForm.FlowElementProvider;
+            Program.mainForm.FlowElementProvider.SetFlow_JourneysByUser(flowElementProvider.UserId);
             Program.mainForm.DrawFlow();
         }
     }

@@ -100,8 +100,6 @@ namespace DiceTravel
         }
         public Journey GetActiveJourney()
         {
-            Journey activeJourney = null;
-
             string query = $"SELECT * FROM dice_travel.journeys WHERE user_id = @Id and closed = 0;";
             MySqlCommand sqlCommand = CreateCommand(query);
             sqlCommand.Parameters.Add("@Id", MySqlDbType.Int32);

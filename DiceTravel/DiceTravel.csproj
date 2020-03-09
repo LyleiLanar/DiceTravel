@@ -255,5 +255,11 @@
   <ItemGroup>
     <None Include="Resources\Icons\icoFinished.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icoBack.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icoEntry.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

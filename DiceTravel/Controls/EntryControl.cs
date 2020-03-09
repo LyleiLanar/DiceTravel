@@ -1,4 +1,5 @@
 ﻿using DiceTravel.Classes;
+using DiceTravel.Util;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,6 +56,13 @@ namespace DiceTravel.Controls
         private void TxtEntryComment_MouseLeave(object sender, EventArgs e)
         {
             BackColor = originalColor;
+        }
+
+        private void BtnEntryBackToEntry_Click(object sender, EventArgs e)
+        {
+            FlowElementProvider flowElementProvider = Program.mainForm.FlowElementProvider;
+            Program.mainForm.FlowElementProvider.SetFlow_TripsByJourney(flowElementProvider.JourneyId);
+            Program.mainForm.DrawFlow();
         }
     }
 }

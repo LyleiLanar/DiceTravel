@@ -46,6 +46,7 @@
             this.GrpBxUserData = new System.Windows.Forms.GroupBox();
             this.TxtUserDataLoginName = new System.Windows.Forms.Label();
             this.GrpBxMainFrame = new System.Windows.Forms.GroupBox();
+            this.BtnAllEntries = new System.Windows.Forms.Button();
             this.BtnMyJourney = new System.Windows.Forms.Button();
             this.FlowContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.FlowLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -119,6 +120,7 @@
             this.BtnNewEntry.Size = new System.Drawing.Size(229, 46);
             this.BtnNewEntry.TabIndex = 5;
             this.BtnNewEntry.Text = "New Entry";
+            this.MainFormToolTip.SetToolTip(this.BtnNewEntry, "Add new entry to your Trip");
             this.BtnNewEntry.UseVisualStyleBackColor = false;
             this.BtnNewEntry.Visible = false;
             this.BtnNewEntry.Click += new System.EventHandler(this.BtnNewEntry_Click);
@@ -149,6 +151,7 @@
             this.BtnNextTripModify.Name = "BtnNextTripModify";
             this.BtnNextTripModify.Size = new System.Drawing.Size(40, 40);
             this.BtnNextTripModify.TabIndex = 16;
+            this.MainFormToolTip.SetToolTip(this.BtnNextTripModify, "Modify Trip");
             this.BtnNextTripModify.UseVisualStyleBackColor = false;
             this.BtnNextTripModify.Click += new System.EventHandler(this.BtnNextTripModify_Click);
             // 
@@ -238,6 +241,7 @@
             this.BtnActiveJourneyNewJourney.Name = "BtnActiveJourneyNewJourney";
             this.BtnActiveJourneyNewJourney.Size = new System.Drawing.Size(40, 40);
             this.BtnActiveJourneyNewJourney.TabIndex = 13;
+            this.MainFormToolTip.SetToolTip(this.BtnActiveJourneyNewJourney, "Start new Journey!");
             this.BtnActiveJourneyNewJourney.UseVisualStyleBackColor = false;
             this.BtnActiveJourneyNewJourney.Click += new System.EventHandler(this.BtnNewJourney_Click);
             // 
@@ -251,6 +255,8 @@
             this.BtnActiveJourneyDelete.Name = "BtnActiveJourneyDelete";
             this.BtnActiveJourneyDelete.Size = new System.Drawing.Size(40, 40);
             this.BtnActiveJourneyDelete.TabIndex = 12;
+            this.BtnActiveJourneyDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.MainFormToolTip.SetToolTip(this.BtnActiveJourneyDelete, "Delete active Journey");
             this.BtnActiveJourneyDelete.UseVisualStyleBackColor = false;
             this.BtnActiveJourneyDelete.Click += new System.EventHandler(this.BtnMyJourneyDelete_Click);
             // 
@@ -295,6 +301,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GrpBxMainFrame.BackColor = System.Drawing.SystemColors.Control;
+            this.GrpBxMainFrame.Controls.Add(this.BtnAllEntries);
             this.GrpBxMainFrame.Controls.Add(this.BtnMyJourney);
             this.GrpBxMainFrame.Controls.Add(this.FlowContainer);
             this.GrpBxMainFrame.Controls.Add(this.TxtFlowDataFlowTitle);
@@ -305,6 +312,19 @@
             this.GrpBxMainFrame.TabStop = false;
             this.GrpBxMainFrame.Text = "Flow";
             this.GrpBxMainFrame.Visible = false;
+            // 
+            // BtnAllEntries
+            // 
+            this.BtnAllEntries.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnAllEntries.BackColor = System.Drawing.SystemColors.Control;
+            this.BtnAllEntries.Image = global::DiceTravel.Properties.Resources.icoEntry;
+            this.BtnAllEntries.Location = new System.Drawing.Point(589, 99);
+            this.BtnAllEntries.Name = "BtnAllEntries";
+            this.BtnAllEntries.Size = new System.Drawing.Size(50, 50);
+            this.BtnAllEntries.TabIndex = 10;
+            this.MainFormToolTip.SetToolTip(this.BtnAllEntries, "My Entries");
+            this.BtnAllEntries.UseVisualStyleBackColor = false;
+            this.BtnAllEntries.Click += new System.EventHandler(this.BtnAllEntries_Click);
             // 
             // BtnMyJourney
             // 
@@ -573,6 +593,7 @@
         private System.Windows.Forms.FlowLayoutPanel FlowContainer;
         private System.Windows.Forms.Button BtnMyJourney;
         private System.Windows.Forms.ToolTip MainFormToolTip;
+        private System.Windows.Forms.Button BtnAllEntries;
     }
 }
 

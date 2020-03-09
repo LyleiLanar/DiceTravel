@@ -63,6 +63,16 @@ namespace DiceTravel.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icoBack {
+            get {
+                object obj = ResourceManager.GetObject("icoBack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icoDelete {
             get {
                 object obj = ResourceManager.GetObject("icoDelete", resourceCulture);
@@ -77,6 +87,16 @@ namespace DiceTravel.Properties {
             get {
                 object obj = ResourceManager.GetObject("icoEmpty", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icoEntry {
+            get {
+                object obj = ResourceManager.GetObject("icoEntry", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

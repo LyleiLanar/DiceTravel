@@ -60,11 +60,11 @@ namespace DiceTravel
 
         private void SignUpForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Program.mainFormActivate();
+            Program.MainFormActivate();
         }
         private void SignUpForm_Load(object sender, EventArgs e)
         {
-            Program.mainFormDeactivate();
+            Program.MainFormDeactivate();
         }
     }
 }

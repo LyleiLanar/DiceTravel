@@ -40,12 +40,12 @@ namespace DiceTravel
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            Program.mainFormDeactivate();
+            Program.MainFormDeactivate();
         }
 
         private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Program.mainFormActivate();
+            Program.MainFormActivate();
         }
     }
 }

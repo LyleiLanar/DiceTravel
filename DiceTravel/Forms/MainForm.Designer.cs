@@ -30,16 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.usersTable = new DiceTravel.UsersTable();
-            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.usersTableAdapter = new DiceTravel.UsersTableTableAdapters.usersTableAdapter();
             this.mainToolStripContainer = new System.Windows.Forms.ToolStripContainer();
             this.BtnNewEntry = new System.Windows.Forms.Button();
             this.GrpBxActiveTripData = new System.Windows.Forms.GroupBox();
-            this.BtnNextDestCancel = new System.Windows.Forms.Button();
-            this.TxtNextDestTitle = new System.Windows.Forms.RichTextBox();
-            this.BtnNextDestReached = new System.Windows.Forms.Button();
-            this.PctBxNextDestVisibility = new System.Windows.Forms.PictureBox();
+            this.BtnNextTripCancel = new System.Windows.Forms.Button();
+            this.TxtNextTripTitle = new System.Windows.Forms.RichTextBox();
+            this.BtnNextTripReached = new System.Windows.Forms.Button();
+            this.PctBxNextTripVisibility = new System.Windows.Forms.PictureBox();
             this.GrpBxActiveJourneyData = new System.Windows.Forms.GroupBox();
             this.TxtActiveJourneyTitle = new System.Windows.Forms.RichTextBox();
             this.PctBxActiveJourneyVisibility = new System.Windows.Forms.PictureBox();
@@ -47,8 +44,6 @@
             this.BtnActiveJourneyDelete = new System.Windows.Forms.Button();
             this.TxtActiveJourneyInfo = new System.Windows.Forms.Label();
             this.GrpBxUserData = new System.Windows.Forms.GroupBox();
-            this.TxtMainFormUserDataBirthDate = new System.Windows.Forms.Label();
-            this.TxtUserDataBirthDate = new System.Windows.Forms.Label();
             this.TxtUserDataLoginName = new System.Windows.Forms.Label();
             this.GrpBxMainFrame = new System.Windows.Forms.GroupBox();
             this.BtnMyJourney = new System.Windows.Forms.Button();
@@ -67,41 +62,30 @@
             this.MenuMeNewJourney = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMeNewEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMeGoalReached = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.MainFormToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.usersTable = new DiceTravel.UsersTable();
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.usersTableAdapter = new DiceTravel.UsersTableTableAdapters.usersTableAdapter();
             this.journeysBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dice_travelDataSet = new DiceTravel.dice_travelDataSet();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.journeysTableAdapter = new DiceTravel.dice_travelDataSetTableAdapters.journeysTableAdapter();
-            this.MainFormToolTip = new System.Windows.Forms.ToolTip(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.usersTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.mainToolStripContainer.ContentPanel.SuspendLayout();
             this.mainToolStripContainer.TopToolStripPanel.SuspendLayout();
             this.mainToolStripContainer.SuspendLayout();
             this.GrpBxActiveTripData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PctBxNextDestVisibility)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PctBxNextTripVisibility)).BeginInit();
             this.GrpBxActiveJourneyData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctBxActiveJourneyVisibility)).BeginInit();
             this.GrpBxUserData.SuspendLayout();
             this.GrpBxMainFrame.SuspendLayout();
             this.FlowContainer.SuspendLayout();
             this.menuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.usersTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.journeysBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dice_travelDataSet)).BeginInit();
             this.SuspendLayout();
-            // 
-            // usersTable
-            // 
-            this.usersTable.DataSetName = "UsersTable";
-            this.usersTable.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // usersBindingSource
-            // 
-            this.usersBindingSource.DataMember = "users";
-            this.usersBindingSource.DataSource = this.usersTable;
-            // 
-            // usersTableAdapter
-            // 
-            this.usersTableAdapter.ClearBeforeFill = true;
             // 
             // mainToolStripContainer
             // 
@@ -138,62 +122,65 @@
             // 
             // GrpBxActiveTripData
             // 
-            this.GrpBxActiveTripData.Controls.Add(this.BtnNextDestCancel);
-            this.GrpBxActiveTripData.Controls.Add(this.TxtNextDestTitle);
-            this.GrpBxActiveTripData.Controls.Add(this.BtnNextDestReached);
-            this.GrpBxActiveTripData.Controls.Add(this.PctBxNextDestVisibility);
-            this.GrpBxActiveTripData.Location = new System.Drawing.Point(4, 235);
+            this.GrpBxActiveTripData.Controls.Add(this.BtnNextTripCancel);
+            this.GrpBxActiveTripData.Controls.Add(this.TxtNextTripTitle);
+            this.GrpBxActiveTripData.Controls.Add(this.BtnNextTripReached);
+            this.GrpBxActiveTripData.Controls.Add(this.PctBxNextTripVisibility);
+            this.GrpBxActiveTripData.Location = new System.Drawing.Point(4, 181);
             this.GrpBxActiveTripData.Name = "GrpBxActiveTripData";
-            this.GrpBxActiveTripData.Size = new System.Drawing.Size(228, 100);
+            this.GrpBxActiveTripData.Size = new System.Drawing.Size(228, 93);
             this.GrpBxActiveTripData.TabIndex = 4;
             this.GrpBxActiveTripData.TabStop = false;
             this.GrpBxActiveTripData.Text = "Next destination";
             this.GrpBxActiveTripData.Visible = false;
             // 
-            // BtnNextDestCancel
+            // BtnNextTripCancel
             // 
-            this.BtnNextDestCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BtnNextDestCancel.Enabled = false;
-            this.BtnNextDestCancel.Image = global::DiceTravel.Properties.Resources.icoDelete;
-            this.BtnNextDestCancel.Location = new System.Drawing.Point(182, 54);
-            this.BtnNextDestCancel.Name = "BtnNextDestCancel";
-            this.BtnNextDestCancel.Size = new System.Drawing.Size(40, 40);
-            this.BtnNextDestCancel.TabIndex = 16;
-            this.BtnNextDestCancel.UseVisualStyleBackColor = true;
+            this.BtnNextTripCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.BtnNextTripCancel.Enabled = false;
+            this.BtnNextTripCancel.Image = global::DiceTravel.Properties.Resources.icoDelete;
+            this.BtnNextTripCancel.Location = new System.Drawing.Point(182, 47);
+            this.BtnNextTripCancel.Name = "BtnNextTripCancel";
+            this.BtnNextTripCancel.Size = new System.Drawing.Size(40, 40);
+            this.BtnNextTripCancel.TabIndex = 16;
+            this.BtnNextTripCancel.UseVisualStyleBackColor = true;
+            this.BtnNextTripCancel.Click += new System.EventHandler(this.BtnNextTripCancel_Click);
             // 
-            // TxtNextDestTitle
+            // TxtNextTripTitle
             // 
-            this.TxtNextDestTitle.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtNextDestTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TxtNextDestTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TxtNextDestTitle.Location = new System.Drawing.Point(46, 19);
-            this.TxtNextDestTitle.Name = "TxtNextDestTitle";
-            this.TxtNextDestTitle.ReadOnly = true;
-            this.TxtNextDestTitle.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.TxtNextDestTitle.Size = new System.Drawing.Size(176, 22);
-            this.TxtNextDestTitle.TabIndex = 19;
-            this.TxtNextDestTitle.Text = "TITLE";
+            this.TxtNextTripTitle.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtNextTripTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtNextTripTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.TxtNextTripTitle.Location = new System.Drawing.Point(12, 19);
+            this.TxtNextTripTitle.Name = "TxtNextTripTitle";
+            this.TxtNextTripTitle.ReadOnly = true;
+            this.TxtNextTripTitle.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.TxtNextTripTitle.Size = new System.Drawing.Size(210, 22);
+            this.TxtNextTripTitle.TabIndex = 19;
+            this.TxtNextTripTitle.Text = "TITLE";
             // 
-            // BtnNextDestReached
+            // BtnNextTripReached
             // 
-            this.BtnNextDestReached.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BtnNextDestReached.Enabled = false;
-            this.BtnNextDestReached.Location = new System.Drawing.Point(6, 71);
-            this.BtnNextDestReached.Name = "BtnNextDestReached";
-            this.BtnNextDestReached.Size = new System.Drawing.Size(103, 23);
-            this.BtnNextDestReached.TabIndex = 17;
-            this.BtnNextDestReached.Text = "I\'m here!";
-            this.BtnNextDestReached.UseVisualStyleBackColor = true;
-            this.BtnNextDestReached.Click += new System.EventHandler(this.BtnNextDestReached_Click);
+            this.BtnNextTripReached.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.BtnNextTripReached.Enabled = false;
+            this.BtnNextTripReached.Image = global::DiceTravel.Properties.Resources.icoFinished;
+            this.BtnNextTripReached.Location = new System.Drawing.Point(136, 47);
+            this.BtnNextTripReached.Name = "BtnNextTripReached";
+            this.BtnNextTripReached.Size = new System.Drawing.Size(40, 40);
+            this.BtnNextTripReached.TabIndex = 17;
+            this.MainFormToolTip.SetToolTip(this.BtnNextTripReached, "I\'m here!");
+            this.BtnNextTripReached.UseVisualStyleBackColor = true;
+            this.BtnNextTripReached.Click += new System.EventHandler(this.BtnNextDestReached_Click);
             // 
-            // PctBxNextDestVisibility
+            // PctBxNextTripVisibility
             // 
-            this.PctBxNextDestVisibility.Location = new System.Drawing.Point(6, 19);
-            this.PctBxNextDestVisibility.Name = "PctBxNextDestVisibility";
-            this.PctBxNextDestVisibility.Size = new System.Drawing.Size(33, 33);
-            this.PctBxNextDestVisibility.TabIndex = 18;
-            this.PctBxNextDestVisibility.TabStop = false;
-            this.PctBxNextDestVisibility.WaitOnLoad = true;
+            this.PctBxNextTripVisibility.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.PctBxNextTripVisibility.Location = new System.Drawing.Point(12, 47);
+            this.PctBxNextTripVisibility.Name = "PctBxNextTripVisibility";
+            this.PctBxNextTripVisibility.Size = new System.Drawing.Size(40, 40);
+            this.PctBxNextTripVisibility.TabIndex = 18;
+            this.PctBxNextTripVisibility.TabStop = false;
+            this.PctBxNextTripVisibility.WaitOnLoad = true;
             // 
             // GrpBxActiveJourneyData
             // 
@@ -202,7 +189,7 @@
             this.GrpBxActiveJourneyData.Controls.Add(this.BtnActiveJourneyNewJourney);
             this.GrpBxActiveJourneyData.Controls.Add(this.BtnActiveJourneyDelete);
             this.GrpBxActiveJourneyData.Controls.Add(this.TxtActiveJourneyInfo);
-            this.GrpBxActiveJourneyData.Location = new System.Drawing.Point(4, 113);
+            this.GrpBxActiveJourneyData.Location = new System.Drawing.Point(4, 60);
             this.GrpBxActiveJourneyData.Name = "GrpBxActiveJourneyData";
             this.GrpBxActiveJourneyData.Size = new System.Drawing.Size(228, 115);
             this.GrpBxActiveJourneyData.TabIndex = 3;
@@ -215,31 +202,32 @@
             this.TxtActiveJourneyTitle.BackColor = System.Drawing.SystemColors.Control;
             this.TxtActiveJourneyTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TxtActiveJourneyTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TxtActiveJourneyTitle.Location = new System.Drawing.Point(46, 58);
+            this.TxtActiveJourneyTitle.Location = new System.Drawing.Point(11, 19);
             this.TxtActiveJourneyTitle.Name = "TxtActiveJourneyTitle";
             this.TxtActiveJourneyTitle.ReadOnly = true;
             this.TxtActiveJourneyTitle.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.TxtActiveJourneyTitle.Size = new System.Drawing.Size(176, 22);
+            this.TxtActiveJourneyTitle.Size = new System.Drawing.Size(211, 22);
             this.TxtActiveJourneyTitle.TabIndex = 15;
             this.TxtActiveJourneyTitle.Text = "TITLE";
             // 
             // PctBxActiveJourneyVisibility
             // 
-            this.PctBxActiveJourneyVisibility.Location = new System.Drawing.Point(6, 58);
+            this.PctBxActiveJourneyVisibility.Location = new System.Drawing.Point(12, 69);
             this.PctBxActiveJourneyVisibility.Name = "PctBxActiveJourneyVisibility";
-            this.PctBxActiveJourneyVisibility.Size = new System.Drawing.Size(33, 33);
+            this.PctBxActiveJourneyVisibility.Size = new System.Drawing.Size(40, 40);
             this.PctBxActiveJourneyVisibility.TabIndex = 14;
             this.PctBxActiveJourneyVisibility.TabStop = false;
             this.PctBxActiveJourneyVisibility.WaitOnLoad = true;
             // 
             // BtnActiveJourneyNewJourney
             // 
+            this.BtnActiveJourneyNewJourney.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnActiveJourneyNewJourney.Enabled = false;
-            this.BtnActiveJourneyNewJourney.Location = new System.Drawing.Point(6, 19);
+            this.BtnActiveJourneyNewJourney.Image = global::DiceTravel.Properties.Resources.icoStart;
+            this.BtnActiveJourneyNewJourney.Location = new System.Drawing.Point(136, 69);
             this.BtnActiveJourneyNewJourney.Name = "BtnActiveJourneyNewJourney";
-            this.BtnActiveJourneyNewJourney.Size = new System.Drawing.Size(103, 23);
+            this.BtnActiveJourneyNewJourney.Size = new System.Drawing.Size(40, 40);
             this.BtnActiveJourneyNewJourney.TabIndex = 13;
-            this.BtnActiveJourneyNewJourney.Text = "Start new Journey!";
             this.BtnActiveJourneyNewJourney.UseVisualStyleBackColor = true;
             this.BtnActiveJourneyNewJourney.Click += new System.EventHandler(this.BtnNewJourney_Click);
             // 
@@ -248,7 +236,7 @@
             this.BtnActiveJourneyDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnActiveJourneyDelete.Enabled = false;
             this.BtnActiveJourneyDelete.Image = global::DiceTravel.Properties.Resources.icoDelete;
-            this.BtnActiveJourneyDelete.Location = new System.Drawing.Point(182, 10);
+            this.BtnActiveJourneyDelete.Location = new System.Drawing.Point(182, 69);
             this.BtnActiveJourneyDelete.Name = "BtnActiveJourneyDelete";
             this.BtnActiveJourneyDelete.Size = new System.Drawing.Size(40, 40);
             this.BtnActiveJourneyDelete.TabIndex = 12;
@@ -259,7 +247,7 @@
             // 
             this.TxtActiveJourneyInfo.AutoSize = true;
             this.TxtActiveJourneyInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TxtActiveJourneyInfo.Location = new System.Drawing.Point(45, 83);
+            this.TxtActiveJourneyInfo.Location = new System.Drawing.Point(8, 44);
             this.TxtActiveJourneyInfo.Name = "TxtActiveJourneyInfo";
             this.TxtActiveJourneyInfo.Size = new System.Drawing.Size(70, 20);
             this.TxtActiveJourneyInfo.TabIndex = 7;
@@ -268,36 +256,14 @@
             // 
             // GrpBxUserData
             // 
-            this.GrpBxUserData.Controls.Add(this.TxtMainFormUserDataBirthDate);
-            this.GrpBxUserData.Controls.Add(this.TxtUserDataBirthDate);
             this.GrpBxUserData.Controls.Add(this.TxtUserDataLoginName);
             this.GrpBxUserData.Location = new System.Drawing.Point(3, 3);
             this.GrpBxUserData.Name = "GrpBxUserData";
-            this.GrpBxUserData.Size = new System.Drawing.Size(229, 104);
+            this.GrpBxUserData.Size = new System.Drawing.Size(229, 51);
             this.GrpBxUserData.TabIndex = 1;
             this.GrpBxUserData.TabStop = false;
             this.GrpBxUserData.Text = "MyData";
             this.GrpBxUserData.Visible = false;
-            // 
-            // TxtMainFormUserDataBirthDate
-            // 
-            this.TxtMainFormUserDataBirthDate.AutoSize = true;
-            this.TxtMainFormUserDataBirthDate.Location = new System.Drawing.Point(6, 54);
-            this.TxtMainFormUserDataBirthDate.Name = "TxtMainFormUserDataBirthDate";
-            this.TxtMainFormUserDataBirthDate.Size = new System.Drawing.Size(65, 13);
-            this.TxtMainFormUserDataBirthDate.TabIndex = 6;
-            this.TxtMainFormUserDataBirthDate.Text = "Date of birth";
-            // 
-            // TxtUserDataBirthDate
-            // 
-            this.TxtUserDataBirthDate.AutoSize = true;
-            this.TxtUserDataBirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TxtUserDataBirthDate.Location = new System.Drawing.Point(8, 67);
-            this.TxtUserDataBirthDate.Name = "TxtUserDataBirthDate";
-            this.TxtUserDataBirthDate.Size = new System.Drawing.Size(101, 20);
-            this.TxtUserDataBirthDate.TabIndex = 4;
-            this.TxtUserDataBirthDate.Text = "BIRTHDATE";
-            this.TxtUserDataBirthDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TxtUserDataLoginName
             // 
@@ -474,6 +440,26 @@
             this.MenuMeGoalReached.Name = "MenuMeGoalReached";
             this.MenuMeGoalReached.Size = new System.Drawing.Size(146, 22);
             this.MenuMeGoalReached.Text = "Goal reached!";
+            this.MenuMeGoalReached.Click += new System.EventHandler(this.MenuMeGoalReached_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // usersTable
+            // 
+            this.usersTable.DataSetName = "UsersTable";
+            this.usersTable.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // usersBindingSource
+            // 
+            this.usersBindingSource.DataMember = "users";
+            this.usersBindingSource.DataSource = this.usersTable;
+            // 
+            // usersTableAdapter
+            // 
+            this.usersTableAdapter.ClearBeforeFill = true;
             // 
             // journeysBindingSource
             // 
@@ -484,11 +470,6 @@
             // 
             this.dice_travelDataSet.DataSetName = "dice_travelDataSet";
             this.dice_travelDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // journeysTableAdapter
             // 
@@ -507,15 +488,13 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DiceTravel";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.usersTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             this.mainToolStripContainer.ContentPanel.ResumeLayout(false);
             this.mainToolStripContainer.TopToolStripPanel.ResumeLayout(false);
             this.mainToolStripContainer.TopToolStripPanel.PerformLayout();
             this.mainToolStripContainer.ResumeLayout(false);
             this.mainToolStripContainer.PerformLayout();
             this.GrpBxActiveTripData.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PctBxNextDestVisibility)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PctBxNextTripVisibility)).EndInit();
             this.GrpBxActiveJourneyData.ResumeLayout(false);
             this.GrpBxActiveJourneyData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctBxActiveJourneyVisibility)).EndInit();
@@ -527,6 +506,8 @@
             this.FlowContainer.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.usersTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.journeysBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dice_travelDataSet)).EndInit();
             this.ResumeLayout(false);
@@ -544,9 +525,7 @@
         private System.Windows.Forms.ToolStripMenuItem MenuMainSignUp;
         private System.Windows.Forms.ToolStripMenuItem MenuMainLogout;
         private System.Windows.Forms.ToolStripMenuItem MenuMainQuit;
-        public System.Windows.Forms.Label TxtUserDataBirthDate;
         public System.Windows.Forms.Label TxtUserDataLoginName;
-        private System.Windows.Forms.Label TxtMainFormUserDataBirthDate;
         public System.Windows.Forms.GroupBox GrpBxUserData;
         public System.Windows.Forms.GroupBox GrpBxMainFrame;
         private System.Windows.Forms.ToolStripMenuItem MenuMe;
@@ -563,10 +542,10 @@
         private System.Windows.Forms.PictureBox PctBxActiveJourneyVisibility;
         private System.Windows.Forms.RichTextBox TxtActiveJourneyTitle;
         private System.Windows.Forms.GroupBox GrpBxActiveTripData;
-        private System.Windows.Forms.Button BtnNextDestCancel;
-        private System.Windows.Forms.RichTextBox TxtNextDestTitle;
-        private System.Windows.Forms.Button BtnNextDestReached;
-        private System.Windows.Forms.PictureBox PctBxNextDestVisibility;
+        private System.Windows.Forms.Button BtnNextTripCancel;
+        private System.Windows.Forms.RichTextBox TxtNextTripTitle;
+        private System.Windows.Forms.Button BtnNextTripReached;
+        private System.Windows.Forms.PictureBox PctBxNextTripVisibility;
         private System.Windows.Forms.Button BtnNewEntry;
         private dice_travelDataSet dice_travelDataSet;
         private System.Windows.Forms.BindingSource journeysBindingSource;

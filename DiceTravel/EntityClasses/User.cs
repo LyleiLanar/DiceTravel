@@ -43,8 +43,8 @@ namespace DiceTravel
                 Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString)
             };
 
-            sqlCommand.Parameters.Add("@login_name", MySqlDbType.VarChar,20);
-            sqlCommand.Parameters.Add("@pswd", MySqlDbType.VarChar,32);
+            sqlCommand.Parameters.Add("@login_name", MySqlDbType.VarChar, 20);
+            sqlCommand.Parameters.Add("@pswd", MySqlDbType.VarChar, 32);
             sqlCommand.Parameters.Add("@sur_name", MySqlDbType.VarChar, 20);
             sqlCommand.Parameters.Add("@first_name", MySqlDbType.VarChar, 1);
             sqlCommand.Parameters.Add("@birth_date", MySqlDbType.Date);
@@ -102,16 +102,18 @@ namespace DiceTravel
         {
             Journey activeJourney = null;
 
-            if (IsThereActiveJourney())
-            {
-                string query = $"SELECT * FROM dice_travel.journeys WHERE user_id = @Id and closed = 0;";
-                MySqlCommand sqlCommand = CreateCommand(query);
-                sqlCommand.Parameters.Add("@Id", MySqlDbType.Int32);
-                sqlCommand.Parameters["@Id"].Value = Id;
+            string query = $"SELECT * FROM dice_travel.journeys WHERE user_id = @Id and closed = 0;";
+            MySqlCommand sqlCommand = CreateCommand(query);
+            sqlCommand.Parameters.Add("@Id", MySqlDbType.Int32);
+            sqlCommand.Parameters["@Id"].Value = Id;
 
-                DataTable table = ReadQueryTable(sqlCommand);
-                activeJourney = new Journey(table.Rows[0]);
+            DataTable table = ReadQueryTable(sqlCommand);
+            if (table.Rows.Count == 0)
+            {
+                return null;
             }
+            activeJourney = new Journey(table.Rows[0]);
+
             return activeJourney;
         }
         public bool IsThereActiveJourney()
@@ -151,7 +153,7 @@ namespace DiceTravel
         {
             string query = $"SELECT * FROM users WHERE login_name like @login_name";
             MySqlCommand sqlCommand = CreateCommand(query);
-            sqlCommand.Parameters.Add("@login_name", MySqlDbType.VarChar,20);
+            sqlCommand.Parameters.Add("@login_name", MySqlDbType.VarChar, 20);
             sqlCommand.Parameters["@login_name"].Value = loginName;
 
             DataTable table = ReadQueryTable(sqlCommand);

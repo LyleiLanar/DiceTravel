@@ -38,6 +38,7 @@
             this.RBtnTripCreateVisibilityPrivate = new System.Windows.Forms.RadioButton();
             this.InputTripCreateTripEndLocation = new System.Windows.Forms.TextBox();
             this.TxtTripCreateTripEndLocation_Label = new System.Windows.Forms.Label();
+            this.BtnTripCreateCancel = new System.Windows.Forms.Button();
             this.GrpBxTripCreateVisibility.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +55,7 @@
             // 
             // BtnTripCreateEndJourney
             // 
-            this.BtnTripCreateEndJourney.Location = new System.Drawing.Point(124, 142);
+            this.BtnTripCreateEndJourney.Location = new System.Drawing.Point(127, 124);
             this.BtnTripCreateEndJourney.Name = "BtnTripCreateEndJourney";
             this.BtnTripCreateEndJourney.Size = new System.Drawing.Size(95, 23);
             this.BtnTripCreateEndJourney.TabIndex = 15;
@@ -64,13 +65,13 @@
             // 
             // BtnTripCreateTrip
             // 
-            this.BtnTripCreateTrip.Location = new System.Drawing.Point(124, 94);
+            this.BtnTripCreateTrip.Location = new System.Drawing.Point(127, 94);
             this.BtnTripCreateTrip.Name = "BtnTripCreateTrip";
             this.BtnTripCreateTrip.Size = new System.Drawing.Size(95, 23);
             this.BtnTripCreateTrip.TabIndex = 14;
             this.BtnTripCreateTrip.Text = "Go here!";
             this.BtnTripCreateTrip.UseVisualStyleBackColor = true;
-            this.BtnTripCreateTrip.Click += new System.EventHandler(this.BtnTripCreateStart_Click);
+            this.BtnTripCreateTrip.Click += new System.EventHandler(this.BtnTripCreateTrip_Click);
             // 
             // GrpBxTripCreateVisibility
             // 
@@ -133,11 +134,22 @@
             this.TxtTripCreateTripEndLocation_Label.TabIndex = 10;
             this.TxtTripCreateTripEndLocation_Label.Text = "Goal location: ";
             // 
+            // BtnTripCreateCancel
+            // 
+            this.BtnTripCreateCancel.Location = new System.Drawing.Point(127, 169);
+            this.BtnTripCreateCancel.Name = "BtnTripCreateCancel";
+            this.BtnTripCreateCancel.Size = new System.Drawing.Size(95, 23);
+            this.BtnTripCreateCancel.TabIndex = 16;
+            this.BtnTripCreateCancel.Text = "Cancel";
+            this.BtnTripCreateCancel.UseVisualStyleBackColor = true;
+            this.BtnTripCreateCancel.Click += new System.EventHandler(this.BtnTripCreateCancel_Click);
+            // 
             // TripCreateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(234, 181);
+            this.ClientSize = new System.Drawing.Size(234, 204);
+            this.Controls.Add(this.BtnTripCreateCancel);
             this.Controls.Add(this.BtnTripCreateEndJourney);
             this.Controls.Add(this.BtnTripCreateTrip);
             this.Controls.Add(this.GrpBxTripCreateVisibility);
@@ -150,6 +162,8 @@
             this.Name = "TripCreateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TripCreateForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TripCreateForm_FormClosed);
+            this.Load += new System.EventHandler(this.TripCreateForm_Load);
             this.GrpBxTripCreateVisibility.ResumeLayout(false);
             this.GrpBxTripCreateVisibility.PerformLayout();
             this.ResumeLayout(false);
@@ -168,5 +182,6 @@
         private System.Windows.Forms.RadioButton RBtnTripCreateVisibilityPrivate;
         private System.Windows.Forms.TextBox InputTripCreateTripEndLocation;
         private System.Windows.Forms.Label TxtTripCreateTripEndLocation_Label;
+        private System.Windows.Forms.Button BtnTripCreateCancel;
     }
 }

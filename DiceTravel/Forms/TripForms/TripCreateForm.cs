@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using DiceTravel.Classes;
 using DiceTravel.Util;
-using DiceTravel.Classes;
+using System;
+using System.Windows.Forms;
 
 namespace DiceTravel.Forms.TripForms
 {
@@ -19,11 +12,16 @@ namespace DiceTravel.Forms.TripForms
             InitializeComponent();
         }
 
-        private void BtnTripCreateStart_Click(object sender, EventArgs e)
+        private void BtnTripCreateTrip_Click(object sender, EventArgs e)
         {
+
             Trip oldTrip = ActiveUserStore.GetActiveJourney().GetLastTrip();
-            oldTrip.EndDate = DateTime.Now;
-            oldTrip.UpdateItself();
+
+            if (oldTrip != null)
+            {
+                oldTrip.EndDate = DateTime.Now;
+                oldTrip.UpdateItself();
+            }
 
             Trip newTrip = new Trip
             {
@@ -34,9 +32,13 @@ namespace DiceTravel.Forms.TripForms
 
             try
             {
-            newTrip.SerialNumber = Journey.GetJourney_ById(newTrip.JourneyId).GetLastTrip().SerialNumber+1;
+                newTrip.SerialNumber = Journey.GetJourney_ById(newTrip.JourneyId).GetLastTrip().SerialNumber + 1;
             }
             catch (IndexOutOfRangeException)
+            {
+                newTrip.SerialNumber = 0;
+            }
+            catch (NullReferenceException)
             {
                 newTrip.SerialNumber = 0;
             }
@@ -50,7 +52,7 @@ namespace DiceTravel.Forms.TripForms
                 Validation(newTrip);
                 newTrip.CreateItself();
                 Program.mainForm.UpdateData();
-                this.Dispose();
+                this.Close();
             }
             catch (ValidationException ex)
             {
@@ -65,19 +67,22 @@ namespace DiceTravel.Forms.TripForms
 
         private void BtnTripCreateEndJourney_Click(object sender, EventArgs e)
         {
-            Journey journey = ActiveUserStore.GetActiveJourney();
-            Trip trip = journey.GetLastTrip();
+            throw new Exception("Nincs kész");
+        }
 
-            journey.Closed = 1;
-            journey.UpdateItself();
+        private void BtnTripCreateCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
-            trip.EndDate = DateTime.Now;
-            trip.UpdateItself();
-
-            Program.mainForm.UpdateData();
-            Program.mainForm.Activate();
-            this.Dispose();
+        private void TripCreateForm_Load(object sender, EventArgs e)
+        {
+            Program.MainFormDeactivate();
+        }
+        private void TripCreateForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.MainFormActivate();
         }
     }
-    }
+}
 

@@ -16,7 +16,6 @@ namespace DiceTravel.Forms.JourneyForms
 
         private void BtnJourneyCreateCancel_Click(object sender, EventArgs e)
         {
-            Program.mainFormActivate();
             this.Close();
         }
         private void BtnJourneyCreateStart_Click(object sender, EventArgs e)
@@ -52,7 +51,6 @@ namespace DiceTravel.Forms.JourneyForms
                     Validation(newTrip);
                     newTrip.CreateItself();
                     Program.mainForm.UpdateData();
-                    Program.mainForm.DrawFlow();
                     this.Close();
                 }
                 catch (ValidationException ex)
@@ -77,12 +75,12 @@ namespace DiceTravel.Forms.JourneyForms
 
         private void JourneyCreateForm_Load(object sender, EventArgs e)
         {
-            Program.mainFormDeactivate();
+            Program.MainFormDeactivate();
         }
 
         private void JourneyCreateForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Program.mainFormActivate();
+            Program.MainFormActivate();
         }
     }
 

@@ -49,7 +49,7 @@ namespace DiceTravel.Controls
                     break;
 
                 default:
-                    PctBxTripVisibility.Image = Properties.Resources.icoError.ToBitmap();
+                    PctBxTripVisibility.Image = Properties.Resources.icoEmpty.ToBitmap();
                     break;
             }
         }

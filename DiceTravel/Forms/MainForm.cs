@@ -52,7 +52,6 @@ namespace DiceTravel
         }
         private void MenuMeNewJourney_Click(object sender, EventArgs e)
         {
-            Program.mainFormDeactivate();
 
             if (ActiveUserStore.IsThereActiveUser && !ActiveUserStore.IsThereActiveJourney())
             {
@@ -77,6 +76,7 @@ namespace DiceTravel
                 UpdateUserData();
                 UpdateActiveJourneyData();
                 UpdateTripData();
+                DrawFlow();
             }
             else
             {
@@ -90,7 +90,6 @@ namespace DiceTravel
             User user = ActiveUserStore.ActiveUser;
 
             TxtUserDataLoginName.Text = user.LoginName;
-            TxtUserDataBirthDate.Text = user.BirthDate.Substring(0, 12);
         }
 
         //control availability methods
@@ -130,7 +129,7 @@ namespace DiceTravel
                 activeJourneyInfo = $"({activeJourney.StartLocation})";
                 BtnActiveJourneyDelete.Enabled = true;
                 BtnActiveJourneyNewJourney.Enabled = false;
-                BtnNextDestReached.Enabled = true;
+                BtnNextTripReached.Enabled = true;
 
                 switch (activeJourney.Visibility)
                 {
@@ -147,7 +146,7 @@ namespace DiceTravel
                         break;
 
                     default:
-                        PctBxActiveJourneyVisibility.Image = Properties.Resources.icoError.ToBitmap();
+                        PctBxActiveJourneyVisibility.Image = Properties.Resources.icoEmpty.ToBitmap();
                         break;
                 }
             }
@@ -157,9 +156,9 @@ namespace DiceTravel
                 activeJourneyInfo = "Start a new one!";
                 BtnActiveJourneyDelete.Enabled = false;
                 BtnActiveJourneyNewJourney.Enabled = true;
-                BtnNextDestReached.Enabled = false;
-                PctBxActiveJourneyVisibility.Image = Properties.Resources.icoError.ToBitmap();
-                PctBxNextDestVisibility.Image = Properties.Resources.icoError.ToBitmap();
+                BtnNextTripReached.Enabled = false;
+                PctBxActiveJourneyVisibility.Image = Properties.Resources.icoEmpty.ToBitmap();
+                PctBxNextTripVisibility.Image = Properties.Resources.icoEmpty.ToBitmap();
             }
             TxtActiveJourneyInfo.Text = activeJourneyInfo;
             TxtActiveJourneyTitle.Text = activeJourneyTitle;
@@ -170,7 +169,7 @@ namespace DiceTravel
             {
                 Journey.GetJourney_ById(ActiveUserStore.GetActiveJourney().Id).DeleteItself();
             }
-            Program.mainForm.DrawFlow();
+
             Program.mainForm.UpdateData();
         }
         private void BtnNewJourney_Click(object sender, EventArgs e)
@@ -185,45 +184,51 @@ namespace DiceTravel
             if (activeJourney != null)
             {
                 Trip activeTrip = ActiveUserStore.GetActiveJourney().GetLastTrip();
-                if (activeTrip == null && activeJourney.Closed != 0)
+
+                if (activeTrip == null && activeJourney.Closed != 1)
                 {
                     new TripCreateForm().Show();
-                    UpdateData();
                 }
-                switch (activeTrip.Visibility)
+                else
                 {
-                    case 0:
-                        PctBxNextDestVisibility.Image = Properties.Resources.icoVisibilityPrivate.ToBitmap();
-                        break;
+                    switch (activeTrip.Visibility)
+                    {
+                        case 0:
+                            PctBxNextTripVisibility.Image = Properties.Resources.icoVisibilityPrivate.ToBitmap();
+                            break;
 
-                    case 1:
-                        PctBxNextDestVisibility.Image = Properties.Resources.icoVisibilityFriends.ToBitmap();
-                        break;
+                        case 1:
+                            PctBxNextTripVisibility.Image = Properties.Resources.icoVisibilityFriends.ToBitmap();
+                            break;
 
-                    case 2:
-                        PctBxNextDestVisibility.Image = Properties.Resources.icoVisibilityPublic.ToBitmap();
-                        break;
+                        case 2:
+                            PctBxNextTripVisibility.Image = Properties.Resources.icoVisibilityPublic.ToBitmap();
+                            break;
 
-                    default:
-                        PctBxNextDestVisibility.Image = Properties.Resources.icoError.ToBitmap();
-                        break;
+                        default:
+                            PctBxNextTripVisibility.Image = Properties.Resources.icoEmpty.ToBitmap();
+                            break;
+                    }
+
+                    TxtNextTripTitle.Text = activeTrip.EndLocation;
+                    BtnNextTripCancel.Enabled = true;
                 }
-                TxtNextDestTitle.Text = activeTrip.EndLocation;
             }
             else
             {
-                TxtNextDestTitle.Text = "No active Journey!";
+                TxtNextTripTitle.Text = "No active Journey!";
             }
 
         }
         private void BtnNextDestReached_Click(object sender, EventArgs e)
         {
-            new TripCreateForm().Show();
+            throw new Exception("Nincs kész");
         }
 
         //flowLayoutPanel
         public void DrawFlow()
         {
+            FlowContainer.Visible = false;
             FlowElementProvider.UpdateFlow();
             FlowLayoutPanel.Controls.Clear();
             List<FlowElementControl> controls = new List<FlowElementControl>();
@@ -237,6 +242,7 @@ namespace DiceTravel
             }
 
             TxtFlowDataFlowTitle.Text = FlowElementProvider.FlowTitle;
+            FlowContainer.Visible = true;
         }
 
         //misc methods
@@ -260,6 +266,16 @@ namespace DiceTravel
         private void BtnMyJourney_Click(object sender, EventArgs e)
         {
             MenuMeMyJourneys_Click(sender, e);
+        }
+
+        private void BtnNextTripCancel_Click(object sender, EventArgs e)
+        {
+            throw new Exception("Újra kell kezdeni");
+        }
+
+        private void MenuMeGoalReached_Click(object sender, EventArgs e)
+        {
+            new TripCreateForm().Show();
         }
     }
 }

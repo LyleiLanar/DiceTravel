@@ -146,13 +146,19 @@ namespace DiceTravel.Classes
         }
         public Trip GetLastTrip()
         {
-            string query = $"SELECT * FROM trips WHERE journey_id = @journey_id ORDER BY serial_number DESC LIMIT 1;";
+            string query = $"SELECT * FROM trips WHERE journey_id = @journey_id AND end_date = @end_date ORDER BY serial_number DESC LIMIT 1;";
             MySqlCommand sqlCommand = CreateCommand(query);
 
             sqlCommand.Parameters.Add("@journey_id", MySqlDbType.Int32);
+            sqlCommand.Parameters.Add("@end_date", MySqlDbType.DateTime);
             sqlCommand.Parameters["@journey_id"].Value = Id;
+            sqlCommand.Parameters["@end_date"].Value = DateTime.Parse(Properties.Settings.Default.nullDate);
 
             DataTable dataTable = ReadQueryTable(sqlCommand);
+            if (dataTable.Rows.Count == 0)
+            {
+                return null;
+            }
             return new Trip(dataTable.Rows[0]);
         }
 

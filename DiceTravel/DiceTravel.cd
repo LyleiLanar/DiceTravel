@@ -3,40 +3,40 @@
   <Class Name="DiceTravel.Classes.Entity">
     <Position X="3.25" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAACBEABAAAAAAAARAAAAAAgAAAgQ=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAACAEABAAAAAAAAQAAAAAAgAAAgQ=</HashCode>
       <FileName>EntityClasses\Entity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DiceTravel.Classes.Entry">
+  <Class Name="DiceTravel.Classes.Entry" Collapsed="true">
     <Position X="3" Y="4" Width="2" />
     <TypeIdentifier>
-      <HashCode>AEACgAAEAABAAAAAACJAABCAAAAAAARAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AEACgAAEAABAAAAAACIAABCAAAAAAAQAAAAAAAAAAAQ=</HashCode>
       <FileName>EntityClasses\Entry.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DiceTravel.Classes.Journey">
+  <Class Name="DiceTravel.Classes.Journey" Collapsed="true">
     <Position X="5.75" Y="4" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AEACAAAIAAAAIEAAACFAEBiAAAAAAARAAAAQAECAAAQ=</HashCode>
+      <HashCode>AEACAAAIAAAAIEAAACEAEBiAAAAAAAQAAAAQAECAAAQ=</HashCode>
       <FileName>EntityClasses\Journey.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DiceTravel.Classes.Trip">
+  <Class Name="DiceTravel.Classes.Trip" Collapsed="true">
     <Position X="0.75" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AEACAQAAAAAAAAAAICBAABAgAAEAAARAAAAAAABAAAQ=</HashCode>
+      <HashCode>AEACAQAAAAAAAAAAICAAABAgAAEAAAQAAAAAAABAAAQ=</HashCode>
       <FileName>EntityClasses\Trip.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DiceTravel.Controls.FlowElementControl">
-    <Position X="1.5" Y="8.5" Width="1.75" />
+  <Class Name="DiceTravel.Controls.FlowElementControl" Collapsed="true">
+    <Position X="8.5" Y="4" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAABAAAAAAAABAAAAA=</HashCode>
+      <HashCode>AAAAAAAAACAAAAACAACAAAACAAAABAAAAAAAAFAAAAA=</HashCode>
       <FileName>Controls\FlowElementControl.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DiceTravel.Controls.JourneyControl" Collapsed="true">
-    <Position X="0.5" Y="11.75" Width="1.5" />
+    <Position X="8.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CAAAAAAAACIAACAAAACAAAASAAUAAAABEAAAAAAAAAE=</HashCode>
       <FileName>Controls\JourneyControl.cs</FileName>
@@ -45,7 +45,7 @@
   <Class Name="DiceTravel.Forms.JourneyForms.JourneyCreateForm" Collapsed="true">
     <Position X="12.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAhEAAAACAAAAggBCCAAACOAABCAAAAAAAAgAACAAA=</HashCode>
+      <HashCode>EAAhEQAAACAAAAggBCCAAACOAABCAAAAAAAAgAACAQA=</HashCode>
       <FileName>Forms\JourneyForms\JourneyCreateForm.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -74,7 +74,7 @@
     <Position X="9" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Util\Exceptions\EntityCreationException - Copy.cs</FileName>
+      <FileName>Util\Exceptions\MissingFlowTypeException.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DiceTravel.Util.ValidationException" Collapsed="true">
@@ -85,17 +85,10 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DiceTravel.Controls.TripControl" Collapsed="true">
-    <Position X="2.75" Y="11.75" Width="1.5" />
+    <Position X="10.75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAECIAAQAAAACAAAACAAAQAAECAAAAAAAAAAA=</HashCode>
       <FileName>Controls\TripControl.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="DiceTravel.Util.FlowProvider">
-    <Position X="10" Y="3.25" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAAAABAAAAAAAAAAAAAAAAAQAAAAAAAAAAEAAAABAAA=</HashCode>
-      <FileName>Util\FlowProvider.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

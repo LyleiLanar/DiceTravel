@@ -1,6 +1,7 @@
 ﻿using DiceTravel.Classes;
 using System.Drawing;
 using System.Windows.Forms;
+using DiceTravel.Util;
 
 namespace DiceTravel.Controls
 {
@@ -17,6 +18,12 @@ namespace DiceTravel.Controls
                 BorderStyle = BorderStyle.FixedSingle;
                 highlightedColor = SystemColors.ControlDarkDark;
                 originalColor = SystemColors.ControlDark;
+            }
+
+            //ha privát a journey és nem a gazdája nézni akkor nem látható
+            if (Journey.Visibility == 0 && ActiveUserStore.ActiveUser.Id != Journey.UserId)
+            {
+                this.Visible = false;
             }
 
             InitializeComponent();
@@ -47,7 +54,7 @@ namespace DiceTravel.Controls
                     break;
 
                 default:
-                    PctBxJourneyVisibility.Image = Properties.Resources.icoError.ToBitmap();
+                    PctBxJourneyVisibility.Image = Properties.Resources.icoEmpty.ToBitmap();
                     break;
             }
         }

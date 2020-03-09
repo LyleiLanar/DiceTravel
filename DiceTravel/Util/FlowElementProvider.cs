@@ -6,7 +6,7 @@ namespace DiceTravel.Util
 {
     public class FlowElementProvider
     {
-        public enum FlowType { NoFlow, JourneyFlow, MainFlow, TripFlow }
+        public enum FlowType { NoFlow, JourneyFlow, MainFlow, TripFlow, EntryFlow }
         public FlowType Type { get; private set; }
         public int UserId { get; private set; }
         public int JourneyId { get; private set; }
@@ -19,6 +19,7 @@ namespace DiceTravel.Util
             {
                 string userLoginName;
                 string journeyTitle;
+                string tripEndLocation;
 
                 switch (Type)
                 {
@@ -41,6 +42,13 @@ namespace DiceTravel.Util
 
                     case FlowType.MainFlow:
                         throw new MissingFlowTypeException("Missing flowType");
+
+                    case FlowType.EntryFlow:
+                        userLoginName = User.GetUser_ById(UserId).LoginName;
+                        journeyTitle = Journey.GetJourney_ById(JourneyId).Title;
+                        tripEndLocation = Trip.GetTrip_ById(TripId).EndLocation;
+                        return $"{userLoginName}/{journeyTitle}/{tripEndLocation} entries:";
+
 
                     default:
                         throw new MissingFlowTypeException("Missing flowType");
@@ -75,6 +83,10 @@ namespace DiceTravel.Util
 
                 case FlowType.TripFlow:
                     SetFlow_TripsByJourney(JourneyId);
+                    break;
+
+                case FlowType.EntryFlow:
+                    SetFlow_EntriesByTrip(TripId);
                     break;
 
                 default:
@@ -131,11 +143,33 @@ namespace DiceTravel.Util
             TripId = -1;
             Type = FlowType.TripFlow;
 
-
-            JourneyId = journeyId;
             FlowElements.Clear();
             FlowElements.AddRange(tripControls);
         }
+        public  void SetFlow_EntriesByTrip(int tripId)
+        {
+            List<Entry> entries = Trip.GetTrip_ById(tripId).GetEntries();
 
+            List<EntryControl> entryControls = new List<EntryControl>();
+
+            for (int i = 0; i < entries.Count; i++)
+            {
+                Entry entry = entries[i];
+
+                entryControls.Add(new EntryControl(entry));
+                entryControls[i].Name = $"EntryControl_{i}";
+                entryControls[i].SetContent();
+                entryControls[i].Visible = true;
+            }
+
+            //setting the flowStatus            
+            JourneyId = Trip.GetTrip_ById(tripId).JourneyId;
+            UserId = Journey.GetJourney_ById(JourneyId).UserId;
+            TripId = tripId;
+            Type = FlowType.EntryFlow;
+
+            FlowElements.Clear();
+            FlowElements.AddRange(entryControls);
+        }
     }
 }

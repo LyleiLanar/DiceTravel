@@ -114,6 +114,7 @@
             this.BtnTripUpdateCancel.TabIndex = 23;
             this.BtnTripUpdateCancel.Text = "Cancel";
             this.BtnTripUpdateCancel.UseVisualStyleBackColor = true;
+            this.BtnTripUpdateCancel.Click += new System.EventHandler(this.BtnTripUpdateCancel_Click);
             // 
             // InputTripUpdateEndLocation
             // 

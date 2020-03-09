@@ -32,11 +32,13 @@
             this.RBtnEntryCreateVisibilityPublic = new System.Windows.Forms.RadioButton();
             this.RBtnEntryCreateVisibilityOnlyFriends = new System.Windows.Forms.RadioButton();
             this.RBtnEntryCreateVisibilityPrivate = new System.Windows.Forms.RadioButton();
-            this.InputEntryCreateJourneyTitle = new System.Windows.Forms.TextBox();
+            this.InputEntryCreateComment = new System.Windows.Forms.TextBox();
             this.TxtEntryCreateJourneyTitle = new System.Windows.Forms.Label();
             this.TxtEntryCreateFormTitle = new System.Windows.Forms.Label();
             this.BtnEntryCreateCancel = new System.Windows.Forms.Button();
             this.BtnEntryCreateNew = new System.Windows.Forms.Button();
+            this.InputEntryCreateTitle = new System.Windows.Forms.TextBox();
+            this.TxtEntryCreateTitle_label = new System.Windows.Forms.Label();
             this.GrpBxEntryCreateVisibility.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +48,7 @@
             this.GrpBxEntryCreateVisibility.Controls.Add(this.RBtnEntryCreateVisibilityPublic);
             this.GrpBxEntryCreateVisibility.Controls.Add(this.RBtnEntryCreateVisibilityOnlyFriends);
             this.GrpBxEntryCreateVisibility.Controls.Add(this.RBtnEntryCreateVisibilityPrivate);
-            this.GrpBxEntryCreateVisibility.Location = new System.Drawing.Point(22, 146);
+            this.GrpBxEntryCreateVisibility.Location = new System.Drawing.Point(22, 172);
             this.GrpBxEntryCreateVisibility.Name = "GrpBxEntryCreateVisibility";
             this.GrpBxEntryCreateVisibility.Size = new System.Drawing.Size(100, 90);
             this.GrpBxEntryCreateVisibility.TabIndex = 15;
@@ -85,19 +87,20 @@
             this.RBtnEntryCreateVisibilityPrivate.Text = "Private";
             this.RBtnEntryCreateVisibilityPrivate.UseVisualStyleBackColor = true;
             // 
-            // InputEntryCreateJourneyTitle
+            // InputEntryCreateComment
             // 
-            this.InputEntryCreateJourneyTitle.Location = new System.Drawing.Point(12, 58);
-            this.InputEntryCreateJourneyTitle.MaxLength = 50;
-            this.InputEntryCreateJourneyTitle.Multiline = true;
-            this.InputEntryCreateJourneyTitle.Name = "InputEntryCreateJourneyTitle";
-            this.InputEntryCreateJourneyTitle.Size = new System.Drawing.Size(210, 82);
-            this.InputEntryCreateJourneyTitle.TabIndex = 13;
+            this.InputEntryCreateComment.Location = new System.Drawing.Point(12, 80);
+            this.InputEntryCreateComment.MaxLength = 512;
+            this.InputEntryCreateComment.Multiline = true;
+            this.InputEntryCreateComment.Name = "InputEntryCreateComment";
+            this.InputEntryCreateComment.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.InputEntryCreateComment.Size = new System.Drawing.Size(211, 82);
+            this.InputEntryCreateComment.TabIndex = 13;
             // 
             // TxtEntryCreateJourneyTitle
             // 
             this.TxtEntryCreateJourneyTitle.AutoSize = true;
-            this.TxtEntryCreateJourneyTitle.Location = new System.Drawing.Point(12, 42);
+            this.TxtEntryCreateJourneyTitle.Location = new System.Drawing.Point(12, 64);
             this.TxtEntryCreateJourneyTitle.Name = "TxtEntryCreateJourneyTitle";
             this.TxtEntryCreateJourneyTitle.Size = new System.Drawing.Size(34, 13);
             this.TxtEntryCreateJourneyTitle.TabIndex = 11;
@@ -117,36 +120,60 @@
             // 
             this.BtnEntryCreateCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnEntryCreateCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnEntryCreateCancel.Location = new System.Drawing.Point(128, 213);
+            this.BtnEntryCreateCancel.Location = new System.Drawing.Point(128, 239);
             this.BtnEntryCreateCancel.Name = "BtnEntryCreateCancel";
             this.BtnEntryCreateCancel.Size = new System.Drawing.Size(95, 23);
             this.BtnEntryCreateCancel.TabIndex = 18;
             this.BtnEntryCreateCancel.Text = "Cancel";
             this.BtnEntryCreateCancel.UseVisualStyleBackColor = true;
+            this.BtnEntryCreateCancel.Click += new System.EventHandler(this.BtnEntryCreateCancel_Click);
             // 
             // BtnEntryCreateNew
             // 
             this.BtnEntryCreateNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BtnEntryCreateNew.Location = new System.Drawing.Point(128, 159);
+            this.BtnEntryCreateNew.Location = new System.Drawing.Point(128, 185);
             this.BtnEntryCreateNew.Name = "BtnEntryCreateNew";
             this.BtnEntryCreateNew.Size = new System.Drawing.Size(95, 23);
             this.BtnEntryCreateNew.TabIndex = 17;
             this.BtnEntryCreateNew.Text = "Save";
             this.BtnEntryCreateNew.UseVisualStyleBackColor = true;
+            this.BtnEntryCreateNew.Click += new System.EventHandler(this.BtnEntryCreateNew_Click);
+            // 
+            // InputEntryCreateTitle
+            // 
+            this.InputEntryCreateTitle.Location = new System.Drawing.Point(93, 54);
+            this.InputEntryCreateTitle.MaxLength = 50;
+            this.InputEntryCreateTitle.Name = "InputEntryCreateTitle";
+            this.InputEntryCreateTitle.Size = new System.Drawing.Size(130, 20);
+            this.InputEntryCreateTitle.TabIndex = 20;
+            // 
+            // TxtEntryCreateTitle_label
+            // 
+            this.TxtEntryCreateTitle_label.AutoSize = true;
+            this.TxtEntryCreateTitle_label.Location = new System.Drawing.Point(54, 57);
+            this.TxtEntryCreateTitle_label.Name = "TxtEntryCreateTitle_label";
+            this.TxtEntryCreateTitle_label.Size = new System.Drawing.Size(33, 13);
+            this.TxtEntryCreateTitle_label.TabIndex = 19;
+            this.TxtEntryCreateTitle_label.Text = "Title: ";
             // 
             // EntryCreateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(234, 247);
+            this.ClientSize = new System.Drawing.Size(234, 273);
+            this.Controls.Add(this.InputEntryCreateTitle);
+            this.Controls.Add(this.TxtEntryCreateTitle_label);
             this.Controls.Add(this.GrpBxEntryCreateVisibility);
-            this.Controls.Add(this.InputEntryCreateJourneyTitle);
+            this.Controls.Add(this.InputEntryCreateComment);
             this.Controls.Add(this.TxtEntryCreateJourneyTitle);
             this.Controls.Add(this.TxtEntryCreateFormTitle);
             this.Controls.Add(this.BtnEntryCreateCancel);
             this.Controls.Add(this.BtnEntryCreateNew);
             this.Name = "EntryCreateForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EntryCreateForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EntryCreateForm_FormClosed);
+            this.Load += new System.EventHandler(this.EntryCreateForm_Load);
             this.GrpBxEntryCreateVisibility.ResumeLayout(false);
             this.GrpBxEntryCreateVisibility.PerformLayout();
             this.ResumeLayout(false);
@@ -160,10 +187,12 @@
         private System.Windows.Forms.RadioButton RBtnEntryCreateVisibilityPublic;
         private System.Windows.Forms.RadioButton RBtnEntryCreateVisibilityOnlyFriends;
         private System.Windows.Forms.RadioButton RBtnEntryCreateVisibilityPrivate;
-        private System.Windows.Forms.TextBox InputEntryCreateJourneyTitle;
+        private System.Windows.Forms.TextBox InputEntryCreateComment;
         private System.Windows.Forms.Label TxtEntryCreateJourneyTitle;
         private System.Windows.Forms.Label TxtEntryCreateFormTitle;
         private System.Windows.Forms.Button BtnEntryCreateCancel;
         private System.Windows.Forms.Button BtnEntryCreateNew;
+        private System.Windows.Forms.TextBox InputEntryCreateTitle;
+        private System.Windows.Forms.Label TxtEntryCreateTitle_label;
     }
 }

@@ -89,9 +89,17 @@ namespace DiceTravel.Classes
             sqlCommand.Parameters["@visibility"].Value = Visibility;
 
             RunSqlCommand(sqlCommand);
-        }        
+        }
         public override void DeleteItself()
         {
+            List<Entry> entriesToDelete = GetEntries();
+
+            foreach (Entry entry in entriesToDelete)
+            {
+                entry.DeleteItself();
+            }
+
+
             string query = "DELETE FROM trips WHERE id = @id;";
 
             MySqlCommand sqlCommand = new MySqlCommand(query)
@@ -103,8 +111,8 @@ namespace DiceTravel.Classes
             sqlCommand.Parameters["@id"].Value = Id;
 
             RunSqlCommand(sqlCommand);
-        }        
-        
+        }
+
         //DB Methods
         public List<Entry> GetEntries()
         {
@@ -135,6 +143,24 @@ namespace DiceTravel.Classes
         {
             this.EndDate = DateTime.Now;
             this.UpdateItself();
+        }
+
+        //static methods
+        static public Trip GetTrip_ById(int tripId)
+        {
+            string query = $"SELECT * FROM trips WHERE id = @id";
+            MySqlCommand sqlCommand = CreateCommand(query);
+            sqlCommand.Parameters.Add("@id", MySqlDbType.Int32);
+            sqlCommand.Parameters["@id"].Value = tripId;
+
+            DataTable dataTable = ReadQueryTable(sqlCommand);
+
+            if (dataTable != null && dataTable.Rows.Count > 0)
+            {
+                return new Trip(dataTable.Rows[0]);
+            }
+
+            return null;
         }
     }
 }

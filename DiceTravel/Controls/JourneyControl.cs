@@ -16,8 +16,8 @@ namespace DiceTravel.Controls
             if (Journey.Closed == 0)
             {
                 BorderStyle = BorderStyle.FixedSingle;
-                highlightedColor = SystemColors.ControlDarkDark;
-                originalColor = SystemColors.ControlDark;
+                highlightedColor = Color.LightSalmon;
+                originalColor = Color.Salmon;
             }
 
             //ha privát a journey és nem a gazdája nézni akkor nem látható

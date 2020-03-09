@@ -40,7 +40,7 @@
             // 
             this.TxtJourneyTitle.AutoSize = true;
             this.TxtJourneyTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TxtJourneyTitle.Location = new System.Drawing.Point(42, 21);
+            this.TxtJourneyTitle.Location = new System.Drawing.Point(41, 23);
             this.TxtJourneyTitle.Name = "TxtJourneyTitle";
             this.TxtJourneyTitle.Size = new System.Drawing.Size(66, 20);
             this.TxtJourneyTitle.TabIndex = 0;
@@ -50,7 +50,7 @@
             // 
             this.TxtJourneyStartDate.AutoSize = true;
             this.TxtJourneyStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TxtJourneyStartDate.Location = new System.Drawing.Point(43, 41);
+            this.TxtJourneyStartDate.Location = new System.Drawing.Point(42, 43);
             this.TxtJourneyStartDate.Name = "TxtJourneyStartDate";
             this.TxtJourneyStartDate.Size = new System.Drawing.Size(33, 15);
             this.TxtJourneyStartDate.TabIndex = 17;
@@ -60,7 +60,7 @@
             // 
             this.TxtJourneyUserLoginName.AutoSize = true;
             this.TxtJourneyUserLoginName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TxtJourneyUserLoginName.Location = new System.Drawing.Point(43, 5);
+            this.TxtJourneyUserLoginName.Location = new System.Drawing.Point(42, 7);
             this.TxtJourneyUserLoginName.Name = "TxtJourneyUserLoginName";
             this.TxtJourneyUserLoginName.Size = new System.Drawing.Size(47, 16);
             this.TxtJourneyUserLoginName.TabIndex = 18;
@@ -71,7 +71,7 @@
             this.BtnJourneyOptions.BackColor = System.Drawing.SystemColors.Control;
             this.BtnJourneyOptions.FlatAppearance.BorderSize = 0;
             this.BtnJourneyOptions.Image = global::DiceTravel.Properties.Resources.icoSettings;
-            this.BtnJourneyOptions.Location = new System.Drawing.Point(486, 11);
+            this.BtnJourneyOptions.Location = new System.Drawing.Point(485, 13);
             this.BtnJourneyOptions.Name = "BtnJourneyOptions";
             this.BtnJourneyOptions.Size = new System.Drawing.Size(42, 45);
             this.BtnJourneyOptions.TabIndex = 16;
@@ -80,7 +80,7 @@
             // 
             // PctBxJourneyVisibility
             // 
-            this.PctBxJourneyVisibility.Location = new System.Drawing.Point(4, 15);
+            this.PctBxJourneyVisibility.Location = new System.Drawing.Point(3, 17);
             this.PctBxJourneyVisibility.Name = "PctBxJourneyVisibility";
             this.PctBxJourneyVisibility.Size = new System.Drawing.Size(33, 33);
             this.PctBxJourneyVisibility.TabIndex = 15;

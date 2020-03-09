@@ -68,5 +68,9 @@ namespace DiceTravel.Forms.TripForms
             Program.MainFormDeactivate();
         }
 
+        private void BtnTripUpdateCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

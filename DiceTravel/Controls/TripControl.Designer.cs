@@ -97,6 +97,7 @@
             this.Controls.Add(this.TxtTripEndLocation);
             this.Name = "TripControl";
             this.Size = new System.Drawing.Size(537, 70);
+            this.Click += new System.EventHandler(this.TripControl_Click);
             ((System.ComponentModel.ISupportInitialize)(this.PctBxTripVisibility)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -55,6 +55,12 @@
     <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\EntryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EntryControl.Designer.cs">
+      <DependentUpon>EntryControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TripControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -137,6 +143,9 @@
     <Compile Include="Util\Exceptions\EntityCreationException.cs" />
     <Compile Include="Util\Exceptions\ValidationException.cs" />
     <Compile Include="Util\FlowElementProvider.cs" />
+    <EmbeddedResource Include="Controls\EntryControl.resx">
+      <DependentUpon>EntryControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\FlowElementControl.resx">
       <DependentUpon>FlowElementControl.cs</DependentUpon>
     </EmbeddedResource>

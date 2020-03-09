@@ -1,12 +1,7 @@
 ﻿using DiceTravel.Util;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DiceTravel.Classes
 {
@@ -17,15 +12,17 @@ namespace DiceTravel.Classes
         public int TripId { get; set; }
         public DateTime EntryDate { get; set; }
         public byte[] Picture { get; set; }
+        public string Title { get; set; }
         public string Comment { get; set; }
         public int Visibility { get; set; }
-        
+
         //constructors
         public Entry(DataRow dataRow)
         {
             Id = Int32.Parse(dataRow["id"].ToString());
             TripId = Int32.Parse(dataRow["trip_id"].ToString());
-            EntryDate = (DateTime) dataRow["entry_date"];
+            Title = dataRow["title"].ToString();
+            EntryDate = (DateTime)dataRow["entry_date"];
             Picture = null;
             Comment = dataRow["comment"].ToString();
             Visibility = Int32.Parse(dataRow["visibility"].ToString());
@@ -37,8 +34,8 @@ namespace DiceTravel.Classes
         //CRUD
         public override void CreateItself()
         {
-            string query = "INSERT INTO `dice_travel`.`entries` (`trip_id`, `entry_date`,`picture`,`comment`,`visibility`) " +
-                                    "VALUES (@trip_id,@entry_date,@picture,@comment,@visibility);";
+            string query = "INSERT INTO `dice_travel`.`entries` (`trip_id`, `entry_date`,`picture`,`comment`,`visibility`,`title`) " +
+                                    "VALUES (@trip_id,@entry_date,@picture,@comment,@visibility,@title);";
 
             MySqlCommand sqlCommand = new MySqlCommand(query)
             {
@@ -48,14 +45,16 @@ namespace DiceTravel.Classes
             sqlCommand.Parameters.Add("@trip_id", MySqlDbType.Int32);
             sqlCommand.Parameters.Add("@entry_date", MySqlDbType.DateTime);
             sqlCommand.Parameters.Add("@picture", MySqlDbType.Blob);
-            sqlCommand.Parameters.Add("@comment", MySqlDbType.VarChar,512);
+            sqlCommand.Parameters.Add("@comment", MySqlDbType.VarChar, 512);
             sqlCommand.Parameters.Add("@visibility", MySqlDbType.Int32);
+            sqlCommand.Parameters.Add("@title", MySqlDbType.VarChar, 50);
 
             sqlCommand.Parameters["@trip_id"].Value = TripId;
             sqlCommand.Parameters["@entry_date"].Value = EntryDate;
             sqlCommand.Parameters["@picture"].Value = Picture;
             sqlCommand.Parameters["@comment"].Value = Comment;
             sqlCommand.Parameters["@visibility"].Value = Visibility;
+            sqlCommand.Parameters["@title"].Value = Title;
 
             RunSqlCommand(sqlCommand);
         }
@@ -81,14 +80,15 @@ namespace DiceTravel.Classes
 
             RunSqlCommand(sqlCommand);
         }
-        
+
         //DB methods
 
         //misc methods
         public override void Validation()
         {
-            throw new NotImplementedException();
+            if (Title == "") { throw new ValidationException("Missing Entry Title!"); }
+            if (TripId == 0) { throw new ValidationException("Missing Entry TripID!"); }
+            if (Comment == "") { throw new ValidationException("Missing Entry Comment!"); }
         }
-
     }
 }

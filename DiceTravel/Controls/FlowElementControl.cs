@@ -12,12 +12,12 @@ namespace DiceTravel.Controls
 {
     public partial class FlowElementControl : UserControl
     {
-        protected System.Drawing.Color originalColor;
-        protected System.Drawing.Color highlightedColor;
+        protected Color originalColor;
+        protected Color highlightedColor;
 
         public FlowElementControl()
         {
-            highlightedColor = SystemColors.ControlLight;
+            highlightedColor = Color.Beige;
             originalColor = SystemColors.Control;
             InitializeComponent();
         }
@@ -31,5 +31,10 @@ namespace DiceTravel.Controls
         {
             BackColor = highlightedColor;
         }
+
+        //public virtual void SetContent()
+        //{
+        //    ;
+        //}
     }
 }

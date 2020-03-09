@@ -16,8 +16,8 @@ namespace DiceTravel.Controls
             {
                 BorderStyle = BorderStyle;
                 BorderStyle = BorderStyle.FixedSingle;
-                highlightedColor = SystemColors.ControlDarkDark;
-                originalColor = SystemColors.ControlDark;
+                highlightedColor = Color.LightSalmon;
+                originalColor = Color.Salmon;
             }
 
             Trip = trip;
@@ -28,10 +28,11 @@ namespace DiceTravel.Controls
 
         public void SetContent()
         {
+            Journey journey = Journey.GetJourney_ById(Trip.JourneyId);
             string userLoginName = User.GetUser_ById(Journey.GetJourney_ById(Trip.JourneyId).UserId).LoginName;
 
             TxtTripUserLoginName.Text = userLoginName;
-            TxtTripEndLocation.Text = Trip.EndLocation;
+            TxtTripEndLocation.Text = journey.Title +": "+ Trip.EndLocation;
             TxtTripEndDate.Text = Trip.EndDate == DateTime.Parse(Properties.Settings.Default.nullDate) ? "in progress..." : $"Reached: {Trip.EndDate}";
 
             switch (Trip.Visibility)
@@ -52,6 +53,12 @@ namespace DiceTravel.Controls
                     PctBxTripVisibility.Image = Properties.Resources.icoEmpty.ToBitmap();
                     break;
             }
+        }
+
+        private void TripControl_Click(object sender, EventArgs e)
+        {
+            Program.mainForm.FlowElementProvider.SetFlow_EntriesByTrip(Trip.Id);
+            Program.mainForm.DrawFlow();
         }
     }
 }

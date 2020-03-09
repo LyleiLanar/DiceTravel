@@ -82,6 +82,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dice_travelDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Forms\EntryForms\EntryCreateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EntryForms\EntryCreateForm.Designer.cs">
+      <DependentUpon>EntryCreateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\JourneyForms\JourneyCreateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,12 @@
     </Compile>
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TripForms\TripUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TripForms\TripUpdateForm.Designer.cs">
+      <DependentUpon>TripUpdateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\UserForms\LoginForm.cs">
       <SubType>Form</SubType>
@@ -134,8 +146,14 @@
     <EmbeddedResource Include="Controls\TripControl.resx">
       <DependentUpon>TripControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EntryForms\EntryCreateForm.resx">
+      <DependentUpon>EntryCreateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\JourneyForms\JourneyCreateForm.resx">
       <DependentUpon>JourneyCreateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TripForms\TripUpdateForm.resx">
+      <DependentUpon>TripUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserForms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

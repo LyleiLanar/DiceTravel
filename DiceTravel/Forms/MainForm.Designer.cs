@@ -33,7 +33,7 @@
             this.mainToolStripContainer = new System.Windows.Forms.ToolStripContainer();
             this.BtnNewEntry = new System.Windows.Forms.Button();
             this.GrpBxActiveTripData = new System.Windows.Forms.GroupBox();
-            this.BtnNextTripCancel = new System.Windows.Forms.Button();
+            this.BtnNextTripModify = new System.Windows.Forms.Button();
             this.TxtNextTripTitle = new System.Windows.Forms.RichTextBox();
             this.BtnNextTripReached = new System.Windows.Forms.Button();
             this.PctBxNextTripVisibility = new System.Windows.Forms.PictureBox();
@@ -112,17 +112,18 @@
             // BtnNewEntry
             // 
             this.BtnNewEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.BtnNewEntry.Location = new System.Drawing.Point(3, 374);
+            this.BtnNewEntry.Location = new System.Drawing.Point(4, 280);
             this.BtnNewEntry.Name = "BtnNewEntry";
             this.BtnNewEntry.Size = new System.Drawing.Size(229, 46);
             this.BtnNewEntry.TabIndex = 5;
             this.BtnNewEntry.Text = "New Entry";
             this.BtnNewEntry.UseVisualStyleBackColor = true;
             this.BtnNewEntry.Visible = false;
+            this.BtnNewEntry.Click += new System.EventHandler(this.BtnNewEntry_Click);
             // 
             // GrpBxActiveTripData
             // 
-            this.GrpBxActiveTripData.Controls.Add(this.BtnNextTripCancel);
+            this.GrpBxActiveTripData.Controls.Add(this.BtnNextTripModify);
             this.GrpBxActiveTripData.Controls.Add(this.TxtNextTripTitle);
             this.GrpBxActiveTripData.Controls.Add(this.BtnNextTripReached);
             this.GrpBxActiveTripData.Controls.Add(this.PctBxNextTripVisibility);
@@ -134,17 +135,17 @@
             this.GrpBxActiveTripData.Text = "Next destination";
             this.GrpBxActiveTripData.Visible = false;
             // 
-            // BtnNextTripCancel
+            // BtnNextTripModify
             // 
-            this.BtnNextTripCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BtnNextTripCancel.Enabled = false;
-            this.BtnNextTripCancel.Image = global::DiceTravel.Properties.Resources.icoDelete;
-            this.BtnNextTripCancel.Location = new System.Drawing.Point(182, 47);
-            this.BtnNextTripCancel.Name = "BtnNextTripCancel";
-            this.BtnNextTripCancel.Size = new System.Drawing.Size(40, 40);
-            this.BtnNextTripCancel.TabIndex = 16;
-            this.BtnNextTripCancel.UseVisualStyleBackColor = true;
-            this.BtnNextTripCancel.Click += new System.EventHandler(this.BtnNextTripCancel_Click);
+            this.BtnNextTripModify.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.BtnNextTripModify.Enabled = false;
+            this.BtnNextTripModify.Image = global::DiceTravel.Properties.Resources.icoSettings;
+            this.BtnNextTripModify.Location = new System.Drawing.Point(182, 47);
+            this.BtnNextTripModify.Name = "BtnNextTripModify";
+            this.BtnNextTripModify.Size = new System.Drawing.Size(40, 40);
+            this.BtnNextTripModify.TabIndex = 16;
+            this.BtnNextTripModify.UseVisualStyleBackColor = true;
+            this.BtnNextTripModify.Click += new System.EventHandler(this.BtnNextTripModify_Click);
             // 
             // TxtNextTripTitle
             // 
@@ -542,7 +543,7 @@
         private System.Windows.Forms.PictureBox PctBxActiveJourneyVisibility;
         private System.Windows.Forms.RichTextBox TxtActiveJourneyTitle;
         private System.Windows.Forms.GroupBox GrpBxActiveTripData;
-        private System.Windows.Forms.Button BtnNextTripCancel;
+        private System.Windows.Forms.Button BtnNextTripModify;
         private System.Windows.Forms.RichTextBox TxtNextTripTitle;
         private System.Windows.Forms.Button BtnNextTripReached;
         private System.Windows.Forms.PictureBox PctBxNextTripVisibility;

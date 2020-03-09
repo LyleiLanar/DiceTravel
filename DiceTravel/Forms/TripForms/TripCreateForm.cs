@@ -14,25 +14,22 @@ namespace DiceTravel.Forms.TripForms
 
         private void BtnTripCreateTrip_Click(object sender, EventArgs e)
         {
+            Journey activeJourney = ActiveUserStore.GetActiveJourney();
+            Trip oldTrip = activeJourney.GetLastTrip();
 
-            Trip oldTrip = ActiveUserStore.GetActiveJourney().GetLastTrip();
-
-            if (oldTrip != null)
-            {
-                oldTrip.EndDate = DateTime.Now;
-                oldTrip.UpdateItself();
-            }
+            oldTrip.EndDate = DateTime.Now;
+            oldTrip.UpdateItself();
 
             Trip newTrip = new Trip
             {
-                JourneyId = ActiveUserStore.GetActiveJourney().Id,
+                JourneyId = activeJourney.Id,
                 EndLocation = InputTripCreateTripEndLocation.Text,
                 EndDate = DateTime.Parse(Properties.Settings.Default.nullDate)
             };
 
             try
             {
-                newTrip.SerialNumber = Journey.GetJourney_ById(newTrip.JourneyId).GetLastTrip().SerialNumber + 1;
+                newTrip.SerialNumber = oldTrip.SerialNumber + 1;
             }
             catch (IndexOutOfRangeException)
             {
@@ -67,7 +64,11 @@ namespace DiceTravel.Forms.TripForms
 
         private void BtnTripCreateEndJourney_Click(object sender, EventArgs e)
         {
-            throw new Exception("Nincs kész");
+            Journey activeJourney = ActiveUserStore.ActiveUser.GetActiveJourney();
+
+            activeJourney.CloseItself();
+            Program.mainForm.UpdateData();
+            this.Close();
         }
 
         private void BtnTripCreateCancel_Click(object sender, EventArgs e)

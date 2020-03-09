@@ -1,6 +1,7 @@
 ﻿using DiceTravel.Util;
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace DiceTravel.Classes
@@ -35,7 +36,6 @@ namespace DiceTravel.Classes
         }
 
         //CRUD
-
         public override void CreateItself()
         {
             string query = "INSERT INTO `dice_travel`.`trips` (`journey_id`, `serial_number`,`end_location`,`end_date`,`visibility`) " +
@@ -106,6 +106,24 @@ namespace DiceTravel.Classes
         }        
         
         //DB Methods
+        public List<Entry> GetEntries()
+        {
+            string getTripsCommand = $"SELECT * FROM dice_travel.entries WHERE trip_id = @trip_id ORDER BY entry_date DESC";
+            MySqlCommand sqlCommand = CreateCommand(getTripsCommand);
+
+            sqlCommand.Parameters.Add("@trip_id", MySqlDbType.Int32);
+            sqlCommand.Parameters["@trip_id"].Value = Id;
+
+            DataTable dataTable = ReadQueryTable(sqlCommand);
+
+            List<Entry> entries = new List<Entry>();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                entries.Add(new Entry(row));
+            }
+
+            return entries;
+        }
 
         //misc methods
         public override void Validation()
@@ -113,6 +131,10 @@ namespace DiceTravel.Classes
             if (JourneyId == 0) { throw new ValidationException("Missing journeyId!"); }
             if (EndLocation == "") { throw new ValidationException("Missing Goal location!"); }
         }
-
+        public void ReachDestination()
+        {
+            this.EndDate = DateTime.Now;
+            this.UpdateItself();
+        }
     }
 }

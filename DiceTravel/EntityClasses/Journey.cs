@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Windows.Forms;
 
 namespace DiceTravel.Classes
 {
@@ -126,7 +127,6 @@ namespace DiceTravel.Classes
         }
 
         //DB methods
-
         public List<Trip> GetTrips()
         {
             string getTripsCommand = $"SELECT * FROM trips WHERE journey_id = @journey_id ORDER BY end_date DESC";
@@ -152,7 +152,9 @@ namespace DiceTravel.Classes
             sqlCommand.Parameters.Add("@journey_id", MySqlDbType.Int32);
             sqlCommand.Parameters.Add("@end_date", MySqlDbType.DateTime);
             sqlCommand.Parameters["@journey_id"].Value = Id;
-            sqlCommand.Parameters["@end_date"].Value = DateTime.Parse(Properties.Settings.Default.nullDate);
+            sqlCommand.Parameters["@end_date"].Value = Properties.Settings.Default.nullDate;
+
+            //MessageBox.Show(Properties.Settings.Default.nullDate);
 
             DataTable dataTable = ReadQueryTable(sqlCommand);
             if (dataTable.Rows.Count == 0)
@@ -168,6 +170,14 @@ namespace DiceTravel.Classes
             if (UserId == 0) { throw new ValidationException("Missing userID!"); }
             if (Title == "") { throw new ValidationException("Missing title!"); }
             if (StartLocation == "") { throw new ValidationException("Missing Start location!"); }
+        }
+        public void CloseItself()
+        {
+            Trip trip = this.GetLastTrip();
+            trip.ReachDestination();
+
+            this.Closed = 1;
+            this.UpdateItself();
         }
 
         //static methods

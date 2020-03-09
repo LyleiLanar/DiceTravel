@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DiceTravel.Classes
 {
-    class Entry : Entity
+    public class Entry : Entity
     {
         //props
         public int Id { get; set; }

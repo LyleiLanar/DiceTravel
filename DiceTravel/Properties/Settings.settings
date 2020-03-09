@@ -14,7 +14,7 @@
       <Value Profile="(Default)">DiceTravel</Value>
     </Setting>
     <Setting Name="nullDate" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">2988-11-08</Value>
+      <Value Profile="(Default)">2988-11-08 00:00:00</Value>
     </Setting>
   </Settings>
 </SettingsFile>

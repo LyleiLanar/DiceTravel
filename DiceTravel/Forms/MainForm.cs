@@ -2,6 +2,7 @@
 using DiceTravel.Controls;
 using DiceTravel.Forms.JourneyForms;
 using DiceTravel.Forms.TripForms;
+using DiceTravel.Forms.EntryForms;
 using DiceTravel.Util;
 using System;
 using System.Collections.Generic;
@@ -103,6 +104,7 @@ namespace DiceTravel
             MenuMainLogin.Enabled = true;
             MenuMainSignUp.Enabled = true;
             MenuMe.Enabled = false;
+            BtnNewEntry.Visible = false;
         }
         public void ChangeControlsAvailabilityAfterLogin()
         {
@@ -114,6 +116,7 @@ namespace DiceTravel
             MenuMainLogin.Enabled = false;
             MenuMainSignUp.Enabled = false;
             MenuMe.Enabled = true;
+            BtnNewEntry.Visible = true;
         }
 
         //journeyData Formmethods
@@ -130,6 +133,8 @@ namespace DiceTravel
                 BtnActiveJourneyDelete.Enabled = true;
                 BtnActiveJourneyNewJourney.Enabled = false;
                 BtnNextTripReached.Enabled = true;
+                BtnActiveJourneyDelete.Enabled = true;
+                BtnNewEntry.Enabled = true;
 
                 switch (activeJourney.Visibility)
                 {
@@ -157,6 +162,8 @@ namespace DiceTravel
                 BtnActiveJourneyDelete.Enabled = false;
                 BtnActiveJourneyNewJourney.Enabled = true;
                 BtnNextTripReached.Enabled = false;
+                BtnActiveJourneyDelete.Enabled = false;
+                BtnNewEntry.Enabled = false;
                 PctBxActiveJourneyVisibility.Image = Properties.Resources.icoEmpty.ToBitmap();
                 PctBxNextTripVisibility.Image = Properties.Resources.icoEmpty.ToBitmap();
             }
@@ -170,6 +177,7 @@ namespace DiceTravel
                 Journey.GetJourney_ById(ActiveUserStore.GetActiveJourney().Id).DeleteItself();
             }
 
+            Program.mainForm.FlowElementProvider.SetFlow_JourneysByUser(ActiveUserStore.ActiveUser.Id);
             Program.mainForm.UpdateData();
         }
         private void BtnNewJourney_Click(object sender, EventArgs e)
@@ -211,7 +219,7 @@ namespace DiceTravel
                     }
 
                     TxtNextTripTitle.Text = activeTrip.EndLocation;
-                    BtnNextTripCancel.Enabled = true;
+                    BtnNextTripModify.Enabled = true;
                 }
             }
             else
@@ -222,7 +230,7 @@ namespace DiceTravel
         }
         private void BtnNextDestReached_Click(object sender, EventArgs e)
         {
-            throw new Exception("Nincs kész");
+            new TripCreateForm().Show();
         }
 
         //flowLayoutPanel
@@ -268,14 +276,21 @@ namespace DiceTravel
             MenuMeMyJourneys_Click(sender, e);
         }
 
-        private void BtnNextTripCancel_Click(object sender, EventArgs e)
+        private void BtnNextTripModify_Click(object sender, EventArgs e)
         {
-            throw new Exception("Újra kell kezdeni");
+
+            //ide csinálok egy TripUpdateFormot, hogy az aktuális Trip adatait írom felül. Igazából egy módosítás lesz, nem pedig törlés.
+            new TripUpdateForm().Show();
         }
 
         private void MenuMeGoalReached_Click(object sender, EventArgs e)
         {
             new TripCreateForm().Show();
+        }
+
+        private void BtnNewEntry_Click(object sender, EventArgs e)
+        {
+            new EntryCreateForm().Show(); 
         }
     }
 }

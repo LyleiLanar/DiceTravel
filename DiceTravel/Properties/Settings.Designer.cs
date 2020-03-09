@@ -44,7 +44,7 @@ namespace DiceTravel.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2988-11-08")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2988-11-08 00:00:00")]
         public string nullDate {
             get {
                 return ((string)(this["nullDate"]));

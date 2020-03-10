@@ -132,6 +132,27 @@ namespace DiceTravel
             return true;
         }
 
+        public List<Entry> GetAllEntries()
+        {
+            string getTripsCommand = "SELECT * FROM dice_travel.entries " +
+                "INNER JOIN dice_travel.trips on entries.trip_id = trips.id " +
+                "INNER JOIN dice_travel.journeys on trips.journey_id = journeys.id " +
+                "WHERE journeys.user_id = @user_id ORDER BY entries.entry_date; ";
+
+            MySqlCommand sqlCommand = CreateCommand(getTripsCommand);
+            sqlCommand.Parameters.Add("@user_id", MySqlDbType.Int32);
+            sqlCommand.Parameters["@user_id"].Value = Id;
+
+            DataTable dataTable = ReadQueryTable(sqlCommand);
+            List<Entry> entries = new List<Entry>();
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                entries.Add(new Entry(row));
+            }
+
+            return entries;
+        }
         //misc methods
         public override void Validation()
         {

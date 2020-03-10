@@ -58,14 +58,14 @@ namespace DiceTravel.Controls
 
         private void TripControl_Click(object sender, EventArgs e)
         {
-            Program.mainForm.FlowElementProvider.SetFlow_EntriesByTrip(Trip.Id);
+            Program.mainForm.FlowElementProvider.SetFlow_EntryFlow_ByTrip(Trip.Id);
             Program.mainForm.DrawFlow();
         }
 
         private void BtnTripBackToJourney_Click(object sender, EventArgs e)
         {
-            FlowElementProvider flowElementProvider = Program.mainForm.FlowElementProvider;
-            Program.mainForm.FlowElementProvider.SetFlow_JourneysByUser(flowElementProvider.UserId);
+            User user = User.GetUser_ById(Journey.GetJourney_ById(Trip.JourneyId).UserId);
+            Program.mainForm.FlowElementProvider.SetFlow_JourneyFlow_ByUser(user.Id);
             Program.mainForm.DrawFlow();
         }
     }

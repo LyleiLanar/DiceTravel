@@ -179,7 +179,7 @@ namespace DiceTravel
                 Journey.GetJourney_ById(ActiveUserStore.GetActiveJourney().Id).DeleteItself();
             }
 
-            Program.mainForm.FlowElementProvider.SetFlow_JourneysByUser(ActiveUserStore.ActiveUser.Id);
+            Program.mainForm.FlowElementProvider.SetFlow_JourneyFlow_ByUser(ActiveUserStore.ActiveUser.Id);
             Program.mainForm.UpdateData();
         }
         private void BtnNewJourney_Click(object sender, EventArgs e)
@@ -269,7 +269,7 @@ namespace DiceTravel
         }
         public void MenuMeMyJourneys_Click(object sender, EventArgs e)
         {
-            Program.mainForm.FlowElementProvider.SetFlow_JourneysByUser(ActiveUserStore.ActiveUser.Id);
+            Program.mainForm.FlowElementProvider.SetFlow_JourneyFlow_ByUser(ActiveUserStore.ActiveUser.Id);
             Program.mainForm.DrawFlow();
         }
 
@@ -297,7 +297,7 @@ namespace DiceTravel
 
         private void BtnAllEntries_Click(object sender, EventArgs e)
         {
-            Program.mainForm.FlowElementProvider.SetFlow_JourneysByUser(ActiveUserStore.ActiveUser.Id);
+            Program.mainForm.FlowElementProvider.SetFlow_StoryFlow_ByUser(ActiveUserStore.ActiveUser.Id);
             Program.mainForm.DrawFlow();
         }
     }

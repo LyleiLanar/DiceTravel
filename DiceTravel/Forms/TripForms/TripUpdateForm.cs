@@ -14,19 +14,17 @@ namespace DiceTravel.Forms.TripForms
 {
     public partial class TripUpdateForm : Form
     {
-
-        private readonly Trip trip;
-
-        public TripUpdateForm()
+        private Trip Trip { get;  }
+        public TripUpdateForm(Trip trip)
         {
             InitializeComponent();
+            Trip = trip;
+            Journey journey = Journey.GetJourney_ById(Trip.JourneyId);
+            this.Text = journey.Title +": "+Trip.EndLocation + " update";
 
-            Journey activeJourney = ActiveUserStore.ActiveUser.GetActiveJourney();
-            trip = activeJourney.GetLastTrip();
+            this.InputTripUpdateEndLocation.Text = Trip.EndLocation;
 
-            this.InputTripUpdateEndLocation.Text = trip.EndLocation;
-
-            switch (trip.Visibility)
+            switch (Trip.Visibility)
             {
                 case 0:
                     this.RBtnTripCreateUpdatePrivate.Checked = true;
@@ -45,20 +43,20 @@ namespace DiceTravel.Forms.TripForms
             }
 
         }
+
         private void BtnTripUpdateTrip_Click(object sender, EventArgs e)
         {
-            trip.EndLocation = this.InputTripUpdateEndLocation.Text;
+            Trip.EndLocation = this.InputTripUpdateEndLocation.Text;
 
-            if (this.RBtnTripCreateUpdatePrivate.Checked) { trip.Visibility = 0; }
-            if (this.RBtnTripCreateUpdateOnlyFriends.Checked) { trip.Visibility = 1; }
-            if (this.RBtnTripCreateUpdatePublic.Checked) { trip.Visibility = 2; }
+            if (this.RBtnTripCreateUpdatePrivate.Checked) { Trip.Visibility = 0; }
+            if (this.RBtnTripCreateUpdateOnlyFriends.Checked) { Trip.Visibility = 1; }
+            if (this.RBtnTripCreateUpdatePublic.Checked) { Trip.Visibility = 2; }
 
-            trip.UpdateItself();
+            Trip.UpdateItself();
 
             Program.mainForm.UpdateData();
             this.Close();
         }
-
         private void TripUpdateForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Program.MainFormActivate();
@@ -67,7 +65,6 @@ namespace DiceTravel.Forms.TripForms
         {
             Program.MainFormDeactivate();
         }
-
         private void BtnTripUpdateCancel_Click(object sender, EventArgs e)
         {
             this.Close();

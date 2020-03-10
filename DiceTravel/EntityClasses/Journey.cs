@@ -121,7 +121,7 @@ namespace DiceTravel.Classes
             };
 
             sqlCommand.Parameters.Add("@id", MySqlDbType.Int32);
-            sqlCommand.Parameters["@id"].Value = ActiveUserStore.GetActiveJourney().Id;
+            sqlCommand.Parameters["@id"].Value = Id;
 
             RunSqlCommand(sqlCommand);
         }

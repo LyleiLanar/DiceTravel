@@ -99,11 +99,11 @@
             // 
             this.TxtTripUpdateFormTitle.AutoSize = true;
             this.TxtTripUpdateFormTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TxtTripUpdateFormTitle.Location = new System.Drawing.Point(30, 9);
+            this.TxtTripUpdateFormTitle.Location = new System.Drawing.Point(48, 9);
             this.TxtTripUpdateFormTitle.Name = "TxtTripUpdateFormTitle";
-            this.TxtTripUpdateFormTitle.Size = new System.Drawing.Size(171, 33);
+            this.TxtTripUpdateFormTitle.Size = new System.Drawing.Size(133, 33);
             this.TxtTripUpdateFormTitle.TabIndex = 17;
-            this.TxtTripUpdateFormTitle.Text = "Modify Trip";
+            this.TxtTripUpdateFormTitle.Text = "Edit Trip";
             this.TxtTripUpdateFormTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BtnTripUpdateCancel

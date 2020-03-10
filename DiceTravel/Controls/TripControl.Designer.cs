@@ -89,6 +89,7 @@
             this.BtnTripOptions.Size = new System.Drawing.Size(42, 45);
             this.BtnTripOptions.TabIndex = 21;
             this.BtnTripOptions.UseVisualStyleBackColor = false;
+            this.BtnTripOptions.Click += new System.EventHandler(this.BtnTripOptions_Click);
             // 
             // PctBxTripVisibility
             // 

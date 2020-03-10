@@ -71,6 +71,7 @@
             this.journeysBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dice_travelDataSet = new DiceTravel.dice_travelDataSet();
             this.journeysTableAdapter = new DiceTravel.dice_travelDataSetTableAdapters.journeysTableAdapter();
+            this.BtnActiveJourneyModify = new System.Windows.Forms.Button();
             this.mainToolStripContainer.ContentPanel.SuspendLayout();
             this.mainToolStripContainer.TopToolStripPanel.SuspendLayout();
             this.mainToolStripContainer.SuspendLayout();
@@ -115,7 +116,7 @@
             // 
             this.BtnNewEntry.BackColor = System.Drawing.SystemColors.Control;
             this.BtnNewEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.BtnNewEntry.Location = new System.Drawing.Point(4, 280);
+            this.BtnNewEntry.Location = new System.Drawing.Point(5, 282);
             this.BtnNewEntry.Name = "BtnNewEntry";
             this.BtnNewEntry.Size = new System.Drawing.Size(229, 46);
             this.BtnNewEntry.TabIndex = 5;
@@ -133,7 +134,7 @@
             this.GrpBxActiveTripData.Controls.Add(this.BtnNextTripReached);
             this.GrpBxActiveTripData.Controls.Add(this.PctBxNextTripVisibility);
             this.GrpBxActiveTripData.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.GrpBxActiveTripData.Location = new System.Drawing.Point(4, 181);
+            this.GrpBxActiveTripData.Location = new System.Drawing.Point(3, 183);
             this.GrpBxActiveTripData.Name = "GrpBxActiveTripData";
             this.GrpBxActiveTripData.Size = new System.Drawing.Size(228, 93);
             this.GrpBxActiveTripData.TabIndex = 4;
@@ -195,13 +196,14 @@
             // GrpBxActiveJourneyData
             // 
             this.GrpBxActiveJourneyData.BackColor = System.Drawing.SystemColors.Control;
+            this.GrpBxActiveJourneyData.Controls.Add(this.BtnActiveJourneyModify);
             this.GrpBxActiveJourneyData.Controls.Add(this.TxtActiveJourneyTitle);
             this.GrpBxActiveJourneyData.Controls.Add(this.PctBxActiveJourneyVisibility);
             this.GrpBxActiveJourneyData.Controls.Add(this.BtnActiveJourneyNewJourney);
             this.GrpBxActiveJourneyData.Controls.Add(this.BtnActiveJourneyDelete);
             this.GrpBxActiveJourneyData.Controls.Add(this.TxtActiveJourneyInfo);
             this.GrpBxActiveJourneyData.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.GrpBxActiveJourneyData.Location = new System.Drawing.Point(4, 60);
+            this.GrpBxActiveJourneyData.Location = new System.Drawing.Point(5, 62);
             this.GrpBxActiveJourneyData.Name = "GrpBxActiveJourneyData";
             this.GrpBxActiveJourneyData.Size = new System.Drawing.Size(228, 115);
             this.GrpBxActiveJourneyData.TabIndex = 3;
@@ -237,7 +239,7 @@
             this.BtnActiveJourneyNewJourney.BackColor = System.Drawing.SystemColors.Control;
             this.BtnActiveJourneyNewJourney.Enabled = false;
             this.BtnActiveJourneyNewJourney.Image = global::DiceTravel.Properties.Resources.icoStart;
-            this.BtnActiveJourneyNewJourney.Location = new System.Drawing.Point(136, 69);
+            this.BtnActiveJourneyNewJourney.Location = new System.Drawing.Point(90, 69);
             this.BtnActiveJourneyNewJourney.Name = "BtnActiveJourneyNewJourney";
             this.BtnActiveJourneyNewJourney.Size = new System.Drawing.Size(40, 40);
             this.BtnActiveJourneyNewJourney.TabIndex = 13;
@@ -251,7 +253,7 @@
             this.BtnActiveJourneyDelete.BackColor = System.Drawing.SystemColors.Control;
             this.BtnActiveJourneyDelete.Enabled = false;
             this.BtnActiveJourneyDelete.Image = global::DiceTravel.Properties.Resources.icoDelete;
-            this.BtnActiveJourneyDelete.Location = new System.Drawing.Point(182, 69);
+            this.BtnActiveJourneyDelete.Location = new System.Drawing.Point(136, 69);
             this.BtnActiveJourneyDelete.Name = "BtnActiveJourneyDelete";
             this.BtnActiveJourneyDelete.Size = new System.Drawing.Size(40, 40);
             this.BtnActiveJourneyDelete.TabIndex = 12;
@@ -278,7 +280,7 @@
             this.GrpBxUserData.ForeColor = System.Drawing.SystemColors.ControlText;
             this.GrpBxUserData.Location = new System.Drawing.Point(3, 3);
             this.GrpBxUserData.Name = "GrpBxUserData";
-            this.GrpBxUserData.Size = new System.Drawing.Size(229, 51);
+            this.GrpBxUserData.Size = new System.Drawing.Size(229, 53);
             this.GrpBxUserData.TabIndex = 1;
             this.GrpBxUserData.TabStop = false;
             this.GrpBxUserData.Text = "MyData";
@@ -406,14 +408,14 @@
             // MenuMainLogin
             // 
             this.MenuMainLogin.Name = "MenuMainLogin";
-            this.MenuMainLogin.Size = new System.Drawing.Size(114, 22);
+            this.MenuMainLogin.Size = new System.Drawing.Size(180, 22);
             this.MenuMainLogin.Text = "Login";
             this.MenuMainLogin.Click += new System.EventHandler(this.MenuMainLogin_Click);
             // 
             // MenuMainSignUp
             // 
             this.MenuMainSignUp.Name = "MenuMainSignUp";
-            this.MenuMainSignUp.Size = new System.Drawing.Size(114, 22);
+            this.MenuMainSignUp.Size = new System.Drawing.Size(180, 22);
             this.MenuMainSignUp.Text = "SignUp";
             this.MenuMainSignUp.Click += new System.EventHandler(this.MenuMainSignUp_Click);
             // 
@@ -421,14 +423,14 @@
             // 
             this.MenuMainLogout.Enabled = false;
             this.MenuMainLogout.Name = "MenuMainLogout";
-            this.MenuMainLogout.Size = new System.Drawing.Size(114, 22);
+            this.MenuMainLogout.Size = new System.Drawing.Size(180, 22);
             this.MenuMainLogout.Text = "LogOut";
             this.MenuMainLogout.Click += new System.EventHandler(this.MenuMainLogout_Click);
             // 
             // MenuMainQuit
             // 
             this.MenuMainQuit.Name = "MenuMainQuit";
-            this.MenuMainQuit.Size = new System.Drawing.Size(114, 22);
+            this.MenuMainQuit.Size = new System.Drawing.Size(180, 22);
             this.MenuMainQuit.Text = "Exit";
             this.MenuMainQuit.Click += new System.EventHandler(this.MenuMainQuit_Click);
             // 
@@ -449,33 +451,33 @@
             // MenuMeMyFlow
             // 
             this.MenuMeMyFlow.Name = "MenuMeMyFlow";
-            this.MenuMeMyFlow.Size = new System.Drawing.Size(146, 22);
+            this.MenuMeMyFlow.Size = new System.Drawing.Size(180, 22);
             this.MenuMeMyFlow.Text = "MyFlow";
             // 
             // MenuMeMyJourneys
             // 
             this.MenuMeMyJourneys.Name = "MenuMeMyJourneys";
-            this.MenuMeMyJourneys.Size = new System.Drawing.Size(146, 22);
+            this.MenuMeMyJourneys.Size = new System.Drawing.Size(180, 22);
             this.MenuMeMyJourneys.Text = "MyJourneys";
             this.MenuMeMyJourneys.Click += new System.EventHandler(this.MenuMeMyJourneys_Click);
             // 
             // MenuMeNewJourney
             // 
             this.MenuMeNewJourney.Name = "MenuMeNewJourney";
-            this.MenuMeNewJourney.Size = new System.Drawing.Size(146, 22);
+            this.MenuMeNewJourney.Size = new System.Drawing.Size(180, 22);
             this.MenuMeNewJourney.Text = "&New Journey";
             this.MenuMeNewJourney.Click += new System.EventHandler(this.MenuMeNewJourney_Click);
             // 
             // MenuMeNewEntry
             // 
             this.MenuMeNewEntry.Name = "MenuMeNewEntry";
-            this.MenuMeNewEntry.Size = new System.Drawing.Size(146, 22);
+            this.MenuMeNewEntry.Size = new System.Drawing.Size(180, 22);
             this.MenuMeNewEntry.Text = "New Entry";
             // 
             // MenuMeGoalReached
             // 
             this.MenuMeGoalReached.Name = "MenuMeGoalReached";
-            this.MenuMeGoalReached.Size = new System.Drawing.Size(146, 22);
+            this.MenuMeGoalReached.Size = new System.Drawing.Size(180, 22);
             this.MenuMeGoalReached.Text = "Goal reached!";
             this.MenuMeGoalReached.Click += new System.EventHandler(this.MenuMeGoalReached_Click);
             // 
@@ -511,6 +513,19 @@
             // journeysTableAdapter
             // 
             this.journeysTableAdapter.ClearBeforeFill = true;
+            // 
+            // BtnActiveJourneyModify
+            // 
+            this.BtnActiveJourneyModify.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.BtnActiveJourneyModify.BackColor = System.Drawing.SystemColors.Control;
+            this.BtnActiveJourneyModify.Enabled = false;
+            this.BtnActiveJourneyModify.Image = global::DiceTravel.Properties.Resources.icoSettings;
+            this.BtnActiveJourneyModify.Location = new System.Drawing.Point(182, 69);
+            this.BtnActiveJourneyModify.Name = "BtnActiveJourneyModify";
+            this.BtnActiveJourneyModify.Size = new System.Drawing.Size(40, 40);
+            this.BtnActiveJourneyModify.TabIndex = 20;
+            this.MainFormToolTip.SetToolTip(this.BtnActiveJourneyModify, "Modify Trip");
+            this.BtnActiveJourneyModify.UseVisualStyleBackColor = false;
             // 
             // MainForm
             // 
@@ -594,6 +609,7 @@
         private System.Windows.Forms.Button BtnMyJourney;
         private System.Windows.Forms.ToolTip MainFormToolTip;
         private System.Windows.Forms.Button BtnAllEntries;
+        private System.Windows.Forms.Button BtnActiveJourneyModify;
     }
 }
 

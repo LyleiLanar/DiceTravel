@@ -1,5 +1,5 @@
 ﻿using DiceTravel.Classes;
-using DiceTravel.Util;
+using DiceTravel.Forms.TripForms;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -11,9 +11,12 @@ namespace DiceTravel.Controls
         private Trip Trip { get; }
 
 
-        public TripControl(Trip trip): base()
+        public TripControl(Trip trip) : base()
         {
-            if (trip.EndDate == DateTime.Parse(Properties.Settings.Default.nullDate))
+            InitializeComponent();
+
+            Trip = trip;
+            if (Trip.EndDate == DateTime.Parse(Properties.Settings.Default.nullDate))
             {
                 BorderStyle = BorderStyle;
                 BorderStyle = BorderStyle.FixedSingle;
@@ -21,8 +24,11 @@ namespace DiceTravel.Controls
                 originalColor = Color.Salmon;
             }
 
-            Trip = trip;
-            InitializeComponent();
+            if (Journey.GetJourney_ById(Trip.JourneyId).Closed == 1)
+            {
+                BtnTripOptions.Enabled = false;
+            }
+
             BackColor = originalColor;
             SetContent();
         }
@@ -33,7 +39,7 @@ namespace DiceTravel.Controls
             string userLoginName = User.GetUser_ById(Journey.GetJourney_ById(Trip.JourneyId).UserId).LoginName;
 
             TxtTripUserLoginName.Text = userLoginName;
-            TxtTripEndLocation.Text = journey.Title +": "+ Trip.EndLocation;
+            TxtTripEndLocation.Text = journey.Title + ": " + Trip.EndLocation;
             TxtTripEndDate.Text = Trip.EndDate == DateTime.Parse(Properties.Settings.Default.nullDate) ? "in progress..." : $"Reached: {Trip.EndDate}";
 
             switch (Trip.Visibility)
@@ -67,6 +73,11 @@ namespace DiceTravel.Controls
             User user = User.GetUser_ById(Journey.GetJourney_ById(Trip.JourneyId).UserId);
             Program.mainForm.FlowElementProvider.SetFlow_JourneyFlow_ByUser(user.Id);
             Program.mainForm.DrawFlow();
+        }
+
+        private void BtnTripOptions_Click(object sender, EventArgs e)
+        {
+            new TripUpdateForm(Trip).Show();
         }
     }
 }

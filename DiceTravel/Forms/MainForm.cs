@@ -177,10 +177,9 @@ namespace DiceTravel
             if (MessageBox.Show("All progress will be lost!\r\nAre you sure to delete this Journey?", "Attention!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 Journey.GetJourney_ById(ActiveUserStore.GetActiveJourney().Id).DeleteItself();
+                Program.mainForm.FlowElementProvider.SetFlow_JourneyFlow_ByUser(ActiveUserStore.ActiveUser.Id);
+                Program.mainForm.UpdateData();
             }
-
-            Program.mainForm.FlowElementProvider.SetFlow_JourneyFlow_ByUser(ActiveUserStore.ActiveUser.Id);
-            Program.mainForm.UpdateData();
         }
         private void BtnNewJourney_Click(object sender, EventArgs e)
         {
@@ -279,10 +278,8 @@ namespace DiceTravel
         }
 
         private void BtnNextTripModify_Click(object sender, EventArgs e)
-        {
-
-            //ide csinálok egy TripUpdateFormot, hogy az aktuális Trip adatait írom felül. Igazából egy módosítás lesz, nem pedig törlés.
-            new TripUpdateForm().Show();
+        {           
+            new TripUpdateForm(ActiveUserStore.GetActiveJourney().GetLastTrip()).Show();
         }
 
         private void MenuMeGoalReached_Click(object sender, EventArgs e)

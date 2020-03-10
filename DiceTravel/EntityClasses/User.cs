@@ -131,7 +131,6 @@ namespace DiceTravel
             }
             return true;
         }
-
         public List<Entry> GetAllEntries()
         {
             string getTripsCommand = "SELECT * FROM dice_travel.entries " +
@@ -153,6 +152,7 @@ namespace DiceTravel
 
             return entries;
         }
+        
         //misc methods
         public override void Validation()
         {

@@ -65,10 +65,13 @@ namespace DiceTravel.Forms.TripForms
         private void BtnTripCreateEndJourney_Click(object sender, EventArgs e)
         {
             Journey activeJourney = ActiveUserStore.ActiveUser.GetActiveJourney();
-
-            activeJourney.CloseItself();
-            Program.mainForm.UpdateData();
-            this.Close();
+            if (MessageBox.Show("You're going to close this Journey. If you do this, you can't edit the Trips and Entries anymore!\r\n" +
+                "Are you sure to lock this Journey?", "Closing Journey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            {
+                activeJourney.CloseItself();
+                Program.mainForm.UpdateData();
+                this.Close();
+            }
         }
 
         private void BtnTripCreateCancel_Click(object sender, EventArgs e)

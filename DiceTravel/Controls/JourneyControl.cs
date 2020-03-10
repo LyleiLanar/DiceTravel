@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using DiceTravel.Util;
+using DiceTravel.Forms.JourneyForms;
 
 namespace DiceTravel.Controls
 {
@@ -61,7 +62,8 @@ namespace DiceTravel.Controls
 
         private void BtnJourneyOptions_Click(object sender, System.EventArgs e)
         {
-
+            new JourneyUpdateForm(Journey).Show();
+ 
         }
 
         private void JourneyControl_Click(object sender, System.EventArgs e)

@@ -1,19 +1,14 @@
 ﻿using DiceTravel.Classes;
 using DiceTravel.Forms.EntryForms;
-using DiceTravel.Util;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+using System.IO;
 
 namespace DiceTravel.Controls
 {
     public partial class EntryControl : FlowElementControl
     {
-        private Entry Entry { get;}
+        private Entry Entry { get; }
 
         public EntryControl(Entry entry)
         {
@@ -29,10 +24,23 @@ namespace DiceTravel.Controls
             TxtEntryDate.Text = Entry.EntryDate.ToString();
             TxtEntryTitle.Text = Entry.Title;
 
+            if (Entry.Picture != null)
+            {
+                MemoryStream ms = new MemoryStream(Entry.Picture);
+                PctBxEntryImage.Image = Image.FromStream(ms);
+                PctBxEntryImage.Visible = true;
+                this.Height = 640;
+            }
+            else
+            {
+                this.Height = 134;
+            }
+            
+
             switch (Entry.Visibility)
             {
                 case 0:
-                   PctBxEntryVisibility.Image = Properties.Resources.icoVisibilityPrivate.ToBitmap();
+                    PctBxEntryVisibility.Image = Properties.Resources.icoVisibilityPrivate.ToBitmap();
                     break;
 
                 case 1:
@@ -70,5 +78,6 @@ namespace DiceTravel.Controls
         {
             new EntryUpdateForm(Entry).Show();
         }
+
     }
 }

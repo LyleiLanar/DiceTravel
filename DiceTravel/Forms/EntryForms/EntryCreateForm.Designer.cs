@@ -40,7 +40,11 @@
             this.BtnEntryCreateNew = new System.Windows.Forms.Button();
             this.InputEntryCreateTitle = new System.Windows.Forms.TextBox();
             this.TxtEntryCreateTitle_label = new System.Windows.Forms.Label();
+            this.BtnEntryCreateAddImage = new System.Windows.Forms.Button();
+            this.InputEntryCreateAddImage = new System.Windows.Forms.TextBox();
+            this.PctrBxEntryCreateAddImage = new System.Windows.Forms.PictureBox();
             this.GrpBxEntryCreateVisibility.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PctrBxEntryCreateAddImage)).BeginInit();
             this.SuspendLayout();
             // 
             // GrpBxEntryCreateVisibility
@@ -49,7 +53,7 @@
             this.GrpBxEntryCreateVisibility.Controls.Add(this.RBtnEntryCreateVisibilityPublic);
             this.GrpBxEntryCreateVisibility.Controls.Add(this.RBtnEntryCreateVisibilityOnlyFriends);
             this.GrpBxEntryCreateVisibility.Controls.Add(this.RBtnEntryCreateVisibilityPrivate);
-            this.GrpBxEntryCreateVisibility.Location = new System.Drawing.Point(22, 172);
+            this.GrpBxEntryCreateVisibility.Location = new System.Drawing.Point(22, 218);
             this.GrpBxEntryCreateVisibility.Name = "GrpBxEntryCreateVisibility";
             this.GrpBxEntryCreateVisibility.Size = new System.Drawing.Size(100, 90);
             this.GrpBxEntryCreateVisibility.TabIndex = 15;
@@ -83,7 +87,7 @@
             this.RBtnEntryCreateVisibilityPrivate.Location = new System.Drawing.Point(6, 19);
             this.RBtnEntryCreateVisibilityPrivate.Name = "RBtnEntryCreateVisibilityPrivate";
             this.RBtnEntryCreateVisibilityPrivate.Size = new System.Drawing.Size(58, 17);
-            this.RBtnEntryCreateVisibilityPrivate.TabIndex = 0;
+            this.RBtnEntryCreateVisibilityPrivate.TabIndex = 4;
             this.RBtnEntryCreateVisibilityPrivate.TabStop = true;
             this.RBtnEntryCreateVisibilityPrivate.Text = "Private";
             this.RBtnEntryCreateVisibilityPrivate.UseVisualStyleBackColor = true;
@@ -96,7 +100,7 @@
             this.InputEntryCreateComment.Name = "InputEntryCreateComment";
             this.InputEntryCreateComment.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.InputEntryCreateComment.Size = new System.Drawing.Size(211, 82);
-            this.InputEntryCreateComment.TabIndex = 13;
+            this.InputEntryCreateComment.TabIndex = 2;
             // 
             // TxtEntryCreateJourneyTitle
             // 
@@ -121,10 +125,10 @@
             // 
             this.BtnEntryCreateCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnEntryCreateCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnEntryCreateCancel.Location = new System.Drawing.Point(128, 239);
+            this.BtnEntryCreateCancel.Location = new System.Drawing.Point(128, 285);
             this.BtnEntryCreateCancel.Name = "BtnEntryCreateCancel";
             this.BtnEntryCreateCancel.Size = new System.Drawing.Size(95, 23);
-            this.BtnEntryCreateCancel.TabIndex = 18;
+            this.BtnEntryCreateCancel.TabIndex = 6;
             this.BtnEntryCreateCancel.Text = "Cancel";
             this.BtnEntryCreateCancel.UseVisualStyleBackColor = true;
             this.BtnEntryCreateCancel.Click += new System.EventHandler(this.BtnEntryCreateCancel_Click);
@@ -132,10 +136,10 @@
             // BtnEntryCreateNew
             // 
             this.BtnEntryCreateNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BtnEntryCreateNew.Location = new System.Drawing.Point(128, 185);
+            this.BtnEntryCreateNew.Location = new System.Drawing.Point(128, 218);
             this.BtnEntryCreateNew.Name = "BtnEntryCreateNew";
             this.BtnEntryCreateNew.Size = new System.Drawing.Size(95, 23);
-            this.BtnEntryCreateNew.TabIndex = 17;
+            this.BtnEntryCreateNew.TabIndex = 5;
             this.BtnEntryCreateNew.Text = "Save";
             this.BtnEntryCreateNew.UseVisualStyleBackColor = true;
             this.BtnEntryCreateNew.Click += new System.EventHandler(this.BtnEntryCreateNew_Click);
@@ -146,7 +150,7 @@
             this.InputEntryCreateTitle.MaxLength = 50;
             this.InputEntryCreateTitle.Name = "InputEntryCreateTitle";
             this.InputEntryCreateTitle.Size = new System.Drawing.Size(130, 20);
-            this.InputEntryCreateTitle.TabIndex = 20;
+            this.InputEntryCreateTitle.TabIndex = 1;
             // 
             // TxtEntryCreateTitle_label
             // 
@@ -157,11 +161,42 @@
             this.TxtEntryCreateTitle_label.TabIndex = 19;
             this.TxtEntryCreateTitle_label.Text = "Title: ";
             // 
+            // BtnEntryCreateAddImage
+            // 
+            this.BtnEntryCreateAddImage.Image = global::DiceTravel.Properties.Resources.icoImage;
+            this.BtnEntryCreateAddImage.Location = new System.Drawing.Point(11, 168);
+            this.BtnEntryCreateAddImage.Name = "BtnEntryCreateAddImage";
+            this.BtnEntryCreateAddImage.Size = new System.Drawing.Size(40, 40);
+            this.BtnEntryCreateAddImage.TabIndex = 3;
+            this.BtnEntryCreateAddImage.UseVisualStyleBackColor = true;
+            this.BtnEntryCreateAddImage.Click += new System.EventHandler(this.BtnEntryCreateAddImage_Click);
+            // 
+            // InputEntryCreateAddImage
+            // 
+            this.InputEntryCreateAddImage.Location = new System.Drawing.Point(60, 168);
+            this.InputEntryCreateAddImage.MaxLength = 50;
+            this.InputEntryCreateAddImage.Name = "InputEntryCreateAddImage";
+            this.InputEntryCreateAddImage.ReadOnly = true;
+            this.InputEntryCreateAddImage.Size = new System.Drawing.Size(163, 20);
+            this.InputEntryCreateAddImage.TabIndex = 22;
+            // 
+            // PctrBxEntryCreateAddImage
+            // 
+            this.PctrBxEntryCreateAddImage.Location = new System.Drawing.Point(239, 12);
+            this.PctrBxEntryCreateAddImage.Name = "PctrBxEntryCreateAddImage";
+            this.PctrBxEntryCreateAddImage.Size = new System.Drawing.Size(371, 296);
+            this.PctrBxEntryCreateAddImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PctrBxEntryCreateAddImage.TabIndex = 23;
+            this.PctrBxEntryCreateAddImage.TabStop = false;
+            // 
             // EntryCreateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(234, 273);
+            this.ClientSize = new System.Drawing.Size(624, 319);
+            this.Controls.Add(this.PctrBxEntryCreateAddImage);
+            this.Controls.Add(this.InputEntryCreateAddImage);
+            this.Controls.Add(this.BtnEntryCreateAddImage);
             this.Controls.Add(this.InputEntryCreateTitle);
             this.Controls.Add(this.TxtEntryCreateTitle_label);
             this.Controls.Add(this.GrpBxEntryCreateVisibility);
@@ -171,6 +206,8 @@
             this.Controls.Add(this.BtnEntryCreateCancel);
             this.Controls.Add(this.BtnEntryCreateNew);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "EntryCreateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EntryCreateForm";
@@ -178,6 +215,7 @@
             this.Load += new System.EventHandler(this.EntryCreateForm_Load);
             this.GrpBxEntryCreateVisibility.ResumeLayout(false);
             this.GrpBxEntryCreateVisibility.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PctrBxEntryCreateAddImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,5 +234,8 @@
         private System.Windows.Forms.Button BtnEntryCreateNew;
         private System.Windows.Forms.TextBox InputEntryCreateTitle;
         private System.Windows.Forms.Label TxtEntryCreateTitle_label;
+        private System.Windows.Forms.Button BtnEntryCreateAddImage;
+        private System.Windows.Forms.TextBox InputEntryCreateAddImage;
+        private System.Windows.Forms.PictureBox PctrBxEntryCreateAddImage;
     }
 }

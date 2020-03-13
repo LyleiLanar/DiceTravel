@@ -23,7 +23,16 @@ namespace DiceTravel.Classes
             TripId = Int32.Parse(dataRow["trip_id"].ToString());
             Title = dataRow["title"].ToString();
             EntryDate = (DateTime)dataRow["entry_date"];
-            Picture = null;
+
+            try
+            {
+                Picture = (byte[])dataRow["picture"];
+            }
+            catch (InvalidCastException)
+            {
+                Picture = null;
+            }
+                     
             Comment = dataRow["comment"].ToString();
             Visibility = Int32.Parse(dataRow["visibility"].ToString());
         }

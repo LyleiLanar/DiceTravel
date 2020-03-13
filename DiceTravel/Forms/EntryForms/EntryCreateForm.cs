@@ -1,6 +1,7 @@
 ﻿using DiceTravel.Classes;
 using DiceTravel.Util;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace DiceTravel.Forms.EntryForms
@@ -10,6 +11,7 @@ namespace DiceTravel.Forms.EntryForms
         public EntryCreateForm()
         {
             InitializeComponent();
+            this.Width = 250;
         }
 
         private void EntryCreateForm_Load(object sender, EventArgs e)
@@ -34,8 +36,8 @@ namespace DiceTravel.Forms.EntryForms
 
             entry.TripId = trip.Id;
             entry.EntryDate = DateTime.Now;
-            entry.Picture = null; //itt még ki kell dolgozni a kép ki és betöltést.
-            entry.Comment = this.InputEntryCreateComment.Text;
+            entry.Picture = Util.ImageHandler.GetImageBin(InputEntryCreateAddImage.Text); //itt még ki kell dolgozni a kép ki és betöltést.
+            entry.Comment = this.InputEntryCreateComment.Text;            
             entry.Title = InputEntryCreateTitle.Text;
 
             if (RBtnEntryCreateVisibilityPrivate.Checked) { entry.Visibility = 0; }
@@ -59,5 +61,28 @@ namespace DiceTravel.Forms.EntryForms
         {
             entry.Validation();
         }
+
+        private void BtnEntryCreateAddImage_Click(object sender, EventArgs e)
+        {
+            //felhasznált kódrészlet: https://www.c-sharpcorner.com/UploadFile/deepak.sharma00/how-to-save-images-in-mysql-database-using-C-Sharp/
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Image files | *.jpg";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    InputEntryCreateAddImage.Text = openFileDialog.FileName;
+                    PctrBxEntryCreateAddImage.Image = Image.FromFile(openFileDialog.FileName);
+                    this.Width = 640;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+       
     }
 }

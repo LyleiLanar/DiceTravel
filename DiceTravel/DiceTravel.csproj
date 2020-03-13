@@ -155,6 +155,7 @@
     <Compile Include="Util\Exceptions\EntityCreationException.cs" />
     <Compile Include="Util\Exceptions\ValidationException.cs" />
     <Compile Include="Util\FlowElementProvider.cs" />
+    <Compile Include="Util\ImageHandler.cs" />
     <EmbeddedResource Include="Controls\EntryControl.resx">
       <DependentUpon>EntryControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,7 +257,7 @@
     <None Include="Resources\Icons\icoSettings.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Util\FlowCreation\" />
+    <None Include="Resources\Icons\icoImage.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Icons\icoMyJourneys.ico" />

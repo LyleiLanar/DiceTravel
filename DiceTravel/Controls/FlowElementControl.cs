@@ -17,8 +17,8 @@ namespace DiceTravel.Controls
 
         public FlowElementControl()
         {
-            highlightedColor = Color.Beige;
-            originalColor = SystemColors.Control;
+            highlightedColor = Color.SpringGreen;
+            originalColor = Color.LightGreen;
             InitializeComponent();
         }
 

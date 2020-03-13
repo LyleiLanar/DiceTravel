@@ -24,11 +24,6 @@ namespace DiceTravel.Controls
                 originalColor = Color.Salmon;
             }
 
-            if (Journey.GetJourney_ById(Trip.JourneyId).Closed == 1)
-            {
-                BtnTripOptions.Enabled = false;
-            }
-
             BackColor = originalColor;
             SetContent();
         }

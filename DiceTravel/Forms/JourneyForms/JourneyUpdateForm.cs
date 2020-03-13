@@ -1,6 +1,7 @@
 ﻿using DiceTravel.Classes;
 using DiceTravel.Util;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace DiceTravel.Forms.JourneyForms
@@ -17,6 +18,7 @@ namespace DiceTravel.Forms.JourneyForms
 
             InputJourneyUpdateStartLocation.Text = Journey.StartLocation;
             InputJourneyUpdateTitle.Text = Journey.Title;
+            BtnJourneyUpdateDelete.BackColor = Color.Red;
 
             switch (Journey.Visibility)
             {
@@ -35,9 +37,22 @@ namespace DiceTravel.Forms.JourneyForms
                 default:
                     throw new Exception("No such visibility!");
             }
+
+            Journey activeJourney = ActiveUserStore.ActiveUser.GetActiveJourney();
+
+            if (activeJourney != null && activeJourney.Id != Journey.Id)
+            {
+                InputJourneyUpdateTitle.Enabled = false;
+            }
+
+            if (Journey.Closed == 1)
+            {
+                InputJourneyUpdateStartLocation.Enabled = false;
+                InputJourneyUpdateTitle.Enabled = false;
+            }
         }
 
-        private void BtnJourneyUpdateOk_Click(object sender, EventArgs e)
+        private void BtnJourneyUpdateUpdate_Click(object sender, EventArgs e)
         {
             Journey.StartLocation = InputJourneyUpdateStartLocation.Text;
             Journey.Title = InputJourneyUpdateTitle.Text;
@@ -64,7 +79,6 @@ namespace DiceTravel.Forms.JourneyForms
         {
             Program.MainFormActivate();
         }
-
         private void BtnJourneyUpdateDelete_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("All progress will be lost!\r\nAre you sure to delete this Journey?", "Attention!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)

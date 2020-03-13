@@ -151,9 +151,9 @@
             this.BtnJourneyUpdateOk.Name = "BtnJourneyUpdateOk";
             this.BtnJourneyUpdateOk.Size = new System.Drawing.Size(95, 23);
             this.BtnJourneyUpdateOk.TabIndex = 17;
-            this.BtnJourneyUpdateOk.Text = "Ok";
+            this.BtnJourneyUpdateOk.Text = "Update";
             this.BtnJourneyUpdateOk.UseVisualStyleBackColor = true;
-            this.BtnJourneyUpdateOk.Click += new System.EventHandler(this.BtnJourneyUpdateOk_Click);
+            this.BtnJourneyUpdateOk.Click += new System.EventHandler(this.BtnJourneyUpdateUpdate_Click);
             // 
             // BtnJourneyUpdateDelete
             // 

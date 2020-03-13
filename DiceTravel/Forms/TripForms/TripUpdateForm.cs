@@ -1,27 +1,24 @@
 ﻿using DiceTravel.Classes;
 using DiceTravel.Util;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DiceTravel.Forms.TripForms
 {
     public partial class TripUpdateForm : Form
     {
-        private Trip Trip { get;  }
+        private Trip Trip { get; }
         public TripUpdateForm(Trip trip)
         {
             InitializeComponent();
             Trip = trip;
             Journey journey = Journey.GetJourney_ById(Trip.JourneyId);
-            this.Text = journey.Title +": "+Trip.EndLocation + " update";
 
+            if (Trip.EndDate == DateTime.Parse(Properties.Settings.Default.nullDate)) { BtnTripUpdateDelete.Enabled = false; }
+            else { BtnTripUpdateDelete.BackColor = Color.Red; }
+
+            this.Text = journey.Title + ": " + Trip.EndLocation + " update";
             this.InputTripUpdateEndLocation.Text = Trip.EndLocation;
 
             switch (Trip.Visibility)
@@ -42,6 +39,13 @@ namespace DiceTravel.Forms.TripForms
                     throw new Exception("No such visibility!");
             }
 
+
+            if (journey.Closed == 1)
+            {                
+                InputTripUpdateEndLocation.Enabled = false;
+                BtnTripUpdateDelete.Enabled = false;
+                BtnTripUpdateDelete.BackColor = SystemColors.Control;
+            }
         }
 
         private void BtnTripUpdateTrip_Click(object sender, EventArgs e)
@@ -67,6 +71,13 @@ namespace DiceTravel.Forms.TripForms
         }
         private void BtnTripUpdateCancel_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private void BtnTripUpdateDelete_Click(object sender, EventArgs e)
+        {
+            Trip.DeleteItself();
+            Program.mainForm.UpdateData();
             this.Close();
         }
     }

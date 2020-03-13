@@ -1,4 +1,5 @@
 ﻿using DiceTravel.Classes;
+using DiceTravel.Forms.EntryForms;
 using DiceTravel.Util;
 using System;
 using System.Collections.Generic;
@@ -63,6 +64,11 @@ namespace DiceTravel.Controls
             Journey journey = Journey.GetJourney_ById(Trip.GetTrip_ById(Entry.TripId).JourneyId);
             Program.mainForm.FlowElementProvider.SetFlow_TripFlow_ByJourney(journey.Id);
             Program.mainForm.DrawFlow();
+        }
+
+        private void BtnEntryOptions_Click(object sender, EventArgs e)
+        {
+            new EntryUpdateForm(Entry).Show();
         }
     }
 }

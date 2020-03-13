@@ -83,6 +83,7 @@
             this.BtnEntryOptions.Size = new System.Drawing.Size(42, 45);
             this.BtnEntryOptions.TabIndex = 21;
             this.BtnEntryOptions.UseVisualStyleBackColor = false;
+            this.BtnEntryOptions.Click += new System.EventHandler(this.BtnEntryOptions_Click);
             // 
             // PctBxEntryVisibility
             // 
@@ -108,7 +109,6 @@
             // EntryControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.BtnEntryBackToEntry);
             this.Controls.Add(this.TxtEntryComment);
             this.Controls.Add(this.TxtEntryDate);

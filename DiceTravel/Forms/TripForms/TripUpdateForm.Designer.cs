@@ -38,6 +38,7 @@
             this.BtnTripUpdateCancel = new System.Windows.Forms.Button();
             this.InputTripUpdateEndLocation = new System.Windows.Forms.TextBox();
             this.TxtTripUpdateTripEndLocation_Label = new System.Windows.Forms.Label();
+            this.BtnTripUpdateDelete = new System.Windows.Forms.Button();
             this.GrpBxTripUpdateVisibility.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +48,7 @@
             this.BtnTripUpdateTrip.Name = "BtnTripUpdateTrip";
             this.BtnTripUpdateTrip.Size = new System.Drawing.Size(95, 23);
             this.BtnTripUpdateTrip.TabIndex = 21;
-            this.BtnTripUpdateTrip.Text = "Modify!";
+            this.BtnTripUpdateTrip.Text = "Update";
             this.BtnTripUpdateTrip.UseVisualStyleBackColor = true;
             this.BtnTripUpdateTrip.Click += new System.EventHandler(this.BtnTripUpdateTrip_Click);
             // 
@@ -108,7 +109,7 @@
             // 
             // BtnTripUpdateCancel
             // 
-            this.BtnTripUpdateCancel.Location = new System.Drawing.Point(127, 150);
+            this.BtnTripUpdateCancel.Location = new System.Drawing.Point(127, 126);
             this.BtnTripUpdateCancel.Name = "BtnTripUpdateCancel";
             this.BtnTripUpdateCancel.Size = new System.Drawing.Size(95, 23);
             this.BtnTripUpdateCancel.TabIndex = 23;
@@ -133,11 +134,24 @@
             this.TxtTripUpdateTripEndLocation_Label.TabIndex = 18;
             this.TxtTripUpdateTripEndLocation_Label.Text = "Goal location: ";
             // 
+            // BtnTripUpdateDelete
+            // 
+            this.BtnTripUpdateDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnTripUpdateDelete.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BtnTripUpdateDelete.Location = new System.Drawing.Point(127, 169);
+            this.BtnTripUpdateDelete.Name = "BtnTripUpdateDelete";
+            this.BtnTripUpdateDelete.Size = new System.Drawing.Size(95, 23);
+            this.BtnTripUpdateDelete.TabIndex = 24;
+            this.BtnTripUpdateDelete.Text = "Delete";
+            this.BtnTripUpdateDelete.UseVisualStyleBackColor = true;
+            this.BtnTripUpdateDelete.Click += new System.EventHandler(this.BtnTripUpdateDelete_Click);
+            // 
             // TripUpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(234, 204);
+            this.Controls.Add(this.BtnTripUpdateDelete);
             this.Controls.Add(this.BtnTripUpdateTrip);
             this.Controls.Add(this.GrpBxTripUpdateVisibility);
             this.Controls.Add(this.TxtTripUpdateFormTitle);
@@ -171,5 +185,6 @@
         private System.Windows.Forms.Button BtnTripUpdateCancel;
         private System.Windows.Forms.TextBox InputTripUpdateEndLocation;
         private System.Windows.Forms.Label TxtTripUpdateTripEndLocation_Label;
+        private System.Windows.Forms.Button BtnTripUpdateDelete;
     }
 }

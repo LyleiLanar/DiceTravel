@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EntryCreateForm));
             this.GrpBxEntryCreateVisibility = new System.Windows.Forms.GroupBox();
             this.RBtnEntryCreateVisibilityPublic = new System.Windows.Forms.RadioButton();
             this.RBtnEntryCreateVisibilityOnlyFriends = new System.Windows.Forms.RadioButton();
@@ -169,6 +170,7 @@
             this.Controls.Add(this.TxtEntryCreateFormTitle);
             this.Controls.Add(this.BtnEntryCreateCancel);
             this.Controls.Add(this.BtnEntryCreateNew);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EntryCreateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EntryCreateForm";

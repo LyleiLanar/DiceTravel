@@ -71,7 +71,7 @@
             this.TxtEntryComment.Name = "TxtEntryComment";
             this.TxtEntryComment.ReadOnly = true;
             this.TxtEntryComment.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.TxtEntryComment.Size = new System.Drawing.Size(560, 68);
+            this.TxtEntryComment.Size = new System.Drawing.Size(516, 68);
             this.TxtEntryComment.TabIndex = 23;
             this.TxtEntryComment.Text = "";
             this.TxtEntryComment.MouseEnter += new System.EventHandler(this.TxtEntryComment_MouseEnter);
@@ -79,11 +79,10 @@
             // 
             // BtnEntryOptions
             // 
-            this.BtnEntryOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnEntryOptions.BackColor = System.Drawing.SystemColors.Control;
             this.BtnEntryOptions.FlatAppearance.BorderSize = 0;
             this.BtnEntryOptions.Image = global::DiceTravel.Properties.Resources.icoSettings;
-            this.BtnEntryOptions.Location = new System.Drawing.Point(614, 64);
+            this.BtnEntryOptions.Location = new System.Drawing.Point(574, 73);
             this.BtnEntryOptions.Name = "BtnEntryOptions";
             this.BtnEntryOptions.Size = new System.Drawing.Size(42, 45);
             this.BtnEntryOptions.TabIndex = 21;
@@ -101,11 +100,11 @@
             // 
             // BtnEntryBackToEntry
             // 
-            this.BtnEntryBackToEntry.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnEntryBackToEntry.BackColor = System.Drawing.SystemColors.Control;
             this.BtnEntryBackToEntry.FlatAppearance.BorderSize = 0;
             this.BtnEntryBackToEntry.Image = global::DiceTravel.Properties.Resources.icoBack;
-            this.BtnEntryBackToEntry.Location = new System.Drawing.Point(614, 13);
+            this.BtnEntryBackToEntry.Location = new System.Drawing.Point(574, 22);
+            this.BtnEntryBackToEntry.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
             this.BtnEntryBackToEntry.Name = "BtnEntryBackToEntry";
             this.BtnEntryBackToEntry.Size = new System.Drawing.Size(42, 45);
             this.BtnEntryBackToEntry.TabIndex = 24;
@@ -114,9 +113,10 @@
             // 
             // PctBxEntryImage
             // 
-            this.PctBxEntryImage.Location = new System.Drawing.Point(45, 135);
+            this.PctBxEntryImage.Location = new System.Drawing.Point(15, 135);
+            this.PctBxEntryImage.Margin = new System.Windows.Forms.Padding(15, 3, 15, 15);
             this.PctBxEntryImage.Name = "PctBxEntryImage";
-            this.PctBxEntryImage.Size = new System.Drawing.Size(560, 330);
+            this.PctBxEntryImage.Size = new System.Drawing.Size(599, 330);
             this.PctBxEntryImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PctBxEntryImage.TabIndex = 25;
             this.PctBxEntryImage.TabStop = false;
@@ -126,6 +126,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScroll = true;
+            this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.PctBxEntryImage);
             this.Controls.Add(this.BtnEntryBackToEntry);
@@ -135,7 +136,7 @@
             this.Controls.Add(this.PctBxEntryVisibility);
             this.Controls.Add(this.TxtEntryTitle);
             this.Name = "EntryControl";
-            this.Size = new System.Drawing.Size(666, 134);
+            this.Size = new System.Drawing.Size(629, 480);
             ((System.ComponentModel.ISupportInitialize)(this.PctBxEntryVisibility)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PctBxEntryImage)).EndInit();
             this.ResumeLayout(false);

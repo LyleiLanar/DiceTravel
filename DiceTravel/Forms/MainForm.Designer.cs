@@ -82,7 +82,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PctBxActiveJourneyVisibility)).BeginInit();
             this.GrpBxUserData.SuspendLayout();
             this.GrpBxMainFrame.SuspendLayout();
-            this.FlowContainer.SuspendLayout();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
@@ -364,10 +363,9 @@
             this.FlowContainer.AutoSize = true;
             this.FlowContainer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.FlowContainer.BackColor = System.Drawing.SystemColors.Control;
-            this.FlowContainer.Controls.Add(this.FlowLayoutPanel);
             this.FlowContainer.Location = new System.Drawing.Point(3, 3);
             this.FlowContainer.Name = "FlowContainer";
-            this.FlowContainer.Size = new System.Drawing.Size(56, 56);
+            this.FlowContainer.Size = new System.Drawing.Size(0, 0);
             this.FlowContainer.TabIndex = 8;
             // 
             // FlowLayoutPanel
@@ -539,6 +537,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FlowWindow.AutoScroll = true;
             this.FlowWindow.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.FlowWindow.Controls.Add(this.FlowLayoutPanel);
             this.FlowWindow.Controls.Add(this.FlowContainer);
             this.FlowWindow.Location = new System.Drawing.Point(6, 43);
             this.FlowWindow.Name = "FlowWindow";
@@ -573,8 +572,6 @@
             this.GrpBxUserData.PerformLayout();
             this.GrpBxMainFrame.ResumeLayout(false);
             this.GrpBxMainFrame.PerformLayout();
-            this.FlowContainer.ResumeLayout(false);
-            this.FlowContainer.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersTable)).EndInit();

@@ -34,7 +34,7 @@ namespace DiceTravel
 
         //CRUD
         public override void CreateItself()
-        {
+        {             
             string query = "INSERT INTO `dice_travel`.`users` (`login_name`, `pswd`,`sur_name`,`first_name`,`birth_date`) " +
                                     $"VALUES (@login_name,@pswd,@sur_name,@first_name,@birth_date);";
 
@@ -63,7 +63,29 @@ namespace DiceTravel
         }
         public override void UpdateItself()
         {
-            throw new NotImplementedException();
+            string query = "UPDATE `dice_travel`.`users` SET `login_name`=@login_name, `pswd`=@pswd,`sur_name`=@sur_name,`first_name`=@first_name,`birth_date`=@birth_date " +
+                "WHERE id = @id"; ;
+
+            MySqlCommand sqlCommand = new MySqlCommand(query)
+            {
+                Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString)
+            };
+
+            sqlCommand.Parameters.Add("@id", MySqlDbType.Int32);
+            sqlCommand.Parameters.Add("@login_name", MySqlDbType.VarChar, 20);
+            sqlCommand.Parameters.Add("@pswd", MySqlDbType.VarChar, 32);
+            sqlCommand.Parameters.Add("@sur_name", MySqlDbType.VarChar, 20);
+            sqlCommand.Parameters.Add("@first_name", MySqlDbType.VarChar, 1);
+            sqlCommand.Parameters.Add("@birth_date", MySqlDbType.Date);
+
+            sqlCommand.Parameters["@id"].Value = Id;
+            sqlCommand.Parameters["@login_name"].Value = LoginName;
+            sqlCommand.Parameters["@pswd"].Value = Password;
+            sqlCommand.Parameters["@sur_name"].Value = Surname;
+            sqlCommand.Parameters["@first_name"].Value = Firstname;
+            sqlCommand.Parameters["@birth_date"].Value = BirthDate;
+
+            RunSqlCommand(sqlCommand);
         }
         public override void DeleteItself()
         {

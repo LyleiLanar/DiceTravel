@@ -20,9 +20,10 @@ namespace DiceTravel
             {
                 this.Validation();
                 ActiveUserStore.LogInUser(inputLoginLoginName.Text, inputLoginPassword.Text);
-                Program.mainForm.MenuMeMyJourneys_Click(sender, e);
                 //Program.mainForm.DrawFlow();
                 Program.mainForm.UpdateData();
+                //Program.mainForm.MenuMeMyJourneys_Click(sender, e);
+
                 this.Close();
             }
             catch (ValidationException ex)

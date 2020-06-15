@@ -7,6 +7,7 @@ using DiceTravel.Util;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DiceTravel.Forms.UserForms;
 
 namespace DiceTravel
 {
@@ -46,7 +47,7 @@ namespace DiceTravel
             login.Show();
 
         }
-        private void MenuMainLogout_Click(object sender, EventArgs e)
+        public void MenuMainLogout_Click(object sender, EventArgs e)
         {
             ActiveUserStore.LogOutUser();
             Program.mainForm.ChangeControlsAvailabilityAfterLogout();
@@ -296,6 +297,11 @@ namespace DiceTravel
         {
             Program.mainForm.FlowElementProvider.SetFlow_StoryFlow_ByUser(ActiveUserStore.ActiveUser.Id);
             Program.mainForm.DrawFlow();
+        }
+
+        private void MenuMeMyProfile_Click(object sender, EventArgs e)
+        {
+           new UserUpdateForm().Show();
         }
     }
 }

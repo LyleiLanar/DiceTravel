@@ -5,7 +5,7 @@ namespace DiceTravel.Util
 {
     static public class ActiveUserStore
     {
-        
+
         static public User ActiveUser { get; private set; }
 
         static public bool IsThereActiveUser
@@ -26,6 +26,10 @@ namespace DiceTravel.Util
         static public void LogInUser(string loginName, string password)
         {
             ActiveUser = GetAuthenticatedUser(loginName, password);
+            if (ActiveUser == null)
+            {
+
+            }
         }
         static public bool IsThereActiveJourney()
         {
@@ -44,19 +48,19 @@ namespace DiceTravel.Util
                 {
                     if (user.Password == password)
                     {
-                        return user; 
+                        return user;
                     }
                 }
                 catch (IndexOutOfRangeException)
                 {
-                    return null;
+                    throw new EntityCreationException("Wrong Login name or Password!"); ;
                 }
             }
             catch (Exception)
             {
                 throw new EntityCreationException("Wrong Login name or Password!");
             }
-            return null;
+            throw new EntityCreationException("Wrong Login name or Password!");
         }
 
     }

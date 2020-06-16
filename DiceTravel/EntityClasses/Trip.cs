@@ -59,6 +59,7 @@ namespace DiceTravel.Classes
             sqlCommand.Parameters["@visibility"].Value = Visibility;
 
             RunSqlCommand(sqlCommand);
+            sqlCommand.Dispose();
         }
         static public Trip ReadTrip(MySqlCommand sqlCommand)
         {

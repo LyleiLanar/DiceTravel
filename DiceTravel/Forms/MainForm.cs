@@ -16,8 +16,8 @@ namespace DiceTravel
         public FlowElementProvider FlowElementProvider { get; }
         public MainForm()
         {
-            FlowElementProvider = new FlowElementProvider();
             InitializeComponent();
+            FlowElementProvider = new FlowElementProvider();
         }
 
         //mainMenu Mainmethods
@@ -45,7 +45,6 @@ namespace DiceTravel
             };
 
             login.Show();
-
         }
         public void MenuMainLogout_Click(object sender, EventArgs e)
         {
@@ -57,18 +56,20 @@ namespace DiceTravel
 
             if (ActiveUserStore.IsThereActiveUser && !ActiveUserStore.IsThereActiveJourney())
             {
-                JourneyCreateForm journeyCreateForm = new JourneyCreateForm
+                
+                JourneyCreateForm journeyCreateForm = new JourneyCreateForm()
                 {
                     Text = Properties.Settings.Default.projectName + " - New Journey"
-
                 };
 
                 journeyCreateForm.Show();
+                
             }
             else
             {
                 MessageBox.Show("You've already started a journey!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            
         }
         public void UpdateData()
         {
@@ -178,7 +179,7 @@ namespace DiceTravel
             if (MessageBox.Show("All progress will be lost!\r\nAre you sure to delete this Journey?", "Attention!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 Journey.GetJourney_ById(ActiveUserStore.GetActiveJourney().Id).DeleteItself();
-                Program.mainForm.FlowElementProvider.SetFlow_JourneyFlow_ByUser(ActiveUserStore.ActiveUser.Id);
+                Program.mainForm.FlowElementProvider.SetFlowJourneyFlowByUser(ActiveUserStore.ActiveUser.Id);
                 Program.mainForm.UpdateData();
             }
         }
@@ -269,7 +270,7 @@ namespace DiceTravel
         }
         public void MenuMeMyJourneys_Click(object sender, EventArgs e)
         {
-            Program.mainForm.FlowElementProvider.SetFlow_JourneyFlow_ByUser(ActiveUserStore.ActiveUser.Id);
+            Program.mainForm.FlowElementProvider.SetFlowJourneyFlowByUser(ActiveUserStore.ActiveUser.Id);
             Program.mainForm.DrawFlow();
         }
 
@@ -279,8 +280,10 @@ namespace DiceTravel
         }
 
         private void BtnNextTripModify_Click(object sender, EventArgs e)
-        {           
-            new TripUpdateForm(ActiveUserStore.GetActiveJourney().GetLastTrip()).Show();
+        {
+            TripUpdateForm tpf = new TripUpdateForm(ActiveUserStore.GetActiveJourney().GetLastTrip());
+            tpf.Show();
+            tpf.Dispose();
         }
 
         private void MenuMeGoalReached_Click(object sender, EventArgs e)
@@ -295,13 +298,19 @@ namespace DiceTravel
 
         private void BtnAllEntries_Click(object sender, EventArgs e)
         {
-            Program.mainForm.FlowElementProvider.SetFlow_StoryFlow_ByUser(ActiveUserStore.ActiveUser.Id);
+            Program.mainForm.FlowElementProvider.SetFlowStoryFlowByUser(ActiveUserStore.ActiveUser.Id);
             Program.mainForm.DrawFlow();
         }
 
         private void MenuMeMyProfile_Click(object sender, EventArgs e)
         {
            new UserUpdateForm().Show();
+        }
+
+        private void BtnSearchUser_Click(object sender, EventArgs e)
+        {
+            Program.mainForm.FlowElementProvider.SetFlowPeopleFlowByLoginNameFragment(TxtSearchUser.Text);
+            Program.mainForm.DrawFlow();
         }
     }
 }

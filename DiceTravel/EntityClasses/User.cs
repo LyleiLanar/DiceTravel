@@ -34,7 +34,7 @@ namespace DiceTravel
 
         //CRUD
         public override void CreateItself()
-        {             
+        {
             string query = "INSERT INTO `dice_travel`.`users` (`login_name`, `pswd`,`sur_name`,`first_name`,`birth_date`) " +
                                     $"VALUES (@login_name,@pswd,@sur_name,@first_name,@birth_date);";
 
@@ -56,6 +56,7 @@ namespace DiceTravel
             sqlCommand.Parameters["@birth_date"].Value = BirthDate;
 
             RunSqlCommand(sqlCommand);
+            sqlCommand.Dispose();
         }
         static public User ReadUser(MySqlCommand sqlCommand)
         {
@@ -102,7 +103,6 @@ namespace DiceTravel
         }
 
         //entity methods
-
         public List<Journey> GetJourneys()
         {
             string getTripsCommand = $"SELECT * FROM dice_travel.journeys WHERE user_id = @user_id ORDER BY start_date DESC";
@@ -174,7 +174,11 @@ namespace DiceTravel
 
             return entries;
         }
-        
+        public List<User> GetFriends()
+        {
+            throw new NotImplementedException();
+        }
+
         //misc methods
         public override void Validation()
         {
@@ -182,7 +186,7 @@ namespace DiceTravel
         }
 
         //static methods
-        static public User GetUser_ById(int id)
+        static public User GetUserById(int id)
         {
             string query = $"SELECT * FROM users WHERE id = @Id";
             MySqlCommand sqlCommand = CreateCommand(query);
@@ -192,7 +196,7 @@ namespace DiceTravel
             DataTable table = ReadQueryTable(sqlCommand);
             return new User(table.Rows[0]);
         }
-        static public User GetUserBy_LoginName(string loginName)
+        static public User GetUserByLoginName(string loginName)
         {
             string query = $"SELECT * FROM users WHERE login_name like @login_name";
             MySqlCommand sqlCommand = CreateCommand(query);
@@ -201,6 +205,77 @@ namespace DiceTravel
 
             DataTable table = ReadQueryTable(sqlCommand);
             return new User(table.Rows[0]);
+        }
+        internal static List<User> SearchForUsersByLoginNameFragment(string loginNameFragment)
+        {
+            string query = $"SELECT * FROM dice_travel.users WHERE (login_name like @Fragment) and (id != @ActiveId) limit 10";
+            MySqlCommand sqlCommand = CreateCommand(query);
+            sqlCommand.Parameters.Add("@Fragment", MySqlDbType.VarChar);
+            sqlCommand.Parameters["@Fragment"].Value = $"%{loginNameFragment}%";
+            sqlCommand.Parameters.Add("@ActiveId", MySqlDbType.Int32);
+            sqlCommand.Parameters["@ActiveId"].Value = ActiveUserStore.ActiveUser.Id;
+
+            DataTable table = ReadQueryTable(sqlCommand);
+
+            List<User> users = new List<User>();
+
+            foreach (DataRow row in table.Rows)
+            {
+                users.Add(new User(row));
+            }
+
+            sqlCommand.Dispose();
+            table.Dispose();
+
+            return users;
+        }
+        internal static bool AreFriends(User thisUser, User thatUser)
+        {
+            string query = $"" +
+                $"SELECT * " +
+                $"FROM dice_travel.friends " +
+                $"WHERE (sender_id = @ThisId and getter_id = @ThatId) or (sender_id = @ThatId and getter_id = @ThisId) having accepted = 1;";
+
+            using (MySqlCommand sqlCommand = CreateCommand(query))
+            {
+                sqlCommand.Parameters.Add("@ThisId", MySqlDbType.Int32);
+                sqlCommand.Parameters["@ThisId"].Value = thisUser.Id;
+                sqlCommand.Parameters.Add("@ThatId", MySqlDbType.Int32);
+                sqlCommand.Parameters["@ThatId"].Value = thatUser.Id;
+
+                using (DataTable table = ReadQueryTable(sqlCommand))
+                {
+                    if (table.Rows.Count == 0)
+                    {
+                        return false;
+                    }
+                    return true;
+                }
+            }
+        }
+        internal static bool AreMakingFriendship(User thisUser, User thatUser)
+        {
+            string query = $"" +
+                $"SELECT * " +
+                $"FROM dice_travel.friends " +
+                $"WHERE (sender_id = @ThisId and getter_id = @ThatId) or (sender_id = @ThatId and getter_id = @ThisId) having accepted = 0;";
+
+            using (MySqlCommand sqlCommand = CreateCommand(query))
+            {
+                sqlCommand.Parameters.Add("@ThisId", MySqlDbType.Int32);
+                sqlCommand.Parameters["@ThisId"].Value = thisUser.Id;
+                sqlCommand.Parameters.Add("@ThatId", MySqlDbType.Int32);
+                sqlCommand.Parameters["@ThatId"].Value = thatUser.Id;
+
+                using (DataTable table = ReadQueryTable(sqlCommand))
+                {
+                    if (table.Rows.Count == 0)
+                    {
+                        return false;
+                    }
+                    return true;
+                }
+            }
         }
 
     }

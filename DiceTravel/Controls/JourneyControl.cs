@@ -13,7 +13,6 @@ namespace DiceTravel.Controls
         public JourneyControl(Journey journey) : base()
         {
             Journey = journey;
-
             if (Journey.Closed == 0)
             {
                 BorderStyle = BorderStyle.FixedSingle;
@@ -22,6 +21,7 @@ namespace DiceTravel.Controls
             }
 
             //ha privát a journey és nem a gazdája nézni akkor nem látható
+            //ezt viszont db-ből kellene megoldani
             if (Journey.Visibility == 0 && ActiveUserStore.ActiveUser.Id != Journey.UserId)
             {
                 this.Visible = false;
@@ -34,7 +34,7 @@ namespace DiceTravel.Controls
 
         public void SetContent()
         {
-            string userLoginName = User.GetUser_ById(Journey.UserId).LoginName;
+            string userLoginName = User.GetUserById(Journey.UserId).LoginName;
 
             TxtJourneyUserLoginName.Text = userLoginName;
             TxtJourneyTitle.Text = Journey.Closed == 0 ? Journey.Title : Journey.Title + " (Closed)";
@@ -68,7 +68,7 @@ namespace DiceTravel.Controls
 
         private void JourneyControl_Click(object sender, System.EventArgs e)
         {
-            Program.mainForm.FlowElementProvider.SetFlow_TripFlow_ByJourney(this.Journey.Id);
+            Program.mainForm.FlowElementProvider.SetFlowTripFlowByJourney(this.Journey.Id);
             Program.mainForm.DrawFlow();
         }
     }

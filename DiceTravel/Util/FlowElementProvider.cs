@@ -7,68 +7,98 @@ namespace DiceTravel.Util
 {
     public class FlowElementProvider
     {
-        public enum FlowType { NoFlow, JourneyFlow_ByUser, MainFlow_ByUser, TripFlow_ByJourney, EntryFlow_ByTrip, StoryFlow_ByUser }
+        public enum FlowType { NoFlow, JourneyFlow_ByUser, MainFlow_ByUser, TripFlow_ByJourney, EntryFlow_ByTrip, StoryFlow_ByUser, Friends, PeopleByLoginName }
         public FlowType Type { get; private set; }
         public int UserId { get; private set; }
         public int JourneyId { get; private set; }
         public int TripId { get; private set; }
         public string FlowTitle { get; private set; }
+        public string LoginNameFragment { get; private set; }
         public List<FlowElementControl> FlowElements { get; private set; }
-
 
         public FlowElementProvider()
         {
+            ResetFlow();
+            //FriendName = "";
+            //Type = FlowType.NoFlow;
+            //UserId = -1;
+            //JourneyId = -1;
+            //TripId = -1;
+            //FlowElements = new List<FlowElementControl>();
+        }
+        public void ResetFlow()
+        {            
+            LoginNameFragment = "";
             Type = FlowType.NoFlow;
             UserId = -1;
             JourneyId = -1;
             TripId = -1;
             FlowElements = new List<FlowElementControl>();
-        }
 
-        //refresh Flow based on settings
+        }
+        
+        //refresh Flow based on settings, set previously
         public void UpdateFlow()
         {
             string userLoginName;
             string journeyTitle;
             string tripEndLocation;
 
+
             switch (Type)
             {
                 case FlowType.NoFlow:
-                    throw new MissingFlowTypeException("No flow type, cannot update the flow!");
-
-                case FlowType.JourneyFlow_ByUser:
-                    userLoginName = User.GetUser_ById(UserId).LoginName;
+                    User activeUser = ActiveUserStore.ActiveUser;
+                    userLoginName = activeUser.LoginName;
+                    UserId = activeUser.Id;
                     FlowTitle = $"{userLoginName}'s journeys:";
 
-                    SetFlow_JourneyFlow_ByUser(UserId);
+                    SetFlowJourneyFlowByUser(UserId);
+                    break;
+
+
+                case FlowType.JourneyFlow_ByUser:
+                    userLoginName = User.GetUserById(UserId).LoginName;
+                    FlowTitle = $"{userLoginName}'s journeys:";
+
+                    SetFlowJourneyFlowByUser(UserId);
                     break;
 
                 case FlowType.MainFlow_ByUser:
                     throw new NotImplementedException();
 
                 case FlowType.TripFlow_ByJourney:
-                    userLoginName = User.GetUser_ById(UserId).LoginName;
+                    userLoginName = User.GetUserById(UserId).LoginName;
                     journeyTitle = Journey.GetJourney_ById(JourneyId).Title;
                     FlowTitle = $"{userLoginName}'s {journeyTitle} trips:";
 
-                    SetFlow_TripFlow_ByJourney(JourneyId);
+                    SetFlowTripFlowByJourney(JourneyId);
                     break;
 
                 case FlowType.EntryFlow_ByTrip:
-                    userLoginName = User.GetUser_ById(UserId).LoginName;
+                    userLoginName = User.GetUserById(UserId).LoginName;
                     journeyTitle = Journey.GetJourney_ById(JourneyId).Title;
                     tripEndLocation = Trip.GetTrip_ById(TripId).EndLocation;
                     FlowTitle = $"{userLoginName}'s {journeyTitle}: {tripEndLocation} entries:";
 
-                    SetFlow_EntryFlow_ByTrip(TripId);
+                    SetFlowEntryFlowByTrip(TripId);
                     break;
 
                 case FlowType.StoryFlow_ByUser:
-                    userLoginName = User.GetUser_ById(UserId).LoginName;
+                    userLoginName = User.GetUserById(UserId).LoginName;
                     FlowTitle = $"{userLoginName}'s story:";
 
-                    SetFlow_StoryFlow_ByUser(UserId);
+                    SetFlowStoryFlowByUser(UserId);
+                    break;
+
+                case FlowType.Friends:
+                    throw new NotImplementedException();
+                    break;
+
+                case FlowType.PeopleByLoginName:
+                    FlowTitle = $"Search results for '{LoginNameFragment}'";
+
+                    SetFlowPeopleFlowByLoginNameFragment(LoginNameFragment);
                     break;
 
                 default:
@@ -76,10 +106,39 @@ namespace DiceTravel.Util
             }
         }
 
+
         //set Flow
-        public void SetFlow_JourneyFlow_ByUser(int userId)
+        public void SetFlowPeopleFlowByLoginNameFragment(string loginNameFragment)
         {
-            List<Journey> journeys = User.GetUser_ById(userId).GetJourneys();
+            //setting the flowStatus
+            ResetFlow();
+            Type = FlowType.PeopleByLoginName;
+            LoginNameFragment = loginNameFragment;
+
+            List<User> people = User.SearchForUsersByLoginNameFragment(loginNameFragment);
+
+            List<PersonControl> personControls = new List<PersonControl>();
+
+
+            for (int i = 0; i < people.Count; i++)
+            {
+                User person = people[i];
+
+                personControls.Add(new PersonControl(person));
+                personControls[i].Name = $"PersonControl_{i}";
+                personControls[i].SetContent();
+                personControls[i].Visible = true;
+            }
+
+            //update the list
+            FlowElements.Clear();
+            FlowElements.AddRange(personControls);
+        }
+
+
+        public void SetFlowJourneyFlowByUser(int userId)
+        {
+            List<Journey> journeys = User.GetUserById(userId).GetJourneys();
 
             List<JourneyControl> journeyControls = new List<JourneyControl>();
 
@@ -90,6 +149,10 @@ namespace DiceTravel.Util
                 journeyControls.Add(new JourneyControl(journey));
                 journeyControls[i].Name = $"JourneyControl_{i}";
                 journeyControls[i].SetContent();
+            }
+
+            for (int i = 0; i < journeys.Count; i++)
+            {
                 journeyControls[i].Visible = true;
             }
 
@@ -103,8 +166,9 @@ namespace DiceTravel.Util
             FlowElements.Clear();
             FlowElements.AddRange(journeyControls);
         }
-        public void SetFlow_TripFlow_ByJourney(int journeyId)
+        public void SetFlowTripFlowByJourney(int journeyId)
         {
+            Program.mainForm.FlowLayoutPanel.Visible = false;
             List<Trip> trips = Journey.GetJourney_ById(journeyId).GetTrips();
 
             List<TripControl> tripControls = new List<TripControl>();
@@ -127,9 +191,11 @@ namespace DiceTravel.Util
 
             FlowElements.Clear();
             FlowElements.AddRange(tripControls);
+            Program.mainForm.FlowLayoutPanel.Visible = true;
         }
-        public void SetFlow_EntryFlow_ByTrip(int tripId)
+        public void SetFlowEntryFlowByTrip(int tripId)
         {
+            Program.mainForm.FlowLayoutPanel.Visible = false;
             List<Entry> entries = Trip.GetTrip_ById(tripId).GetEntries();
 
             List<EntryControl> entryControls = new List<EntryControl>();
@@ -152,10 +218,12 @@ namespace DiceTravel.Util
 
             FlowElements.Clear();
             FlowElements.AddRange(entryControls);
+            Program.mainForm.FlowLayoutPanel.Visible = true;
         }
-        public void SetFlow_StoryFlow_ByUser(int userId)
+        public void SetFlowStoryFlowByUser(int userId)
         {
-            List<Entry> entries = User.GetUser_ById(userId).GetAllEntries();
+            Program.mainForm.FlowLayoutPanel.Visible = false;
+            List<Entry> entries = User.GetUserById(userId).GetAllEntries();
 
             List<EntryControl> entryControls = new List<EntryControl>();
 
@@ -177,8 +245,9 @@ namespace DiceTravel.Util
 
             FlowElements.Clear();
             FlowElements.AddRange(entryControls);
+            Program.mainForm.FlowLayoutPanel.Visible = true;
         }
-        public void SetFlow_MainFlow_ByUser()
+        public void SetFlowMainFlowByUser()
         {
 
         }

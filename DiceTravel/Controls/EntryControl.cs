@@ -70,7 +70,7 @@ namespace DiceTravel.Controls
         private void BtnEntryBackToEntry_Click(object sender, EventArgs e)
         {
             Journey journey = Journey.GetJourney_ById(Trip.GetTrip_ById(Entry.TripId).JourneyId);
-            Program.mainForm.FlowElementProvider.SetFlow_TripFlow_ByJourney(journey.Id);
+            Program.mainForm.FlowElementProvider.SetFlowTripFlowByJourney(journey.Id);
             Program.mainForm.DrawFlow();
         }
 

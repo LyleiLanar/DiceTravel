@@ -32,7 +32,7 @@ namespace DiceTravel.Classes
             {
                 Picture = null;
             }
-                     
+
             Comment = dataRow["comment"].ToString();
             Visibility = Int32.Parse(dataRow["visibility"].ToString());
         }
@@ -75,25 +75,27 @@ namespace DiceTravel.Classes
         {
             string query = "UPDATE `dice_travel`.`entries` SET `trip_id`=@trip_id, `entry_date`=@entry_date,`picture`=@picture," +
                 "`comment`=@comment,`visibility`=@visibility,`title`=@title WHERE id = @id";
-            MySqlCommand sqlCommand = CreateCommand(query);
+            using (MySqlCommand sqlCommand = CreateCommand(query))
+            {
 
-            sqlCommand.Parameters.Add("@id", MySqlDbType.Int32);
-            sqlCommand.Parameters.Add("@trip_id", MySqlDbType.Int32);
-            sqlCommand.Parameters.Add("@entry_date", MySqlDbType.DateTime);
-            sqlCommand.Parameters.Add("@picture", MySqlDbType.Blob);
-            sqlCommand.Parameters.Add("@comment", MySqlDbType.VarChar, 1024);
-            sqlCommand.Parameters.Add("@visibility", MySqlDbType.Int32);
-            sqlCommand.Parameters.Add("@title", MySqlDbType.VarChar, 50);
+                sqlCommand.Parameters.Add("@id", MySqlDbType.Int32);
+                sqlCommand.Parameters.Add("@trip_id", MySqlDbType.Int32);
+                sqlCommand.Parameters.Add("@entry_date", MySqlDbType.DateTime);
+                sqlCommand.Parameters.Add("@picture", MySqlDbType.Blob);
+                sqlCommand.Parameters.Add("@comment", MySqlDbType.VarChar, 1024);
+                sqlCommand.Parameters.Add("@visibility", MySqlDbType.Int32);
+                sqlCommand.Parameters.Add("@title", MySqlDbType.VarChar, 50);
 
-            sqlCommand.Parameters["@id"].Value = Id;
-            sqlCommand.Parameters["@trip_id"].Value = TripId;
-            sqlCommand.Parameters["@entry_date"].Value = EntryDate;
-            sqlCommand.Parameters["@picture"].Value = Picture;
-            sqlCommand.Parameters["@comment"].Value = Comment;
-            sqlCommand.Parameters["@visibility"].Value = Visibility;
-            sqlCommand.Parameters["@title"].Value = Title;
+                sqlCommand.Parameters["@id"].Value = Id;
+                sqlCommand.Parameters["@trip_id"].Value = TripId;
+                sqlCommand.Parameters["@entry_date"].Value = EntryDate;
+                sqlCommand.Parameters["@picture"].Value = Picture;
+                sqlCommand.Parameters["@comment"].Value = Comment;
+                sqlCommand.Parameters["@visibility"].Value = Visibility;
+                sqlCommand.Parameters["@title"].Value = Title;
 
-            RunSqlCommand(sqlCommand);
+                RunSqlCommand(sqlCommand);
+            }
         }
         public override void DeleteItself()
         {

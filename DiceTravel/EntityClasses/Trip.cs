@@ -147,7 +147,7 @@ namespace DiceTravel.Classes
         }
 
         //static methods
-        static public Trip GetTrip_ById(int tripId)
+        static public Trip GetTripById(int tripId)
         {
             string query = $"SELECT * FROM trips WHERE id = @id";
             MySqlCommand sqlCommand = CreateCommand(query);

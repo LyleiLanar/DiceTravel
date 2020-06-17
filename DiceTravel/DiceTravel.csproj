@@ -211,6 +211,7 @@
     <Compile Include="Util\ActiveUserStore.cs" />
     <Compile Include="Util\Exceptions\MissingFlowTypeException.cs" />
     <Compile Include="Util\Exceptions\EntityCreationException.cs" />
+    <Compile Include="Util\Exceptions\NoVisibilityTokenException.cs" />
     <Compile Include="Util\Exceptions\ValidationException.cs" />
     <Compile Include="Util\FlowElementProvider.cs" />
     <Compile Include="Util\ImageHandler.cs" />

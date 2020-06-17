@@ -38,27 +38,85 @@ namespace DiceTravel.Controls
             TxtPersonLoginName.Text = Person.LoginName;
             TxtPersonRealName.Text = Person.Surname + " " + Person.Firstname + " (ID" + Person.Id + ")";
 
-            //A barátgombokkal kapcsolatos tiltások.
-            if (User.AreFriends(ActiveUserStore.ActiveUser, Person) || User.AreMakingFriendship(ActiveUserStore.ActiveUser, Person))
-            {
-                BtnPersonMakeFriend.Enabled = false;
-            }
-            else
+            //A barátgombokkal kapcsolatos engedélyezések.
+            Friendship friendship = Friendship.GetFriendshipByIds(ActiveUserStore.ActiveUser.Id, Person.Id);
+
+            if (friendship == null)
             {
                 BtnPersonKick.Enabled = false;
             }
+            else
+            {
+                switch (friendship.Accepted)
+                {
+                    case 0:
+                        if (friendship.SenderId == ActiveUserStore.ActiveUser.Id)
+                        {
+                            BtnPersonMakeFriend.Enabled = false;
+                        }
+                        break;
+
+                    case 1:
+                        BtnPersonMakeFriend.Enabled = false;
+                        break;
+
+                    default:
+                        throw new Exception("No such accept value in this Friendship. (0: wait for accept, 1: accepted)");
+                }
+            }
+
         }
         private void BtnPersonMakeFriend_Click(object sender, EventArgs e)
         {
-            Friendship friendship = new Friendship();
-            friendship.SenderId = ActiveUserStore.ActiveUser.Id;
-            friendship.GetterId = this.Person.Id;
-            friendship.Accepted = 0;
+            Friendship friendship = Friendship.GetFriendshipByIds(ActiveUserStore.ActiveUser.Id, Person.Id);
 
-            friendship.CreateItself();
+            if (friendship == null)
+            {
+                Friendship newFriendship = new Friendship
+                {
+                    SenderId = ActiveUserStore.ActiveUser.Id,
+                    GetterId = this.Person.Id,
+                    Accepted = 0
+                };
 
-            Program.mainForm.FlowElementProvider.UpdateFlow();
+                newFriendship.CreateItself();
+            }
+            else
+            {
+                switch (friendship.Accepted)
+                {
+                    case 0:
+                        if (ActiveUserStore.ActiveUser.Id == friendship.SenderId) { break; }
+                        friendship.Accepted = 1;
+                        friendship.UpdateItself();
+                        break;
+
+                    case 1:
+                        break;
+
+                    default:
+                        throw new Exception("No such accept value in this Friendship. (0: wait for accept, 1: accepted)");
+                }
+            }
+
             Program.mainForm.DrawFlow();
+        }
+        private void BtnPersonKick_Click(object sender, EventArgs e)
+        {
+            Friendship friendship = Friendship.GetFriendshipByIds(ActiveUserStore.ActiveUser.Id, Person.Id);
+
+            if (friendship != null)
+            {
+                friendship.DeleteItself();
+            }
+
+            Program.mainForm.DrawFlow();
+        }
+        private void PersonControl_Click(object sender, EventArgs e)
+        {
+            Program.mainForm.FlowElementProvider.SetFlowStoryFlowByUser(Person.Id);
+            Program.mainForm.DrawFlow();
+
         }
     }
 }

@@ -44,6 +44,7 @@
             this.BtnPersonKick.Size = new System.Drawing.Size(42, 45);
             this.BtnPersonKick.TabIndex = 21;
             this.BtnPersonKick.UseVisualStyleBackColor = false;
+            this.BtnPersonKick.Click += new System.EventHandler(this.BtnPersonKick_Click);
             // 
             // TxtPersonLoginName
             // 
@@ -89,6 +90,7 @@
             this.Controls.Add(this.TxtPersonLoginName);
             this.Name = "PersonControl";
             this.Size = new System.Drawing.Size(537, 56);
+            this.Click += new System.EventHandler(this.PersonControl_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 

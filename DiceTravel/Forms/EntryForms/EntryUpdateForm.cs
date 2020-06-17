@@ -19,7 +19,7 @@ namespace DiceTravel.Forms.EntryForms
         {
             InitializeComponent();
             Entry = entry;
-            Trip Trip = Trip.GetTrip_ById(Entry.TripId);
+            Trip Trip = Trip.GetTripById(Entry.TripId);
             Journey journey = Journey.GetJourney_ById(Trip.JourneyId);
 
             BtnEntryUpdateDelete.BackColor = Color.Red;

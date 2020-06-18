@@ -62,13 +62,16 @@
             this.MenuMainLogout = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMainQuit = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMe = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuMeMyProfile = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMeMyFlow = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMeMyJourneys = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMeNewJourney = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMeNewEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMeGoalReached = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuMeMyProfile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuTraveling = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuFriends = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainFormToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.usersTable = new DiceTravel.UsersTable();
@@ -77,9 +80,6 @@
             this.journeysBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dice_travelDataSet = new DiceTravel.dice_travelDataSet();
             this.journeysTableAdapter = new DiceTravel.dice_travelDataSetTableAdapters.journeysTableAdapter();
-            this.menuFriends = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mainToolStripContainer.ContentPanel.SuspendLayout();
             this.mainToolStripContainer.TopToolStripPanel.SuspendLayout();
             this.mainToolStripContainer.SuspendLayout();
@@ -469,14 +469,14 @@
             // MenuMainLogin
             // 
             this.MenuMainLogin.Name = "MenuMainLogin";
-            this.MenuMainLogin.Size = new System.Drawing.Size(180, 22);
+            this.MenuMainLogin.Size = new System.Drawing.Size(114, 22);
             this.MenuMainLogin.Text = "Login";
             this.MenuMainLogin.Click += new System.EventHandler(this.MenuMainLogin_Click);
             // 
             // MenuMainSignUp
             // 
             this.MenuMainSignUp.Name = "MenuMainSignUp";
-            this.MenuMainSignUp.Size = new System.Drawing.Size(180, 22);
+            this.MenuMainSignUp.Size = new System.Drawing.Size(114, 22);
             this.MenuMainSignUp.Text = "SignUp";
             this.MenuMainSignUp.Click += new System.EventHandler(this.MenuMainSignUp_Click);
             // 
@@ -484,14 +484,14 @@
             // 
             this.MenuMainLogout.Enabled = false;
             this.MenuMainLogout.Name = "MenuMainLogout";
-            this.MenuMainLogout.Size = new System.Drawing.Size(180, 22);
+            this.MenuMainLogout.Size = new System.Drawing.Size(114, 22);
             this.MenuMainLogout.Text = "LogOut";
             this.MenuMainLogout.Click += new System.EventHandler(this.MenuMainLogout_Click);
             // 
             // MenuMainQuit
             // 
             this.MenuMainQuit.Name = "MenuMainQuit";
-            this.MenuMainQuit.Size = new System.Drawing.Size(180, 22);
+            this.MenuMainQuit.Size = new System.Drawing.Size(114, 22);
             this.MenuMainQuit.Text = "Exit";
             this.MenuMainQuit.Click += new System.EventHandler(this.MenuMainQuit_Click);
             // 
@@ -510,45 +510,45 @@
             this.MenuMe.Size = new System.Drawing.Size(36, 20);
             this.MenuMe.Text = "Me";
             // 
+            // MenuMeMyProfile
+            // 
+            this.MenuMeMyProfile.Name = "MenuMeMyProfile";
+            this.MenuMeMyProfile.Size = new System.Drawing.Size(146, 22);
+            this.MenuMeMyProfile.Text = "Profile";
+            this.MenuMeMyProfile.Click += new System.EventHandler(this.MenuMeMyProfile_Click);
+            // 
             // MenuMeMyFlow
             // 
             this.MenuMeMyFlow.Name = "MenuMeMyFlow";
-            this.MenuMeMyFlow.Size = new System.Drawing.Size(180, 22);
+            this.MenuMeMyFlow.Size = new System.Drawing.Size(146, 22);
             this.MenuMeMyFlow.Text = "Story";
             // 
             // MenuMeMyJourneys
             // 
             this.MenuMeMyJourneys.Name = "MenuMeMyJourneys";
-            this.MenuMeMyJourneys.Size = new System.Drawing.Size(180, 22);
+            this.MenuMeMyJourneys.Size = new System.Drawing.Size(146, 22);
             this.MenuMeMyJourneys.Text = "Journeys";
-            this.MenuMeMyJourneys.Click += new System.EventHandler(this.MenuMeMyJourneysClick);
+            this.MenuMeMyJourneys.Click += new System.EventHandler(this.MenuMeMyJourneys_Click);
             // 
             // MenuMeNewJourney
             // 
             this.MenuMeNewJourney.Name = "MenuMeNewJourney";
-            this.MenuMeNewJourney.Size = new System.Drawing.Size(180, 22);
+            this.MenuMeNewJourney.Size = new System.Drawing.Size(146, 22);
             this.MenuMeNewJourney.Text = "&New Journey";
             this.MenuMeNewJourney.Click += new System.EventHandler(this.MenuMeNewJourney_Click);
             // 
             // MenuMeNewEntry
             // 
             this.MenuMeNewEntry.Name = "MenuMeNewEntry";
-            this.MenuMeNewEntry.Size = new System.Drawing.Size(180, 22);
+            this.MenuMeNewEntry.Size = new System.Drawing.Size(146, 22);
             this.MenuMeNewEntry.Text = "New Entry";
             // 
             // MenuMeGoalReached
             // 
             this.MenuMeGoalReached.Name = "MenuMeGoalReached";
-            this.MenuMeGoalReached.Size = new System.Drawing.Size(180, 22);
+            this.MenuMeGoalReached.Size = new System.Drawing.Size(146, 22);
             this.MenuMeGoalReached.Text = "Goal reached!";
             this.MenuMeGoalReached.Click += new System.EventHandler(this.MenuMeGoalReached_Click);
-            // 
-            // MenuMeMyProfile
-            // 
-            this.MenuMeMyProfile.Name = "MenuMeMyProfile";
-            this.MenuMeMyProfile.Size = new System.Drawing.Size(180, 22);
-            this.MenuMeMyProfile.Text = "Profile";
-            this.MenuMeMyProfile.Click += new System.EventHandler(this.MenuMeMyProfile_Click);
             // 
             // menuTraveling
             // 
@@ -556,6 +556,28 @@
             this.menuTraveling.Name = "menuTraveling";
             this.menuTraveling.Size = new System.Drawing.Size(66, 20);
             this.menuTraveling.Text = "Traveling";
+            // 
+            // menuFriends
+            // 
+            this.menuFriends.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.searchToolStripMenuItem});
+            this.menuFriends.Enabled = false;
+            this.menuFriends.Name = "menuFriends";
+            this.menuFriends.Size = new System.Drawing.Size(57, 20);
+            this.menuFriends.Text = "Friends";
+            // 
+            // searchToolStripMenuItem
+            // 
+            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.searchToolStripMenuItem.Text = "Search";
+            // 
+            // menuHelp
+            // 
+            this.menuHelp.Enabled = false;
+            this.menuHelp.Name = "menuHelp";
+            this.menuHelp.Size = new System.Drawing.Size(44, 20);
+            this.menuHelp.Text = "Help";
             // 
             // contextMenuStrip1
             // 
@@ -589,28 +611,6 @@
             // journeysTableAdapter
             // 
             this.journeysTableAdapter.ClearBeforeFill = true;
-            // 
-            // menuFriends
-            // 
-            this.menuFriends.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.searchToolStripMenuItem});
-            this.menuFriends.Enabled = false;
-            this.menuFriends.Name = "menuFriends";
-            this.menuFriends.Size = new System.Drawing.Size(57, 20);
-            this.menuFriends.Text = "Friends";
-            // 
-            // searchToolStripMenuItem
-            // 
-            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.searchToolStripMenuItem.Text = "Search";
-            // 
-            // menuHelp
-            // 
-            this.menuHelp.Enabled = false;
-            this.menuHelp.Name = "menuHelp";
-            this.menuHelp.Size = new System.Drawing.Size(44, 20);
-            this.menuHelp.Text = "Help";
             // 
             // MainForm
             // 

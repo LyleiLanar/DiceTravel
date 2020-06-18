@@ -53,24 +53,29 @@ namespace DiceTravel
         }
         private void MenuMeNewJourney_Click(object sender, EventArgs e)
         {
+            StartJourney();
 
+        }
+
+        private static void StartJourney()
+        {
             if (ActiveUserStore.IsThereActiveUser && !ActiveUserStore.IsThereActiveJourney())
             {
-                
+
                 JourneyCreateForm journeyCreateForm = new JourneyCreateForm()
                 {
                     Text = Properties.Settings.Default.projectName + " - New Journey"
                 };
 
                 journeyCreateForm.Show();
-                
+
             }
             else
             {
                 MessageBox.Show("You've already started a journey!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            
         }
+
         public void UpdateData()
         {
             if (ActiveUserStore.IsThereActiveUser)
@@ -87,7 +92,7 @@ namespace DiceTravel
             }
         }
 
-        //userData Formmethods
+        //userData FormMethods
         private void UpdateUserData()
         {
             User user = ActiveUserStore.ActiveUser;
@@ -268,51 +273,43 @@ namespace DiceTravel
                 e.Cancel = true;
             }
         }
-        public void MenuMeMyJourneysClick(object sender, EventArgs e)
+        public void MenuMeMyJourneys_Click(object sender, EventArgs e)
         {
             Program.mainForm.FlowElementProvider.SetFlowJourneyFlowByUser(ActiveUserStore.ActiveUser.Id);
             Program.mainForm.DrawFlow();
         }
-
         private void BtnMyJourney_Click(object sender, EventArgs e)
         {
-            MenuMeMyJourneysClick(sender, e);
+            MenuMeMyJourneys_Click(sender, e);
         }
-
         private void BtnNextTripModify_Click(object sender, EventArgs e)
         {
             TripUpdateForm tpf = new TripUpdateForm(ActiveUserStore.GetActiveJourney().GetLastTrip());
             tpf.Show();
             tpf.Dispose();
         }
-
         private void MenuMeGoalReached_Click(object sender, EventArgs e)
         {
             new TripCreateForm().Show();
         }
-
         private void BtnNewEntry_Click(object sender, EventArgs e)
         {
             new EntryCreateForm().Show(); 
         }
-
         private void BtnAllEntries_Click(object sender, EventArgs e)
         {
             Program.mainForm.FlowElementProvider.SetFlowStoryFlowByUser(ActiveUserStore.ActiveUser.Id);
             Program.mainForm.DrawFlow();
         }
-
         private void MenuMeMyProfile_Click(object sender, EventArgs e)
         {
            new UserUpdateForm().Show();
         }
-
         private void BtnSearchUser_Click(object sender, EventArgs e)
         {
             Program.mainForm.FlowElementProvider.SetFlowPeopleFlowByLoginNameFragment(TxtSearchUser.Text);
             Program.mainForm.DrawFlow();
         }
-    
-    
+ 
     }
 }

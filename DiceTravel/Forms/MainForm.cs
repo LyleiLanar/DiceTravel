@@ -268,7 +268,7 @@ namespace DiceTravel
                 e.Cancel = true;
             }
         }
-        public void MenuMeMyJourneys_Click(object sender, EventArgs e)
+        public void MenuMeMyJourneysClick(object sender, EventArgs e)
         {
             Program.mainForm.FlowElementProvider.SetFlowJourneyFlowByUser(ActiveUserStore.ActiveUser.Id);
             Program.mainForm.DrawFlow();
@@ -276,7 +276,7 @@ namespace DiceTravel
 
         private void BtnMyJourney_Click(object sender, EventArgs e)
         {
-            MenuMeMyJourneys_Click(sender, e);
+            MenuMeMyJourneysClick(sender, e);
         }
 
         private void BtnNextTripModify_Click(object sender, EventArgs e)
@@ -312,5 +312,7 @@ namespace DiceTravel
             Program.mainForm.FlowElementProvider.SetFlowPeopleFlowByLoginNameFragment(TxtSearchUser.Text);
             Program.mainForm.DrawFlow();
         }
+    
+    
     }
 }

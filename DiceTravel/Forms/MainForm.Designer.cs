@@ -47,6 +47,8 @@
             this.GrpBxUserData = new System.Windows.Forms.GroupBox();
             this.TxtUserDataLoginName = new System.Windows.Forms.Label();
             this.GrpBxMainFrame = new System.Windows.Forms.GroupBox();
+            this.BtnSearchUser = new System.Windows.Forms.Button();
+            this.TxtSearchUser = new System.Windows.Forms.TextBox();
             this.FlowWindow = new System.Windows.Forms.Panel();
             this.FlowLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.FlowContainer = new System.Windows.Forms.FlowLayoutPanel();
@@ -66,6 +68,7 @@
             this.MenuMeNewEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMeGoalReached = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMeMyProfile = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuTraveling = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainFormToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.usersTable = new DiceTravel.UsersTable();
@@ -74,9 +77,9 @@
             this.journeysBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dice_travelDataSet = new DiceTravel.dice_travelDataSet();
             this.journeysTableAdapter = new DiceTravel.dice_travelDataSetTableAdapters.journeysTableAdapter();
-            this.journeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.TxtSearchUser = new System.Windows.Forms.TextBox();
-            this.BtnSearchUser = new System.Windows.Forms.Button();
+            this.menuFriends = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mainToolStripContainer.ContentPanel.SuspendLayout();
             this.mainToolStripContainer.TopToolStripPanel.SuspendLayout();
             this.mainToolStripContainer.SuspendLayout();
@@ -125,9 +128,9 @@
             this.GrpBxActiveTripData.Controls.Add(this.BtnNextTripReached);
             this.GrpBxActiveTripData.Controls.Add(this.PctBxNextTripVisibility);
             this.GrpBxActiveTripData.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.GrpBxActiveTripData.Location = new System.Drawing.Point(3, 183);
+            this.GrpBxActiveTripData.Location = new System.Drawing.Point(563, 3);
             this.GrpBxActiveTripData.Name = "GrpBxActiveTripData";
-            this.GrpBxActiveTripData.Size = new System.Drawing.Size(230, 93);
+            this.GrpBxActiveTripData.Size = new System.Drawing.Size(315, 97);
             this.GrpBxActiveTripData.TabIndex = 4;
             this.GrpBxActiveTripData.TabStop = false;
             this.GrpBxActiveTripData.Text = "Next destination";
@@ -135,10 +138,11 @@
             // 
             // BtnNewEntry
             // 
+            this.BtnNewEntry.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnNewEntry.BackColor = System.Drawing.SystemColors.Control;
             this.BtnNewEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.BtnNewEntry.Image = global::DiceTravel.Properties.Resources.icoAddEntry;
-            this.BtnNewEntry.Location = new System.Drawing.Point(138, 46);
+            this.BtnNewEntry.Location = new System.Drawing.Point(223, 50);
             this.BtnNewEntry.Name = "BtnNewEntry";
             this.BtnNewEntry.Size = new System.Drawing.Size(40, 40);
             this.BtnNewEntry.TabIndex = 5;
@@ -149,11 +153,11 @@
             // 
             // BtnNextTripModify
             // 
-            this.BtnNextTripModify.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.BtnNextTripModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnNextTripModify.BackColor = System.Drawing.SystemColors.Control;
             this.BtnNextTripModify.Enabled = false;
             this.BtnNextTripModify.Image = global::DiceTravel.Properties.Resources.icoSettings;
-            this.BtnNextTripModify.Location = new System.Drawing.Point(185, 47);
+            this.BtnNextTripModify.Location = new System.Drawing.Point(270, 51);
             this.BtnNextTripModify.Name = "BtnNextTripModify";
             this.BtnNextTripModify.Size = new System.Drawing.Size(40, 40);
             this.BtnNextTripModify.TabIndex = 16;
@@ -166,22 +170,22 @@
             this.TxtNextTripTitle.BackColor = System.Drawing.SystemColors.ControlDark;
             this.TxtNextTripTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TxtNextTripTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TxtNextTripTitle.Location = new System.Drawing.Point(12, 19);
+            this.TxtNextTripTitle.Location = new System.Drawing.Point(52, 19);
             this.TxtNextTripTitle.Multiline = false;
             this.TxtNextTripTitle.Name = "TxtNextTripTitle";
             this.TxtNextTripTitle.ReadOnly = true;
             this.TxtNextTripTitle.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Horizontal;
-            this.TxtNextTripTitle.Size = new System.Drawing.Size(210, 25);
+            this.TxtNextTripTitle.Size = new System.Drawing.Size(258, 25);
             this.TxtNextTripTitle.TabIndex = 19;
             this.TxtNextTripTitle.Text = "TITLE";
             // 
             // BtnNextTripReached
             // 
-            this.BtnNextTripReached.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.BtnNextTripReached.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnNextTripReached.BackColor = System.Drawing.SystemColors.Control;
             this.BtnNextTripReached.Enabled = false;
             this.BtnNextTripReached.Image = global::DiceTravel.Properties.Resources.icoFinished;
-            this.BtnNextTripReached.Location = new System.Drawing.Point(92, 47);
+            this.BtnNextTripReached.Location = new System.Drawing.Point(177, 51);
             this.BtnNextTripReached.Name = "BtnNextTripReached";
             this.BtnNextTripReached.Size = new System.Drawing.Size(40, 40);
             this.BtnNextTripReached.TabIndex = 17;
@@ -192,7 +196,7 @@
             // PctBxNextTripVisibility
             // 
             this.PctBxNextTripVisibility.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.PctBxNextTripVisibility.Location = new System.Drawing.Point(12, 47);
+            this.PctBxNextTripVisibility.Location = new System.Drawing.Point(6, 19);
             this.PctBxNextTripVisibility.Name = "PctBxNextTripVisibility";
             this.PctBxNextTripVisibility.Size = new System.Drawing.Size(40, 40);
             this.PctBxNextTripVisibility.TabIndex = 18;
@@ -209,9 +213,9 @@
             this.GrpBxActiveJourneyData.Controls.Add(this.BtnActiveJourneyDelete);
             this.GrpBxActiveJourneyData.Controls.Add(this.TxtActiveJourneyInfo);
             this.GrpBxActiveJourneyData.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.GrpBxActiveJourneyData.Location = new System.Drawing.Point(5, 62);
+            this.GrpBxActiveJourneyData.Location = new System.Drawing.Point(238, 3);
             this.GrpBxActiveJourneyData.Name = "GrpBxActiveJourneyData";
-            this.GrpBxActiveJourneyData.Size = new System.Drawing.Size(228, 115);
+            this.GrpBxActiveJourneyData.Size = new System.Drawing.Size(319, 97);
             this.GrpBxActiveJourneyData.TabIndex = 3;
             this.GrpBxActiveJourneyData.TabStop = false;
             this.GrpBxActiveJourneyData.Text = "Active journey";
@@ -219,11 +223,11 @@
             // 
             // BtnActiveJourneyModify
             // 
-            this.BtnActiveJourneyModify.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.BtnActiveJourneyModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnActiveJourneyModify.BackColor = System.Drawing.SystemColors.Control;
             this.BtnActiveJourneyModify.Enabled = false;
             this.BtnActiveJourneyModify.Image = global::DiceTravel.Properties.Resources.icoSettings;
-            this.BtnActiveJourneyModify.Location = new System.Drawing.Point(182, 69);
+            this.BtnActiveJourneyModify.Location = new System.Drawing.Point(273, 51);
             this.BtnActiveJourneyModify.Name = "BtnActiveJourneyModify";
             this.BtnActiveJourneyModify.Size = new System.Drawing.Size(40, 40);
             this.BtnActiveJourneyModify.TabIndex = 20;
@@ -235,18 +239,18 @@
             this.TxtActiveJourneyTitle.BackColor = System.Drawing.SystemColors.ControlDark;
             this.TxtActiveJourneyTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TxtActiveJourneyTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TxtActiveJourneyTitle.Location = new System.Drawing.Point(12, 19);
+            this.TxtActiveJourneyTitle.Location = new System.Drawing.Point(52, 19);
             this.TxtActiveJourneyTitle.Multiline = false;
             this.TxtActiveJourneyTitle.Name = "TxtActiveJourneyTitle";
             this.TxtActiveJourneyTitle.ReadOnly = true;
             this.TxtActiveJourneyTitle.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.TxtActiveJourneyTitle.Size = new System.Drawing.Size(211, 25);
+            this.TxtActiveJourneyTitle.Size = new System.Drawing.Size(251, 25);
             this.TxtActiveJourneyTitle.TabIndex = 15;
             this.TxtActiveJourneyTitle.Text = "TITLE";
             // 
             // PctBxActiveJourneyVisibility
             // 
-            this.PctBxActiveJourneyVisibility.Location = new System.Drawing.Point(12, 69);
+            this.PctBxActiveJourneyVisibility.Location = new System.Drawing.Point(6, 19);
             this.PctBxActiveJourneyVisibility.Name = "PctBxActiveJourneyVisibility";
             this.PctBxActiveJourneyVisibility.Size = new System.Drawing.Size(40, 40);
             this.PctBxActiveJourneyVisibility.TabIndex = 14;
@@ -255,11 +259,11 @@
             // 
             // BtnActiveJourneyNewJourney
             // 
-            this.BtnActiveJourneyNewJourney.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnActiveJourneyNewJourney.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnActiveJourneyNewJourney.BackColor = System.Drawing.SystemColors.Control;
             this.BtnActiveJourneyNewJourney.Enabled = false;
             this.BtnActiveJourneyNewJourney.Image = global::DiceTravel.Properties.Resources.icoStart;
-            this.BtnActiveJourneyNewJourney.Location = new System.Drawing.Point(90, 69);
+            this.BtnActiveJourneyNewJourney.Location = new System.Drawing.Point(181, 51);
             this.BtnActiveJourneyNewJourney.Name = "BtnActiveJourneyNewJourney";
             this.BtnActiveJourneyNewJourney.Size = new System.Drawing.Size(40, 40);
             this.BtnActiveJourneyNewJourney.TabIndex = 13;
@@ -269,11 +273,11 @@
             // 
             // BtnActiveJourneyDelete
             // 
-            this.BtnActiveJourneyDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnActiveJourneyDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnActiveJourneyDelete.BackColor = System.Drawing.SystemColors.Control;
             this.BtnActiveJourneyDelete.Enabled = false;
             this.BtnActiveJourneyDelete.Image = global::DiceTravel.Properties.Resources.icoDelete;
-            this.BtnActiveJourneyDelete.Location = new System.Drawing.Point(136, 69);
+            this.BtnActiveJourneyDelete.Location = new System.Drawing.Point(227, 51);
             this.BtnActiveJourneyDelete.Name = "BtnActiveJourneyDelete";
             this.BtnActiveJourneyDelete.Size = new System.Drawing.Size(40, 40);
             this.BtnActiveJourneyDelete.TabIndex = 12;
@@ -286,7 +290,7 @@
             // 
             this.TxtActiveJourneyInfo.AutoSize = true;
             this.TxtActiveJourneyInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TxtActiveJourneyInfo.Location = new System.Drawing.Point(8, 44);
+            this.TxtActiveJourneyInfo.Location = new System.Drawing.Point(52, 47);
             this.TxtActiveJourneyInfo.Name = "TxtActiveJourneyInfo";
             this.TxtActiveJourneyInfo.Size = new System.Drawing.Size(70, 20);
             this.TxtActiveJourneyInfo.TabIndex = 7;
@@ -300,7 +304,7 @@
             this.GrpBxUserData.ForeColor = System.Drawing.SystemColors.ControlText;
             this.GrpBxUserData.Location = new System.Drawing.Point(3, 3);
             this.GrpBxUserData.Name = "GrpBxUserData";
-            this.GrpBxUserData.Size = new System.Drawing.Size(229, 53);
+            this.GrpBxUserData.Size = new System.Drawing.Size(229, 97);
             this.GrpBxUserData.TabIndex = 1;
             this.GrpBxUserData.TabStop = false;
             this.GrpBxUserData.Text = "MyData";
@@ -329,12 +333,31 @@
             this.GrpBxMainFrame.Controls.Add(this.BtnAllEntries);
             this.GrpBxMainFrame.Controls.Add(this.BtnMyJourney);
             this.GrpBxMainFrame.Controls.Add(this.TxtFlowDataFlowTitle);
-            this.GrpBxMainFrame.Location = new System.Drawing.Point(238, 3);
+            this.GrpBxMainFrame.Location = new System.Drawing.Point(3, 106);
             this.GrpBxMainFrame.Name = "GrpBxMainFrame";
-            this.GrpBxMainFrame.Size = new System.Drawing.Size(640, 822);
+            this.GrpBxMainFrame.Size = new System.Drawing.Size(875, 728);
             this.GrpBxMainFrame.TabIndex = 2;
             this.GrpBxMainFrame.TabStop = false;
             this.GrpBxMainFrame.Visible = false;
+            // 
+            // BtnSearchUser
+            // 
+            this.BtnSearchUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSearchUser.Location = new System.Drawing.Point(818, 14);
+            this.BtnSearchUser.Name = "BtnSearchUser";
+            this.BtnSearchUser.Size = new System.Drawing.Size(50, 23);
+            this.BtnSearchUser.TabIndex = 13;
+            this.BtnSearchUser.Text = "Search";
+            this.BtnSearchUser.UseVisualStyleBackColor = true;
+            this.BtnSearchUser.Click += new System.EventHandler(this.BtnSearchUser_Click);
+            // 
+            // TxtSearchUser
+            // 
+            this.TxtSearchUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtSearchUser.Location = new System.Drawing.Point(612, 16);
+            this.TxtSearchUser.Name = "TxtSearchUser";
+            this.TxtSearchUser.Size = new System.Drawing.Size(199, 20);
+            this.TxtSearchUser.TabIndex = 12;
             // 
             // FlowWindow
             // 
@@ -347,7 +370,7 @@
             this.FlowWindow.Controls.Add(this.FlowContainer);
             this.FlowWindow.Location = new System.Drawing.Point(6, 43);
             this.FlowWindow.Name = "FlowWindow";
-            this.FlowWindow.Size = new System.Drawing.Size(571, 773);
+            this.FlowWindow.Size = new System.Drawing.Size(806, 679);
             this.FlowWindow.TabIndex = 11;
             // 
             // FlowLayoutPanel
@@ -383,7 +406,7 @@
             this.BtnAllEntries.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnAllEntries.BackColor = System.Drawing.SystemColors.Control;
             this.BtnAllEntries.Image = global::DiceTravel.Properties.Resources.icoEntry;
-            this.BtnAllEntries.Location = new System.Drawing.Point(583, 99);
+            this.BtnAllEntries.Location = new System.Drawing.Point(818, 99);
             this.BtnAllEntries.Name = "BtnAllEntries";
             this.BtnAllEntries.Size = new System.Drawing.Size(50, 50);
             this.BtnAllEntries.TabIndex = 10;
@@ -396,7 +419,7 @@
             this.BtnMyJourney.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnMyJourney.BackColor = System.Drawing.SystemColors.Control;
             this.BtnMyJourney.Image = global::DiceTravel.Properties.Resources.icoMyJourneys;
-            this.BtnMyJourney.Location = new System.Drawing.Point(583, 43);
+            this.BtnMyJourney.Location = new System.Drawing.Point(818, 43);
             this.BtnMyJourney.Name = "BtnMyJourney";
             this.BtnMyJourney.Size = new System.Drawing.Size(50, 50);
             this.BtnMyJourney.TabIndex = 9;
@@ -422,7 +445,9 @@
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuMain,
             this.MenuMe,
-            this.journeyToolStripMenuItem});
+            this.menuTraveling,
+            this.menuFriends,
+            this.menuHelp});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(889, 24);
@@ -444,14 +469,14 @@
             // MenuMainLogin
             // 
             this.MenuMainLogin.Name = "MenuMainLogin";
-            this.MenuMainLogin.Size = new System.Drawing.Size(114, 22);
+            this.MenuMainLogin.Size = new System.Drawing.Size(180, 22);
             this.MenuMainLogin.Text = "Login";
             this.MenuMainLogin.Click += new System.EventHandler(this.MenuMainLogin_Click);
             // 
             // MenuMainSignUp
             // 
             this.MenuMainSignUp.Name = "MenuMainSignUp";
-            this.MenuMainSignUp.Size = new System.Drawing.Size(114, 22);
+            this.MenuMainSignUp.Size = new System.Drawing.Size(180, 22);
             this.MenuMainSignUp.Text = "SignUp";
             this.MenuMainSignUp.Click += new System.EventHandler(this.MenuMainSignUp_Click);
             // 
@@ -459,26 +484,26 @@
             // 
             this.MenuMainLogout.Enabled = false;
             this.MenuMainLogout.Name = "MenuMainLogout";
-            this.MenuMainLogout.Size = new System.Drawing.Size(114, 22);
+            this.MenuMainLogout.Size = new System.Drawing.Size(180, 22);
             this.MenuMainLogout.Text = "LogOut";
             this.MenuMainLogout.Click += new System.EventHandler(this.MenuMainLogout_Click);
             // 
             // MenuMainQuit
             // 
             this.MenuMainQuit.Name = "MenuMainQuit";
-            this.MenuMainQuit.Size = new System.Drawing.Size(114, 22);
+            this.MenuMainQuit.Size = new System.Drawing.Size(180, 22);
             this.MenuMainQuit.Text = "Exit";
             this.MenuMainQuit.Click += new System.EventHandler(this.MenuMainQuit_Click);
             // 
             // MenuMe
             // 
             this.MenuMe.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuMeMyProfile,
             this.MenuMeMyFlow,
             this.MenuMeMyJourneys,
             this.MenuMeNewJourney,
             this.MenuMeNewEntry,
-            this.MenuMeGoalReached,
-            this.MenuMeMyProfile});
+            this.MenuMeGoalReached});
             this.MenuMe.Enabled = false;
             this.MenuMe.Name = "MenuMe";
             this.MenuMe.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.M)));
@@ -489,14 +514,14 @@
             // 
             this.MenuMeMyFlow.Name = "MenuMeMyFlow";
             this.MenuMeMyFlow.Size = new System.Drawing.Size(180, 22);
-            this.MenuMeMyFlow.Text = "MyFlow";
+            this.MenuMeMyFlow.Text = "Story";
             // 
             // MenuMeMyJourneys
             // 
             this.MenuMeMyJourneys.Name = "MenuMeMyJourneys";
             this.MenuMeMyJourneys.Size = new System.Drawing.Size(180, 22);
-            this.MenuMeMyJourneys.Text = "MyJourneys";
-            this.MenuMeMyJourneys.Click += new System.EventHandler(this.MenuMeMyJourneys_Click);
+            this.MenuMeMyJourneys.Text = "Journeys";
+            this.MenuMeMyJourneys.Click += new System.EventHandler(this.MenuMeMyJourneysClick);
             // 
             // MenuMeNewJourney
             // 
@@ -522,8 +547,15 @@
             // 
             this.MenuMeMyProfile.Name = "MenuMeMyProfile";
             this.MenuMeMyProfile.Size = new System.Drawing.Size(180, 22);
-            this.MenuMeMyProfile.Text = "MyProfile";
+            this.MenuMeMyProfile.Text = "Profile";
             this.MenuMeMyProfile.Click += new System.EventHandler(this.MenuMeMyProfile_Click);
+            // 
+            // menuTraveling
+            // 
+            this.menuTraveling.Enabled = false;
+            this.menuTraveling.Name = "menuTraveling";
+            this.menuTraveling.Size = new System.Drawing.Size(66, 20);
+            this.menuTraveling.Text = "Traveling";
             // 
             // contextMenuStrip1
             // 
@@ -558,30 +590,27 @@
             // 
             this.journeysTableAdapter.ClearBeforeFill = true;
             // 
-            // journeyToolStripMenuItem
+            // menuFriends
             // 
-            this.journeyToolStripMenuItem.Name = "journeyToolStripMenuItem";
-            this.journeyToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.journeyToolStripMenuItem.Text = "Journey";
+            this.menuFriends.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.searchToolStripMenuItem});
+            this.menuFriends.Enabled = false;
+            this.menuFriends.Name = "menuFriends";
+            this.menuFriends.Size = new System.Drawing.Size(57, 20);
+            this.menuFriends.Text = "Friends";
             // 
-            // TxtSearchUser
+            // searchToolStripMenuItem
             // 
-            this.TxtSearchUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtSearchUser.Location = new System.Drawing.Point(377, 16);
-            this.TxtSearchUser.Name = "TxtSearchUser";
-            this.TxtSearchUser.Size = new System.Drawing.Size(199, 20);
-            this.TxtSearchUser.TabIndex = 12;
+            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.searchToolStripMenuItem.Text = "Search";
             // 
-            // BtnSearchUser
+            // menuHelp
             // 
-            this.BtnSearchUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSearchUser.Location = new System.Drawing.Point(583, 14);
-            this.BtnSearchUser.Name = "BtnSearchUser";
-            this.BtnSearchUser.Size = new System.Drawing.Size(50, 23);
-            this.BtnSearchUser.TabIndex = 13;
-            this.BtnSearchUser.Text = "Search";
-            this.BtnSearchUser.UseVisualStyleBackColor = true;
-            this.BtnSearchUser.Click += new System.EventHandler(this.BtnSearchUser_Click);
+            this.menuHelp.Enabled = false;
+            this.menuHelp.Name = "menuHelp";
+            this.menuHelp.Size = new System.Drawing.Size(44, 20);
+            this.menuHelp.Text = "Help";
             // 
             // MainForm
             // 
@@ -667,10 +696,13 @@
         private System.Windows.Forms.Button BtnAllEntries;
         private System.Windows.Forms.Button BtnActiveJourneyModify;
         private System.Windows.Forms.ToolStripMenuItem MenuMeMyProfile;
-        private System.Windows.Forms.ToolStripMenuItem journeyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuTraveling;
         private System.Windows.Forms.Button BtnSearchUser;
         public System.Windows.Forms.TextBox TxtSearchUser;
         public System.Windows.Forms.Panel FlowWindow;
+        private System.Windows.Forms.ToolStripMenuItem menuFriends;
+        private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuHelp;
     }
 }
 

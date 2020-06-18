@@ -36,6 +36,10 @@
             this.inputLoginPassword = new System.Windows.Forms.TextBox();
             this.btnSignUpLogin = new System.Windows.Forms.Button();
             this.btnSignUpCancel = new System.Windows.Forms.Button();
+            this.btnLoginSignUp = new System.Windows.Forms.Button();
+            this.txtLoginSignUp = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtLoginTitle
@@ -87,7 +91,7 @@
             // btnSignUpLogin
             // 
             this.btnSignUpLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSignUpLogin.Location = new System.Drawing.Point(147, 126);
+            this.btnSignUpLogin.Location = new System.Drawing.Point(139, 122);
             this.btnSignUpLogin.Name = "btnSignUpLogin";
             this.btnSignUpLogin.Size = new System.Drawing.Size(75, 23);
             this.btnSignUpLogin.TabIndex = 7;
@@ -99,13 +103,43 @@
             // 
             this.btnSignUpCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSignUpCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnSignUpCancel.Location = new System.Drawing.Point(66, 126);
+            this.btnSignUpCancel.Location = new System.Drawing.Point(58, 122);
             this.btnSignUpCancel.Name = "btnSignUpCancel";
             this.btnSignUpCancel.Size = new System.Drawing.Size(75, 23);
             this.btnSignUpCancel.TabIndex = 8;
             this.btnSignUpCancel.Text = "Cancel";
             this.btnSignUpCancel.UseVisualStyleBackColor = true;
             this.btnSignUpCancel.Click += new System.EventHandler(this.BtnSignUpCancel_Click);
+            // 
+            // btnLoginSignUp
+            // 
+            this.btnLoginSignUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLoginSignUp.Location = new System.Drawing.Point(9, 38);
+            this.btnLoginSignUp.Name = "btnLoginSignUp";
+            this.btnLoginSignUp.Size = new System.Drawing.Size(193, 23);
+            this.btnLoginSignUp.TabIndex = 9;
+            this.btnLoginSignUp.Text = "SignUp Now!";
+            this.btnLoginSignUp.UseVisualStyleBackColor = true;
+            // 
+            // txtLoginSignUp
+            // 
+            this.txtLoginSignUp.AutoSize = true;
+            this.txtLoginSignUp.Location = new System.Drawing.Point(6, 16);
+            this.txtLoginSignUp.Name = "txtLoginSignUp";
+            this.txtLoginSignUp.Size = new System.Drawing.Size(133, 13);
+            this.txtLoginSignUp.TabIndex = 10;
+            this.txtLoginSignUp.Text = "If you have not an Acount:";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.txtLoginSignUp);
+            this.groupBox1.Controls.Add(this.btnLoginSignUp);
+            this.groupBox1.Location = new System.Drawing.Point(10, 151);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(212, 67);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
             // 
             // LoginForm
             // 
@@ -114,7 +148,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.btnSignUpCancel;
-            this.ClientSize = new System.Drawing.Size(234, 161);
+            this.ClientSize = new System.Drawing.Size(234, 230);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSignUpCancel);
             this.Controls.Add(this.btnSignUpLogin);
             this.Controls.Add(this.inputLoginPassword);
@@ -124,13 +159,13 @@
             this.Controls.Add(this.txtLoginTitle);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(250, 200);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(250, 200);
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LoginForm_FormClosed);
             this.Load += new System.EventHandler(this.LoginForm_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,5 +180,8 @@
         private System.Windows.Forms.TextBox inputLoginPassword;
         private System.Windows.Forms.Button btnSignUpLogin;
         private System.Windows.Forms.Button btnSignUpCancel;
+        private System.Windows.Forms.Button btnLoginSignUp;
+        private System.Windows.Forms.Label txtLoginSignUp;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

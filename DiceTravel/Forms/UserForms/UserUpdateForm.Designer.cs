@@ -220,6 +220,7 @@
             this.MaximumSize = new System.Drawing.Size(250, 290);
             this.MinimizeBox = false;
             this.Name = "UserUpdateForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "My Profile";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -36,8 +36,15 @@ namespace DiceTravel.Forms.EntryForms
 
             entry.TripId = trip.Id;
             entry.EntryDate = DateTime.Now;
-            entry.Picture = Util.ImageHandler.GetImageBin(InputEntryCreateAddImage.Text); //itt még ki kell dolgozni a kép ki és betöltést.
-            entry.Comment = this.InputEntryCreateComment.Text;            
+            if (string.IsNullOrEmpty(InputEntryCreateAddImage.Text))
+            {
+                entry.Picture = null;
+            }
+            else
+            {
+                entry.Picture = Util.ImageHandler.GetImageBin(InputEntryCreateAddImage.Text);
+            }
+            entry.Comment = this.InputEntryCreateComment.Text;
             entry.Title = InputEntryCreateTitle.Text;
 
             if (RBtnEntryCreateVisibilityPrivate.Checked) { entry.Visibility = 0; }
@@ -53,7 +60,7 @@ namespace DiceTravel.Forms.EntryForms
             }
             catch (ValidationException ex)
             {
-                MessageBox.Show(ex.Message,"Entry creation error!",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show(ex.Message, "Entry creation error!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -83,6 +90,6 @@ namespace DiceTravel.Forms.EntryForms
             }
         }
 
-       
+
     }
 }

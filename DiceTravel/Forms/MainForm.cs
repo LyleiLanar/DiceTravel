@@ -1,13 +1,13 @@
 ﻿using DiceTravel.Classes;
 using DiceTravel.Controls;
+using DiceTravel.Forms.EntryForms;
 using DiceTravel.Forms.JourneyForms;
 using DiceTravel.Forms.TripForms;
-using DiceTravel.Forms.EntryForms;
+using DiceTravel.Forms.UserForms;
 using DiceTravel.Util;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using DiceTravel.Forms.UserForms;
 
 namespace DiceTravel
 {
@@ -20,68 +20,109 @@ namespace DiceTravel
             FlowElementProvider = new FlowElementProvider();
         }
 
-        //mainMenu Mainmethods
+        /*********  MainForm Methods *********/
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Do you want to exit?\r\nYou will be logged out!", "Are you sure? Really?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                ActiveUserStore.LogOutUser();
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
+        private void ChangeControlsAvailabilityAfterLogout()
+        {
+            GrpBxUserData.Visible = false;
+            GrpBxActiveJourneyData.Visible = false;
+            GrpBxActiveTripData.Visible = false;
+            GrpBxMainFrame.Visible = false;
+            MenuMainLogout.Enabled = false;
+            MenuMainLogin.Enabled = true;
+            MenuMainSignUp.Enabled = true;
+            MenuMe.Enabled = false;
+            MenuTraveling.Enabled = false;
+            MenuFriends.Enabled = false;
+            BtnNewEntry.Visible = false;
+        }
+        private void ChangeControlsAvailabilityAfterLogin()
+        {
+            GrpBxUserData.Visible = true;
+            GrpBxActiveJourneyData.Visible = true;
+            GrpBxActiveTripData.Visible = true;
+            GrpBxMainFrame.Visible = true;
+            MenuMainLogout.Enabled = true;
+            MenuMainLogin.Enabled = false;
+            MenuMainSignUp.Enabled = false;
+            MenuMe.Enabled = true;
+            MenuTraveling.Enabled = true;
+            MenuFriends.Enabled = true;
+            BtnNewEntry.Visible = true;
+        }
+
+        /********* Menu ActionMethods *********/
+        //MainMenu
         private void MenuMainSignUp_Click(object sender, EventArgs e)
         {
-            SignUpForm signUpForm = new SignUpForm
-            {
-                Text = Properties.Settings.Default.projectName + " - Registration"
-            };
-
-            signUpForm.DatePickerSignUpBirthDate.Value = DateTime.Now;
-            signUpForm.DatePickerSignUpBirthDate.MaxDate = DateTime.Now;
-            signUpForm.Show();
+            SignUp();
         }
+
+       
+
         private void MenuMainQuit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
         private void MenuMainLogin_Click(object sender, EventArgs e)
         {
-
-            LoginForm login = new LoginForm
-            {
-                Text = Properties.Settings.Default.projectName + " - LogIn"
-            };
-
-            login.Show();
+            LogIn();
         }
         public void MenuMainLogout_Click(object sender, EventArgs e)
         {
-            ActiveUserStore.LogOutUser();
-            Program.mainForm.ChangeControlsAvailabilityAfterLogout();
+            LogOut();
+        }
+
+        //MeMenu
+        private void MenuMeMyJourneys_Click(object sender, EventArgs e)
+        {
+            SetFlowMyJourneys();
+        }
+        private void MenuMeMyProfile_Click(object sender, EventArgs e)
+        {
+            MainForm.UpdateUserData();
+        }
+        private void MenuMeMyFlow_Click(object sender, EventArgs e)
+        {
+            SetFlowMyJourneys();
+        }
+
+        //TravelMenu
+        private void MenuMeGoalReached_Click(object sender, EventArgs e)
+        {
+            GoalReached();
         }
         private void MenuMeNewJourney_Click(object sender, EventArgs e)
         {
             StartJourney();
-
         }
-
-        private static void StartJourney()
+        private void MenuTravelingJourneyStart_Click(object sender, EventArgs e)
         {
-            if (ActiveUserStore.IsThereActiveUser && !ActiveUserStore.IsThereActiveJourney())
-            {
-
-                JourneyCreateForm journeyCreateForm = new JourneyCreateForm()
-                {
-                    Text = Properties.Settings.Default.projectName + " - New Journey"
-                };
-
-                journeyCreateForm.Show();
-
-            }
-            else
-            {
-                MessageBox.Show("You've already started a journey!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+            StartJourney();
         }
 
+        //FriendsMenu
+
+        //HelpMenu
+
+        /*********  Data GroupBox Methods *********/
+        //Common
         public void UpdateData()
         {
             if (ActiveUserStore.IsThereActiveUser)
             {
                 Program.mainForm.ChangeControlsAvailabilityAfterLogin();
-                UpdateUserData();
+                this.UpdateActiveUser();
                 UpdateActiveJourneyData();
                 UpdateTripData();
                 DrawFlow();
@@ -92,41 +133,19 @@ namespace DiceTravel
             }
         }
 
-        //userData FormMethods
-        private void UpdateUserData()
+        //userData
+        private void UpdateActiveUser()
         {
             User user = ActiveUserStore.ActiveUser;
 
             TxtUserDataLoginName.Text = user.LoginName;
-        }
-
-        //control availability methods
-        public void ChangeControlsAvailabilityAfterLogout()
+        }              
+        private void BtnMyDataModify_Click(object sender, EventArgs e)
         {
-            GrpBxUserData.Visible = false;
-            GrpBxActiveJourneyData.Visible = false;
-            GrpBxActiveTripData.Visible = false;
-            GrpBxMainFrame.Visible = false;
-            MenuMainLogout.Enabled = false;
-            MenuMainLogin.Enabled = true;
-            MenuMainSignUp.Enabled = true;
-            MenuMe.Enabled = false;
-            BtnNewEntry.Visible = false;
+            UpdateUserData();
         }
-        public void ChangeControlsAvailabilityAfterLogin()
-        {
-            GrpBxUserData.Visible = true;
-            GrpBxActiveJourneyData.Visible = true;
-            GrpBxActiveTripData.Visible = true;
-            GrpBxMainFrame.Visible = true;
-            MenuMainLogout.Enabled = true;
-            MenuMainLogin.Enabled = false;
-            MenuMainSignUp.Enabled = false;
-            MenuMe.Enabled = true;
-            BtnNewEntry.Visible = true;
-        }
-
-        //journeyData Formmethods
+        
+        //journeyData
         private void UpdateActiveJourneyData()
         {
             Journey activeJourney = ActiveUserStore.GetActiveJourney();
@@ -136,7 +155,7 @@ namespace DiceTravel
             if (activeJourney != null)
             {
                 activeJourneyTitle = activeJourney.Title;
-                activeJourneyInfo = $"({activeJourney.StartLocation})";
+                activeJourneyInfo = $"Start: {activeJourney.StartLocation}";
                 BtnActiveJourneyDelete.Enabled = true;
                 BtnActiveJourneyNewJourney.Enabled = false;
                 BtnNextTripReached.Enabled = true;
@@ -181,19 +200,18 @@ namespace DiceTravel
         }
         private void BtnMyJourneyDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("All progress will be lost!\r\nAre you sure to delete this Journey?", "Attention!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-            {
-                Journey.GetJourney_ById(ActiveUserStore.GetActiveJourney().Id).DeleteItself();
-                Program.mainForm.FlowElementProvider.SetFlowJourneyFlowByUser(ActiveUserStore.ActiveUser.Id);
-                Program.mainForm.UpdateData();
-            }
+            DeleteActiveJourney();
         }
         private void BtnNewJourney_Click(object sender, EventArgs e)
         {
-            MenuMeNewJourney_Click(sender, e);
+            StartJourney();
         }
-
-        //tripData Formmethods
+        private void BtnActiveJourneyModify_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        
+        //tripData
         private void UpdateTripData()
         {
             Journey activeJourney = ActiveUserStore.GetActiveJourney();
@@ -236,15 +254,24 @@ namespace DiceTravel
             }
 
         }
+        private void BtnNewEntry_Click(object sender, EventArgs e)
+        {
+            CreatrEntry();
+        }
+        private void BtnNextTripModify_Click(object sender, EventArgs e)
+        {
+            TripUpdateForm tpf = new TripUpdateForm(ActiveUserStore.GetActiveJourney().GetLastTrip());
+            tpf.Show();
+        }
         private void BtnNextDestReached_Click(object sender, EventArgs e)
         {
-            new TripCreateForm().Show();
+            DestinationReached();
         }
 
+        /*********  Flow Methods *********/
         //flowLayoutPanel
         public void DrawFlow()
         {
-            FlowContainer.Visible = false;
             FlowElementProvider.UpdateFlow();
             FlowLayoutPanel.Controls.Clear();
             List<FlowElementControl> controls = new List<FlowElementControl>();
@@ -258,58 +285,91 @@ namespace DiceTravel
             }
 
             TxtFlowDataFlowTitle.Text = FlowElementProvider.FlowTitle;
-            FlowContainer.Visible = true;
         }
 
-        //misc methods
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (MessageBox.Show("Do you want to exit?\r\nYou will be logged out!", "Are you sure? Really?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-            {
-                ActiveUserStore.LogOutUser();
-            }
-            else
-            {
-                e.Cancel = true;
-            }
-        }
-        public void MenuMeMyJourneys_Click(object sender, EventArgs e)
-        {
-            Program.mainForm.FlowElementProvider.SetFlowJourneyFlowByUser(ActiveUserStore.ActiveUser.Id);
-            Program.mainForm.DrawFlow();
-        }
+        //RightSide Buttons and Search
         private void BtnMyJourney_Click(object sender, EventArgs e)
         {
-            MenuMeMyJourneys_Click(sender, e);
+            SetFlowMyJourneys();
         }
-        private void BtnNextTripModify_Click(object sender, EventArgs e)
-        {
-            TripUpdateForm tpf = new TripUpdateForm(ActiveUserStore.GetActiveJourney().GetLastTrip());
-            tpf.Show();
-            tpf.Dispose();
-        }
-        private void MenuMeGoalReached_Click(object sender, EventArgs e)
-        {
-            new TripCreateForm().Show();
-        }
-        private void BtnNewEntry_Click(object sender, EventArgs e)
-        {
-            new EntryCreateForm().Show(); 
-        }
-        private void BtnAllEntries_Click(object sender, EventArgs e)
+        private void BtnMyStoryFlow_Click(object sender, EventArgs e)
         {
             Program.mainForm.FlowElementProvider.SetFlowStoryFlowByUser(ActiveUserStore.ActiveUser.Id);
             Program.mainForm.DrawFlow();
-        }
-        private void MenuMeMyProfile_Click(object sender, EventArgs e)
-        {
-           new UserUpdateForm().Show();
         }
         private void BtnSearchUser_Click(object sender, EventArgs e)
         {
             Program.mainForm.FlowElementProvider.SetFlowPeopleFlowByLoginNameFragment(TxtSearchUser.Text);
             Program.mainForm.DrawFlow();
         }
- 
+
+        /*********  Command Methods *********/
+        private static void DeleteActiveJourney()
+        {
+            if (MessageBox.Show("All progress will be lost!\r\nAre you sure to delete this Journey?", "Attention!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                Journey.GetJourney_ById(ActiveUserStore.GetActiveJourney().Id).DeleteItself();
+                Program.mainForm.FlowElementProvider.SetFlowJourneyFlowByUser(ActiveUserStore.ActiveUser.Id);
+                Program.mainForm.UpdateData();
+            }
+        }
+        private static void StartJourney()
+        {
+            if (ActiveUserStore.IsThereActiveUser && !ActiveUserStore.IsThereActiveJourney())
+            {
+
+                JourneyCreateForm journeyCreateForm = new JourneyCreateForm()
+                {
+                    Text = Properties.Settings.Default.projectName + " - New Journey"
+                };
+
+                journeyCreateForm.Show();
+
+            }
+            else
+            {
+                MessageBox.Show("You've already started a journey!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+        private static void GoalReached()
+        {
+            new TripCreateForm().Show();
+        }
+        private static void DestinationReached()
+        {
+            new TripCreateForm().Show();
+        }
+        private static void CreatrEntry()
+        {
+            new EntryCreateForm().Show();
+        }
+        private static void UpdateUserData()
+        {
+            new UserUpdateForm().Show();
+        }
+        private static void SetFlowMyJourneys()
+        {
+            Program.mainForm.FlowElementProvider.SetFlowJourneyFlowByUser(ActiveUserStore.ActiveUser.Id);
+            Program.mainForm.DrawFlow();
+        }
+        private static void LogOut()
+        {
+            ActiveUserStore.LogOutUser();
+            Program.mainForm.ChangeControlsAvailabilityAfterLogout();
+        }
+        private static void LogIn()
+        {
+            new LoginForm().Show();
+        }
+        private static void SignUp()
+        {
+            new SignUpForm().Show();
+        }
+        private void MenuTravelingJourneyMod_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

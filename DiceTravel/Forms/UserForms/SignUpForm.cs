@@ -1,9 +1,9 @@
-﻿using DiceTravel.Util;
+﻿using DiceTravel.Classes;
+using DiceTravel.Util;
 using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using System.Windows.Forms;
-using DiceTravel.Classes;
 
 namespace DiceTravel
 {
@@ -13,6 +13,9 @@ namespace DiceTravel
         public SignUpForm()
         {
             InitializeComponent();
+            Text = Properties.Settings.Default.projectName + " - Registration";
+            DatePickerSignUpBirthDate.Value = DateTime.Now;
+            DatePickerSignUpBirthDate.MaxDate = DateTime.Now;
         }
 
         //Methods
@@ -22,17 +25,23 @@ namespace DiceTravel
         }
         private void BtnSignUpReg_Click(object sender, EventArgs e)
         {
-            User user = new User();
-            user.LoginName = InputSignUpLoginName.Text; ;
-            user.Password = InputSignUpPassword.Text;
-            user.Surname = InputSignUpSurname.Text;
-            user.Firstname = InputSignUpFirstName.Text;
-            user.BirthDate = DatePickerSignUpBirthDate.Value.Date.ToString("yyy-MM-dd");
+            User user = new User
+            {
+                LoginName = InputSignUpLoginName.Text,
+                Password = InputSignUpPassword.Text,
+                Surname = InputSignUpSurname.Text,
+                Firstname = InputSignUpFirstName.Text,
+                BirthDate = DatePickerSignUpBirthDate.Value.Date.ToString("yyy-MM-dd")
+            };
+
             try
             {
                 Validation(user);
                 user.CreateItself();
+                LoginForm loginForm = new LoginForm(user.LoginName);
                 this.Close();
+                loginForm.Show();
+
             }
             catch (ValidationException ex)
             {
@@ -47,7 +56,7 @@ namespace DiceTravel
                 $"FROM dice_travel.users where login_name like @login_name;";
 
             MySqlCommand sqlCommand = Entity.CreateCommand(query);
-            sqlCommand.Parameters.Add("@login_name", MySqlDbType.VarChar,20);
+            sqlCommand.Parameters.Add("@login_name", MySqlDbType.VarChar, 20);
             sqlCommand.Parameters["@login_name"].Value = InputSignUpLoginName.Text;
 
             DataTable table = Entity.ReadQueryTable(sqlCommand);

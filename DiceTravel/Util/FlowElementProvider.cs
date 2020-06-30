@@ -134,8 +134,6 @@ namespace DiceTravel.Util
             FlowElements.Clear();
             FlowElements.AddRange(personControls);
         }
-
-
         public void SetFlowJourneyFlowByUser(int userId)
         {
             List<Journey> journeys = User.GetUserById(userId).GetJourneys();

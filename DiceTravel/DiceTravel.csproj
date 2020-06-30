@@ -215,6 +215,7 @@
     <Compile Include="Util\Exceptions\ValidationException.cs" />
     <Compile Include="Util\FlowElementProvider.cs" />
     <Compile Include="Util\ImageHandler.cs" />
+    <Compile Include="Util\IniReader.cs" />
     <EmbeddedResource Include="Controls\EntryControl.resx">
       <DependentUpon>EntryControl.cs</DependentUpon>
     </EmbeddedResource>

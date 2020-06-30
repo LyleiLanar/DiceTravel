@@ -6,9 +6,16 @@ namespace DiceTravel
 {
     public partial class LoginForm : Form
     {
-        public LoginForm()
+        public LoginForm():this("Tündi")
+        {
+            ;
+        }
+
+        public LoginForm(string inputName)
         {
             InitializeComponent();
+            InputLoginLoginName.Text = inputName;
+            Text = Properties.Settings.Default.projectName + " - LogIn";
         }
         private void BtnSignUpCancel_Click(object sender, EventArgs e)
         {
@@ -19,10 +26,8 @@ namespace DiceTravel
             try
             {
                 this.Validation();
-                ActiveUserStore.LogInUser(inputLoginLoginName.Text, inputLoginPassword.Text);
-                //Program.mainForm.DrawFlow();
+                ActiveUserStore.LogInUser(InputLoginLoginName.Text, InputLoginPassword.Text);
                 Program.mainForm.UpdateData();
-                //Program.mainForm.MenuMeMyJourneys_Click(sender, e);
 
                 this.Close();
             }
@@ -35,7 +40,7 @@ namespace DiceTravel
 
         public void Validation()
         {
-            if (inputLoginLoginName.Text == "" || inputLoginPassword.Text == "")
+            if (InputLoginLoginName.Text == "" || InputLoginPassword.Text == "")
             { throw new ValidationException("Missing Login name or Password!"); }
         }
 
@@ -47,6 +52,12 @@ namespace DiceTravel
         private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Program.MainFormActivate();
+        }
+
+        private void BtnLoginSignUp_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            new SignUpForm().Show();
         }
     }
 }

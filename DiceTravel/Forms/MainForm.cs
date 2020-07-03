@@ -67,9 +67,6 @@ namespace DiceTravel
         {
             SignUp();
         }
-
-       
-
         private void MenuMainQuit_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -139,12 +136,12 @@ namespace DiceTravel
             User user = ActiveUserStore.ActiveUser;
 
             TxtUserDataLoginName.Text = user.LoginName;
-        }              
+        }
         private void BtnMyDataModify_Click(object sender, EventArgs e)
         {
             UpdateUserData();
         }
-        
+
         //journeyData
         private void UpdateActiveJourneyData()
         {
@@ -210,7 +207,7 @@ namespace DiceTravel
         {
             throw new NotImplementedException();
         }
-        
+
         //tripData
         private void UpdateTripData()
         {
@@ -273,6 +270,7 @@ namespace DiceTravel
         public void DrawFlow()
         {
             FlowElementProvider.UpdateFlow();
+            Program.mainForm.BtnInvitations.Visible = FlowElementProvider.IsUserIdSet();
             FlowLayoutPanel.Controls.Clear();
             List<FlowElementControl> controls = new List<FlowElementControl>();
             controls.AddRange(FlowElementProvider.FlowElements);
@@ -285,6 +283,7 @@ namespace DiceTravel
             }
 
             TxtFlowDataFlowTitle.Text = FlowElementProvider.FlowTitle;
+
         }
 
         //RightSide Buttons and Search

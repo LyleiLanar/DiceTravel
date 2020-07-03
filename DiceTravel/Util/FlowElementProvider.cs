@@ -35,7 +35,6 @@ namespace DiceTravel.Util
             JourneyId = -1;
             TripId = -1;
             FlowElements = new List<FlowElementControl>();
-
         }
 
         //refresh Flow based on settings, set previously
@@ -44,7 +43,6 @@ namespace DiceTravel.Util
             string userLoginName;
             string journeyTitle;
             string tripEndLocation;
-
 
             switch (Type)
             {
@@ -134,6 +132,34 @@ namespace DiceTravel.Util
             FlowElements.Clear();
             FlowElements.AddRange(personControls);
         }
+        public void SetFlowPeopleFlowByUserFrieds()
+        {
+            //setting the flowStatus
+            ResetFlow();
+            User user = ActiveUserStore.ActiveUser;
+
+            Type = FlowType.PeopleByLoginName;
+            LoginNameFragment = null;
+
+            List<User> people = User.SearchForUsersByLoginNameFragment(null);
+
+            List<PersonControl> personControls = new List<PersonControl>();
+
+
+            for (int i = 0; i < people.Count; i++)
+            {
+                User person = people[i];
+
+                personControls.Add(new PersonControl(person));
+                personControls[i].Name = $"PersonControl_{i}";
+                personControls[i].SetContent();
+                personControls[i].Visible = true;
+            }
+
+            //update the list
+            FlowElements.Clear();
+            FlowElements.AddRange(personControls);
+        }
         public void SetFlowJourneyFlowByUser(int userId)
         {
             List<Journey> journeys = User.GetUserById(userId).GetJourneys();
@@ -199,7 +225,7 @@ namespace DiceTravel.Util
                 entryControls.Add(new EntryControl(entry));
                 entryControls[i].Name = $"EntryControl_{i}";
                 entryControls[i].SetContent();
-                entryControls[i].Visible = ElementIsVisible(entry.Visibility,user.Id);
+                entryControls[i].Visible = ElementIsVisible(entry.Visibility, user.Id);
             }
 
             //setting the flowStatus            
@@ -222,13 +248,13 @@ namespace DiceTravel.Util
             {
                 int entryControlsCount = -1;
                 if (ElementIsVisible(entries[i].Visibility, user.Id))
-                {                    
+                {
                     entryControls.Add(new EntryControl(entries[i]));
                     entryControlsCount++;
                     entryControls[entryControlsCount].Name = $"EntryControl_{i}";
                     entryControls[entryControlsCount].SetContent();
                     entryControls[entryControlsCount].Visible = true;
-                }                
+                }
             }
 
             //setting the flowStatus            
@@ -240,7 +266,6 @@ namespace DiceTravel.Util
             FlowElements.Clear();
             FlowElements.AddRange(entryControls);
         }
-
         private bool ElementIsVisible(int visibility, int userId)
         {
             Friendship friendship = Friendship.GetFriendshipByIds(ActiveUserStore.ActiveUser.Id, userId);
@@ -250,7 +275,7 @@ namespace DiceTravel.Util
                 return true;
             }
             else
-            {                
+            {
                 switch (visibility)
                 {
                     case 0: //private 
@@ -279,10 +304,19 @@ namespace DiceTravel.Util
                 }
             }
         }
-
         public void SetFlowMainFlowByUser()
         {
 
+        }
+
+        //misc
+        public bool IsUserIdSet()
+        {
+            if (UserId == -1)
+            {
+                return false;
+            }
+            return true;
         }
 
     }

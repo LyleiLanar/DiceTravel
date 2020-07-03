@@ -378,6 +378,7 @@
             this.BtnInvitations.Name = "BtnInvitations";
             this.BtnInvitations.Size = new System.Drawing.Size(50, 50);
             this.BtnInvitations.TabIndex = 11;
+            this.BtnInvitations.TabStop = false;
             this.MainFormToolTip.SetToolTip(this.BtnInvitations, "My Entries");
             this.BtnInvitations.UseVisualStyleBackColor = false;
             // 
@@ -834,8 +835,8 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MenuFriendsMyFriends;
         private System.Windows.Forms.ToolStripMenuItem MenuFriendsEntries;
-        private System.Windows.Forms.Button BtnInvitations;
         private System.Windows.Forms.Button BtnFriends;
+        public System.Windows.Forms.Button BtnInvitations;
     }
 }
 

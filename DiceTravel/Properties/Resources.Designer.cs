@@ -133,9 +133,29 @@ namespace DiceTravel.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icoFriends {
+            get {
+                object obj = ResourceManager.GetObject("icoFriends", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icoImage {
             get {
                 object obj = ResourceManager.GetObject("icoImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icoInvitations {
+            get {
+                object obj = ResourceManager.GetObject("icoInvitations", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

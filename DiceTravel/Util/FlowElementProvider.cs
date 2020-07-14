@@ -8,7 +8,7 @@ namespace DiceTravel.Util
 {
     public class FlowElementProvider
     {
-        public enum FlowType { NoFlow, JourneyFlow_ByUser, MainFlow_ByUser, TripFlow_ByJourney, EntryFlow_ByTrip, StoryFlow_ByUser, Friends, PeopleByLoginName }
+        public enum FlowType { NoFlow, JourneyFlow_ByUser, MainFlow_ByUser, TripFlow_ByJourney, EntryFlow_ByTrip, StoryFlow_ByUser, Friends, PeopleByLoginName, InvitesFlow }
         public FlowType Type { get; private set; }
         public int UserId { get; private set; }
         public int JourneyId { get; private set; }
@@ -91,7 +91,13 @@ namespace DiceTravel.Util
                     break;
 
                 case FlowType.Friends:
-                    throw new NotImplementedException();
+                    FlowTitle = "My friends";
+                    SetFlowPeopleFlowByUserFriends();
+                    break;
+
+                case FlowType.InvitesFlow:
+                    FlowTitle = "My recieved invites:";
+                    SetFlowInvitesFlow();
                     break;
 
                 case FlowType.PeopleByLoginName:
@@ -132,23 +138,22 @@ namespace DiceTravel.Util
             FlowElements.Clear();
             FlowElements.AddRange(personControls);
         }
-        public void SetFlowPeopleFlowByUserFrieds()
+        public void SetFlowPeopleFlowByUserFriends()
         {
             //setting the flowStatus
             ResetFlow();
             User user = ActiveUserStore.ActiveUser;
+            Type = FlowType.Friends;
+            UserId = user.Id;
 
-            Type = FlowType.PeopleByLoginName;
-            LoginNameFragment = null;
-
-            List<User> people = User.SearchForUsersByLoginNameFragment(null);
+            List<User> friends = user.GetFriends();
 
             List<PersonControl> personControls = new List<PersonControl>();
 
 
-            for (int i = 0; i < people.Count; i++)
+            for (int i = 0; i < friends.Count; i++)
             {
-                User person = people[i];
+                User person = friends[i];
 
                 personControls.Add(new PersonControl(person));
                 personControls[i].Name = $"PersonControl_{i}";
@@ -266,6 +271,47 @@ namespace DiceTravel.Util
             FlowElements.Clear();
             FlowElements.AddRange(entryControls);
         }
+        public void SetFlowMainFlowByUser()
+        {
+            throw new NotImplementedException();
+        }
+        public void SetFlowInvitesFlow()
+        {
+            User user = ActiveUserStore.ActiveUser;
+
+            List<Friendship> invitations = Friendship.GetUserRecievedInvitesByUserId(user.Id);
+            List<PersonControl> personControls = new List<PersonControl>();
+
+            for (int i = 0; i < invitations.Count; i++)
+            {
+                User actUser = User.GetUserById(invitations[i].SenderId);
+
+                personControls.Add(new PersonControl(actUser));
+                personControls[i].Name = $"PersonControl_{i}";
+                personControls[i].SetContent();
+                personControls[i].Visible = true;
+            }
+
+            //setting the flowStatus            
+            JourneyId = -1;
+            UserId = user.Id;
+            TripId = -1;
+            Type = FlowType.InvitesFlow;
+
+            FlowElements.Clear();
+            FlowElements.AddRange(personControls);
+
+        }
+
+        //misc
+        public bool IsUserIdSet()
+        {
+            if (UserId == -1)
+            {
+                return false;
+            }
+            return true;
+        }
         private bool ElementIsVisible(int visibility, int userId)
         {
             Friendship friendship = Friendship.GetFriendshipByIds(ActiveUserStore.ActiveUser.Id, userId);
@@ -304,20 +350,5 @@ namespace DiceTravel.Util
                 }
             }
         }
-        public void SetFlowMainFlowByUser()
-        {
-
-        }
-
-        //misc
-        public bool IsUserIdSet()
-        {
-            if (UserId == -1)
-            {
-                return false;
-            }
-            return true;
-        }
-
     }
 }

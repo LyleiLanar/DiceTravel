@@ -1,4 +1,5 @@
 ﻿using DiceTravel.Classes;
+using DiceTravel.EntityClasses;
 using DiceTravel.Util;
 using MySql.Data.MySqlClient;
 using System;
@@ -160,23 +161,42 @@ namespace DiceTravel
                 "INNER JOIN dice_travel.journeys on trips.journey_id = journeys.id " +
                 "WHERE journeys.user_id = @user_id ORDER BY entries.entry_date; ";
 
-            MySqlCommand sqlCommand = CreateCommand(getTripsCommand);
-            sqlCommand.Parameters.Add("@user_id", MySqlDbType.Int32);
-            sqlCommand.Parameters["@user_id"].Value = Id;
-
-            DataTable dataTable = ReadQueryTable(sqlCommand);
-            List<Entry> entries = new List<Entry>();
-
-            foreach (DataRow row in dataTable.Rows)
+            using (MySqlCommand sqlCommand = CreateCommand(getTripsCommand))
             {
-                entries.Add(new Entry(row));
-            }
+                sqlCommand.Parameters.Add("@user_id", MySqlDbType.Int32);
+                sqlCommand.Parameters["@user_id"].Value = Id;
 
-            return entries;
+                using (DataTable dataTable = ReadQueryTable(sqlCommand))
+                {
+                    List<Entry> entries = new List<Entry>();
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        entries.Add(new Entry(row));
+                    }
+
+                    return entries;
+                }
+            }
         }
         public List<User> GetFriends()
         {
-            throw new NotImplementedException();
+            List<Friendship> friendships = Friendship.GetActiveFriendshipsByUserId(Id);
+
+            List<User> friends = new List<User>();
+
+            foreach (Friendship friendship in friendships)
+            {
+                if (friendship.SenderId == Id)
+                {
+                    friends.Add(User.GetUserById(friendship.GetterId));
+                }
+                else
+                {
+                    friends.Add(User.GetUserById(friendship.SenderId));
+                }
+            }
+            return friends;
         }
 
         //misc methods
@@ -276,7 +296,7 @@ namespace DiceTravel
                     return true;
                 }
             }
-        }       
+        }
 
     }
 }

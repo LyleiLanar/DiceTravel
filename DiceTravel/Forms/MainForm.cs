@@ -1,5 +1,6 @@
 ﻿using DiceTravel.Classes;
 using DiceTravel.Controls;
+using DiceTravel.EntityClasses;
 using DiceTravel.Forms.EntryForms;
 using DiceTravel.Forms.JourneyForms;
 using DiceTravel.Forms.TripForms;
@@ -141,6 +142,11 @@ namespace DiceTravel
         {
             UpdateUserData();
         }
+        private void BtnInvitations_Click(object sender, EventArgs e)
+        {
+            Program.mainForm.FlowElementProvider.SetFlowInvitesFlow();
+            Program.mainForm.DrawFlow();
+        }
 
         //journeyData
         private void UpdateActiveJourneyData()
@@ -270,7 +276,8 @@ namespace DiceTravel
         public void DrawFlow()
         {
             FlowElementProvider.UpdateFlow();
-            Program.mainForm.BtnInvitations.Visible = FlowElementProvider.IsUserIdSet();
+            Program.mainForm.BtnInvitations.Visible = Friendship.GetUserRecievedInvitesByUserId(ActiveUserStore.ActiveUser.Id).Count != 0;
+
             FlowLayoutPanel.Controls.Clear();
             List<FlowElementControl> controls = new List<FlowElementControl>();
             controls.AddRange(FlowElementProvider.FlowElements);
@@ -299,6 +306,11 @@ namespace DiceTravel
         private void BtnSearchUser_Click(object sender, EventArgs e)
         {
             Program.mainForm.FlowElementProvider.SetFlowPeopleFlowByLoginNameFragment(TxtSearchUser.Text);
+            Program.mainForm.DrawFlow();
+        }
+        private void BtnFriends_Click(object sender, EventArgs e)
+        {
+            FlowElementProvider.SetFlowPeopleFlowByUserFriends();
             Program.mainForm.DrawFlow();
         }
 
@@ -367,6 +379,11 @@ namespace DiceTravel
         private void MenuTravelingJourneyMod_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void BtnRefresh_Click(object sender, EventArgs e)
+        {
+            Program.mainForm.DrawFlow();
         }
 
 

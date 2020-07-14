@@ -45,10 +45,11 @@
             this.BtnActiveJourneyDelete = new System.Windows.Forms.Button();
             this.TxtActiveJourneyInfo = new System.Windows.Forms.Label();
             this.GrpBxUserData = new System.Windows.Forms.GroupBox();
+            this.BtnInvitations = new System.Windows.Forms.Button();
             this.BtnMyDataModify = new System.Windows.Forms.Button();
             this.TxtUserDataLoginName = new System.Windows.Forms.Label();
             this.GrpBxMainFrame = new System.Windows.Forms.GroupBox();
-            this.BtnInvitations = new System.Windows.Forms.Button();
+            this.BtnRefresh = new System.Windows.Forms.Button();
             this.BtnFriends = new System.Windows.Forms.Button();
             this.BtnSearchUser = new System.Windows.Forms.Button();
             this.TxtSearchUser = new System.Windows.Forms.TextBox();
@@ -313,6 +314,7 @@
             // GrpBxUserData
             // 
             this.GrpBxUserData.BackColor = System.Drawing.SystemColors.Control;
+            this.GrpBxUserData.Controls.Add(this.BtnInvitations);
             this.GrpBxUserData.Controls.Add(this.BtnMyDataModify);
             this.GrpBxUserData.Controls.Add(this.TxtUserDataLoginName);
             this.GrpBxUserData.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -323,6 +325,20 @@
             this.GrpBxUserData.TabStop = false;
             this.GrpBxUserData.Text = "MyData";
             this.GrpBxUserData.Visible = false;
+            // 
+            // BtnInvitations
+            // 
+            this.BtnInvitations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnInvitations.BackColor = System.Drawing.SystemColors.Control;
+            this.BtnInvitations.Image = global::DiceTravel.Properties.Resources.icoInvitations;
+            this.BtnInvitations.Location = new System.Drawing.Point(183, 10);
+            this.BtnInvitations.Name = "BtnInvitations";
+            this.BtnInvitations.Size = new System.Drawing.Size(40, 40);
+            this.BtnInvitations.TabIndex = 11;
+            this.BtnInvitations.TabStop = false;
+            this.MainFormToolTip.SetToolTip(this.BtnInvitations, "My Entries");
+            this.BtnInvitations.UseVisualStyleBackColor = false;
+            this.BtnInvitations.Click += new System.EventHandler(this.BtnInvitations_Click);
             // 
             // BtnMyDataModify
             // 
@@ -354,7 +370,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GrpBxMainFrame.BackColor = System.Drawing.SystemColors.Control;
-            this.GrpBxMainFrame.Controls.Add(this.BtnInvitations);
+            this.GrpBxMainFrame.Controls.Add(this.BtnRefresh);
             this.GrpBxMainFrame.Controls.Add(this.BtnFriends);
             this.GrpBxMainFrame.Controls.Add(this.BtnSearchUser);
             this.GrpBxMainFrame.Controls.Add(this.TxtSearchUser);
@@ -369,31 +385,31 @@
             this.GrpBxMainFrame.TabStop = false;
             this.GrpBxMainFrame.Visible = false;
             // 
-            // BtnInvitations
+            // BtnRefresh
             // 
-            this.BtnInvitations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnInvitations.BackColor = System.Drawing.SystemColors.Control;
-            this.BtnInvitations.Image = global::DiceTravel.Properties.Resources.icoFriends;
-            this.BtnInvitations.Location = new System.Drawing.Point(818, 155);
-            this.BtnInvitations.Name = "BtnInvitations";
-            this.BtnInvitations.Size = new System.Drawing.Size(50, 50);
-            this.BtnInvitations.TabIndex = 11;
-            this.BtnInvitations.TabStop = false;
-            this.MainFormToolTip.SetToolTip(this.BtnInvitations, "My Entries");
-            this.BtnInvitations.UseVisualStyleBackColor = false;
+            this.BtnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnRefresh.BackColor = System.Drawing.SystemColors.Control;
+            this.BtnRefresh.Image = global::DiceTravel.Properties.Resources.icoRefresh;
+            this.BtnRefresh.Location = new System.Drawing.Point(818, 43);
+            this.BtnRefresh.Name = "BtnRefresh";
+            this.BtnRefresh.Size = new System.Drawing.Size(50, 50);
+            this.BtnRefresh.TabIndex = 15;
+            this.MainFormToolTip.SetToolTip(this.BtnRefresh, "My journyes");
+            this.BtnRefresh.UseVisualStyleBackColor = false;
+            this.BtnRefresh.Click += new System.EventHandler(this.BtnRefresh_Click);
             // 
             // BtnFriends
             // 
             this.BtnFriends.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnFriends.BackColor = System.Drawing.SystemColors.Control;
-            this.BtnFriends.Image = global::DiceTravel.Properties.Resources.icoInvitations;
-            this.BtnFriends.Location = new System.Drawing.Point(818, 211);
+            this.BtnFriends.Image = global::DiceTravel.Properties.Resources.icoFriends;
+            this.BtnFriends.Location = new System.Drawing.Point(819, 211);
             this.BtnFriends.Name = "BtnFriends";
             this.BtnFriends.Size = new System.Drawing.Size(50, 50);
             this.BtnFriends.TabIndex = 14;
             this.MainFormToolTip.SetToolTip(this.BtnFriends, "My Entries");
             this.BtnFriends.UseVisualStyleBackColor = false;
-            this.BtnFriends.Visible = false;
+            this.BtnFriends.Click += new System.EventHandler(this.BtnFriends_Click);
             // 
             // BtnSearchUser
             // 
@@ -461,7 +477,7 @@
             this.BtnMyStoryFlow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnMyStoryFlow.BackColor = System.Drawing.SystemColors.Control;
             this.BtnMyStoryFlow.Image = global::DiceTravel.Properties.Resources.icoEntry;
-            this.BtnMyStoryFlow.Location = new System.Drawing.Point(818, 99);
+            this.BtnMyStoryFlow.Location = new System.Drawing.Point(818, 155);
             this.BtnMyStoryFlow.Name = "BtnMyStoryFlow";
             this.BtnMyStoryFlow.Size = new System.Drawing.Size(50, 50);
             this.BtnMyStoryFlow.TabIndex = 10;
@@ -474,7 +490,7 @@
             this.BtnMyJourney.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnMyJourney.BackColor = System.Drawing.SystemColors.Control;
             this.BtnMyJourney.Image = global::DiceTravel.Properties.Resources.icoMyJourneys;
-            this.BtnMyJourney.Location = new System.Drawing.Point(818, 43);
+            this.BtnMyJourney.Location = new System.Drawing.Point(818, 99);
             this.BtnMyJourney.Name = "BtnMyJourney";
             this.BtnMyJourney.Size = new System.Drawing.Size(50, 50);
             this.BtnMyJourney.TabIndex = 9;
@@ -837,6 +853,7 @@
         private System.Windows.Forms.ToolStripMenuItem MenuFriendsEntries;
         private System.Windows.Forms.Button BtnFriends;
         public System.Windows.Forms.Button BtnInvitations;
+        private System.Windows.Forms.Button BtnRefresh;
     }
 }
 

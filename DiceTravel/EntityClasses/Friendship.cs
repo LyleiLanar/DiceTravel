@@ -1,6 +1,7 @@
 ﻿using DiceTravel.Classes;
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace DiceTravel.EntityClasses
@@ -112,6 +113,51 @@ namespace DiceTravel.EntityClasses
                     return null;
                 }
             }
+        }
+        static public List<Friendship> GetUserRecievedInvitesByUserId(int id)
+        {
+            string query = "SELECT * FROM dice_travel.friends " +
+                "WHERE friends.getter_id = @Getter_id and friends.accepted = 0";
+
+            using (MySqlCommand sqlCommand = CreateCommand(query))
+            {
+                sqlCommand.Parameters.Add("@Getter_id", MySqlDbType.Int32);
+                sqlCommand.Parameters["@Getter_id"].Value = id;
+
+                using (DataTable dataTable = ReadQueryTable(sqlCommand))
+                {
+                    List<Friendship> gotInvites = new List<Friendship>();
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        gotInvites.Add(new Friendship(row));
+                    }
+                    return gotInvites;
+                }
+            }
+        }
+        static public List<Friendship> GetActiveFriendshipsByUserId(int id)
+        {
+            string query = "SELECT * FROM dice_travel.friends " +
+                 "WHERE (friends.getter_id = @User_id or friends.sender_id = @User_id) and friends.accepted = 1";
+
+            using (MySqlCommand sqlCommand = CreateCommand(query))
+            {
+                sqlCommand.Parameters.Add("@User_id", MySqlDbType.Int32);
+                sqlCommand.Parameters["@User_id"].Value = id;
+
+                using (DataTable dataTable = ReadQueryTable(sqlCommand))
+                {
+                    List<Friendship> gotInvites = new List<Friendship>();
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        gotInvites.Add(new Friendship(row));
+                    }
+                    return gotInvites;
+                }
+            }
+
         }
     }
 }

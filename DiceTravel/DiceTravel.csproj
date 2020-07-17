@@ -135,11 +135,6 @@
     <Compile Include="Controls\JourneyControl.Designer.cs">
       <DependentUpon>JourneyControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="dice_travelDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dice_travelDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Forms\EntryForms\EntryCreateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,11 +198,6 @@
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </Compile>
     <Compile Include="EntityClasses\User.cs" />
-    <Compile Include="UsersTable.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UsersTable.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Util\ActiveUserStore.cs" />
     <Compile Include="Util\Exceptions\MissingFlowTypeException.cs" />
     <Compile Include="Util\Exceptions\EntityCreationException.cs" />
@@ -272,18 +262,6 @@
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
-    <None Include="DiceTravel.cd" />
-    <None Include="dice_travelDataSet.xsc">
-      <DependentUpon>dice_travelDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="dice_travelDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dice_travelDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="dice_travelDataSet.xss">
-      <DependentUpon>dice_travelDataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -294,17 +272,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="UsersTable.xsc">
-      <DependentUpon>UsersTable.xsd</DependentUpon>
-    </None>
-    <None Include="UsersTable.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>UsersTable.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="UsersTable.xss">
-      <DependentUpon>UsersTable.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

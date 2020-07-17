@@ -87,12 +87,8 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainFormToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.usersTable = new DiceTravel.UsersTable();
             this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.usersTableAdapter = new DiceTravel.UsersTableTableAdapters.usersTableAdapter();
             this.journeysBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dice_travelDataSet = new DiceTravel.dice_travelDataSet();
-            this.journeysTableAdapter = new DiceTravel.dice_travelDataSetTableAdapters.journeysTableAdapter();
             this.mainToolStripContainer.ContentPanel.SuspendLayout();
             this.mainToolStripContainer.TopToolStripPanel.SuspendLayout();
             this.mainToolStripContainer.SuspendLayout();
@@ -104,10 +100,8 @@
             this.GrpBxMainFrame.SuspendLayout();
             this.FlowWindow.SuspendLayout();
             this.menuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.usersTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.journeysBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dice_travelDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // mainToolStripContainer
@@ -722,33 +716,12 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // usersTable
-            // 
-            this.usersTable.DataSetName = "UsersTable";
-            this.usersTable.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // usersBindingSource
             // 
-            this.usersBindingSource.DataMember = "users";
-            this.usersBindingSource.DataSource = this.usersTable;
-            // 
-            // usersTableAdapter
-            // 
-            this.usersTableAdapter.ClearBeforeFill = true;
             // 
             // journeysBindingSource
             // 
             this.journeysBindingSource.DataMember = "journeys";
-            this.journeysBindingSource.DataSource = this.dice_travelDataSet;
-            // 
-            // dice_travelDataSet
-            // 
-            this.dice_travelDataSet.DataSetName = "dice_travelDataSet";
-            this.dice_travelDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // journeysTableAdapter
-            // 
-            this.journeysTableAdapter.ClearBeforeFill = true;
             // 
             // MainForm
             // 
@@ -782,18 +755,14 @@
             this.FlowWindow.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.usersTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.journeysBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dice_travelDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private UsersTable usersTable;
         private System.Windows.Forms.BindingSource usersBindingSource;
-        private UsersTableTableAdapters.usersTableAdapter usersTableAdapter;
         private System.Windows.Forms.ToolStripContainer mainToolStripContainer;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem MenuMain;
@@ -820,9 +789,7 @@
         private System.Windows.Forms.Button BtnNextTripReached;
         private System.Windows.Forms.PictureBox PctBxNextTripVisibility;
         private System.Windows.Forms.Button BtnNewEntry;
-        private dice_travelDataSet dice_travelDataSet;
         private System.Windows.Forms.BindingSource journeysBindingSource;
-        private dice_travelDataSetTableAdapters.journeysTableAdapter journeysTableAdapter;
         public System.Windows.Forms.Label TxtFlowDataFlowTitle;
         public System.Windows.Forms.TableLayoutPanel FlowLayoutPanel;
         private System.Windows.Forms.FlowLayoutPanel FlowContainer;

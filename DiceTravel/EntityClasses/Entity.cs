@@ -5,7 +5,6 @@ namespace DiceTravel.Classes
 {
     abstract public class Entity
     {
-        //entity methods
 
         //CRUD
         abstract public void CreateItself();
@@ -24,10 +23,11 @@ namespace DiceTravel.Classes
         }
         static public DataTable ReadQueryTable(MySqlCommand sqlCommand)
         {
-            MySqlDataAdapter adapter = new MySqlDataAdapter(sqlCommand);
             DataTable dataTable = new DataTable();
-            adapter.Fill(dataTable);
-
+            using (MySqlDataAdapter adapter = new MySqlDataAdapter(sqlCommand))
+            {
+                adapter.Fill(dataTable);
+            }
             return dataTable;
         }
         static public MySqlCommand CreateCommand(string sqlCommandString)

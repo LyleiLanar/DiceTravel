@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DiceTravel.Controls.EntryControl">
+    <Position X="6.25" Y="7" Width="1.5" />
+    <InheritanceLine Type="DiceTravel.Controls.FlowElementControl" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.75" Y="7" />
+        <Point X="1.75" Y="6.625" />
+        <Point X="7" Y="6.625" />
+        <Point X="7" Y="7" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>IYAQAAAAACuAAAAAAACAIAACAAAIQAAgAAgAAAAAAAA=</HashCode>
+      <FileName>Controls\EntryControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Controls.FlowElementControl">
+    <Position X="0.5" Y="7" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAACAACAAAACAAAABAAAAAAAAFAAAAA=</HashCode>
+      <FileName>Controls\FlowElementControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Controls.JourneyControl">
+    <Position X="2.75" Y="7" Width="1.5" />
+    <InheritanceLine Type="DiceTravel.Controls.FlowElementControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="0.688" Y="7" />
+        <Point X="0.688" Y="6.625" />
+        <Point X="3.5" Y="6.625" />
+        <Point X="3.5" Y="7" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAACIAACAAAACAAAASAAUAAAABEAAAAAAAAAE=</HashCode>
+      <FileName>Controls\JourneyControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Controls.PersonControl">
+    <Position X="8" Y="7" Width="1.5" />
+    <InheritanceLine Type="DiceTravel.Controls.FlowElementControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2.312" Y="7" />
+        <Point X="2.312" Y="6.625" />
+        <Point X="8.688" Y="6.625" />
+        <Point X="8.688" Y="7" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>BIAAQAAAACIAAAAAAACAQAgCAAAAgAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Controls\PersonControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Controls.TripControl">
+    <Position X="4.5" Y="7" Width="1.5" />
+    <InheritanceLine Type="DiceTravel.Controls.FlowElementControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.188" Y="7" />
+        <Point X="1.188" Y="6.625" />
+        <Point X="5.25" Y="6.625" />
+        <Point X="5.25" Y="7" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAECIAAQAAAACEAAACAAAQAAECAADAAAAAAAg=</HashCode>
+      <FileName>Controls\TripControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.dice_travelDataSet">
+    <Position X="12.75" Y="6.25" Width="3" />
+    <NestedTypes>
+      <Delegate Name="DiceTravel.dice_travelDataSet.journeysRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="DiceTravel.dice_travelDataSet.journeysDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="DiceTravel.dice_travelDataSet.journeysRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="DiceTravel.dice_travelDataSet.journeysRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAwAAQAJABAAAQBAAgAgCQBgAAAAAAAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.User">
+    <Position X="7.5" Y="0.75" Width="1.5" />
+    <InheritanceLine Type="DiceTravel.Classes.Entity" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1" Y="0.75" />
+        <Point X="1" Y="0.375" />
+        <Point X="8.25" Y="0.375" />
+        <Point X="8.25" Y="0.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AEAiAEBIAAAAAgBAACAAQJQABBAAAAQCAAAAAAgAAgQ=</HashCode>
+      <FileName>EntityClasses\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.MainForm" Collapsed="true">
+    <Position X="12" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EqAgIAObEjAAOARCBurTwDcOBgILsjsZbEuFAlZecCI=</HashCode>
+      <FileName>Forms\MainForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.LoginForm" Collapsed="true">
+    <Position X="20.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAIAAACAAAAAAgSCABAACQIEEAAICIAAAgAEAAAA=</HashCode>
+      <FileName>Forms\UserForms\LoginForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.SignUpForm" Collapsed="true">
+    <Position X="12" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAApIAIACAAAEAAgCKAMAQCAAwAAAAAAAAEEAAACQQ=</HashCode>
+      <FileName>Forms\UserForms\SignUpForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Program" Collapsed="true">
+    <Position X="17.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAABAAAACA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.UsersTable" Collapsed="true">
+    <Position X="20.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAwAAgAJABAAEQAAAAAgCQBgAAAAAAAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.dice_travelDataSetTableAdapters.journeysTableAdapter" Collapsed="true">
+    <Position X="17.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.dice_travelDataSetTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="15.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACAAAABABAEBAAAAMAAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Classes.Entity">
+    <Position X="0.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAEABAAAAAAAAQAAAAAAgAAAgQ=</HashCode>
+      <FileName>EntityClasses\Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Classes.Entry">
+    <Position X="5.75" Y="0.75" Width="1.5" />
+    <InheritanceLine Type="DiceTravel.Classes.Entity" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.562" Y="0.75" />
+        <Point X="1.562" Y="0.375" />
+        <Point X="6.5" Y="0.375" />
+        <Point X="6.5" Y="0.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AEACgAAEAABAAEAAACIAABCAAAAAAAQAAAAAAAAAAAQ=</HashCode>
+      <FileName>EntityClasses\Entry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Classes.Journey">
+    <Position X="2.25" Y="0.75" Width="1.5" />
+    <InheritanceLine Type="DiceTravel.Classes.Entity" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.25" Y="0.75" />
+        <Point X="1.25" Y="0.375" />
+        <Point X="3" Y="0.375" />
+        <Point X="3" Y="0.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AEACAAAIAAAAIEAAACEAEBiAAAAAAAQAAAQQAECAAAQ=</HashCode>
+      <FileName>EntityClasses\Journey.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Classes.Trip">
+    <Position X="4" Y="0.75" Width="1.5" />
+    <InheritanceLine Type="DiceTravel.Classes.Entity" FixedToPoint="true">
+      <Path>
+        <Point X="1.859" Y="0.75" />
+        <Point X="1.859" Y="0.375" />
+        <Point X="4.75" Y="0.375" />
+        <Point X="4.75" Y="0.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AGACAQAAAAAAAAAAICAAABAggAEAAAQAAAAAAABAAAQ=</HashCode>
+      <FileName>EntityClasses\Trip.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.EntityClasses.Friendship">
+    <Position X="9.25" Y="0.75" Width="1.5" />
+    <InheritanceLine Type="DiceTravel.Classes.Entity" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="0.688" Y="0.75" />
+        <Point X="0.688" Y="0.375" />
+        <Point X="10" Y="0.375" />
+        <Point X="10" Y="0.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>IAAAQAAAAAAAAAAAACACABAAABABAAQAAAAACAAAAAQ=</HashCode>
+      <FileName>EntityClasses\Friendship.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Forms.EntryForms.EntryCreateForm" Collapsed="true">
+    <Position X="17.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIgACBACAAAgAAASCAgEACAAAAAgEDABgAAEAAEIk=</HashCode>
+      <FileName>Forms\EntryForms\EntryCreateForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Forms.EntryForms.EntryUpdateForm" Collapsed="true">
+    <Position X="19" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAQAEAAgGAAAABAAACgAAACCgAgEAAQAAAAEAAIhAA=</HashCode>
+      <FileName>Forms\EntryForms\EntryUpdateForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Forms.JourneyForms.JourneyCreateForm" Collapsed="true">
+    <Position X="15.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAhEQAAACAAAAggBCCAAACOAABCAAAAAAAAgAACAQA=</HashCode>
+      <FileName>Forms\JourneyForms\JourneyCreateForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Forms.JourneyForms.JourneyUpdateForm" Collapsed="true">
+    <Position X="19" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iAAAAAAAIKAAQCAgAACAEIACAAEEAAARBACAAgAAAFA=</HashCode>
+      <FileName>Forms\JourneyForms\JourneyUpdateForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Forms.TripForms.TripCreateForm" Collapsed="true">
+    <Position X="17.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABABAAAQACQAAQAAACCAAAgCAAAQAAGAgAAACABgAAA=</HashCode>
+      <FileName>Forms\TripForms\TripCreateForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Forms.TripForms.TripUpdateForm" Collapsed="true">
+    <Position X="19" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAKAAAAECBAABAYBACAIgAGEAgIAAAAAAAAAIAAEAA=</HashCode>
+      <FileName>Forms\TripForms\TripUpdateForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Forms.UserForms.UserUpdateForm" Collapsed="true">
+    <Position X="13.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAQAgAACBAgAAAgCCAQAACAAAgggAAQEIAEBAAAQQ=</HashCode>
+      <FileName>Forms\UserForms\UserUpdateForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Properties.Resources" Collapsed="true">
+    <Position X="19" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BACAAQAIAAEEAACQAAIBEAQAEUAAgABAAAAAAAEAAKA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Properties.Settings" Collapsed="true">
+    <Position X="20.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAQAAAAAAAAAAAAAAIAgBAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.UsersTableTableAdapters.usersTableAdapter" Collapsed="true">
+    <Position X="12" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.UsersTableTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="13.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACAAAABABAEBAAAAMAAkAAACgAAAAAQAAAIABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Util.ActiveUserStore" Collapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIQAAAgIAAAAAAAAAQAIAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Util\ActiveUserStore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Util.EntityCreationException" Collapsed="true">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Util\Exceptions\EntityCreationException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Util.MissingFlowTypeException" Collapsed="true">
+    <Position X="13.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Util\Exceptions\MissingFlowTypeException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Util.ValidationException" Collapsed="true">
+    <Position X="15.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Util\Exceptions\ValidationException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Util.FlowElementProvider" Collapsed="true">
+    <Position X="20.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AkAAAAYAAAIAAIAAIAIACAgAAAADAIAAAQAAAAAJAAE=</HashCode>
+      <FileName>Util\FlowElementProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Util.ImageHandler" Collapsed="true">
+    <Position X="12" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Util\ImageHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Util.IniReader" Collapsed="true">
+    <Position X="13.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Util\IniReader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Util.Exceptions.NoVisibilityTokenException" Collapsed="true">
+    <Position X="15.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Util\Exceptions\NoVisibilityTokenException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

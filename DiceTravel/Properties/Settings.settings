@@ -11,10 +11,13 @@
     <Setting Name="dice_travelConnString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;server=localhost;user id=root;password=1234;database=dice_travel;port=8080&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;server=localhost;user id=root;password=1234;database=dice_travel;port=33060&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">server=localhost;user id=root;password=1234;database=dice_travel;port=8080</Value>
+      <Value Profile="(Default)">server=localhost;user id=root;password=1234;database=dice_travel;port=33060</Value>
+    </Setting>
+    <Setting Name="dice_travelConnString_Online" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

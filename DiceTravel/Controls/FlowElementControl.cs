@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace DiceTravel.Controls
 {
-    public partial class FlowElementControl : UserControl
+    public abstract partial class FlowElementControl : UserControl
     {
         protected Color originalColor;
         protected Color highlightedColor;

@@ -271,6 +271,7 @@
     <EmbeddedResource Include="Forms\UserForms\SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="DiceTravel.cd" />
     <None Include="dice_travelDataSet.xsc">
       <DependentUpon>dice_travelDataSet.xsd</DependentUpon>

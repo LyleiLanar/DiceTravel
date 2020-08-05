@@ -74,14 +74,16 @@ namespace DiceTravel.Forms.EntryForms
             //felhasznált kódrészlet: https://www.c-sharpcorner.com/UploadFile/deepak.sharma00/how-to-save-images-in-mysql-database-using-C-Sharp/
             try
             {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.Filter = "Image files | *.jpg";
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
                 {
-                    InputEntryCreateAddImage.Text = openFileDialog.FileName;
-                    PctrBxEntryCreateAddImage.Image = Image.FromFile(openFileDialog.FileName);
-                    this.Width = 640;
+                    openFileDialog.Filter = "Image files | *.jpg";
+
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        InputEntryCreateAddImage.Text = openFileDialog.FileName;
+                        PctrBxEntryCreateAddImage.Image = Image.FromFile(openFileDialog.FileName);
+                        this.Width = 640;
+                    }
                 }
             }
             catch (Exception ex)

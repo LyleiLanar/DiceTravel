@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiceTravel.Util
 {
-    class ValidationException : Exception
+    public class ValidationException : Exception
     {
         public ValidationException(string message) : base(message)
         {

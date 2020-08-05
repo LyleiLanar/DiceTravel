@@ -16,8 +16,8 @@ namespace DiceTravel.Controls
             if (Journey.Closed == 0)
             {
                 BorderStyle = BorderStyle.FixedSingle;
-                highlightedColor = Color.LightSalmon;
-                originalColor = Color.Salmon;
+                HighlightedColor = Color.LightSalmon;
+                OriginalColor = Color.Salmon;
             }
 
             //ha privát a journey és nem a gazdája nézni akkor nem látható
@@ -28,7 +28,7 @@ namespace DiceTravel.Controls
             }
 
             InitializeComponent();
-            BackColor = originalColor;
+            BackColor = OriginalColor;
             SetContent();
         }
 

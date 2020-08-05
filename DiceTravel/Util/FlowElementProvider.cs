@@ -8,7 +8,7 @@ namespace DiceTravel.Util
 {
     public class FlowElementProvider
     {
-        public enum FlowType { NoFlow, JourneyFlow_ByUser, MainFlow_ByUser, TripFlow_ByJourney, EntryFlow_ByTrip, StoryFlow_ByUser, Friends, PeopleByLoginName, InvitesFlow }
+        public enum FlowType { NoFlow, JourneyFlowByUser, MainFlowByUser, TripFlowByJourney, EntryFlowByTrip, StoryFlowByUser, Friends, PeopleByLoginName, InvitesFlow }
         public FlowType Type { get; private set; }
         public int UserId { get; private set; }
         public int JourneyId { get; private set; }
@@ -56,17 +56,17 @@ namespace DiceTravel.Util
                     break;
 
 
-                case FlowType.JourneyFlow_ByUser:
+                case FlowType.JourneyFlowByUser:
                     userLoginName = User.GetUserById(UserId).LoginName;
                     FlowTitle = $"{userLoginName}'s journeys:";
 
                     SetFlowJourneyFlowByUser(UserId);
                     break;
 
-                case FlowType.MainFlow_ByUser:
+                case FlowType.MainFlowByUser:
                     throw new NotImplementedException();
 
-                case FlowType.TripFlow_ByJourney:
+                case FlowType.TripFlowByJourney:
                     userLoginName = User.GetUserById(UserId).LoginName;
                     journeyTitle = Journey.GetJourney_ById(JourneyId).Title;
                     FlowTitle = $"{userLoginName}'s {journeyTitle} trips:";
@@ -74,7 +74,7 @@ namespace DiceTravel.Util
                     SetFlowTripFlowByJourney(JourneyId);
                     break;
 
-                case FlowType.EntryFlow_ByTrip:
+                case FlowType.EntryFlowByTrip:
                     userLoginName = User.GetUserById(UserId).LoginName;
                     journeyTitle = Journey.GetJourney_ById(JourneyId).Title;
                     tripEndLocation = Trip.GetTripById(TripId).EndLocation;
@@ -83,7 +83,7 @@ namespace DiceTravel.Util
                     SetFlowEntryFlowByTrip(TripId);
                     break;
 
-                case FlowType.StoryFlow_ByUser:
+                case FlowType.StoryFlowByUser:
                     userLoginName = User.GetUserById(UserId).LoginName;
                     FlowTitle = $"{userLoginName}'s story:";
 
@@ -185,7 +185,7 @@ namespace DiceTravel.Util
             UserId = userId;
             JourneyId = -1;
             TripId = -1;
-            Type = FlowType.JourneyFlow_ByUser;
+            Type = FlowType.JourneyFlowByUser;
 
             //update the list
             FlowElements.Clear();
@@ -211,7 +211,7 @@ namespace DiceTravel.Util
             UserId = Journey.GetJourney_ById(journeyId).UserId;
             JourneyId = journeyId;
             TripId = -1;
-            Type = FlowType.TripFlow_ByJourney;
+            Type = FlowType.TripFlowByJourney;
 
             FlowElements.Clear();
             FlowElements.AddRange(tripControls);
@@ -237,7 +237,7 @@ namespace DiceTravel.Util
             JourneyId = Trip.GetTripById(tripId).JourneyId;
             UserId = Journey.GetJourney_ById(JourneyId).UserId;
             TripId = tripId;
-            Type = FlowType.EntryFlow_ByTrip;
+            Type = FlowType.EntryFlowByTrip;
 
             FlowElements.Clear();
             FlowElements.AddRange(entryControls);
@@ -266,7 +266,7 @@ namespace DiceTravel.Util
             JourneyId = -1;
             UserId = userId;
             TripId = -1;
-            Type = FlowType.StoryFlow_ByUser;
+            Type = FlowType.StoryFlowByUser;
 
             FlowElements.Clear();
             FlowElements.AddRange(entryControls);

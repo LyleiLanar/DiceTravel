@@ -17,18 +17,18 @@ namespace DiceTravel.Controls
             if (User.AreFriends(ActiveUserStore.ActiveUser, person))
             {
                 BorderStyle = BorderStyle.FixedSingle;
-                highlightedColor = Color.FromArgb(178, 255, 102);
-                originalColor = Color.FromArgb(0, 255, 0);
+                HighlightedColor = Color.FromArgb(178, 255, 102);
+                OriginalColor = Color.FromArgb(0, 255, 0);
             }
             if (User.AreMakingFriendship(ActiveUserStore.ActiveUser, person))
             {
                 BorderStyle = BorderStyle.FixedSingle;
-                highlightedColor = Color.FromArgb(51, 153, 255);
-                originalColor = Color.FromArgb(153, 204, 255);
+                HighlightedColor = Color.FromArgb(51, 153, 255);
+                OriginalColor = Color.FromArgb(153, 204, 255);
             }
 
             InitializeComponent();
-            BackColor = originalColor;
+            BackColor = OriginalColor;
             SetContent();
         }
 

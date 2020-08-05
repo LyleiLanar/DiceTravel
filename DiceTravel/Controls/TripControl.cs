@@ -20,11 +20,11 @@ namespace DiceTravel.Controls
             {
                 BorderStyle = BorderStyle;
                 BorderStyle = BorderStyle.FixedSingle;
-                highlightedColor = Color.LightSalmon;
-                originalColor = Color.Salmon;
+                HighlightedColor = Color.LightSalmon;
+                OriginalColor = Color.Salmon;
             }
 
-            BackColor = originalColor;
+            BackColor = OriginalColor;
             SetContent();
         }
 

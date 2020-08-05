@@ -111,15 +111,13 @@ namespace DiceTravel.Classes
 
             RunSqlCommand(sqlCommand);
         }
-
-        //DB methods
-
+     
         //misc methods
         public override void Validation()
         {
-            if (Title == "") { throw new ValidationException("Missing Entry Title!"); }
+            if (String.IsNullOrEmpty(Title)) { throw new ValidationException("Missing Entry Title!"); }
             if (TripId == 0) { throw new ValidationException("Missing Entry TripID!"); }
-            if (Comment == "") { throw new ValidationException("Missing Entry Comment!"); }
+            if (String.IsNullOrEmpty(Comment)) { throw new ValidationException("Missing Entry Comment!"); }
         }
     }
 }

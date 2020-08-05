@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DiceTravel.Classes.Entity">
+    <Position X="4.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAEABAAAAAAAAQAAAAAAgAAAgQ=</HashCode>
+      <FileName>EntityClasses\Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Classes.Entry" Collapsed="true">
+    <Position X="6" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEACgAAEAABAAEAAACIAABCAAAAAAAQAAAAAAAAAAAQ=</HashCode>
+      <FileName>EntityClasses\Entry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.EntityClasses.Friendship" Collapsed="true">
+    <Position X="4.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAQAAAAAAAAAAAACACABAAABABAAQAAAAACAAAAAQ=</HashCode>
+      <FileName>EntityClasses\Friendship.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Classes.Journey" Collapsed="true">
+    <Position X="2.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEACAAAIAAAAIEAAACEAEBiAAAAAAAQAAAQQAECAAAQ=</HashCode>
+      <FileName>EntityClasses\Journey.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Classes.Trip" Collapsed="true">
+    <Position X="6.5" Y="3.25" Width="1.5" />
+    <InheritanceLine Type="DiceTravel.Classes.Entity" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5" Y="3.507" />
+        <Point X="5" Y="3.875" />
+        <Point X="6.125" Y="3.875" />
+        <Point X="6.125" Y="3.625" />
+        <Point X="6.5" Y="3.625" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AGACAQAAAAAAAAAAICAAABAggAEAAAQAAAAAAABAAAQ=</HashCode>
+      <FileName>EntityClasses\Trip.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.User" Collapsed="true">
+    <Position X="2.25" Y="3.25" Width="1.5" />
+    <InheritanceLine Type="DiceTravel.Classes.Entity" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5" Y="3.507" />
+        <Point X="5" Y="3.875" />
+        <Point X="3.99" Y="3.875" />
+        <Point X="3.99" Y="3.625" />
+        <Point X="3.75" Y="3.625" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AEAiAEBIAAAAAgBAACAAQJQABBAAAAQCAAAAAAgAAgQ=</HashCode>
+      <FileName>EntityClasses\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

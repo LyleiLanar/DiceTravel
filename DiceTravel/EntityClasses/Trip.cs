@@ -118,20 +118,24 @@ namespace DiceTravel.Classes
         public List<Entry> GetEntries()
         {
             string getTripsCommand = $"SELECT * FROM dice_travel.entries WHERE trip_id = @trip_id ORDER BY entry_date DESC";
-            MySqlCommand sqlCommand = CreateCommand(getTripsCommand);
-
-            sqlCommand.Parameters.Add("@trip_id", MySqlDbType.Int32);
-            sqlCommand.Parameters["@trip_id"].Value = Id;
-
-            DataTable dataTable = ReadQueryTable(sqlCommand);
-
-            List<Entry> entries = new List<Entry>();
-            foreach (DataRow row in dataTable.Rows)
+            using (MySqlCommand sqlCommand = CreateCommand(getTripsCommand))
             {
-                entries.Add(new Entry(row));
-            }
 
-            return entries;
+                sqlCommand.Parameters.Add("@trip_id", MySqlDbType.Int32);
+                sqlCommand.Parameters["@trip_id"].Value = Id;
+
+                using (DataTable dataTable = ReadQueryTable(sqlCommand))
+                {
+
+                    List<Entry> entries = new List<Entry>();
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        entries.Add(new Entry(row));
+                    }
+
+                    return entries;
+                }
+            }
         }
 
         //misc methods
@@ -150,18 +154,22 @@ namespace DiceTravel.Classes
         static public Trip GetTripById(int tripId)
         {
             string query = $"SELECT * FROM trips WHERE id = @id";
-            MySqlCommand sqlCommand = CreateCommand(query);
-            sqlCommand.Parameters.Add("@id", MySqlDbType.Int32);
-            sqlCommand.Parameters["@id"].Value = tripId;
-
-            DataTable dataTable = ReadQueryTable(sqlCommand);
-
-            if (dataTable != null && dataTable.Rows.Count > 0)
+            using (MySqlCommand sqlCommand = CreateCommand(query))
             {
-                return new Trip(dataTable.Rows[0]);
-            }
+                sqlCommand.Parameters.Add("@id", MySqlDbType.Int32);
+                sqlCommand.Parameters["@id"].Value = tripId;
 
-            return null;
+                using (DataTable dataTable = ReadQueryTable(sqlCommand))
+                {
+
+                    if (dataTable != null && dataTable.Rows.Count > 0)
+                    {
+                        return new Trip(dataTable.Rows[0]);
+                    }
+
+                    return null;
+                }
+            }
         }
     }
 }

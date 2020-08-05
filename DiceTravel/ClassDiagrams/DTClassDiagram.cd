@@ -18,7 +18,7 @@
   <Class Name="DiceTravel.Controls.FlowElementControl">
     <Position X="0.5" Y="7" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAACAACAAAACAAAABAAAAAAAAFAAAAA=</HashCode>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAABAAAgAAAABAAAAQ=</HashCode>
       <FileName>Controls\FlowElementControl.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -82,29 +82,32 @@
       <FileName>EntityClasses\User.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DiceTravel.MainForm" Collapsed="true">
-    <Position X="12" Y="2.5" Width="1.5" />
+  <Class Name="DiceTravel.MainForm">
+    <Position X="11" Y="0.5" Width="3" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>EqAgIAObEjAAOARCBurTwDcOBgILsjsZbEuFAlZecCI=</HashCode>
+      <HashCode>EqAgIAObEjAAKARCBurTwDcKBgILsDsZbEuBAlZecCI=</HashCode>
       <FileName>Forms\MainForm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DiceTravel.LoginForm" Collapsed="true">
-    <Position X="20.75" Y="1.5" Width="1.5" />
+    <Position X="14.5" Y="1.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAQAIAAACAAAAAAgSCABAACQIEEAAICIAAAgAEAAAA=</HashCode>
       <FileName>Forms\UserForms\LoginForm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DiceTravel.SignUpForm" Collapsed="true">
-    <Position X="12" Y="3.5" Width="1.5" />
+    <Position X="14.5" Y="0.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAApIAIACAAAEAAgCKAMAQCAAwAAAAAAAAEEAAACQQ=</HashCode>
       <FileName>Forms\UserForms\SignUpForm.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DiceTravel.Program" Collapsed="true">
-    <Position X="17.25" Y="2.5" Width="1.5" />
+  <Class Name="DiceTravel.Program">
+    <Position X="14.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAABAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAABAAAACA=</HashCode>
       <FileName>Program.cs</FileName>
@@ -151,8 +154,8 @@
     <Position X="4" Y="0.75" Width="1.5" />
     <InheritanceLine Type="DiceTravel.Classes.Entity" FixedToPoint="true">
       <Path>
-        <Point X="1.859" Y="0.75" />
-        <Point X="1.859" Y="0.375" />
+        <Point X="0.719" Y="0.75" />
+        <Point X="0.719" Y="0.375" />
         <Point X="4.75" Y="0.375" />
         <Point X="4.75" Y="0.75" />
       </Path>
@@ -178,117 +181,117 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DiceTravel.Forms.EntryForms.EntryCreateForm" Collapsed="true">
-    <Position X="17.25" Y="0.5" Width="1.5" />
+    <Position X="20.5" Y="0.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAIgACBACAAAgAAASCAgEACAAAAAgEDABgAAEAAEIk=</HashCode>
       <FileName>Forms\EntryForms\EntryCreateForm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DiceTravel.Forms.EntryForms.EntryUpdateForm" Collapsed="true">
-    <Position X="19" Y="0.5" Width="1.5" />
+    <Position X="20.5" Y="1.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AEAQAEAAgGAAAABAAACgAAACCgAgEAAQAAAAEAAIhAA=</HashCode>
       <FileName>Forms\EntryForms\EntryUpdateForm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DiceTravel.Forms.JourneyForms.JourneyCreateForm" Collapsed="true">
-    <Position X="15.5" Y="1.5" Width="1.5" />
+    <Position X="18.5" Y="0.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>EAAhEQAAACAAAAggBCCAAACOAABCAAAAAAAAgAACAQA=</HashCode>
       <FileName>Forms\JourneyForms\JourneyCreateForm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DiceTravel.Forms.JourneyForms.JourneyUpdateForm" Collapsed="true">
-    <Position X="19" Y="1.5" Width="1.5" />
+    <Position X="18.5" Y="1.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>iAAAAAAAIKAAQCAgAACAEIACAAEEAAARBACAAgAAAFA=</HashCode>
       <FileName>Forms\JourneyForms\JourneyUpdateForm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DiceTravel.Forms.TripForms.TripCreateForm" Collapsed="true">
-    <Position X="17.25" Y="3.5" Width="1.5" />
+    <Position X="16.5" Y="0.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>ABABAAAQACQAAQAAACCAAAgCAAAQAAGAgAAACABgAAA=</HashCode>
       <FileName>Forms\TripForms\TripCreateForm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DiceTravel.Forms.TripForms.TripUpdateForm" Collapsed="true">
-    <Position X="19" Y="3.5" Width="1.5" />
+    <Position X="16.5" Y="1.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAKAAAAECBAABAYBACAIgAGEAgIAAAAAAAAAIAAEAA=</HashCode>
       <FileName>Forms\TripForms\TripUpdateForm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DiceTravel.Forms.UserForms.UserUpdateForm" Collapsed="true">
-    <Position X="13.75" Y="4.5" Width="1.5" />
+    <Position X="14.5" Y="2" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAEAQAgAACBAgAAAgCCAQAACAAAgggAAQEIAEBAAAQQ=</HashCode>
       <FileName>Forms\UserForms\UserUpdateForm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DiceTravel.Properties.Resources" Collapsed="true">
-    <Position X="19" Y="2.5" Width="1.5" />
+    <Position X="18.25" Y="3.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>BACAAQAIAAEEAACQAAIBEAQAEUAAgABAAAAAAAEAAKA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="DiceTravel.Properties.Settings" Collapsed="true">
-    <Position X="20.75" Y="2.5" Width="1.5" />
+    <Position X="18.25" Y="4" Width="1.75" />
     <TypeIdentifier>
       <HashCode>ABAAAQAAAAAAAAAAAAAAIAgBAAABAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
   </Class>
-  <Class Name="DiceTravel.Util.ActiveUserStore" Collapsed="true">
-    <Position X="12" Y="0.5" Width="1.5" />
+  <Class Name="DiceTravel.Util.ActiveUserStore">
+    <Position X="14.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIQAAAgIAAAAAAAAAQAIAAAAAAAAAAAAAAAAAAgA=</HashCode>
       <FileName>Util\ActiveUserStore.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DiceTravel.Util.EntityCreationException" Collapsed="true">
-    <Position X="15.5" Y="0.5" Width="1.5" />
+    <Position X="18.25" Y="5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Util\Exceptions\EntityCreationException.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DiceTravel.Util.MissingFlowTypeException" Collapsed="true">
-    <Position X="13.75" Y="2.5" Width="1.5" />
+    <Position X="18.25" Y="5.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Util\Exceptions\MissingFlowTypeException.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DiceTravel.Util.ValidationException" Collapsed="true">
-    <Position X="15.5" Y="4.5" Width="1.5" />
+    <Position X="18.25" Y="7.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Util\Exceptions\ValidationException.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DiceTravel.Util.FlowElementProvider" Collapsed="true">
-    <Position X="20.75" Y="0.5" Width="1.5" />
+  <Class Name="DiceTravel.Util.FlowElementProvider">
+    <Position X="16.25" Y="3.25" Width="1.75" />
+    <NestedTypes>
+      <Enum Name="DiceTravel.Util.FlowElementProvider.FlowType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Util\FlowElementProvider.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AkAAAAYAAAIAAIAAIAIACAgAAAADAIAAAQAAAAAJAAE=</HashCode>
       <FileName>Util\FlowElementProvider.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DiceTravel.Util.ImageHandler" Collapsed="true">
-    <Position X="12" Y="1.5" Width="1.5" />
+    <Position X="14.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
       <FileName>Util\ImageHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DiceTravel.Util.IniReader" Collapsed="true">
-    <Position X="13.75" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
-      <FileName>Util\IniReader.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="DiceTravel.Util.Exceptions.NoVisibilityTokenException" Collapsed="true">
-    <Position X="15.5" Y="2.5" Width="1.5" />
+    <Position X="18.25" Y="6.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Util\Exceptions\NoVisibilityTokenException.cs</FileName>

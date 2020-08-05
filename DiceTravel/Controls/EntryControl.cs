@@ -59,12 +59,12 @@ namespace DiceTravel.Controls
 
         private void TxtEntryComment_MouseEnter(object sender, EventArgs e)
         {
-            BackColor = highlightedColor;
+            BackColor = HighlightedColor;
         }
 
         private void TxtEntryComment_MouseLeave(object sender, EventArgs e)
         {
-            BackColor = originalColor;
+            BackColor = OriginalColor;
         }
 
         private void BtnEntryBackToEntry_Click(object sender, EventArgs e)

@@ -3,7 +3,6 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Windows.Forms;
 
 namespace DiceTravel.Classes
 {
@@ -130,19 +129,23 @@ namespace DiceTravel.Classes
         public List<Trip> GetTrips()
         {
             string getTripsCommand = $"SELECT * FROM trips WHERE journey_id = @journey_id ORDER BY end_date DESC";
-            MySqlCommand sqlCommand = CreateCommand(getTripsCommand);
-            sqlCommand.Parameters.Add("@journey_id", MySqlDbType.Int32);
-            sqlCommand.Parameters["@journey_id"].Value = Id;
-
-            DataTable dataTable = ReadQueryTable(sqlCommand);
-
-            List<Trip> trips = new List<Trip>();
-            foreach (DataRow row in dataTable.Rows)
+            using (MySqlCommand sqlCommand = CreateCommand(getTripsCommand))
             {
-                trips.Add(new Trip(row));
-            }
+                sqlCommand.Parameters.Add("@journey_id", MySqlDbType.Int32);
+                sqlCommand.Parameters["@journey_id"].Value = Id;
 
-            return trips;
+                using (DataTable dataTable = ReadQueryTable(sqlCommand))
+                {
+
+                    List<Trip> trips = new List<Trip>();
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        trips.Add(new Trip(row));
+                    }
+
+                    return trips;
+                }
+            }
         }
         public Trip GetLastTrip()
         {

@@ -22,7 +22,7 @@ namespace DiceTravel
         }
         public static void MainFormDeactivate()
         {
-            mainForm.Enabled = false; ;
+            mainForm.Enabled = false;
         }
 
     }

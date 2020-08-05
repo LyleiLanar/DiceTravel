@@ -2,7 +2,7 @@
 
 namespace DiceTravel.Util
 {
-    class MissingFlowTypeException : Exception
+    public class MissingFlowTypeException : Exception
     {
         public MissingFlowTypeException(string message) : base(message)
         {

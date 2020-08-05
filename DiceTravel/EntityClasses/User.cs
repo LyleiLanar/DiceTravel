@@ -126,18 +126,22 @@ namespace DiceTravel
             Journey activeJourney;
 
             string query = $"SELECT * FROM dice_travel.journeys WHERE user_id = @Id and closed = 0;";
-            MySqlCommand sqlCommand = CreateCommand(query);
-            sqlCommand.Parameters.Add("@Id", MySqlDbType.Int32);
-            sqlCommand.Parameters["@Id"].Value = Id;
-
-            DataTable table = ReadQueryTable(sqlCommand);
-            if (table.Rows.Count == 0)
+            using (MySqlCommand sqlCommand = CreateCommand(query))
             {
-                return null;
-            }
-            activeJourney = new Journey(table.Rows[0]);
+                sqlCommand.Parameters.Add("@Id", MySqlDbType.Int32);
+                sqlCommand.Parameters["@Id"].Value = Id;
 
-            return activeJourney;
+                using (DataTable table = ReadQueryTable(sqlCommand))
+                {
+                    if (table.Rows.Count == 0)
+                    {
+                        return null;
+                    }
+                    activeJourney = new Journey(table.Rows[0]);
+
+                    return activeJourney;
+                }
+            }
         }
         public bool IsThereActiveJourney()
         {

@@ -20,34 +20,36 @@ namespace DiceTravel.Forms.TripForms
             oldTrip.EndDate = DateTime.Now;
             oldTrip.UpdateItself();
 
-            Trip newTrip = new Trip
-            {
-                JourneyId = activeJourney.Id,
-                EndLocation = InputTripCreateTripEndLocation.Text,
-                EndDate = DateTime.Parse(Properties.Settings.Default.nullDate)
-            };
+            int journeyId = activeJourney.Id;
+            int serialNumber;
+            string endLocation = InputTripCreateTripEndLocation.Text;
+            DateTime endDate = DateTime.Parse(Properties.Settings.Default.nullDate);
+            int visibility = 2;
 
             try
             {
-                newTrip.SerialNumber = oldTrip.SerialNumber + 1;
+                serialNumber = oldTrip.SerialNumber + 1;
             }
             catch (IndexOutOfRangeException)
             {
-                newTrip.SerialNumber = 0;
+                serialNumber = 0;
             }
             catch (NullReferenceException)
             {
-                newTrip.SerialNumber = 0;
+                serialNumber = 0;
             }
 
-            if (this.RBtnTripCreateVisibilityPrivate.Checked) { newTrip.Visibility = 0; }
-            if (this.RBtnTripCreateVisibilityOnlyFriends.Checked) { newTrip.Visibility = 1; }
-            if (this.RBtnTripCreateVisibilityPublic.Checked) { newTrip.Visibility = 2; }
+            if (this.RBtnTripCreateVisibilityPrivate.Checked) { visibility = 0; }
+            if (this.RBtnTripCreateVisibilityOnlyFriends.Checked) { visibility = 1; }
+            if (this.RBtnTripCreateVisibilityPublic.Checked) { visibility = 2; }
+
+            Trip newTrip = new Trip(journeyId, serialNumber, endLocation, endDate, visibility);
 
             try
             {
                 Validation(newTrip);
                 newTrip.CreateItself();
+
                 Program.MainForm.UpdateData();
                 this.Close();
             }
@@ -56,12 +58,6 @@ namespace DiceTravel.Forms.TripForms
                 MessageBox.Show(ex.Message, "Trip validation error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        private void Validation(Trip newTrip)
-        {
-            newTrip.Validation();
-            //nincs mit validálni egyelőre form szinten.
-        }
-
         private void BtnTripCreateEndJourney_Click(object sender, EventArgs e)
         {
             Journey activeJourney = ActiveUserStore.ActiveUser.GetActiveJourney();
@@ -73,12 +69,10 @@ namespace DiceTravel.Forms.TripForms
                 this.Close();
             }
         }
-
         private void BtnTripCreateCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void TripCreateForm_Load(object sender, EventArgs e)
         {
             Program.MainFormDeactivate();
@@ -86,6 +80,12 @@ namespace DiceTravel.Forms.TripForms
         private void TripCreateForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Program.MainFormActivate();
+        }
+       
+        private void Validation(Trip newTrip)
+        {
+            newTrip.Validation();
+            //nincs mit validálni egyelőre form szinten.
         }
     }
 }

@@ -1,14 +1,5 @@
-﻿using DiceTravel.Classes;
-using DiceTravel.Util;
-using MySql.Data.MySqlClient;
+﻿using DiceTravel.Util;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DiceTravel.Forms.UserForms
@@ -33,37 +24,52 @@ namespace DiceTravel.Forms.UserForms
         {
             this.Close();
         }
-
         private void BtnUserUpdateSave_Click(object sender, EventArgs e)
         {
-            User user = new User();
-            User activeUser = ActiveUserStore.ActiveUser;
-            user.Id = activeUser.Id;
-            user.LoginName = activeUser.LoginName;
+
+            int id;
+            string loginName, password, surname, firstname, birthDate;
+
+            id = ActiveUserStore.ActiveUser.Id;
+            loginName = ActiveUserStore.ActiveUser.LoginName;
             if (InputUserUpdateFormPassword.Text == "")
             {
-                user.Password = activeUser.Password;
+                password = ActiveUserStore.ActiveUser.Password;
             }
             else
             {
-                user.Password = InputUserUpdateFormPassword.Text;
+                password = InputUserUpdateFormPassword.Text;
             }
-            user.Surname = InputUserUpdateFormSurname.Text;
-            user.Firstname = InputUserUpdateFormFirstName.Text;
-            user.BirthDate = DatePickerUserUpdateFormBirthDate.Value.Date.ToString("yyy-MM-dd");
+            surname = InputUserUpdateFormSurname.Text;
+            firstname = InputUserUpdateFormFirstName.Text;
+            birthDate = DatePickerUserUpdateFormBirthDate.Value.Date.ToString("yyy-MM-dd");
+
+            User updatingUser = new User(password, loginName, surname, firstname, birthDate)
+            {
+                Id = id
+            };
 
             try
             {
-                Validation(user);
-                user.UpdateItself();
+                Validation(updatingUser);
+                updatingUser.UpdateItself();
                 this.Close();
                 Program.MainForm.MenuMainLogout_Click(this, new EventArgs());
+                MessageBox.Show("Your modifications have been saved! Please login again!", "Saved!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 new LoginForm().Show();
             }
             catch (ValidationException ex)
             {
-                MessageBox.Show(ex.Message, "SignUp error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "SignUp error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void SignUpForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.MainFormActivate();
+        }
+        private void SignUpForm_Load(object sender, EventArgs e)
+        {
+            Program.MainFormDeactivate();
         }
 
         private void Validation(User user)
@@ -74,15 +80,5 @@ namespace DiceTravel.Forms.UserForms
             // if (InputUserUpdateFormPassword.Text == "") { throw new ValidationException("Missing Password!"); } 
             if (InputUserUpdateFormPassword.Text != InputUserUpdateFormPasswordAgain.Text) { throw new ValidationException("Different Passwords!"); }
         }
-
-        private void SignUpForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Program.MainFormActivate();
-        }
-        private void SignUpForm_Load(object sender, EventArgs e)
-        {
-            Program.MainFormDeactivate();
-        }
-
     }
 }

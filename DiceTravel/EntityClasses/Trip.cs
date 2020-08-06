@@ -31,8 +31,13 @@ namespace DiceTravel.Classes
 
             Visibility = Int32.Parse(dataRow["visibility"].ToString());
         }
-        public Trip()
+        public Trip(int journeyId, int serialNumber, string endLocation, DateTime endDate, int visibility)
         {
+            JourneyId = journeyId;
+            SerialNumber = serialNumber;
+            EndLocation = endLocation;
+            EndDate = endDate;
+            Visibility = visibility;
         }
 
         //Create, Update, Delete methods
@@ -137,10 +142,10 @@ namespace DiceTravel.Classes
         //Validation
         public override void Validation()
         {
-            if (JourneyId == 0) { throw new ValidationException("Missing journeyId!"); }
             if (EndLocation == "") { throw new ValidationException("Missing Goal location!"); }
+            if (JourneyId == 0) { throw new ValidationException("Missing journeyId!"); }
         }
-        
+
         //Misc methods
         public void ReachDestination()
         {

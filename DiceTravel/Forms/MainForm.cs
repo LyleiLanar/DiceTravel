@@ -376,6 +376,8 @@ namespace DiceTravel
         {
             new SignUpForm().Show();
         }
+        
+        //rendezni való metódusok
         private void MenuTravelingJourneyMod_Click(object sender, EventArgs e)
         {
 

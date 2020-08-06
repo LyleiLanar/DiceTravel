@@ -28,9 +28,13 @@ namespace DiceTravel
             Firstname = dataRow["first_name"].ToString();
             BirthDate = dataRow["birth_date"].ToString();
         }
-        public User()
+        public User(string password, string loginName, string surname, string firstname, string birthDate)
         {
-
+            Password = password;
+            LoginName = loginName;
+            Surname = surname;
+            Firstname = firstname;
+            BirthDate = birthDate;
         }
 
         //Create, Update, Delete methods

@@ -25,14 +25,13 @@ namespace DiceTravel
         }
         private void BtnSignUpReg_Click(object sender, EventArgs e)
         {
-            User user = new User
-            {
-                LoginName = InputSignUpLoginName.Text,
-                Password = InputSignUpPassword.Text,
-                Surname = InputSignUpSurname.Text,
-                Firstname = InputSignUpFirstName.Text,
-                BirthDate = DatePickerSignUpBirthDate.Value.Date.ToString("yyy-MM-dd")
-            };
+            string password = InputSignUpPassword.Text;
+            string loginName = InputSignUpLoginName.Text;
+            string surname = InputSignUpSurname.Text;
+            string firstname = InputSignUpFirstName.Text;
+            string birthDate = DatePickerSignUpBirthDate.Value.Date.ToString("yyy-MM-dd");
+
+            User user = new User(password, loginName, surname, firstname, birthDate);
 
             try
             {
@@ -45,7 +44,7 @@ namespace DiceTravel
             }
             catch (ValidationException ex)
             {
-                MessageBox.Show(ex.Message, "SignUp error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "SignUp error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private void Validation(User user)

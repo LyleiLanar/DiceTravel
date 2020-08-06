@@ -34,9 +34,6 @@ namespace DiceTravel.Classes
         }
 
         //Constructors
-        public Journey()
-        {
-        }
         public Journey(DataRow dataRow)
         {
             Id = Int32.Parse(dataRow["id"].ToString());
@@ -50,6 +47,15 @@ namespace DiceTravel.Classes
 
             Closed = Int32.Parse(dataRow["closed"].ToString());
             Visibility = Int32.Parse(dataRow["visibility"].ToString());
+        }
+        public Journey(int userId, string title, string startLocation, string startDate, int closed, int visibility)
+        {
+            UserId = userId;
+            Title = title;
+            StartLocation = startLocation;
+            StartDate = startDate;
+            Closed = closed;
+            Visibility = visibility;
         }
 
         //Create, Update, Delete methods
@@ -167,7 +173,7 @@ namespace DiceTravel.Classes
         {
             if (UserId == 0) { throw new ValidationException("Missing userID!"); }
             if (Title == "") { throw new ValidationException("Missing title!"); }
-            if (StartLocation == "") { throw new ValidationException("Missing Start location!"); }
+            if (StartLocation == "") { throw new ValidationException("Missing Start location!"); }            
         }
         
         //Misc methods

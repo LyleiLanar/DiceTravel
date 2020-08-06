@@ -48,7 +48,7 @@ namespace DiceTravel.Forms.TripForms
             {
                 Validation(newTrip);
                 newTrip.CreateItself();
-                Program.mainForm.UpdateData();
+                Program.MainForm.UpdateData();
                 this.Close();
             }
             catch (ValidationException ex)
@@ -69,7 +69,7 @@ namespace DiceTravel.Forms.TripForms
                 "Are you sure to lock this Journey?", "Closing Journey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
                 activeJourney.CloseItself();
-                Program.mainForm.UpdateData();
+                Program.MainForm.UpdateData();
                 this.Close();
             }
         }

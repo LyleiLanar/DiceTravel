@@ -50,7 +50,7 @@ namespace DiceTravel.Forms.JourneyForms
                     newTrip.JourneyId = ActiveUserStore.GetActiveJourney().Id;
                     Validation(newTrip);
                     newTrip.CreateItself();
-                    Program.mainForm.UpdateData();
+                    Program.MainForm.UpdateData();
                     this.Close();
                 }
                 catch (ValidationException ex)

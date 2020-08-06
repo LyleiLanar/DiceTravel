@@ -10,7 +10,7 @@ namespace DiceTravel
 {
     public class User : Entity
     {
-        //props
+        //Properties
         public int Id { get; set; }
         public string Password { get; set; }
         public string LoginName { get; set; }
@@ -18,7 +18,7 @@ namespace DiceTravel
         public string Firstname { get; set; }
         public string BirthDate { get; set; }
 
-        //constructors
+        //Constructors
         public User(DataRow dataRow)
         {
             Id = Int32.Parse(dataRow["id"].ToString());
@@ -33,7 +33,7 @@ namespace DiceTravel
 
         }
 
-        //CRUD
+        //Create, Update, Delete methods
         public override void CreateItself()
         {
             string query = "INSERT INTO `dice_travel`.`users` (`login_name`, `pswd`,`sur_name`,`first_name`,`birth_date`) " +
@@ -58,10 +58,6 @@ namespace DiceTravel
 
             RunSqlCommand(sqlCommand);
             sqlCommand.Dispose();
-        }
-        static public User ReadUser(MySqlCommand sqlCommand)
-        {
-            return new User(ReadQueryTable(sqlCommand).Rows[0]);
         }
         public override void UpdateItself()
         {
@@ -103,7 +99,7 @@ namespace DiceTravel
             RunSqlCommand(sqlCommand);
         }
 
-        //entity methods
+        //Read methods
         public List<Journey> GetJourneys()
         {
             string getTripsCommand = $"SELECT * FROM dice_travel.journeys WHERE user_id = @user_id ORDER BY start_date DESC";
@@ -203,13 +199,13 @@ namespace DiceTravel
             return friends;
         }
 
-        //misc methods
+        //Validation
         public override void Validation()
         {
             if (LoginName == "") { throw new ValidationException("Missing 'Login Name'!"); }
         }
 
-        //static methods
+        //Static Read methods
         static public User GetUserById(int id)
         {
             string query = $"SELECT * FROM users WHERE id = @Id";

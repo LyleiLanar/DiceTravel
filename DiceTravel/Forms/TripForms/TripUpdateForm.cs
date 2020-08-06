@@ -13,7 +13,7 @@ namespace DiceTravel.Forms.TripForms
         {
             InitializeComponent();
             Trip = trip;
-            Journey journey = Journey.GetJourney_ById(Trip.JourneyId);
+            Journey journey = Journey.GetJourneyById(Trip.JourneyId);
 
             if (Trip.EndDate == DateTime.Parse(Properties.Settings.Default.nullDate)) { BtnTripUpdateDelete.Enabled = false; }
             else { BtnTripUpdateDelete.BackColor = Color.Red; }
@@ -58,7 +58,7 @@ namespace DiceTravel.Forms.TripForms
 
             Trip.UpdateItself();
 
-            Program.mainForm.UpdateData();
+            Program.MainForm.UpdateData();
             this.Close();
         }
         private void TripUpdateForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -77,7 +77,7 @@ namespace DiceTravel.Forms.TripForms
         private void BtnTripUpdateDelete_Click(object sender, EventArgs e)
         {
             Trip.DeleteItself();
-            Program.mainForm.UpdateData();
+            Program.MainForm.UpdateData();
             this.Close();
         }
     }

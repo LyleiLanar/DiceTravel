@@ -8,23 +8,26 @@ namespace DiceTravel.EntityClasses
 {
     class Friendship : Entity
     {
-
+        //Properties
         public int SenderId { get; set; }
         public int GetterId { get; set; }
         public int Accepted { get; set; }
 
-        //constructors
+        //Constructors
         public Friendship(DataRow dataRow)
         {
             SenderId = int.Parse(dataRow["sender_id"].ToString());
             GetterId = int.Parse(dataRow["getter_id"].ToString());
             Accepted = int.Parse(dataRow["accepted"].ToString());
         }
-        public Friendship()
+        public Friendship(int senderId, int getterId, int accepted)
         {
+            SenderId = senderId;
+            GetterId = getterId;
+            Accepted = accepted;
         }
 
-        //CRUD
+        //Create, Update, Delete methods
         public override void CreateItself()
         {
             string query = "INSERT INTO `dice_travel`.`friends` (`sender_id`, `getter_id`,`accepted`) " +
@@ -85,12 +88,14 @@ namespace DiceTravel.EntityClasses
             RunSqlCommand(sqlCommand);
             sqlCommand.Dispose();
         }
+
+        //Validation
         public override void Validation()
         {
             throw new NotImplementedException();
         }
 
-        //static
+        //Static Read methods
         static public Friendship GetFriendshipByIds(int id1, int id2)
         {
             string query = $"SELECT * FROM friends WHERE (sender_id = @Id1 AND getter_id = @Id2) OR (sender_id = @Id2 AND getter_id = @Id1)";
@@ -114,7 +119,7 @@ namespace DiceTravel.EntityClasses
                 }
             }
         }
-        static public List<Friendship> GetUserRecievedInvitesByUserId(int id)
+        static public List<Friendship> GetRecievedFriendshipInvitesByUserId(int id)
         {
             string query = "SELECT * FROM dice_travel.friends " +
                 "WHERE friends.getter_id = @Getter_id and friends.accepted = 0";

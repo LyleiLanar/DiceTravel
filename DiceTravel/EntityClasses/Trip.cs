@@ -8,7 +8,7 @@ namespace DiceTravel.Classes
 {
     public class Trip : Entity
     {
-        //props
+        //Properties
         public int Id { get; set; }
         public int JourneyId { get; set; }
         public int SerialNumber { get; set; }
@@ -16,7 +16,7 @@ namespace DiceTravel.Classes
         public DateTime EndDate { get; set; }
         public int Visibility { get; set; }
 
-        //constructors
+        //Constructors
         public Trip(DataRow dataRow)
         {
             Id = Int32.Parse(dataRow["id"].ToString());
@@ -35,7 +35,7 @@ namespace DiceTravel.Classes
         {
         }
 
-        //CRUD
+        //Create, Update, Delete methods
         public override void CreateItself()
         {
             string query = "INSERT INTO `dice_travel`.`trips` (`journey_id`, `serial_number`,`end_location`,`end_date`,`visibility`) " +
@@ -60,10 +60,6 @@ namespace DiceTravel.Classes
 
             RunSqlCommand(sqlCommand);
             sqlCommand.Dispose();
-        }
-        static public Trip ReadTrip(MySqlCommand sqlCommand)
-        {
-            return new Trip(ReadQueryTable(sqlCommand).Rows[0]);
         }
         public override void UpdateItself()
         {
@@ -114,7 +110,7 @@ namespace DiceTravel.Classes
             RunSqlCommand(sqlCommand);
         }
 
-        //DB Methods
+        //Read methods
         public List<Entry> GetEntries()
         {
             string getTripsCommand = $"SELECT * FROM dice_travel.entries WHERE trip_id = @trip_id ORDER BY entry_date DESC";
@@ -138,19 +134,21 @@ namespace DiceTravel.Classes
             }
         }
 
-        //misc methods
+        //Validation
         public override void Validation()
         {
             if (JourneyId == 0) { throw new ValidationException("Missing journeyId!"); }
             if (EndLocation == "") { throw new ValidationException("Missing Goal location!"); }
         }
+        
+        //Misc methods
         public void ReachDestination()
         {
             this.EndDate = DateTime.Now;
             this.UpdateItself();
         }
 
-        //static methods
+        //Static Read methods
         static public Trip GetTripById(int tripId)
         {
             string query = $"SELECT * FROM trips WHERE id = @id";

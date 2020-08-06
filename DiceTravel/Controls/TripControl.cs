@@ -30,8 +30,8 @@ namespace DiceTravel.Controls
 
         public void SetContent()
         {
-            Journey journey = Journey.GetJourney_ById(Trip.JourneyId);
-            string userLoginName = User.GetUserById(Journey.GetJourney_ById(Trip.JourneyId).UserId).LoginName;
+            Journey journey = Journey.GetJourneyById(Trip.JourneyId);
+            string userLoginName = User.GetUserById(Journey.GetJourneyById(Trip.JourneyId).UserId).LoginName;
 
             TxtTripUserLoginName.Text = userLoginName;
             TxtTripEndLocation.Text = journey.Title + ": " + Trip.EndLocation;
@@ -59,15 +59,15 @@ namespace DiceTravel.Controls
 
         private void TripControl_Click(object sender, EventArgs e)
         {
-            Program.mainForm.FlowElementProvider.SetFlowEntryFlowByTrip(Trip.Id);
-            Program.mainForm.DrawFlow();
+            Program.MainForm.FlowElementProvider.SetFlowEntryFlowByTrip(Trip.Id);
+            Program.MainForm.DrawFlow();
         }
 
         private void BtnTripBackToJourney_Click(object sender, EventArgs e)
         {
-            User user = User.GetUserById(Journey.GetJourney_ById(Trip.JourneyId).UserId);
-            Program.mainForm.FlowElementProvider.SetFlowJourneyFlowByUser(user.Id);
-            Program.mainForm.DrawFlow();
+            User user = User.GetUserById(Journey.GetJourneyById(Trip.JourneyId).UserId);
+            Program.MainForm.FlowElementProvider.SetFlowJourneyFlowByUser(user.Id);
+            Program.MainForm.DrawFlow();
         }
 
         private void BtnTripOptions_Click(object sender, EventArgs e)

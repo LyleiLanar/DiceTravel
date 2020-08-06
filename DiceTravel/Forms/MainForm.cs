@@ -119,7 +119,7 @@ namespace DiceTravel
         {
             if (ActiveUserStore.IsThereActiveUser)
             {
-                Program.mainForm.ChangeControlsAvailabilityAfterLogin();
+                Program.MainForm.ChangeControlsAvailabilityAfterLogin();
                 this.UpdateActiveUser();
                 UpdateActiveJourneyData();
                 UpdateTripData();
@@ -127,7 +127,7 @@ namespace DiceTravel
             }
             else
             {
-                Program.mainForm.ChangeControlsAvailabilityAfterLogout();
+                Program.MainForm.ChangeControlsAvailabilityAfterLogout();
             }
         }
 
@@ -144,8 +144,8 @@ namespace DiceTravel
         }
         private void BtnInvitations_Click(object sender, EventArgs e)
         {
-            Program.mainForm.FlowElementProvider.SetFlowInvitesFlow();
-            Program.mainForm.DrawFlow();
+            Program.MainForm.FlowElementProvider.SetFlowInvitesFlow();
+            Program.MainForm.DrawFlow();
         }
 
         //journeyData
@@ -276,7 +276,7 @@ namespace DiceTravel
         public void DrawFlow()
         {
             FlowElementProvider.UpdateFlow();
-            Program.mainForm.BtnInvitations.Visible = Friendship.GetUserRecievedInvitesByUserId(ActiveUserStore.ActiveUser.Id).Count != 0;
+            Program.MainForm.BtnInvitations.Visible = Friendship.GetRecievedFriendshipInvitesByUserId(ActiveUserStore.ActiveUser.Id).Count != 0;
 
             FlowLayoutPanel.Controls.Clear();
             List<FlowElementControl> controls = new List<FlowElementControl>();
@@ -300,18 +300,18 @@ namespace DiceTravel
         }
         private void BtnMyStoryFlow_Click(object sender, EventArgs e)
         {
-            Program.mainForm.FlowElementProvider.SetFlowStoryFlowByUser(ActiveUserStore.ActiveUser.Id);
-            Program.mainForm.DrawFlow();
+            Program.MainForm.FlowElementProvider.SetFlowStoryFlowByUser(ActiveUserStore.ActiveUser.Id);
+            Program.MainForm.DrawFlow();
         }
         private void BtnSearchUser_Click(object sender, EventArgs e)
         {
-            Program.mainForm.FlowElementProvider.SetFlowPeopleFlowByLoginNameFragment(TxtSearchUser.Text);
-            Program.mainForm.DrawFlow();
+            Program.MainForm.FlowElementProvider.SetFlowPeopleFlowByLoginNameFragment(TxtSearchUser.Text);
+            Program.MainForm.DrawFlow();
         }
         private void BtnFriends_Click(object sender, EventArgs e)
         {
             FlowElementProvider.SetFlowPeopleFlowByUserFriends();
-            Program.mainForm.DrawFlow();
+            Program.MainForm.DrawFlow();
         }
 
         /*********  Command Methods *********/
@@ -319,9 +319,9 @@ namespace DiceTravel
         {
             if (MessageBox.Show("All progress will be lost!\r\nAre you sure to delete this Journey?", "Attention!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                Journey.GetJourney_ById(ActiveUserStore.GetActiveJourney().Id).DeleteItself();
-                Program.mainForm.FlowElementProvider.SetFlowJourneyFlowByUser(ActiveUserStore.ActiveUser.Id);
-                Program.mainForm.UpdateData();
+                Journey.GetJourneyById(ActiveUserStore.GetActiveJourney().Id).DeleteItself();
+                Program.MainForm.FlowElementProvider.SetFlowJourneyFlowByUser(ActiveUserStore.ActiveUser.Id);
+                Program.MainForm.UpdateData();
             }
         }
         private static void StartJourney()
@@ -360,13 +360,13 @@ namespace DiceTravel
         }
         private static void SetFlowMyJourneys()
         {
-            Program.mainForm.FlowElementProvider.SetFlowJourneyFlowByUser(ActiveUserStore.ActiveUser.Id);
-            Program.mainForm.DrawFlow();
+            Program.MainForm.FlowElementProvider.SetFlowJourneyFlowByUser(ActiveUserStore.ActiveUser.Id);
+            Program.MainForm.DrawFlow();
         }
         private static void LogOut()
         {
             ActiveUserStore.LogOutUser();
-            Program.mainForm.ChangeControlsAvailabilityAfterLogout();
+            Program.MainForm.ChangeControlsAvailabilityAfterLogout();
         }
         private static void LogIn()
         {
@@ -383,7 +383,7 @@ namespace DiceTravel
 
         private void BtnRefresh_Click(object sender, EventArgs e)
         {
-            Program.mainForm.DrawFlow();
+            Program.MainForm.DrawFlow();
         }
 
 

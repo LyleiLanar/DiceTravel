@@ -72,14 +72,11 @@ namespace DiceTravel.Controls
 
             if (friendship == null)
             {
-                Friendship newFriendship = new Friendship
-                {
-                    SenderId = ActiveUserStore.ActiveUser.Id,
-                    GetterId = this.Person.Id,
-                    Accepted = 0
-                };
+                int SenderId = ActiveUserStore.ActiveUser.Id;
+                int GetterId = this.Person.Id;
+                int Accepted = 0;
 
-                newFriendship.CreateItself();
+                new Friendship(SenderId, GetterId, Accepted).CreateItself();                   
             }
             else
             {
@@ -99,7 +96,7 @@ namespace DiceTravel.Controls
                 }
             }
 
-            Program.mainForm.DrawFlow();
+            Program.MainForm.DrawFlow();
         }
         private void BtnPersonKick_Click(object sender, EventArgs e)
         {
@@ -110,12 +107,12 @@ namespace DiceTravel.Controls
                 friendship.DeleteItself();
             }
 
-            Program.mainForm.DrawFlow();
+            Program.MainForm.DrawFlow();
         }
         private void PersonControl_Click(object sender, EventArgs e)
         {
-            Program.mainForm.FlowElementProvider.SetFlowStoryFlowByUser(Person.Id);
-            Program.mainForm.DrawFlow();
+            Program.MainForm.FlowElementProvider.SetFlowStoryFlowByUser(Person.Id);
+            Program.MainForm.DrawFlow();
 
         }
     }

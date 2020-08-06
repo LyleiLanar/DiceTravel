@@ -7,7 +7,7 @@ namespace DiceTravel.Classes
 {
     public class Entry : Entity
     {
-        //props
+        //Properties
         public int Id { get; set; }
         public int TripId { get; set; }
         public DateTime EntryDate { get; set; }
@@ -16,7 +16,7 @@ namespace DiceTravel.Classes
         public string Comment { get; set; }
         public int Visibility { get; set; }
 
-        //constructors
+        //Constructors
         public Entry(DataRow dataRow)
         {
             Id = Int32.Parse(dataRow["id"].ToString());
@@ -35,41 +35,42 @@ namespace DiceTravel.Classes
 
             Comment = dataRow["comment"].ToString();
             Visibility = Int32.Parse(dataRow["visibility"].ToString());
-        }
-        public Entry()
+        } 
+        public Entry(int tripId, DateTime entryDate, byte[] picture, string title, string comment, int visibility)
         {
+            TripId = tripId;
+            EntryDate = entryDate;
+            Picture = picture;
+            Title = title;
+            Comment = comment;
+            Visibility = visibility;
         }
 
-        //CRUD
+        //Create, Update, Delete methods
         public override void CreateItself()
         {
             string query = "INSERT INTO `dice_travel`.`entries` (`trip_id`, `entry_date`,`picture`,`comment`,`visibility`,`title`) " +
                                     "VALUES (@trip_id,@entry_date,@picture,@comment,@visibility,@title);";
 
-            MySqlCommand sqlCommand = new MySqlCommand(query)
+            using (MySqlCommand sqlCommand = CreateCommand(query))
             {
-                Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString)
-            };
 
-            sqlCommand.Parameters.Add("@trip_id", MySqlDbType.Int32);
-            sqlCommand.Parameters.Add("@entry_date", MySqlDbType.DateTime);
-            sqlCommand.Parameters.Add("@picture", MySqlDbType.Blob);
-            sqlCommand.Parameters.Add("@comment", MySqlDbType.VarChar, 512);
-            sqlCommand.Parameters.Add("@visibility", MySqlDbType.Int32);
-            sqlCommand.Parameters.Add("@title", MySqlDbType.VarChar, 50);
+                sqlCommand.Parameters.Add("@trip_id", MySqlDbType.Int32);
+                sqlCommand.Parameters.Add("@entry_date", MySqlDbType.DateTime);
+                sqlCommand.Parameters.Add("@picture", MySqlDbType.Blob);
+                sqlCommand.Parameters.Add("@comment", MySqlDbType.VarChar, 512);
+                sqlCommand.Parameters.Add("@visibility", MySqlDbType.Int32);
+                sqlCommand.Parameters.Add("@title", MySqlDbType.VarChar, 50);
 
-            sqlCommand.Parameters["@trip_id"].Value = TripId;
-            sqlCommand.Parameters["@entry_date"].Value = EntryDate;
-            sqlCommand.Parameters["@picture"].Value = Picture;
-            sqlCommand.Parameters["@comment"].Value = Comment;
-            sqlCommand.Parameters["@visibility"].Value = Visibility;
-            sqlCommand.Parameters["@title"].Value = Title;
+                sqlCommand.Parameters["@trip_id"].Value = TripId;
+                sqlCommand.Parameters["@entry_date"].Value = EntryDate;
+                sqlCommand.Parameters["@picture"].Value = Picture;
+                sqlCommand.Parameters["@comment"].Value = Comment;
+                sqlCommand.Parameters["@visibility"].Value = Visibility;
+                sqlCommand.Parameters["@title"].Value = Title;
 
-            RunSqlCommand(sqlCommand);
-        }
-        static public Entry ReadEntry(MySqlCommand sqlCommand)
-        {
-            return new Entry(ReadQueryTable(sqlCommand).Rows[0]);
+                RunSqlCommand(sqlCommand);
+            }
         }
         public override void UpdateItself()
         {
@@ -101,18 +102,17 @@ namespace DiceTravel.Classes
         {
             string query = "DELETE FROM entries WHERE id = @id";
 
-            MySqlCommand sqlCommand = new MySqlCommand(query)
+            using (MySqlCommand sqlCommand = CreateCommand(query))
             {
-                Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString)
-            };
 
-            sqlCommand.Parameters.Add("@id", MySqlDbType.Int32);
-            sqlCommand.Parameters["@id"].Value = this.Id;
+                sqlCommand.Parameters.Add("@id", MySqlDbType.Int32);
+                sqlCommand.Parameters["@id"].Value = this.Id;
 
-            RunSqlCommand(sqlCommand);
+                RunSqlCommand(sqlCommand);
+            }
         }
-     
-        //misc methods
+
+        //Validation
         public override void Validation()
         {
             if (String.IsNullOrEmpty(Title)) { throw new ValidationException("Missing Entry Title!"); }

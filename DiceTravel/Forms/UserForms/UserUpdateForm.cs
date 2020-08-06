@@ -57,7 +57,7 @@ namespace DiceTravel.Forms.UserForms
                 Validation(user);
                 user.UpdateItself();
                 this.Close();
-                Program.mainForm.MenuMainLogout_Click(this, new EventArgs());
+                Program.MainForm.MenuMainLogout_Click(this, new EventArgs());
                 new LoginForm().Show();
             }
             catch (ValidationException ex)

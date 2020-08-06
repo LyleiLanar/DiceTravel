@@ -5,16 +5,24 @@ namespace DiceTravel.Classes
 {
     abstract public class Entity
     {
-
-        //CRUD
+        //Create, Update, Delete methods
         abstract public void CreateItself();
         abstract public void UpdateItself();
         abstract public void DeleteItself();
 
-        //methods
+        //Validation
         abstract public void Validation();
 
-        //static methods
+        //Database handling methods
+        static public MySqlCommand CreateCommand(string sqlCommandString)
+        {
+            MySqlCommand sqlCommand = new MySqlCommand(sqlCommandString)
+            {
+                Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString)
+            };
+
+            return sqlCommand;
+        }
         static public void RunSqlCommand(MySqlCommand sqlCommand)
         {
             sqlCommand.Connection.Open();
@@ -29,15 +37,6 @@ namespace DiceTravel.Classes
                 adapter.Fill(dataTable);
             }
             return dataTable;
-        }
-        static public MySqlCommand CreateCommand(string sqlCommandString)
-        {
-            MySqlCommand sqlCommand = new MySqlCommand(sqlCommandString)
-            {
-                Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString)
-            };
-
-            return sqlCommand;
         }
     }
 }

@@ -31,31 +31,33 @@ namespace DiceTravel.Forms.EntryForms
 
         private void BtnEntryCreateNew_Click(object sender, EventArgs e)
         {
-            Entry entry = new Entry();
             Trip trip = ActiveUserStore.ActiveUser.GetActiveJourney().GetLastTrip();
 
-            entry.TripId = trip.Id;
-            entry.EntryDate = DateTime.Now;
-            if (string.IsNullOrEmpty(InputEntryCreateAddImage.Text))
-            {
-                entry.Picture = null;
-            }
-            else
-            {
-                entry.Picture = Util.ImageHandler.GetImageBin(InputEntryCreateAddImage.Text);
-            }
-            entry.Comment = this.InputEntryCreateComment.Text;
-            entry.Title = InputEntryCreateTitle.Text;
+            //int id = trip.Id;
+            int tripId = trip.Id;
+            DateTime entryDate = DateTime.Now;
+            byte[] picture = null;
+            string title = InputEntryCreateTitle.Text;
+            string comment = InputEntryCreateComment.Text;
+            int visibility = 0;
 
-            if (RBtnEntryCreateVisibilityPrivate.Checked) { entry.Visibility = 0; }
-            if (RBtnEntryCreateVisibilityOnlyFriends.Checked) { entry.Visibility = 1; }
-            if (RBtnEntryCreateVisibilityPublic.Checked) { entry.Visibility = 2; }
+
+            if (!string.IsNullOrEmpty(InputEntryCreateAddImage.Text))
+            {
+                picture = Util.ImageHandler.GetImageBin(InputEntryCreateAddImage.Text);
+            }
+
+            if (RBtnEntryCreateVisibilityPrivate.Checked) { visibility = 0; }
+            if (RBtnEntryCreateVisibilityOnlyFriends.Checked) { visibility = 1; }
+            if (RBtnEntryCreateVisibilityPublic.Checked) { visibility = 2; }
+
+            Entry entry = new Entry(tripId, entryDate, picture, title, comment, visibility);
 
             try
             {
                 Validation(entry);
                 entry.CreateItself();
-                Program.mainForm.UpdateData();
+                Program.MainForm.UpdateData();
                 this.Close();
             }
             catch (ValidationException ex)

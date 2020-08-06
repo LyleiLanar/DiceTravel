@@ -27,7 +27,7 @@ namespace DiceTravel
             {
                 this.Validation();
                 ActiveUserStore.LogInUser(InputLoginLoginName.Text, InputLoginPassword.Text);
-                Program.mainForm.UpdateData();
+                Program.MainForm.UpdateData();
 
                 this.Close();
             }

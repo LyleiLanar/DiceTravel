@@ -309,6 +309,9 @@
     </EmbeddedResource>
     <None Include="ClassDiagrams\DTClassDiagram.cd" />
     <None Include="ClassDiagrams\Entities.cd" />
+    <None Include="ClassDiagrams\Friendship.cd" />
+    <None Include="ClassDiagrams\MainForm.cd" />
+    <None Include="ClassDiagrams\Program.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

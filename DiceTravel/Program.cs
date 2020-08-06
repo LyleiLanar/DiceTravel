@@ -5,24 +5,24 @@ namespace DiceTravel
 {
     static class Program
     {
-        static public MainForm mainForm;
+        static public MainForm MainForm { get; private set; }
 
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            mainForm = new MainForm();
-            Application.Run(mainForm);
+            MainForm = new MainForm();
+            Application.Run(MainForm);
         }
 
         public static void MainFormActivate()
         {
-            mainForm.Enabled = true;
+            MainForm.Enabled = true;
         }
         public static void MainFormDeactivate()
         {
-            mainForm.Enabled = false;
+            MainForm.Enabled = false;
         }
 
     }

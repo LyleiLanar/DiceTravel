@@ -21,7 +21,7 @@ namespace DiceTravel.Util
         static public void LogOutUser()
         {
             ActiveUser = null;
-            Program.mainForm.FlowElementProvider.ResetFlow();
+            Program.MainForm.FlowElementProvider.ResetFlow();
         }
         static public void LogInUser(string loginName, string password)
         {

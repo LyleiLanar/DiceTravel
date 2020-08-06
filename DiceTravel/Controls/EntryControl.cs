@@ -69,9 +69,9 @@ namespace DiceTravel.Controls
 
         private void BtnEntryBackToEntry_Click(object sender, EventArgs e)
         {
-            Journey journey = Journey.GetJourney_ById(Trip.GetTripById(Entry.TripId).JourneyId);
-            Program.mainForm.FlowElementProvider.SetFlowTripFlowByJourney(journey.Id);
-            Program.mainForm.DrawFlow();
+            Journey journey = Journey.GetJourneyById(Trip.GetTripById(Entry.TripId).JourneyId);
+            Program.MainForm.FlowElementProvider.SetFlowTripFlowByJourney(journey.Id);
+            Program.MainForm.DrawFlow();
         }
 
         private void BtnEntryOptions_Click(object sender, EventArgs e)

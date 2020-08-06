@@ -8,30 +8,10 @@ namespace DiceTravel.Classes
 {
     public class Journey : Entity
     {
-        public Journey()
-        {
-        }
-
-        public Journey(DataRow dataRow)
-        {
-            Id = Int32.Parse(dataRow["id"].ToString());
-            UserId = Int32.Parse(dataRow["user_id"].ToString());
-            Title = dataRow["title"].ToString();
-            StartLocation = dataRow["start_location"].ToString();
-
-            string dateString = dataRow["start_date"].ToString();
-            DateTime date = DateTime.Parse(dateString);
-            StartDate = date.ToString("yyy-MM-dd HH:mm:ss");
-
-            Closed = Int32.Parse(dataRow["closed"].ToString());
-            Visibility = Int32.Parse(dataRow["visibility"].ToString());
-        }
-
-        //Props
+        //Properties
         public int Id { get; set; }
         public int UserId { get; set; }
         public string Title { get; set; }
-
         public string StartLocation { get; set; }
         public string StartDate { get; set; }
         public int Closed { get; set; }
@@ -53,7 +33,26 @@ namespace DiceTravel.Classes
             }
         }
 
-        //CRUD methods
+        //Constructors
+        public Journey()
+        {
+        }
+        public Journey(DataRow dataRow)
+        {
+            Id = Int32.Parse(dataRow["id"].ToString());
+            UserId = Int32.Parse(dataRow["user_id"].ToString());
+            Title = dataRow["title"].ToString();
+            StartLocation = dataRow["start_location"].ToString();
+
+            string dateString = dataRow["start_date"].ToString();
+            DateTime date = DateTime.Parse(dateString);
+            StartDate = date.ToString("yyy-MM-dd HH:mm:ss");
+
+            Closed = Int32.Parse(dataRow["closed"].ToString());
+            Visibility = Int32.Parse(dataRow["visibility"].ToString());
+        }
+
+        //Create, Update, Delete methods
         public override void CreateItself()
         {
             string query = "INSERT INTO `dice_travel`.`journeys` (`user_id`, `title`,`start_location`,`start_date`,`closed`,`visibility`) " +
@@ -75,10 +74,6 @@ namespace DiceTravel.Classes
             sqlCommand.Parameters["@visibility"].Value = Visibility;
 
             RunSqlCommand(sqlCommand);
-        }
-        static public Journey ReadJourney(MySqlCommand sqlCommand)
-        {
-            return new Journey(ReadQueryTable(sqlCommand).Rows[0]);
         }
         public override void UpdateItself()
         {
@@ -167,13 +162,15 @@ namespace DiceTravel.Classes
             return new Trip(dataTable.Rows[0]);
         }
 
-        //misc methods
+        //Validation
         public override void Validation()
         {
             if (UserId == 0) { throw new ValidationException("Missing userID!"); }
             if (Title == "") { throw new ValidationException("Missing title!"); }
             if (StartLocation == "") { throw new ValidationException("Missing Start location!"); }
         }
+        
+        //Misc methods
         public void CloseItself()
         {
             Trip trip = this.GetLastTrip();
@@ -183,8 +180,8 @@ namespace DiceTravel.Classes
             this.UpdateItself();
         }
 
-        //static methods
-        static public Journey GetJourney_ById(int journeyId)
+        //Static Read methods
+        static public Journey GetJourneyById(int journeyId)
         {
             string query = $"SELECT * FROM journeys WHERE id = @id";
             MySqlCommand sqlCommand = CreateCommand(query);

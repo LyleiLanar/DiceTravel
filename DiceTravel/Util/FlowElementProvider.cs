@@ -68,7 +68,7 @@ namespace DiceTravel.Util
 
                 case FlowType.TripFlowByJourney:
                     userLoginName = User.GetUserById(UserId).LoginName;
-                    journeyTitle = Journey.GetJourney_ById(JourneyId).Title;
+                    journeyTitle = Journey.GetJourneyById(JourneyId).Title;
                     FlowTitle = $"{userLoginName}'s {journeyTitle} trips:";
 
                     SetFlowTripFlowByJourney(JourneyId);
@@ -76,7 +76,7 @@ namespace DiceTravel.Util
 
                 case FlowType.EntryFlowByTrip:
                     userLoginName = User.GetUserById(UserId).LoginName;
-                    journeyTitle = Journey.GetJourney_ById(JourneyId).Title;
+                    journeyTitle = Journey.GetJourneyById(JourneyId).Title;
                     tripEndLocation = Trip.GetTripById(TripId).EndLocation;
                     FlowTitle = $"{userLoginName}'s {journeyTitle}: {tripEndLocation} entries:";
 
@@ -193,7 +193,7 @@ namespace DiceTravel.Util
         }
         public void SetFlowTripFlowByJourney(int journeyId)
         {
-            List<Trip> trips = Journey.GetJourney_ById(journeyId).GetTrips();
+            List<Trip> trips = Journey.GetJourneyById(journeyId).GetTrips();
 
             List<TripControl> tripControls = new List<TripControl>();
 
@@ -208,7 +208,7 @@ namespace DiceTravel.Util
             }
 
             //setting the flowStatus
-            UserId = Journey.GetJourney_ById(journeyId).UserId;
+            UserId = Journey.GetJourneyById(journeyId).UserId;
             JourneyId = journeyId;
             TripId = -1;
             Type = FlowType.TripFlowByJourney;
@@ -219,7 +219,7 @@ namespace DiceTravel.Util
         public void SetFlowEntryFlowByTrip(int tripId)
         {
             List<Entry> entries = Trip.GetTripById(tripId).GetEntries();
-            User user = User.GetUserById(Journey.GetJourney_ById(Trip.GetTripById(tripId).JourneyId).UserId);
+            User user = User.GetUserById(Journey.GetJourneyById(Trip.GetTripById(tripId).JourneyId).UserId);
 
             List<EntryControl> entryControls = new List<EntryControl>();
 
@@ -235,7 +235,7 @@ namespace DiceTravel.Util
 
             //setting the flowStatus            
             JourneyId = Trip.GetTripById(tripId).JourneyId;
-            UserId = Journey.GetJourney_ById(JourneyId).UserId;
+            UserId = Journey.GetJourneyById(JourneyId).UserId;
             TripId = tripId;
             Type = FlowType.EntryFlowByTrip;
 
@@ -279,7 +279,7 @@ namespace DiceTravel.Util
         {
             User user = ActiveUserStore.ActiveUser;
 
-            List<Friendship> invitations = Friendship.GetUserRecievedInvitesByUserId(user.Id);
+            List<Friendship> invitations = Friendship.GetRecievedFriendshipInvitesByUserId(user.Id);
             List<PersonControl> personControls = new List<PersonControl>();
 
             for (int i = 0; i < invitations.Count; i++)

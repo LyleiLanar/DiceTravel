@@ -63,7 +63,7 @@ namespace DiceTravel.Forms.JourneyForms
 
             Journey.UpdateItself();
 
-            Program.mainForm.UpdateData();
+            Program.MainForm.UpdateData();
             this.Close();
 
         }
@@ -84,8 +84,8 @@ namespace DiceTravel.Forms.JourneyForms
             if (MessageBox.Show("All progress will be lost!\r\nAre you sure to delete this Journey?", "Attention!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 Journey.DeleteItself();
-                Program.mainForm.FlowElementProvider.SetFlowJourneyFlowByUser(ActiveUserStore.ActiveUser.Id);
-                Program.mainForm.UpdateData();
+                Program.MainForm.FlowElementProvider.SetFlowJourneyFlowByUser(ActiveUserStore.ActiveUser.Id);
+                Program.MainForm.UpdateData();
                 this.Close();
             }
         }

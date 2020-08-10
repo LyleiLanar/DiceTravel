@@ -222,6 +222,8 @@
             this.Name = "UserUpdateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "My Profile";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UserUpdateForm_FormClosed);
+            this.Load += new System.EventHandler(this.UserUpdateForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

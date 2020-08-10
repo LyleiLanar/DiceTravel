@@ -70,15 +70,7 @@ namespace DiceTravel.Forms.JourneyForms
         private void BtnJourneyUpdateCancel_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-        private void JourneyUpdateForm_Load(object sender, EventArgs e)
-        {
-            Program.MainFormDeactivate();
-        }
-        private void JourneyUpdateForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Program.MainFormActivate();
-        }
+        }        
         private void BtnJourneyUpdateDelete_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("All progress will be lost!\r\nAre you sure to delete this Journey?", "Attention!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
@@ -88,6 +80,16 @@ namespace DiceTravel.Forms.JourneyForms
                 Program.MainForm.UpdateData();
                 this.Close();
             }
+        }
+        
+        //MainForm Activation
+        private void JourneyUpdateForm_Load(object sender, EventArgs e)
+        {
+            Program.MainFormDeactivate();
+        }
+        private void JourneyUpdateForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.MainFormActivate();
         }
     }
 }

@@ -26,25 +26,29 @@ namespace DiceTravel.Forms.UserForms
         }
         private void BtnUserUpdateSave_Click(object sender, EventArgs e)
         {
+            //itt lesznek bajok, szóval meg kell nézni még
 
             int id;
-            string loginName, password, surname, firstname, birthDate;
-
+            string loginName, encryptedPassword, surname, firstname, birthDate;
+             
             id = ActiveUserStore.ActiveUser.Id;
             loginName = ActiveUserStore.ActiveUser.LoginName;
-            if (InputUserUpdateFormPassword.Text == "")
+
+
+            if (InputUserUpdateFormPassword.Text.Length == 0)
             {
-                password = ActiveUserStore.ActiveUser.Password;
+                encryptedPassword = ActiveUserStore.ActiveUser.Password;
             }
             else
             {
-                password = InputUserUpdateFormPassword.Text;
+                encryptedPassword = Encyptor.Encrypt(InputUserUpdateFormPassword.Text);
             }
+
             surname = InputUserUpdateFormSurname.Text;
             firstname = InputUserUpdateFormFirstName.Text;
             birthDate = DatePickerUserUpdateFormBirthDate.Value.Date.ToString("yyy-MM-dd");
 
-            User updatingUser = new User(password, loginName, surname, firstname, birthDate)
+            User updatingUser = new User(encryptedPassword, loginName, surname, firstname, birthDate)
             {
                 Id = id
             };
@@ -63,14 +67,6 @@ namespace DiceTravel.Forms.UserForms
                 MessageBox.Show(ex.Message, "SignUp error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void SignUpForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Program.MainFormActivate();
-        }
-        private void SignUpForm_Load(object sender, EventArgs e)
-        {
-            Program.MainFormDeactivate();
-        }
 
         private void Validation(User user)
         {
@@ -79,6 +75,16 @@ namespace DiceTravel.Forms.UserForms
             // itt ha nincs beírva semmi, akkor nem kerül frissítésre a jelszó, de ehhez mindkét helyen üresstringnek kell lennie.
             // if (InputUserUpdateFormPassword.Text == "") { throw new ValidationException("Missing Password!"); } 
             if (InputUserUpdateFormPassword.Text != InputUserUpdateFormPasswordAgain.Text) { throw new ValidationException("Different Passwords!"); }
+        }
+
+        //MainForm Activation
+        private void UserUpdateForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.MainFormActivate();
+        }
+        private void UserUpdateForm_Load(object sender, EventArgs e)
+        {
+            Program.MainFormDeactivate();
         }
     }
 }

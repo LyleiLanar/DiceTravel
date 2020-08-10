@@ -26,7 +26,10 @@ namespace DiceTravel
             try
             {
                 this.Validation();
-                ActiveUserStore.LogInUser(InputLoginLoginName.Text, InputLoginPassword.Text);
+
+                string encryptedPassword = Encyptor.Encrypt(InputLoginPassword.Text);
+
+                ActiveUserStore.LogInUser(InputLoginLoginName.Text, encryptedPassword);
                 Program.MainForm.UpdateData();
 
                 this.Close();
@@ -44,20 +47,21 @@ namespace DiceTravel
             { throw new ValidationException("Missing Login name or Password!"); }
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-            Program.MainFormDeactivate();
-        }
-
-        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Program.MainFormActivate();
-        }
-
         private void BtnLoginSignUp_Click(object sender, EventArgs e)
         {
             this.Close();
             new SignUpForm().Show();
         }
+
+        //MainForm Activation
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            Program.MainFormDeactivate();
+        }
+        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.MainFormActivate();
+        }
+
     }
 }

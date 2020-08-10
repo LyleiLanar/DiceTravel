@@ -5,6 +5,13 @@ namespace DiceTravel.Classes
 {
     abstract public class Entity
     {
+        //*** Connection strings ***
+        //Local
+        static protected string connString = "server=localhost;user id = root; password=1234;database=dice_travel;port=33060";
+
+        //online
+        //static protected string connString = "server=185.51.67.15;user id = ghezemi1_dt_admin; password=Synae&Decrii;database=ghezemi1_dice_travel;port=3306";
+
         //Create, Update, Delete methods
         abstract public void CreateItself();
         abstract public void UpdateItself();
@@ -18,7 +25,7 @@ namespace DiceTravel.Classes
         {
             MySqlCommand sqlCommand = new MySqlCommand(sqlCommandString)
             {
-                Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString)
+                Connection = new MySqlConnection(connString)
             };
 
             return sqlCommand;

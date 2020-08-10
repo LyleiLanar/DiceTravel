@@ -35,7 +35,7 @@ namespace DiceTravel.EntityClasses
 
             MySqlCommand sqlCommand = new MySqlCommand(query)
             {
-                Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString)
+                Connection = new MySqlConnection(connString)
             };
 
             sqlCommand.Parameters.Add("@sender_id", MySqlDbType.Int32);
@@ -56,7 +56,7 @@ namespace DiceTravel.EntityClasses
 
             MySqlCommand sqlCommand = new MySqlCommand(query)
             {
-                Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString)
+                Connection = new MySqlConnection(connString)
             };
 
             sqlCommand.Parameters.Add("@Sender_id", MySqlDbType.Int32);
@@ -77,7 +77,7 @@ namespace DiceTravel.EntityClasses
 
             MySqlCommand sqlCommand = new MySqlCommand(query)
             {
-                Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString)
+                Connection = new MySqlConnection(connString)
             };
 
             sqlCommand.Parameters.Add("@Id1", MySqlDbType.Int32);

@@ -14,15 +14,6 @@ namespace DiceTravel.Forms.EntryForms
             this.Width = 250;
         }
 
-        private void EntryCreateForm_Load(object sender, EventArgs e)
-        {
-            Program.MainFormDeactivate();
-        }
-
-        private void EntryCreateForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Program.MainFormActivate();
-        }
 
         private void BtnEntryCreateCancel_Click(object sender, EventArgs e)
         {
@@ -92,6 +83,16 @@ namespace DiceTravel.Forms.EntryForms
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+        
+        //MainForm Activation
+        private void EntryCreateForm_Load(object sender, EventArgs e)
+        {
+            Program.MainFormDeactivate();
+        }
+        private void EntryCreateForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.MainFormActivate();
         }
 
 

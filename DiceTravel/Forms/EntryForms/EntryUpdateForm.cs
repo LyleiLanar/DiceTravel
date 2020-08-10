@@ -55,21 +55,10 @@ namespace DiceTravel.Forms.EntryForms
             }
         }
 
-        private void EntryUpdateForm_Load(object sender, EventArgs e)
-        {
-            Program.MainFormDeactivate();
-        }
-
-        private void EntryUpdateForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Program.MainFormActivate();
-        }
-
         private void BtnEntryUpdateCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void BtnEntryUpdateUpdate_Click(object sender, EventArgs e)
         {
             Entry.Title = InputEntryUpdateTitle.Text;
@@ -83,6 +72,16 @@ namespace DiceTravel.Forms.EntryForms
 
             Program.MainForm.UpdateData();
             this.Close();
+        }
+
+        //MainForm Activation
+        private void EntryUpdateForm_Load(object sender, EventArgs e)
+        {
+            Program.MainFormDeactivate();
+        }
+        private void EntryUpdateForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.MainFormActivate();
         }
     }
 }

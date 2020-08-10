@@ -45,7 +45,7 @@ namespace DiceTravel
 
             MySqlCommand sqlCommand = new MySqlCommand(query)
             {
-                Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString)
+                Connection = new MySqlConnection(connString)
             };
 
             sqlCommand.Parameters.Add("@login_name", MySqlDbType.VarChar, 20);
@@ -70,7 +70,7 @@ namespace DiceTravel
 
             MySqlCommand sqlCommand = new MySqlCommand(query)
             {
-                Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString)
+                Connection = new MySqlConnection(connString)
             };
 
             sqlCommand.Parameters.Add("@id", MySqlDbType.Int32);
@@ -95,7 +95,7 @@ namespace DiceTravel
 
             MySqlCommand sqlCommand = new MySqlCommand(query)
             {
-                Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString)
+                Connection = new MySqlConnection(connString)
             };
             sqlCommand.Parameters.Add("@id", MySqlDbType.Int32);
             sqlCommand.Parameters["@id"].Value = this.Id;

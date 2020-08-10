@@ -73,20 +73,22 @@ namespace DiceTravel.Forms.TripForms
         {
             this.Close();
         }
-        private void TripCreateForm_Load(object sender, EventArgs e)
-        {
-            Program.MainFormDeactivate();
-        }
-        private void TripCreateForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Program.MainFormActivate();
-        }
-       
         private void Validation(Trip newTrip)
         {
             newTrip.Validation();
             //nincs mit validálni egyelőre form szinten.
         }
+
+        //MainForm Activation
+        private void TripCreateForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.MainFormActivate();
+        }
+        private void TripCreateForm_Load(object sender, EventArgs e)
+        {
+            Program.MainFormDeactivate();
+        }
+       
     }
 }
 

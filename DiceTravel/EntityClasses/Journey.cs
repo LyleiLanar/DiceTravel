@@ -117,7 +117,7 @@ namespace DiceTravel.Classes
 
             MySqlCommand sqlCommand = new MySqlCommand(query)
             {
-                Connection = new MySqlConnection(Properties.Settings.Default.dice_travelConnString)
+                Connection = new MySqlConnection(connString)
             };
 
             sqlCommand.Parameters.Add("@id", MySqlDbType.Int32);

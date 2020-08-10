@@ -25,13 +25,13 @@ namespace DiceTravel
         }
         private void BtnSignUpReg_Click(object sender, EventArgs e)
         {
-            string password = InputSignUpPassword.Text;
+            string encryptedPassword = Encyptor.Encrypt(InputSignUpPassword.Text);
             string loginName = InputSignUpLoginName.Text;
             string surname = InputSignUpSurname.Text;
             string firstname = InputSignUpFirstName.Text;
             string birthDate = DatePickerSignUpBirthDate.Value.Date.ToString("yyy-MM-dd");
 
-            User user = new User(password, loginName, surname, firstname, birthDate);
+            User user = new User(encryptedPassword, loginName, surname, firstname, birthDate);
 
             try
             {
@@ -66,6 +66,7 @@ namespace DiceTravel
             if (InputSignUpPassword.Text != InputSignUpPasswordAgain.Text) { throw new ValidationException("Different Passwords!"); }
         }
 
+        //MainForm Activation
         private void SignUpForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Program.MainFormActivate();

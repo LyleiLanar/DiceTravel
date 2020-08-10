@@ -1,1 +1,2 @@
 INIReader: https://stackoverflow.com/questions/485659/can-net-load-and-parse-a-properties-file-equivalent-to-java-properties-class
+jelszó titkosítás: https://www.youtube.com/watch?v=da5GSeJV9qE

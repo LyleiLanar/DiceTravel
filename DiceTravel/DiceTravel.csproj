@@ -246,6 +246,7 @@
     </Compile>
     <Compile Include="EntityClasses\User.cs" />
     <Compile Include="Util\ActiveUserStore.cs" />
+    <Compile Include="Util\Encyptor.cs" />
     <Compile Include="Util\Exceptions\MissingFlowTypeException.cs" />
     <Compile Include="Util\Exceptions\EntityCreationException.cs" />
     <Compile Include="Util\Exceptions\NoVisibilityTokenException.cs" />

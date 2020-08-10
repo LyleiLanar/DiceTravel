@@ -61,6 +61,18 @@ namespace DiceTravel.Forms.TripForms
             Program.MainForm.UpdateData();
             this.Close();
         }
+        private void BtnTripUpdateCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void BtnTripUpdateDelete_Click(object sender, EventArgs e)
+        {
+            Trip.DeleteItself();
+            Program.MainForm.UpdateData();
+            this.Close();
+        }
+
+        //MainForm Activation
         private void TripUpdateForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Program.MainFormActivate();
@@ -68,17 +80,6 @@ namespace DiceTravel.Forms.TripForms
         private void TripUpdateForm_Load(object sender, EventArgs e)
         {
             Program.MainFormDeactivate();
-        }
-        private void BtnTripUpdateCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void BtnTripUpdateDelete_Click(object sender, EventArgs e)
-        {
-            Trip.DeleteItself();
-            Program.MainForm.UpdateData();
-            this.Close();
         }
     }
 }

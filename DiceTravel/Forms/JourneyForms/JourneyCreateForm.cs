@@ -64,6 +64,16 @@ namespace DiceTravel.Forms.JourneyForms
                 MessageBox.Show(ex.Message, "Journey creation error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        private void Validation(Journey newJourney)
+        {
+            newJourney.Validation();
+        }
+        private void Validation(Trip newTrip)
+        {
+            newTrip.Validation();
+        }
+        
+        //MainForm Activation
         private void JourneyCreateForm_Load(object sender, EventArgs e)
         {
             Program.MainFormDeactivate();
@@ -73,14 +83,6 @@ namespace DiceTravel.Forms.JourneyForms
             Program.MainFormActivate();
         }
         
-        private void Validation(Journey newJourney)
-        {
-            newJourney.Validation();
-        }
-        private void Validation(Trip newTrip)
-        {
-            newTrip.Validation();
-        }
     }
 
 }

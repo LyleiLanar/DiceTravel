@@ -716,9 +716,6 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // usersBindingSource
-            // 
-            // 
             // journeysBindingSource
             // 
             this.journeysBindingSource.DataMember = "journeys";
@@ -737,6 +734,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DiceTravel";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.mainToolStripContainer.ContentPanel.ResumeLayout(false);
             this.mainToolStripContainer.TopToolStripPanel.ResumeLayout(false);
             this.mainToolStripContainer.TopToolStripPanel.PerformLayout();

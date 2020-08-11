@@ -8,7 +8,6 @@ namespace DiceTravel.Controls
 {
     public partial class PersonControl : FlowElementControl
     {
-
         private User Person { get; }
         public PersonControl(User person) : base()
         {

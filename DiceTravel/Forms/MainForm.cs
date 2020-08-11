@@ -166,6 +166,12 @@ namespace DiceTravel
                 BtnNewEntry.Enabled = true;
                 BtnNextTripModify.Enabled = true;
 
+                MenuTravelingJourneyStart.Enabled = false;
+                MenuTravelingJourneyMod.Enabled = true;
+                MenuTravelingJourneyDel.Enabled = true;
+                MenuTravelingDest.Enabled = true;
+                MenuTravelingNewEntry.Enabled = true;
+
                 switch (activeJourney.Visibility)
                 {
                     case 0:
@@ -197,6 +203,14 @@ namespace DiceTravel
                 BtnNextTripModify.Enabled = false;
                 PctBxActiveJourneyVisibility.Image = Properties.Resources.icoEmpty.ToBitmap();
                 PctBxNextTripVisibility.Image = Properties.Resources.icoEmpty.ToBitmap();
+
+                MenuTravelingJourneyStart.Enabled = true;
+                MenuTravelingJourneyMod.Enabled = false;
+                MenuTravelingJourneyDel.Enabled = false;
+                MenuTravelingDest.Enabled = false;
+                MenuTravelingNewEntry.Enabled = false;
+
+
             }
             TxtActiveJourneyInfo.Text = activeJourneyInfo;
             TxtActiveJourneyTitle.Text = activeJourneyTitle;
@@ -388,6 +402,9 @@ namespace DiceTravel
             Program.MainForm.DrawFlow();
         }
 
-
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            LogIn();
+        }
     }
 }

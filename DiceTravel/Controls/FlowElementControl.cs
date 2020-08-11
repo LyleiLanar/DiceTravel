@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace DiceTravel.Controls
 {
-    public abstract partial class FlowElementControl : UserControl
+    public partial class FlowElementControl : UserControl
     {
-        protected Color OriginalColor { get; set; }
-        protected Color HighlightedColor { get; set; }
+        protected virtual Color OriginalColor { get; set; }
+        protected virtual Color HighlightedColor { get; set; }
 
         public FlowElementControl()
         {

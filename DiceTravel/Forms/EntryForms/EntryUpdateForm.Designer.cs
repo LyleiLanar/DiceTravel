@@ -168,6 +168,7 @@
             this.BtnEntryUpdateDelete.TabIndex = 29;
             this.BtnEntryUpdateDelete.Text = "Delete";
             this.BtnEntryUpdateDelete.UseVisualStyleBackColor = true;
+            this.BtnEntryUpdateDelete.Click += new System.EventHandler(this.BtnEntryUpdateDelete_Click);
             // 
             // EntryUpdateForm
             // 

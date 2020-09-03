@@ -21,7 +21,7 @@ namespace DiceTravel
         //Methods
         private void BtnSignUpCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close();            
         }
         private void BtnSignUpReg_Click(object sender, EventArgs e)
         {

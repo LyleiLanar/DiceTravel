@@ -14,7 +14,7 @@ namespace DiceTravel.Forms.JourneyForms
             InitializeComponent();
             Journey = journey;
 
-            this.Text = journey.Title + "edit";
+            this.Text = journey.Title + " edit";
 
             InputJourneyUpdateStartLocation.Text = Journey.StartLocation;
             InputJourneyUpdateTitle.Text = Journey.Title;
@@ -76,7 +76,7 @@ namespace DiceTravel.Forms.JourneyForms
             if (MessageBox.Show("All progress will be lost!\r\nAre you sure to delete this Journey?", "Attention!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 Journey.DeleteItself();
-                Program.MainForm.FlowElementProvider.SetFlowJourneyFlowByUser(ActiveUserStore.ActiveUser.Id);
+                Program.MainForm.FlowElementProvider.SetJourneyFlow(ActiveUserStore.ActiveUser.Id);
                 Program.MainForm.UpdateData();
                 this.Close();
             }

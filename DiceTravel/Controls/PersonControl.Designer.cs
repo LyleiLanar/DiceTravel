@@ -39,7 +39,7 @@
             this.BtnPersonKick.BackColor = System.Drawing.SystemColors.Control;
             this.BtnPersonKick.FlatAppearance.BorderSize = 0;
             this.BtnPersonKick.Image = global::DiceTravel.Properties.Resources.icoDelete;
-            this.BtnPersonKick.Location = new System.Drawing.Point(492, 5);
+            this.BtnPersonKick.Location = new System.Drawing.Point(586, 5);
             this.BtnPersonKick.Name = "BtnPersonKick";
             this.BtnPersonKick.Size = new System.Drawing.Size(42, 45);
             this.BtnPersonKick.TabIndex = 21;
@@ -60,7 +60,7 @@
             // 
             this.TxtPersonRealName.AutoSize = true;
             this.TxtPersonRealName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TxtPersonRealName.Location = new System.Drawing.Point(4, 34);
+            this.TxtPersonRealName.Location = new System.Drawing.Point(4, 43);
             this.TxtPersonRealName.Name = "TxtPersonRealName";
             this.TxtPersonRealName.Size = new System.Drawing.Size(82, 16);
             this.TxtPersonRealName.TabIndex = 23;
@@ -71,7 +71,7 @@
             this.BtnPersonMakeFriend.BackColor = System.Drawing.SystemColors.Control;
             this.BtnPersonMakeFriend.FlatAppearance.BorderSize = 0;
             this.BtnPersonMakeFriend.Image = global::DiceTravel.Properties.Resources.icoFinished;
-            this.BtnPersonMakeFriend.Location = new System.Drawing.Point(444, 5);
+            this.BtnPersonMakeFriend.Location = new System.Drawing.Point(538, 5);
             this.BtnPersonMakeFriend.Name = "BtnPersonMakeFriend";
             this.BtnPersonMakeFriend.Size = new System.Drawing.Size(42, 45);
             this.BtnPersonMakeFriend.TabIndex = 24;
@@ -89,7 +89,7 @@
             this.Controls.Add(this.BtnPersonKick);
             this.Controls.Add(this.TxtPersonLoginName);
             this.Name = "PersonControl";
-            this.Size = new System.Drawing.Size(537, 56);
+            this.Size = new System.Drawing.Size(631, 70);
             this.Click += new System.EventHandler(this.PersonControl_Click);
             this.ResumeLayout(false);
             this.PerformLayout();

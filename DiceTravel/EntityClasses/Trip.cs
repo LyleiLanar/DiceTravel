@@ -94,7 +94,7 @@ namespace DiceTravel.Classes
         }
         public override void DeleteItself()
         {
-            List<Entry> entriesToDelete = GetEntries();
+            List<Entry> entriesToDelete = GetEntriesOrderedAsc();
 
             foreach (Entry entry in entriesToDelete)
             {
@@ -116,9 +116,31 @@ namespace DiceTravel.Classes
         }
 
         //Read methods
-        public List<Entry> GetEntries()
+        public List<Entry> GetEntriesOrderedAsc()
         {
-            string getTripsCommand = $"SELECT * FROM dice_travel.entries WHERE trip_id = @trip_id ORDER BY entry_date DESC";
+            string getTripsCommand = $"SELECT * FROM dice_travel.entries WHERE trip_id = @trip_id ORDER BY entry_date";
+            using (MySqlCommand sqlCommand = CreateCommand(getTripsCommand))
+            {
+
+                sqlCommand.Parameters.Add("@trip_id", MySqlDbType.Int32);
+                sqlCommand.Parameters["@trip_id"].Value = Id;
+
+                using (DataTable dataTable = ReadQueryTable(sqlCommand))
+                {
+
+                    List<Entry> entries = new List<Entry>();
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        entries.Add(new Entry(row));
+                    }
+
+                    return entries;
+                }
+            }
+        }
+        public List<Entry> GetEntriesOrderedDesc()
+        {
+            string getTripsCommand = $"SELECT * FROM dice_travel.entries WHERE trip_id = @trip_id ORDER BY entry_date Desc";
             using (MySqlCommand sqlCommand = CreateCommand(getTripsCommand))
             {
 

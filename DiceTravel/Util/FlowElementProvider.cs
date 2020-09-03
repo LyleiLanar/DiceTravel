@@ -1,14 +1,13 @@
 ﻿using DiceTravel.Classes;
 using DiceTravel.Controls;
 using DiceTravel.EntityClasses;
-using System;
 using System.Collections.Generic;
 
 namespace DiceTravel.Util
 {
     public class FlowElementProvider
     {
-        public enum FlowType { NoFlow, JourneyFlowByUser, MainFlowByUser, TripFlowByJourney, EntryFlowByTrip, StoryFlowByUser, Friends, PeopleByLoginName, InvitesFlow }
+        public enum FlowType { NoFlow, MainFlow, JourneyFlow, TripFlow, EntryFlow, StoryFlow, FriendFlow, PeopleFlow, InvitesFlow }
         public FlowType Type { get; private set; }
         public int UserId { get; private set; }
         public int JourneyId { get; private set; }
@@ -46,64 +45,66 @@ namespace DiceTravel.Util
 
             switch (Type)
             {
+
                 case FlowType.NoFlow:
-                    User activeUser = ActiveUserStore.ActiveUser;
-                    userLoginName = activeUser.LoginName;
-                    UserId = activeUser.Id;
-                    FlowTitle = $"{userLoginName}'s journeys:";
+                    userLoginName = ActiveUserStore.ActiveUser.LoginName;
+                    UserId = ActiveUserStore.ActiveUser.Id;
+                    FlowTitle = $"JOURNEYS @{userLoginName}";
 
-                    SetFlowJourneyFlowByUser(UserId);
+                    SetJourneyFlow(UserId);
                     break;
 
-
-                case FlowType.JourneyFlowByUser:
+                case FlowType.JourneyFlow:
                     userLoginName = User.GetUserById(UserId).LoginName;
-                    FlowTitle = $"{userLoginName}'s journeys:";
+                    FlowTitle = $"JOURNEYS @{userLoginName}";
 
-                    SetFlowJourneyFlowByUser(UserId);
+                    SetJourneyFlow(UserId);
                     break;
 
-                case FlowType.MainFlowByUser:
-                    throw new NotImplementedException();
+                case FlowType.MainFlow:
 
-                case FlowType.TripFlowByJourney:
+                    FlowTitle = "Recent entries:";
+                    SetMainFlow();
+                    break;
+
+                case FlowType.TripFlow:
                     userLoginName = User.GetUserById(UserId).LoginName;
                     journeyTitle = Journey.GetJourneyById(JourneyId).Title;
-                    FlowTitle = $"{userLoginName}'s {journeyTitle} trips:";
+                    FlowTitle = $"TRIPS @{userLoginName}/{journeyTitle}";
 
-                    SetFlowTripFlowByJourney(JourneyId);
+                    SetTripFlow(JourneyId);
                     break;
 
-                case FlowType.EntryFlowByTrip:
+                case FlowType.EntryFlow:
                     userLoginName = User.GetUserById(UserId).LoginName;
                     journeyTitle = Journey.GetJourneyById(JourneyId).Title;
                     tripEndLocation = Trip.GetTripById(TripId).EndLocation;
-                    FlowTitle = $"{userLoginName}'s {journeyTitle}: {tripEndLocation} entries:";
+                    FlowTitle = $"ENTRIES @{userLoginName}/{journeyTitle}/{tripEndLocation}";
 
-                    SetFlowEntryFlowByTrip(TripId);
+                    SetEntryFlow(TripId);
                     break;
 
-                case FlowType.StoryFlowByUser:
+                case FlowType.StoryFlow:
                     userLoginName = User.GetUserById(UserId).LoginName;
-                    FlowTitle = $"{userLoginName}'s story:";
+                    FlowTitle = $"STORY @{userLoginName}";
 
-                    SetFlowStoryFlowByUser(UserId);
+                    SetStoryFlow(UserId);
                     break;
 
-                case FlowType.Friends:
-                    FlowTitle = "My friends";
-                    SetFlowPeopleFlowByUserFriends();
+                case FlowType.FriendFlow:
+                    FlowTitle = "FRIENDS";
+                    SetFriendFlow();
                     break;
 
                 case FlowType.InvitesFlow:
-                    FlowTitle = "My recieved invites:";
-                    SetFlowInvitesFlow();
+                    FlowTitle = "INVITES";
+                    SetInvitesFlow();
                     break;
 
-                case FlowType.PeopleByLoginName:
-                    FlowTitle = $"Search results for '{LoginNameFragment}'";
+                case FlowType.PeopleFlow:
+                    FlowTitle = $"Search results ('{LoginNameFragment}')";
 
-                    SetFlowPeopleFlowByLoginNameFragment(LoginNameFragment);
+                    SetPeopleFlow(LoginNameFragment);
                     break;
 
                 default:
@@ -112,11 +113,44 @@ namespace DiceTravel.Util
         }
 
         //set Flow
-        public void SetFlowPeopleFlowByLoginNameFragment(string loginNameFragment)
+        public void SetMainFlow()
         {
             //setting the flowStatus
             ResetFlow();
-            Type = FlowType.PeopleByLoginName;
+            Type = FlowType.MainFlow;
+
+            List<Entry> entries = ActiveUserStore.ActiveUser.GetFriendsThreeDaysEntries();
+
+            List<EntryControl> entryControls = new List<EntryControl>();
+
+            for (int i = 0; i < entries.Count; i++)
+            {
+                Entry entry = entries[i];
+
+                entryControls.Add(new EntryControl(entry));
+                entryControls[i].Name = $"EntryControl_{i}";
+                entryControls[i].SetContent();
+                entryControls[i].Visible = true;
+            }
+
+            if (entries.Count ==0)
+            {
+                FlowTitle += " NO ENTRIES!";
+            }
+
+            //setting the flowStatus            
+
+            Type = FlowType.MainFlow;
+
+            FlowElements.Clear();
+            FlowElements.AddRange(entryControls);
+
+        }
+        public void SetPeopleFlow(string loginNameFragment)
+        {
+            //setting the flowStatus
+            ResetFlow();
+            Type = FlowType.PeopleFlow;
             LoginNameFragment = loginNameFragment;
 
             List<User> people = User.SearchForUsersByLoginNameFragment(loginNameFragment);
@@ -138,12 +172,12 @@ namespace DiceTravel.Util
             FlowElements.Clear();
             FlowElements.AddRange(personControls);
         }
-        public void SetFlowPeopleFlowByUserFriends()
+        public void SetFriendFlow()
         {
             //setting the flowStatus
             ResetFlow();
             User user = ActiveUserStore.ActiveUser;
-            Type = FlowType.Friends;
+            Type = FlowType.FriendFlow;
             UserId = user.Id;
 
             List<User> friends = user.GetFriends();
@@ -165,7 +199,7 @@ namespace DiceTravel.Util
             FlowElements.Clear();
             FlowElements.AddRange(personControls);
         }
-        public void SetFlowJourneyFlowByUser(int userId)
+        public void SetJourneyFlow(int userId)
         {
             List<Journey> journeys = User.GetUserById(userId).GetJourneys();
 
@@ -185,13 +219,13 @@ namespace DiceTravel.Util
             UserId = userId;
             JourneyId = -1;
             TripId = -1;
-            Type = FlowType.JourneyFlowByUser;
+            Type = FlowType.JourneyFlow;
 
             //update the list
             FlowElements.Clear();
             FlowElements.AddRange(journeyControls);
         }
-        public void SetFlowTripFlowByJourney(int journeyId)
+        public void SetTripFlow(int journeyId)
         {
             List<Trip> trips = Journey.GetJourneyById(journeyId).GetTrips();
 
@@ -211,14 +245,14 @@ namespace DiceTravel.Util
             UserId = Journey.GetJourneyById(journeyId).UserId;
             JourneyId = journeyId;
             TripId = -1;
-            Type = FlowType.TripFlowByJourney;
+            Type = FlowType.TripFlow;
 
             FlowElements.Clear();
             FlowElements.AddRange(tripControls);
         }
-        public void SetFlowEntryFlowByTrip(int tripId)
+        public void SetEntryFlow(int tripId)
         {
-            List<Entry> entries = Trip.GetTripById(tripId).GetEntries();
+            List<Entry> entries = Trip.GetTripById(tripId).GetEntriesOrderedAsc();
             User user = User.GetUserById(Journey.GetJourneyById(Trip.GetTripById(tripId).JourneyId).UserId);
 
             List<EntryControl> entryControls = new List<EntryControl>();
@@ -226,23 +260,30 @@ namespace DiceTravel.Util
             for (int i = 0; i < entries.Count; i++)
             {
                 Entry entry = entries[i];
+                Trip trip = Trip.GetTripById(entry.TripId);
+                Journey journey = Journey.GetJourneyById(trip.JourneyId);
 
                 entryControls.Add(new EntryControl(entry));
                 entryControls[i].Name = $"EntryControl_{i}";
                 entryControls[i].SetContent();
+
+                //visibility checks
                 entryControls[i].Visible = ElementIsVisible(entry.Visibility, user.Id);
+                entryControls[i].Visible = ElementIsVisible(trip.Visibility, user.Id);
+                entryControls[i].Visible = ElementIsVisible(journey.Visibility, user.Id);
+
             }
 
             //setting the flowStatus            
             JourneyId = Trip.GetTripById(tripId).JourneyId;
             UserId = Journey.GetJourneyById(JourneyId).UserId;
             TripId = tripId;
-            Type = FlowType.EntryFlowByTrip;
+            Type = FlowType.EntryFlow;
 
             FlowElements.Clear();
             FlowElements.AddRange(entryControls);
         }
-        public void SetFlowStoryFlowByUser(int userId)
+        public void SetStoryFlow(int userId)
         {
             User user = User.GetUserById(userId);
             List<Entry> entries = user.GetAllEntries();
@@ -266,16 +307,12 @@ namespace DiceTravel.Util
             JourneyId = -1;
             UserId = userId;
             TripId = -1;
-            Type = FlowType.StoryFlowByUser;
+            Type = FlowType.StoryFlow;
 
             FlowElements.Clear();
             FlowElements.AddRange(entryControls);
         }
-        public void SetFlowMainFlowByUser()
-        {
-            throw new NotImplementedException();
-        }
-        public void SetFlowInvitesFlow()
+        public void SetInvitesFlow()
         {
             User user = ActiveUserStore.ActiveUser;
 
@@ -349,6 +386,12 @@ namespace DiceTravel.Util
                         return false;
                 }
             }
+        }
+
+        internal void SetFlowStoriesOfFriends()
+        {
+            Program.MainForm.FlowElementProvider.SetMainFlow();
+            Program.MainForm.DrawFlow();
         }
     }
 }

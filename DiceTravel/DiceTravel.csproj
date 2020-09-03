@@ -313,7 +313,6 @@
     <None Include="ClassDiagrams\Friendship.cd" />
     <None Include="ClassDiagrams\MainForm.cd" />
     <None Include="ClassDiagrams\Program.cd" />
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

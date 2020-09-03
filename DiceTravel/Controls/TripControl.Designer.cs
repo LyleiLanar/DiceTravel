@@ -72,7 +72,7 @@
             this.BtnTripBackToJourney.BackColor = System.Drawing.SystemColors.Control;
             this.BtnTripBackToJourney.FlatAppearance.BorderSize = 0;
             this.BtnTripBackToJourney.Image = global::DiceTravel.Properties.Resources.icoBack;
-            this.BtnTripBackToJourney.Location = new System.Drawing.Point(436, 11);
+            this.BtnTripBackToJourney.Location = new System.Drawing.Point(538, 5);
             this.BtnTripBackToJourney.Name = "BtnTripBackToJourney";
             this.BtnTripBackToJourney.Size = new System.Drawing.Size(42, 45);
             this.BtnTripBackToJourney.TabIndex = 24;
@@ -84,7 +84,7 @@
             this.BtnTripOptions.BackColor = System.Drawing.SystemColors.Control;
             this.BtnTripOptions.FlatAppearance.BorderSize = 0;
             this.BtnTripOptions.Image = global::DiceTravel.Properties.Resources.icoSettings;
-            this.BtnTripOptions.Location = new System.Drawing.Point(484, 11);
+            this.BtnTripOptions.Location = new System.Drawing.Point(586, 5);
             this.BtnTripOptions.Name = "BtnTripOptions";
             this.BtnTripOptions.Size = new System.Drawing.Size(42, 45);
             this.BtnTripOptions.TabIndex = 21;
@@ -111,7 +111,7 @@
             this.Controls.Add(this.PctBxTripVisibility);
             this.Controls.Add(this.TxtTripEndLocation);
             this.Name = "TripControl";
-            this.Size = new System.Drawing.Size(537, 70);
+            this.Size = new System.Drawing.Size(631, 70);
             this.Click += new System.EventHandler(this.TripControl_Click);
             ((System.ComponentModel.ISupportInitialize)(this.PctBxTripVisibility)).EndInit();
             this.ResumeLayout(false);

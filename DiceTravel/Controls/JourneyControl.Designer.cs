@@ -48,10 +48,11 @@
             // 
             // BtnJourneyOptions
             // 
+            this.BtnJourneyOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnJourneyOptions.BackColor = System.Drawing.SystemColors.Control;
             this.BtnJourneyOptions.FlatAppearance.BorderSize = 0;
             this.BtnJourneyOptions.Image = global::DiceTravel.Properties.Resources.icoSettings;
-            this.BtnJourneyOptions.Location = new System.Drawing.Point(492, 5);
+            this.BtnJourneyOptions.Location = new System.Drawing.Point(586, 5);
             this.BtnJourneyOptions.Name = "BtnJourneyOptions";
             this.BtnJourneyOptions.Size = new System.Drawing.Size(42, 45);
             this.BtnJourneyOptions.TabIndex = 16;
@@ -98,7 +99,7 @@
             this.Controls.Add(this.PctBxJourneyVisibility);
             this.Controls.Add(this.TxtJourneyTitle);
             this.Name = "JourneyControl";
-            this.Size = new System.Drawing.Size(537, 70);
+            this.Size = new System.Drawing.Size(631, 70);
             this.Click += new System.EventHandler(this.JourneyControl_Click);
             ((System.ComponentModel.ISupportInitialize)(this.PctBxJourneyVisibility)).EndInit();
             this.ResumeLayout(false);

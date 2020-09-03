@@ -1,2 +1,5 @@
 INIReader: https://stackoverflow.com/questions/485659/can-net-load-and-parse-a-properties-file-equivalent-to-java-properties-class
 jelszó titkosítás: https://www.youtube.com/watch?v=da5GSeJV9qE
+DB checking: https://stackoverflow.com/questions/20785220/how-to-check-mysql-connection-state-in-c-sharp/20785451
+url nyitás: https://stackoverflow.com/questions/58024/open-a-url-from-windows-forms
+automatikusan méretezhető rtb: https://stackoverflow.com/questions/733566/autofit-winforms-richtextbox-to-its-contents

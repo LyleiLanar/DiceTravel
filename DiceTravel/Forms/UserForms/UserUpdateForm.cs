@@ -30,7 +30,7 @@ namespace DiceTravel.Forms.UserForms
 
             int id;
             string loginName, encryptedPassword, surname, firstname, birthDate;
-             
+
             id = ActiveUserStore.ActiveUser.Id;
             loginName = ActiveUserStore.ActiveUser.LoginName;
 
@@ -58,9 +58,9 @@ namespace DiceTravel.Forms.UserForms
                 Validation(updatingUser);
                 updatingUser.UpdateItself();
                 this.Close();
-                Program.MainForm.MenuMainLogout_Click(this, new EventArgs());
+                Program.MainForm.LogOut();
                 MessageBox.Show("Your modifications have been saved! Please login again!", "Saved!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                new LoginForm().Show();
+                Program.MainForm.LogIn();
             }
             catch (ValidationException ex)
             {

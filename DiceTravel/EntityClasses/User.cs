@@ -202,6 +202,39 @@ namespace DiceTravel
             }
             return friends;
         }
+        public List<Entry> GetFriendsThreeDaysEntries()
+        {
+            string getTripsCommand = "SELECT entries.* FROM dice_travel.friends " +
+                "INNER JOIN dice_travel.journeys on friends.sender_id = journeys.user_id " +
+                "INNER JOIN dice_travel.trips on journeys.id = trips.journey_id " +
+                "INNER JOIN dice_travel.entries on trips.id = entries.trip_id " +
+                "WHERE friends.getter_id = @user_id and friends.accepted = 1 and entries.visibility <> 0 and entry_date > date_sub(now(), interval 7 day) " +
+                "UNION " +
+                "SELECT entries.* FROM dice_travel.friends " +
+                "INNER JOIN dice_travel.journeys on friends.getter_id = journeys.user_id " +
+                "INNER JOIN dice_travel.trips on journeys.id = trips.journey_id " +
+                "INNER JOIN dice_travel.entries on trips.id = entries.trip_id " +
+                "WHERE friends.sender_id = @user_id and friends.accepted = 1 and entries.visibility <> 0 and entry_date > date_sub(now(), interval 7 day) " +
+                "ORDER BY entry_date DESC";
+
+                using (MySqlCommand sqlCommand = CreateCommand(getTripsCommand))
+            {
+                sqlCommand.Parameters.Add("@user_id", MySqlDbType.Int32);
+                sqlCommand.Parameters["@user_id"].Value = Id;
+
+                using (DataTable dataTable = ReadQueryTable(sqlCommand))
+                {
+                    List<Entry> entries = new List<Entry>();
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        entries.Add(new Entry(row));
+                    }
+
+                    return entries;
+                }
+            }
+        }
 
         //Validation
         public override void Validation()

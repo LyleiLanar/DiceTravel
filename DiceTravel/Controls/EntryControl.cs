@@ -3,6 +3,7 @@ using DiceTravel.Forms.EntryForms;
 using System;
 using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
 
 namespace DiceTravel.Controls
 {
@@ -24,18 +25,20 @@ namespace DiceTravel.Controls
             TxtEntryDate.Text = Entry.EntryDate.ToString();
             TxtEntryTitle.Text = Entry.Title;
 
+            TxtEntryUserLoginName.Text = User.GetUserById(Journey.GetJourneyById(Trip.GetTripById(Entry.TripId).JourneyId).UserId).LoginName;
+
             if (Entry.Picture != null)
             {
                 MemoryStream ms = new MemoryStream(Entry.Picture);
                 PctBxEntryImage.Image = Image.FromStream(ms);
                 PctBxEntryImage.Visible = true;
-                this.Height = 640;
             }
             else
             {
-                this.Height = 134;
+                PctBxEntryImage.Visible = false;
+                TxtEntryComment.Location = PctBxEntryImage.Location;
             }
-            
+
 
             switch (Entry.Visibility)
             {
@@ -70,7 +73,7 @@ namespace DiceTravel.Controls
         private void BtnEntryBackToEntry_Click(object sender, EventArgs e)
         {
             Journey journey = Journey.GetJourneyById(Trip.GetTripById(Entry.TripId).JourneyId);
-            Program.MainForm.FlowElementProvider.SetFlowTripFlowByJourney(journey.Id);
+            Program.MainForm.FlowElementProvider.SetTripFlow(journey.Id);
             Program.MainForm.DrawFlow();
         }
 
@@ -79,5 +82,14 @@ namespace DiceTravel.Controls
             new EntryUpdateForm(Entry).Show();
         }
 
+        private void TxtJourneyUserLoginName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtEntryComment_ContentsResized(object sender, System.Windows.Forms.ContentsResizedEventArgs e)
+        {
+            ((RichTextBox)sender).Height = e.NewRectangle.Height + 5;
+        }
     }
 }

@@ -129,7 +129,7 @@ namespace DiceTravel.Classes
         //DB methods
         public List<Trip> GetTrips()
         {
-            string getTripsCommand = $"SELECT * FROM trips WHERE journey_id = @journey_id ORDER BY end_date DESC";
+            string getTripsCommand = $"SELECT * FROM trips WHERE journey_id = @journey_id ORDER BY end_date desc";
             using (MySqlCommand sqlCommand = CreateCommand(getTripsCommand))
             {
                 sqlCommand.Parameters.Add("@journey_id", MySqlDbType.Int32);

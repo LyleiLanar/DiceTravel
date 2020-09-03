@@ -8,6 +8,7 @@ using DiceTravel.Forms.UserForms;
 using DiceTravel.Util;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace DiceTravel
@@ -79,20 +80,23 @@ namespace DiceTravel
         public void MenuMainLogout_Click(object sender, EventArgs e)
         {
             LogOut();
+            LogIn();
         }
 
         //MeMenu
         private void MenuMeMyJourneys_Click(object sender, EventArgs e)
         {
-            SetFlowMyJourneys();
+            SetFlowJourneyFlowByUserId(ActiveUserStore.ActiveUser.Id);
+            Program.MainForm.DrawFlow();
         }
         private void MenuMeMyProfile_Click(object sender, EventArgs e)
         {
-            MainForm.UpdateUserData();
+            Program.MainForm.UpdateUserData();
         }
         private void MenuMeMyFlow_Click(object sender, EventArgs e)
         {
-            SetFlowMyJourneys();
+            SetFlowStoryFlowByUserId(ActiveUserStore.ActiveUser.Id);
+            Program.MainForm.DrawFlow();
         }
 
         //TravelMenu
@@ -144,7 +148,7 @@ namespace DiceTravel
         }
         private void BtnInvitations_Click(object sender, EventArgs e)
         {
-            Program.MainForm.FlowElementProvider.SetFlowInvitesFlow();
+            Program.MainForm.FlowElementProvider.SetInvitesFlow();
             Program.MainForm.DrawFlow();
         }
 
@@ -165,6 +169,7 @@ namespace DiceTravel
                 BtnActiveJourneyDelete.Enabled = true;
                 BtnNewEntry.Enabled = true;
                 BtnNextTripModify.Enabled = true;
+                BtnActiveJourneyModify.Enabled = true;
 
                 MenuTravelingJourneyStart.Enabled = false;
                 MenuTravelingJourneyMod.Enabled = true;
@@ -203,13 +208,13 @@ namespace DiceTravel
                 BtnNextTripModify.Enabled = false;
                 PctBxActiveJourneyVisibility.Image = Properties.Resources.icoEmpty.ToBitmap();
                 PctBxNextTripVisibility.Image = Properties.Resources.icoEmpty.ToBitmap();
+                BtnActiveJourneyModify.Enabled = false;
 
                 MenuTravelingJourneyStart.Enabled = true;
                 MenuTravelingJourneyMod.Enabled = false;
                 MenuTravelingJourneyDel.Enabled = false;
                 MenuTravelingDest.Enabled = false;
                 MenuTravelingNewEntry.Enabled = false;
-
 
             }
             TxtActiveJourneyInfo.Text = activeJourneyInfo;
@@ -225,7 +230,7 @@ namespace DiceTravel
         }
         private void BtnActiveJourneyModify_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            UpdateActiveJourney();
         }
 
         //tripData
@@ -277,8 +282,7 @@ namespace DiceTravel
         }
         private void BtnNextTripModify_Click(object sender, EventArgs e)
         {
-            TripUpdateForm tpf = new TripUpdateForm(ActiveUserStore.GetActiveJourney().GetLastTrip());
-            tpf.Show();
+            UpdateActiveTrip();
         }
         private void BtnNextDestReached_Click(object sender, EventArgs e)
         {
@@ -294,7 +298,7 @@ namespace DiceTravel
 
             FlowLayoutPanel.Controls.Clear();
             List<FlowElementControl> controls = new List<FlowElementControl>();
-            controls.AddRange(FlowElementProvider.FlowElements);
+            controls.AddRange(FlowElementProvider.FlowElements);            
 
             for (int i = 0; i < controls.Count; i++)
             {
@@ -310,35 +314,38 @@ namespace DiceTravel
         //RightSide Buttons and Search
         private void BtnMyJourney_Click(object sender, EventArgs e)
         {
-            SetFlowMyJourneys();
+            SetFlowStoriesOfFriends();
         }
         private void BtnMyStoryFlow_Click(object sender, EventArgs e)
         {
-            Program.MainForm.FlowElementProvider.SetFlowStoryFlowByUser(ActiveUserStore.ActiveUser.Id);
+            Program.MainForm.FlowElementProvider.SetStoryFlow(ActiveUserStore.ActiveUser.Id);
             Program.MainForm.DrawFlow();
         }
         private void BtnSearchUser_Click(object sender, EventArgs e)
         {
-            Program.MainForm.FlowElementProvider.SetFlowPeopleFlowByLoginNameFragment(TxtSearchUser.Text);
+            Program.MainForm.FlowElementProvider.SetPeopleFlow(TxtSearchUser.Text);
             Program.MainForm.DrawFlow();
         }
         private void BtnFriends_Click(object sender, EventArgs e)
         {
-            FlowElementProvider.SetFlowPeopleFlowByUserFriends();
-            Program.MainForm.DrawFlow();
+            SetFlowFriendsOfActiveUser();
         }
 
         /*********  Command Methods *********/
-        private static void DeleteActiveJourney()
+        private void UpdateActiveJourney()
+        {
+            new JourneyUpdateForm(ActiveUserStore.GetActiveJourney()).Show();
+        }
+        private void DeleteActiveJourney()
         {
             if (MessageBox.Show("All progress will be lost!\r\nAre you sure to delete this Journey?", "Attention!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 Journey.GetJourneyById(ActiveUserStore.GetActiveJourney().Id).DeleteItself();
-                Program.MainForm.FlowElementProvider.SetFlowJourneyFlowByUser(ActiveUserStore.ActiveUser.Id);
-                Program.MainForm.UpdateData();
+                FlowElementProvider.SetJourneyFlow(ActiveUserStore.ActiveUser.Id);
+                UpdateData();
             }
         }
-        private static void StartJourney()
+        private void StartJourney()
         {
             if (ActiveUserStore.IsThereActiveUser && !ActiveUserStore.IsThereActiveJourney())
             {
@@ -356,45 +363,62 @@ namespace DiceTravel
                 MessageBox.Show("You've already started a journey!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-        private static void GoalReached()
+        private void GoalReached()
         {
             new TripCreateForm().Show();
         }
-        private static void DestinationReached()
+        private void DestinationReached()
         {
             new TripCreateForm().Show();
         }
-        private static void CreatrEntry()
+        private void UpdateActiveTrip()
+        {
+            new TripUpdateForm(ActiveUserStore.GetActiveJourney().GetLastTrip()).Show();
+        }
+        private void CreatrEntry()
         {
             new EntryCreateForm().Show();
         }
-        private static void UpdateUserData()
+        private void UpdateUserData()
         {
             new UserUpdateForm().Show();
         }
-        private static void SetFlowMyJourneys()
+        private void SetFlowJourneyFlowByUserId(int userId)
         {
-            Program.MainForm.FlowElementProvider.SetFlowJourneyFlowByUser(ActiveUserStore.ActiveUser.Id);
-            Program.MainForm.DrawFlow();
+            FlowElementProvider.SetJourneyFlow(userId);
         }
-        private static void LogOut()
+        private void SetFlowStoryFlowByUserId(int userId)
+        {
+            FlowElementProvider.SetStoryFlow(userId);
+        }
+        private void SetFlowFriendsOfActiveUser()
+        {
+            FlowElementProvider.SetFriendFlow();
+            DrawFlow();
+        }
+        private void SetFlowStoriesOfFriends()
+        {
+            FlowElementProvider.SetFlowStoriesOfFriends();
+            DrawFlow();
+        }
+        public void LogOut()
         {
             ActiveUserStore.LogOutUser();
             Program.MainForm.ChangeControlsAvailabilityAfterLogout();
         }
-        private static void LogIn()
+        public void LogIn()
         {
             new LoginForm().Show();
         }
-        private static void SignUp()
+        private void SignUp()
         {
             new SignUpForm().Show();
         }
-        
+
         //rendezni való metódusok
         private void MenuTravelingJourneyMod_Click(object sender, EventArgs e)
         {
-
+            UpdateActiveJourney();
         }
 
         private void BtnRefresh_Click(object sender, EventArgs e)
@@ -405,6 +429,86 @@ namespace DiceTravel
         private void MainForm_Shown(object sender, EventArgs e)
         {
             LogIn();
+        }
+
+        private void MenuTravelingJourneyDel_Click(object sender, EventArgs e)
+        {
+            DeleteActiveJourney();
+        }
+
+        private void MenuTravelingDestDone_Click(object sender, EventArgs e)
+        {
+            GoalReached();
+        }
+
+        private void MenuTravelingDestMod_Click(object sender, EventArgs e)
+        {
+            UpdateActiveTrip();
+        }
+
+        private void MenuTravelingNewEntry_Click(object sender, EventArgs e)
+        {
+            CreatrEntry();
+        }
+
+        private void MenuFriendsMyFriends_Click(object sender, EventArgs e)
+        {
+            SetFlowFriendsOfActiveUser();
+        }
+
+        private void MenuHelpAbout_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("nincs kész!", "Inforamtion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void MenuHelpManual_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo sInfo = new ProcessStartInfo("https://drive.google.com/file/d/1lkJwu_nYrN63BbEKmltTThOfka98hF-9/view?usp=sharing");
+            Process.Start(sInfo);
+        }
+
+        private void MenuFriendsSearch_Click(object sender, EventArgs e)
+        {
+            TxtSearchUser.Focus();
+            TxtSearchUser.BorderStyle = BorderStyle.Fixed3D;
+        }
+
+        private void MenuFriendsEntries_Click(object sender, EventArgs e)
+        {
+            SetFlowStoriesOfFriends();
+        }
+
+        private void TxtActiveJourneyTitle_Click(object sender, EventArgs e)
+        {
+            Program.MainForm.FlowElementProvider.SetTripFlow(ActiveUserStore.GetActiveJourney().Id);
+            DrawFlow();
+        }
+
+        private void TxtNextTripTitle_Click(object sender, EventArgs e)
+        {
+                Program.MainForm.FlowElementProvider.SetEntryFlow(ActiveUserStore.GetActiveJourney().GetLastTrip().Id);
+                DrawFlow();            
+        }
+
+        private void TxtSearchUser_TextChanged(object sender, EventArgs e)
+        {
+            if (TxtSearchUser.Text.Length >2)
+            {
+                BtnSearchUser.Enabled = true;
+            }
+            else
+            {
+                BtnSearchUser.Enabled = false;
+            }
+        }
+
+        private void TxtSearchUser_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (e.KeyChar == (char)13 && TxtSearchUser.Text.Length > 2)
+            {
+                BtnSearchUser_Click(TxtSearchUser, new EventArgs());
+            }
         }
     }
 }

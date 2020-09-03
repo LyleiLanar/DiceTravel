@@ -83,5 +83,12 @@ namespace DiceTravel.Forms.EntryForms
         {
             Program.MainFormActivate();
         }
+
+        private void BtnEntryUpdateDelete_Click(object sender, EventArgs e)
+        {
+            Entry.DeleteItself();
+            Program.MainForm.UpdateData();
+            this.Close();
+        }
     }
 }

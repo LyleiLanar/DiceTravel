@@ -110,7 +110,7 @@ namespace DiceTravel.Controls
         }
         private void PersonControl_Click(object sender, EventArgs e)
         {
-            Program.MainForm.FlowElementProvider.SetFlowStoryFlowByUser(Person.Id);
+            Program.MainForm.FlowElementProvider.SetStoryFlow(Person.Id);
             Program.MainForm.DrawFlow();
 
         }

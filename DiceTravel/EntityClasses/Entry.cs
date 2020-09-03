@@ -18,7 +18,7 @@ namespace DiceTravel.Classes
 
         //Constructors
         public Entry(DataRow dataRow)
-        {
+        {            
             Id = Int32.Parse(dataRow["id"].ToString());
             TripId = Int32.Parse(dataRow["trip_id"].ToString());
             Title = dataRow["title"].ToString();

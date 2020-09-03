@@ -83,8 +83,8 @@
             this.MenuFriendsSearch = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuFriendsEntries = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.manualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuHelpManual = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainFormToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -153,7 +153,7 @@
             this.BtnNewEntry.Name = "BtnNewEntry";
             this.BtnNewEntry.Size = new System.Drawing.Size(40, 40);
             this.BtnNewEntry.TabIndex = 5;
-            this.MainFormToolTip.SetToolTip(this.BtnNewEntry, "Add new entry to your Trip");
+            this.MainFormToolTip.SetToolTip(this.BtnNewEntry, "Add new entry to your trip");
             this.BtnNewEntry.UseVisualStyleBackColor = false;
             this.BtnNewEntry.Visible = false;
             this.BtnNewEntry.Click += new System.EventHandler(this.BtnNewEntry_Click);
@@ -168,7 +168,7 @@
             this.BtnNextTripModify.Name = "BtnNextTripModify";
             this.BtnNextTripModify.Size = new System.Drawing.Size(40, 40);
             this.BtnNextTripModify.TabIndex = 16;
-            this.MainFormToolTip.SetToolTip(this.BtnNextTripModify, "Modify Trip");
+            this.MainFormToolTip.SetToolTip(this.BtnNextTripModify, "Modifyt active destination");
             this.BtnNextTripModify.UseVisualStyleBackColor = false;
             this.BtnNextTripModify.Click += new System.EventHandler(this.BtnNextTripModify_Click);
             // 
@@ -176,6 +176,7 @@
             // 
             this.TxtNextTripTitle.BackColor = System.Drawing.SystemColors.ControlDark;
             this.TxtNextTripTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtNextTripTitle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.TxtNextTripTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.TxtNextTripTitle.Location = new System.Drawing.Point(52, 19);
             this.TxtNextTripTitle.Multiline = false;
@@ -185,6 +186,7 @@
             this.TxtNextTripTitle.Size = new System.Drawing.Size(258, 25);
             this.TxtNextTripTitle.TabIndex = 19;
             this.TxtNextTripTitle.Text = "TITLE";
+            this.TxtNextTripTitle.Click += new System.EventHandler(this.TxtNextTripTitle_Click);
             // 
             // BtnNextTripReached
             // 
@@ -238,7 +240,7 @@
             this.BtnActiveJourneyModify.Name = "BtnActiveJourneyModify";
             this.BtnActiveJourneyModify.Size = new System.Drawing.Size(40, 40);
             this.BtnActiveJourneyModify.TabIndex = 20;
-            this.MainFormToolTip.SetToolTip(this.BtnActiveJourneyModify, "Modify Trip");
+            this.MainFormToolTip.SetToolTip(this.BtnActiveJourneyModify, "Modify active journey");
             this.BtnActiveJourneyModify.UseVisualStyleBackColor = false;
             this.BtnActiveJourneyModify.Click += new System.EventHandler(this.BtnActiveJourneyModify_Click);
             // 
@@ -246,6 +248,7 @@
             // 
             this.TxtActiveJourneyTitle.BackColor = System.Drawing.SystemColors.ControlDark;
             this.TxtActiveJourneyTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtActiveJourneyTitle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.TxtActiveJourneyTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.TxtActiveJourneyTitle.Location = new System.Drawing.Point(52, 19);
             this.TxtActiveJourneyTitle.Multiline = false;
@@ -255,6 +258,7 @@
             this.TxtActiveJourneyTitle.Size = new System.Drawing.Size(261, 25);
             this.TxtActiveJourneyTitle.TabIndex = 15;
             this.TxtActiveJourneyTitle.Text = "TITLE";
+            this.TxtActiveJourneyTitle.Click += new System.EventHandler(this.TxtActiveJourneyTitle_Click);
             // 
             // PctBxActiveJourneyVisibility
             // 
@@ -275,7 +279,7 @@
             this.BtnActiveJourneyNewJourney.Name = "BtnActiveJourneyNewJourney";
             this.BtnActiveJourneyNewJourney.Size = new System.Drawing.Size(40, 40);
             this.BtnActiveJourneyNewJourney.TabIndex = 13;
-            this.MainFormToolTip.SetToolTip(this.BtnActiveJourneyNewJourney, "Start new Journey!");
+            this.MainFormToolTip.SetToolTip(this.BtnActiveJourneyNewJourney, "Start new journey!");
             this.BtnActiveJourneyNewJourney.UseVisualStyleBackColor = false;
             this.BtnActiveJourneyNewJourney.Click += new System.EventHandler(this.BtnNewJourney_Click);
             // 
@@ -290,7 +294,7 @@
             this.BtnActiveJourneyDelete.Size = new System.Drawing.Size(40, 40);
             this.BtnActiveJourneyDelete.TabIndex = 12;
             this.BtnActiveJourneyDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.MainFormToolTip.SetToolTip(this.BtnActiveJourneyDelete, "Delete active Journey");
+            this.MainFormToolTip.SetToolTip(this.BtnActiveJourneyDelete, "Delete active journey");
             this.BtnActiveJourneyDelete.UseVisualStyleBackColor = false;
             this.BtnActiveJourneyDelete.Click += new System.EventHandler(this.BtnMyJourneyDelete_Click);
             // 
@@ -330,7 +334,7 @@
             this.BtnInvitations.Size = new System.Drawing.Size(40, 40);
             this.BtnInvitations.TabIndex = 11;
             this.BtnInvitations.TabStop = false;
-            this.MainFormToolTip.SetToolTip(this.BtnInvitations, "My Entries");
+            this.MainFormToolTip.SetToolTip(this.BtnInvitations, "You have some friend invitation!");
             this.BtnInvitations.UseVisualStyleBackColor = false;
             this.BtnInvitations.Click += new System.EventHandler(this.BtnInvitations_Click);
             // 
@@ -343,7 +347,7 @@
             this.BtnMyDataModify.Name = "BtnMyDataModify";
             this.BtnMyDataModify.Size = new System.Drawing.Size(40, 40);
             this.BtnMyDataModify.TabIndex = 21;
-            this.MainFormToolTip.SetToolTip(this.BtnMyDataModify, "Modify Trip");
+            this.MainFormToolTip.SetToolTip(this.BtnMyDataModify, "Modify your personal detalis");
             this.BtnMyDataModify.UseVisualStyleBackColor = false;
             this.BtnMyDataModify.Click += new System.EventHandler(this.BtnMyDataModify_Click);
             // 
@@ -388,7 +392,7 @@
             this.BtnRefresh.Name = "BtnRefresh";
             this.BtnRefresh.Size = new System.Drawing.Size(50, 50);
             this.BtnRefresh.TabIndex = 15;
-            this.MainFormToolTip.SetToolTip(this.BtnRefresh, "My journyes");
+            this.MainFormToolTip.SetToolTip(this.BtnRefresh, "Refresh");
             this.BtnRefresh.UseVisualStyleBackColor = false;
             this.BtnRefresh.Click += new System.EventHandler(this.BtnRefresh_Click);
             // 
@@ -401,18 +405,20 @@
             this.BtnFriends.Name = "BtnFriends";
             this.BtnFriends.Size = new System.Drawing.Size(50, 50);
             this.BtnFriends.TabIndex = 14;
-            this.MainFormToolTip.SetToolTip(this.BtnFriends, "My Entries");
+            this.MainFormToolTip.SetToolTip(this.BtnFriends, "My friends");
             this.BtnFriends.UseVisualStyleBackColor = false;
             this.BtnFriends.Click += new System.EventHandler(this.BtnFriends_Click);
             // 
             // BtnSearchUser
             // 
             this.BtnSearchUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSearchUser.Enabled = false;
             this.BtnSearchUser.Location = new System.Drawing.Point(818, 14);
             this.BtnSearchUser.Name = "BtnSearchUser";
             this.BtnSearchUser.Size = new System.Drawing.Size(50, 23);
             this.BtnSearchUser.TabIndex = 13;
             this.BtnSearchUser.Text = "Search";
+            this.MainFormToolTip.SetToolTip(this.BtnSearchUser, "Let\'s make Friendship!");
             this.BtnSearchUser.UseVisualStyleBackColor = true;
             this.BtnSearchUser.Click += new System.EventHandler(this.BtnSearchUser_Click);
             // 
@@ -423,6 +429,9 @@
             this.TxtSearchUser.Name = "TxtSearchUser";
             this.TxtSearchUser.Size = new System.Drawing.Size(199, 20);
             this.TxtSearchUser.TabIndex = 12;
+            this.MainFormToolTip.SetToolTip(this.TxtSearchUser, "Start typing... At least 3 character.");
+            this.TxtSearchUser.TextChanged += new System.EventHandler(this.TxtSearchUser_TextChanged);
+            this.TxtSearchUser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtSearchUser_KeyPress);
             // 
             // FlowWindow
             // 
@@ -475,7 +484,7 @@
             this.BtnMyStoryFlow.Name = "BtnMyStoryFlow";
             this.BtnMyStoryFlow.Size = new System.Drawing.Size(50, 50);
             this.BtnMyStoryFlow.TabIndex = 10;
-            this.MainFormToolTip.SetToolTip(this.BtnMyStoryFlow, "My Entries");
+            this.MainFormToolTip.SetToolTip(this.BtnMyStoryFlow, "My entries");
             this.BtnMyStoryFlow.UseVisualStyleBackColor = false;
             this.BtnMyStoryFlow.Click += new System.EventHandler(this.BtnMyStoryFlow_Click);
             // 
@@ -488,7 +497,7 @@
             this.BtnMyJourney.Name = "BtnMyJourney";
             this.BtnMyJourney.Size = new System.Drawing.Size(50, 50);
             this.BtnMyJourney.TabIndex = 9;
-            this.MainFormToolTip.SetToolTip(this.BtnMyJourney, "My journyes");
+            this.MainFormToolTip.SetToolTip(this.BtnMyJourney, "Recent entries");
             this.BtnMyJourney.UseVisualStyleBackColor = false;
             this.BtnMyJourney.Click += new System.EventHandler(this.BtnMyJourney_Click);
             // 
@@ -575,21 +584,21 @@
             // MenuMeMyProfile
             // 
             this.MenuMeMyProfile.Name = "MenuMeMyProfile";
-            this.MenuMeMyProfile.Size = new System.Drawing.Size(120, 22);
+            this.MenuMeMyProfile.Size = new System.Drawing.Size(180, 22);
             this.MenuMeMyProfile.Text = "Profile";
             this.MenuMeMyProfile.Click += new System.EventHandler(this.MenuMeMyProfile_Click);
             // 
             // MenuMeMyFlow
             // 
             this.MenuMeMyFlow.Name = "MenuMeMyFlow";
-            this.MenuMeMyFlow.Size = new System.Drawing.Size(120, 22);
+            this.MenuMeMyFlow.Size = new System.Drawing.Size(180, 22);
             this.MenuMeMyFlow.Text = "Story";
             this.MenuMeMyFlow.Click += new System.EventHandler(this.MenuMeMyFlow_Click);
             // 
             // MenuMeMyJourneys
             // 
             this.MenuMeMyJourneys.Name = "MenuMeMyJourneys";
-            this.MenuMeMyJourneys.Size = new System.Drawing.Size(120, 22);
+            this.MenuMeMyJourneys.Size = new System.Drawing.Size(180, 22);
             this.MenuMeMyJourneys.Text = "Journeys";
             this.MenuMeMyJourneys.Click += new System.EventHandler(this.MenuMeMyJourneys_Click);
             // 
@@ -633,6 +642,7 @@
             this.MenuTravelingJourneyDel.Name = "MenuTravelingJourneyDel";
             this.MenuTravelingJourneyDel.Size = new System.Drawing.Size(112, 22);
             this.MenuTravelingJourneyDel.Text = "Delete";
+            this.MenuTravelingJourneyDel.Click += new System.EventHandler(this.MenuTravelingJourneyDel_Click);
             // 
             // MenuTravelingDest
             // 
@@ -648,18 +658,21 @@
             this.MenuTravelingDestDone.Name = "MenuTravelingDestDone";
             this.MenuTravelingDestDone.Size = new System.Drawing.Size(112, 22);
             this.MenuTravelingDestDone.Text = "Done!";
+            this.MenuTravelingDestDone.Click += new System.EventHandler(this.MenuTravelingDestDone_Click);
             // 
             // MenuTravelingDestMod
             // 
             this.MenuTravelingDestMod.Name = "MenuTravelingDestMod";
             this.MenuTravelingDestMod.Size = new System.Drawing.Size(112, 22);
             this.MenuTravelingDestMod.Text = "Modify";
+            this.MenuTravelingDestMod.Click += new System.EventHandler(this.MenuTravelingDestMod_Click);
             // 
             // MenuTravelingNewEntry
             // 
             this.MenuTravelingNewEntry.Name = "MenuTravelingNewEntry";
             this.MenuTravelingNewEntry.Size = new System.Drawing.Size(134, 22);
             this.MenuTravelingNewEntry.Text = "New Entry";
+            this.MenuTravelingNewEntry.Click += new System.EventHandler(this.MenuTravelingNewEntry_Click);
             // 
             // MenuFriends
             // 
@@ -677,39 +690,44 @@
             this.MenuFriendsMyFriends.Name = "MenuFriendsMyFriends";
             this.MenuFriendsMyFriends.Size = new System.Drawing.Size(145, 22);
             this.MenuFriendsMyFriends.Text = "My friends";
+            this.MenuFriendsMyFriends.Click += new System.EventHandler(this.MenuFriendsMyFriends_Click);
             // 
             // MenuFriendsSearch
             // 
             this.MenuFriendsSearch.Name = "MenuFriendsSearch";
             this.MenuFriendsSearch.Size = new System.Drawing.Size(145, 22);
             this.MenuFriendsSearch.Text = "Search user";
+            this.MenuFriendsSearch.Click += new System.EventHandler(this.MenuFriendsSearch_Click);
             // 
             // MenuFriendsEntries
             // 
             this.MenuFriendsEntries.Name = "MenuFriendsEntries";
             this.MenuFriendsEntries.Size = new System.Drawing.Size(145, 22);
             this.MenuFriendsEntries.Text = "Friend entries";
+            this.MenuFriendsEntries.Click += new System.EventHandler(this.MenuFriendsEntries_Click);
             // 
             // MenuHelp
             // 
             this.MenuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.manualToolStripMenuItem,
-            this.aboutToolStripMenuItem});
+            this.MenuHelpManual,
+            this.MenuHelpAbout});
             this.MenuHelp.Name = "MenuHelp";
             this.MenuHelp.Size = new System.Drawing.Size(44, 20);
             this.MenuHelp.Text = "Help";
             // 
-            // manualToolStripMenuItem
+            // MenuHelpManual
             // 
-            this.manualToolStripMenuItem.Name = "manualToolStripMenuItem";
-            this.manualToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
-            this.manualToolStripMenuItem.Text = "Manual";
+            this.MenuHelpManual.Name = "MenuHelpManual";
+            this.MenuHelpManual.Size = new System.Drawing.Size(114, 22);
+            this.MenuHelpManual.Text = "Manual";
+            this.MenuHelpManual.Click += new System.EventHandler(this.MenuHelpManual_Click);
             // 
-            // aboutToolStripMenuItem
+            // MenuHelpAbout
             // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
-            this.aboutToolStripMenuItem.Text = "About";
+            this.MenuHelpAbout.Name = "MenuHelpAbout";
+            this.MenuHelpAbout.Size = new System.Drawing.Size(114, 22);
+            this.MenuHelpAbout.Text = "About";
+            this.MenuHelpAbout.Click += new System.EventHandler(this.MenuHelpAbout_Click);
             // 
             // contextMenuStrip1
             // 
@@ -722,6 +740,7 @@
             // 
             // MainForm
             // 
+            this.AcceptButton = this.BtnSearchUser;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
@@ -812,8 +831,8 @@
         private System.Windows.Forms.ToolStripMenuItem MenuTravelingDestMod;
         private System.Windows.Forms.ToolStripMenuItem MenuTravelingNewEntry;
         private System.Windows.Forms.Button BtnMyDataModify;
-        private System.Windows.Forms.ToolStripMenuItem manualToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuHelpManual;
+        private System.Windows.Forms.ToolStripMenuItem MenuHelpAbout;
         private System.Windows.Forms.ToolStripMenuItem MenuFriendsMyFriends;
         private System.Windows.Forms.ToolStripMenuItem MenuFriendsEntries;
         private System.Windows.Forms.Button BtnFriends;

@@ -68,8 +68,10 @@ namespace DiceTravel.Controls
 
         private void JourneyControl_Click(object sender, System.EventArgs e)
         {
-            Program.MainForm.FlowElementProvider.SetFlowTripFlowByJourney(this.Journey.Id);
+            Program.MainForm.FlowElementProvider.SetTripFlow(this.Journey.Id);
             Program.MainForm.DrawFlow();
         }
+
+ 
     }
 }

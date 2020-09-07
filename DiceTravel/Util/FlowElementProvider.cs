@@ -269,8 +269,8 @@ namespace DiceTravel.Util
 
                 //visibility checks
                 entryControls[i].Visible = ElementIsVisible(entry.Visibility, user.Id);
-                entryControls[i].Visible = ElementIsVisible(trip.Visibility, user.Id);
-                entryControls[i].Visible = ElementIsVisible(journey.Visibility, user.Id);
+                //entryControls[i].Visible = ElementIsVisible(trip.Visibility, user.Id);
+                //entryControls[i].Visible = ElementIsVisible(journey.Visibility, user.Id);
 
             }
 

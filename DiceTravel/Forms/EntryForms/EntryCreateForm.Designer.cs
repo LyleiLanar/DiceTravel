@@ -210,7 +210,7 @@
             this.MinimizeBox = false;
             this.Name = "EntryCreateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "EntryCreateForm";
+            this.Text = "Create new entry";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EntryCreateForm_FormClosed);
             this.Load += new System.EventHandler(this.EntryCreateForm_Load);
             this.GrpBxEntryCreateVisibility.ResumeLayout(false);

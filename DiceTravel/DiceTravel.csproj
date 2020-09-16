@@ -246,7 +246,7 @@
     </Compile>
     <Compile Include="EntityClasses\User.cs" />
     <Compile Include="Util\ActiveUserStore.cs" />
-    <Compile Include="Util\Encyptor.cs" />
+    <Compile Include="Util\Encryptor.cs" />
     <Compile Include="Util\Exceptions\MissingFlowTypeException.cs" />
     <Compile Include="Util\Exceptions\EntityCreationException.cs" />
     <Compile Include="Util\Exceptions\NoVisibilityTokenException.cs" />
@@ -308,6 +308,13 @@
     <EmbeddedResource Include="Forms\UserForms\SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagrams\ActiveUserStore.cd" />
+    <None Include="ClassDiagrams\ImageHandler.cd" />
+    <None Include="ClassDiagrams\Encryptot.cd" />
+    <None Include="ClassDiagrams\EntryCreateForm.cd" />
+    <None Include="ClassDiagrams\EntryUpdateForm.cd" />
+    <None Include="ClassDiagrams\FlowElementProvider.cd" />
+    <None Include="ClassDiagrams\TripControl.cd" />
     <None Include="ClassDiagrams\DTClassDiagram.cd" />
     <None Include="ClassDiagrams\Entities.cd" />
     <None Include="ClassDiagrams\Friendship.cd" />

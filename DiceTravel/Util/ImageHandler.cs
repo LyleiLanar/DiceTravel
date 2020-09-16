@@ -9,7 +9,6 @@ namespace DiceTravel.Util
 {
     static class ImageHandler
     {
-
         static public byte[] GetImageBin(string fileName)
         {
             byte[] ImageData;

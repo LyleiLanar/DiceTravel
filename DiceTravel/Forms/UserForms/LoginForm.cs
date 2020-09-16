@@ -6,7 +6,7 @@ namespace DiceTravel
 {
     public partial class LoginForm : Form
     {
-        public LoginForm():this("Tündi")
+        public LoginForm():this("Patrik")
         {
             ;
         }
@@ -27,7 +27,7 @@ namespace DiceTravel
             {
                 this.Validation();
 
-                string encryptedPassword = Encyptor.Encrypt(InputLoginPassword.Text);
+                string encryptedPassword = Encryptor.Encrypt(InputLoginPassword.Text);
 
                 ActiveUserStore.LogInUser(InputLoginLoginName.Text, encryptedPassword);
                 Program.MainForm.UpdateData();

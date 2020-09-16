@@ -10,7 +10,6 @@ namespace DiceTravel.Controls
     {
         private Trip Trip { get; }
 
-
         public TripControl(Trip trip) : base()
         {
             InitializeComponent();
@@ -32,9 +31,7 @@ namespace DiceTravel.Controls
         {
             Journey journey = Journey.GetJourneyById(Trip.JourneyId);
             string userLoginName = User.GetUserById(Journey.GetJourneyById(Trip.JourneyId).UserId).LoginName;
-
                       
-
             TxtTripUserLoginName.Text = userLoginName;
             TxtTripEndLocation.Text = journey.Title + ": " + Trip.EndLocation;
             TxtTripEndDate.Text = Trip.EndDate == DateTime.Parse(Properties.Settings.Default.nullDate) ? "in progress..." : $"Reached: {Trip.EndDate}";
@@ -58,20 +55,17 @@ namespace DiceTravel.Controls
                     break;
             }
         }
-
         private void TripControl_Click(object sender, EventArgs e)
         {
             Program.MainForm.FlowElementProvider.SetEntryFlow(Trip.Id);
             Program.MainForm.DrawFlow();
         }
-
         private void BtnTripBackToJourney_Click(object sender, EventArgs e)
         {
             User user = User.GetUserById(Journey.GetJourneyById(Trip.JourneyId).UserId);
             Program.MainForm.FlowElementProvider.SetJourneyFlow(user.Id);
             Program.MainForm.DrawFlow();
         }
-
         private void BtnTripOptions_Click(object sender, EventArgs e)
         {
             new TripUpdateForm(Trip).Show();

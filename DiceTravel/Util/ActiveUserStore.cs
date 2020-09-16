@@ -6,7 +6,6 @@ namespace DiceTravel.Util
     static public class ActiveUserStore
     {
         static public User ActiveUser { get; private set; }
-
         static public bool IsThereActiveUser
         {
             get
@@ -18,6 +17,7 @@ namespace DiceTravel.Util
                 return false;
             }
         }
+      
         static public void LogOutUser()
         {
             ActiveUser = null;
@@ -26,10 +26,6 @@ namespace DiceTravel.Util
         static public void LogInUser(string loginName, string password)
         {
             ActiveUser = GetAuthenticatedUser(loginName, password);
-            if (ActiveUser == null)
-            {
-                //ez nem tudom mi itt.
-            }
         }
         static public bool IsThereActiveJourney()
         {
@@ -39,7 +35,7 @@ namespace DiceTravel.Util
         {
             return ActiveUser.GetActiveJourney();
         }
-        static public User GetAuthenticatedUser(string loginName, string password)
+        static private User GetAuthenticatedUser(string loginName, string password)
         {
             try
             {

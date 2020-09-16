@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="DiceTravel.Controls.TripControl" Collapsed="true">
+    <Position X="8.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAECIAAQAAAACEAAACAAAQAAECAADAAAAAAAg=</HashCode>
+      <FileName>Controls\TripControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Controls.EntryControl" Collapsed="true">
+    <Position X="5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IYAQAAAAACuAAAAAAACgIAACAAAJQIAgAAgAAAAAAAA=</HashCode>
+      <FileName>Controls\EntryControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Controls.FlowElementControl" Collapsed="true">
+    <Position X="6" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAABAAAgAAAABAAAAQ=</HashCode>
+      <FileName>Controls\FlowElementControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Controls.JourneyControl" Collapsed="true">
+    <Position X="7" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAACIAACAAAACAAAASAAUAAAABEAAAAAAAAAE=</HashCode>
+      <FileName>Controls\JourneyControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiceTravel.Controls.PersonControl" Collapsed="true">
+    <Position X="4" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BIAAQAAAACIAAAAAAACAQAgCAAAAgAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Controls\PersonControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

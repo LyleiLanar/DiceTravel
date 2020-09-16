@@ -308,7 +308,6 @@ namespace DiceTravel
             }
 
             TxtFlowDataFlowTitle.Text = FlowElementProvider.FlowTitle;
-
         }
 
         //RightSide Buttons and Search

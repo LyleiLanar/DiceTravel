@@ -41,7 +41,7 @@ namespace DiceTravel.Forms.UserForms
             }
             else
             {
-                encryptedPassword = Encyptor.Encrypt(InputUserUpdateFormPassword.Text);
+                encryptedPassword = Encryptor.Encrypt(InputUserUpdateFormPassword.Text);
             }
 
             surname = InputUserUpdateFormSurname.Text;

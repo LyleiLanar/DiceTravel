@@ -14,12 +14,10 @@ namespace DiceTravel.Forms.EntryForms
             this.Width = 250;
         }
 
-
         private void BtnEntryCreateCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void BtnEntryCreateNew_Click(object sender, EventArgs e)
         {
             Trip trip = ActiveUserStore.ActiveUser.GetActiveJourney().GetLastTrip();
@@ -56,12 +54,10 @@ namespace DiceTravel.Forms.EntryForms
                 MessageBox.Show(ex.Message, "Entry creation error!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-
         private void Validation(Entry entry)
         {
             entry.Validation();
         }
-
         private void BtnEntryCreateAddImage_Click(object sender, EventArgs e)
         {
             //felhasznált kódrészlet: https://www.c-sharpcorner.com/UploadFile/deepak.sharma00/how-to-save-images-in-mysql-database-using-C-Sharp/

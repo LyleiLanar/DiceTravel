@@ -8,6 +8,8 @@ namespace DiceTravel.Util
     public class FlowElementProvider
     {
         public enum FlowType { NoFlow, MainFlow, JourneyFlow, TripFlow, EntryFlow, StoryFlow, FriendFlow, PeopleFlow, InvitesFlow }
+       
+        //properties
         public FlowType Type { get; private set; }
         public int UserId { get; private set; }
         public int JourneyId { get; private set; }
@@ -19,12 +21,6 @@ namespace DiceTravel.Util
         public FlowElementProvider()
         {
             ResetFlow();
-            //FriendName = "";
-            //Type = FlowType.NoFlow;
-            //UserId = -1;
-            //JourneyId = -1;
-            //TripId = -1;
-            //FlowElements = new List<FlowElementControl>();
         }
         public void ResetFlow()
         {
@@ -248,7 +244,7 @@ namespace DiceTravel.Util
             Type = FlowType.TripFlow;
 
             FlowElements.Clear();
-            FlowElements.AddRange(tripControls);
+            FlowElements.AddRange(tripControls);          
         }
         public void SetEntryFlow(int tripId)
         {
@@ -339,16 +335,13 @@ namespace DiceTravel.Util
             FlowElements.AddRange(personControls);
 
         }
+        public void SetFlowStoriesOfFriends()
+        {
+            Program.MainForm.FlowElementProvider.SetMainFlow();
+            Program.MainForm.DrawFlow();
+        }
 
         //misc
-        public bool IsUserIdSet()
-        {
-            if (UserId == -1)
-            {
-                return false;
-            }
-            return true;
-        }
         private bool ElementIsVisible(int visibility, int userId)
         {
             Friendship friendship = Friendship.GetFriendshipByIds(ActiveUserStore.ActiveUser.Id, userId);
@@ -386,12 +379,6 @@ namespace DiceTravel.Util
                         return false;
                 }
             }
-        }
-
-        internal void SetFlowStoriesOfFriends()
-        {
-            Program.MainForm.FlowElementProvider.SetMainFlow();
-            Program.MainForm.DrawFlow();
         }
     }
 }

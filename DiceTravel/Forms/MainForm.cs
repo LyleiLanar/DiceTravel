@@ -472,7 +472,7 @@ namespace DiceTravel
 
         private void MenuHelpManual_Click(object sender, EventArgs e)
         {
-            ProcessStartInfo sInfo = new ProcessStartInfo("https://drive.google.com/file/d/1lkJwu_nYrN63BbEKmltTThOfka98hF-9/view?usp=sharing");
+            ProcessStartInfo sInfo = new ProcessStartInfo("https://drive.google.com/file/d/1pcZevcdAS__UbTlQLBZeXgDtOWGxiaXU/view?usp=sharing");
             Process.Start(sInfo);
         }
 

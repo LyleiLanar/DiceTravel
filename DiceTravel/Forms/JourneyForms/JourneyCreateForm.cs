@@ -50,6 +50,7 @@ namespace DiceTravel.Forms.JourneyForms
                     Validation(newTrip);
                     newTrip.CreateItself();
 
+                    Program.MainForm.FlowElementProvider.SetTripFlow(ActiveUserStore.GetActiveJourney().Id);
                     Program.MainForm.UpdateData();
                     this.Close();
                 }

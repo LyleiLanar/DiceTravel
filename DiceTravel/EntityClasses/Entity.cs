@@ -7,10 +7,6 @@ namespace DiceTravel.Classes
     {
         //*** Connection strings ***
         //Local
-        static protected string connString = "server=localhost;user id = root; password=1234;database=dice_travel;port=33060";
-
-        //online
-        //static protected string connString = "server=185.51.67.15;user id = ghezemi1_dt_admin; password=Synae&Decrii;database=ghezemi1_dice_travel;port=3306";
 
         //Create, Update, Delete methods
         abstract public void CreateItself();
@@ -21,21 +17,25 @@ namespace DiceTravel.Classes
         abstract public void Validation();
 
         //Database handling methods
+
+        static protected string connString = "server=localhost;user id = root; password=1234;database=dice_travel;port=33060";
+
+        //select, insert, update
         static public MySqlCommand CreateCommand(string sqlCommandString)
         {
-            MySqlCommand sqlCommand = new MySqlCommand(sqlCommandString)
-            {
-                Connection = new MySqlConnection(connString)
-            };
+            MySqlCommand sqlCommand = new MySqlCommand(sqlCommandString);
+            sqlCommand.Connection = new MySqlConnection(connString);
 
             return sqlCommand;
         }
+
         static public void RunSqlCommand(MySqlCommand sqlCommand)
         {
             sqlCommand.Connection.Open();
             sqlCommand.ExecuteNonQuery();
             sqlCommand.Connection.Close();
         }
+
         static public DataTable ReadQueryTable(MySqlCommand sqlCommand)
         {
             DataTable dataTable = new DataTable();

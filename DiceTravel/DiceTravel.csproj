@@ -308,6 +308,9 @@
     <EmbeddedResource Include="Forms\UserForms\SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="ClassDiagrams\ActiveUserStore.cd" />
     <None Include="ClassDiagrams\ImageHandler.cd" />
     <None Include="ClassDiagrams\Encryptot.cd" />

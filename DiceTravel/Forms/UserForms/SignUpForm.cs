@@ -25,7 +25,7 @@ namespace DiceTravel
         }
         private void BtnSignUpReg_Click(object sender, EventArgs e)
         {
-            string encryptedPassword = Encryptor.Encrypt(InputSignUpPassword.Text);
+            string encryptedPassword = Encryptor.MD5Encrypt(InputSignUpPassword.Text);
             string loginName = InputSignUpLoginName.Text;
             string surname = InputSignUpSurname.Text;
             string firstname = InputSignUpFirstName.Text;

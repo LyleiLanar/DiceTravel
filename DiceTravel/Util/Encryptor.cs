@@ -1,15 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace DiceTravel.Util
 {
+
+    /// <summary>
+    /// This static class is responsible for the encryption.
+    /// The methods are the implementations of various encrypting algorythms.
+    /// </summary>
     static class Encryptor
     {
-        static public string Encrypt(string value)
+        /// <summary>
+        /// Implements the MD5 algorythm with static salt.
+        /// </summary>
+        /// <returns>
+        /// The encypted string value.
+        /// </returns>
+        /// <param name="value">A string value. This will be encrypted at the end of this process. </param>
+        static public string MD5Encrypt(string value)
         {
             using (MD5CryptoServiceProvider md5Encryptor = new MD5CryptoServiceProvider())
             {

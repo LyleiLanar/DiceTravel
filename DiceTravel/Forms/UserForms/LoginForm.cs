@@ -27,8 +27,7 @@ namespace DiceTravel
             {
                 this.Validation();
 
-                string encryptedPassword = Encryptor.Encrypt(InputLoginPassword.Text);
-
+                string encryptedPassword = Encryptor.MD5Encrypt(InputLoginPassword.Text);
                 ActiveUserStore.LogInUser(InputLoginLoginName.Text, encryptedPassword);
                 Program.MainForm.UpdateData();
 

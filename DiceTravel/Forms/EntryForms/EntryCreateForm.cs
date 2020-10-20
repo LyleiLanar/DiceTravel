@@ -22,7 +22,6 @@ namespace DiceTravel.Forms.EntryForms
         {
             Trip trip = ActiveUserStore.ActiveUser.GetActiveJourney().GetLastTrip();
 
-            //int id = trip.Id;
             int tripId = trip.Id;
             DateTime entryDate = DateTime.Now;
             byte[] picture = null;
@@ -46,6 +45,8 @@ namespace DiceTravel.Forms.EntryForms
             {
                 Validation(entry);
                 entry.CreateItself();
+
+                Program.MainForm.FlowElementProvider.SetEntryFlow(tripId);
                 Program.MainForm.UpdateData();
                 this.Close();
             }
@@ -59,8 +60,7 @@ namespace DiceTravel.Forms.EntryForms
             entry.Validation();
         }
         private void BtnEntryCreateAddImage_Click(object sender, EventArgs e)
-        {
-            //felhasznált kódrészlet: https://www.c-sharpcorner.com/UploadFile/deepak.sharma00/how-to-save-images-in-mysql-database-using-C-Sharp/
+        {          
             try
             {
                 using (OpenFileDialog openFileDialog = new OpenFileDialog())

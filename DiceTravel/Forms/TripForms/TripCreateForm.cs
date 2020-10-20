@@ -50,6 +50,7 @@ namespace DiceTravel.Forms.TripForms
                 Validation(newTrip);
                 newTrip.CreateItself();
 
+                Program.MainForm.FlowElementProvider.SetTripFlow(ActiveUserStore.GetActiveJourney().Id);
                 Program.MainForm.UpdateData();
                 this.Close();
             }
@@ -65,6 +66,8 @@ namespace DiceTravel.Forms.TripForms
                 "Are you sure to lock this Journey?", "Closing Journey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
                 activeJourney.CloseItself();
+
+                Program.MainForm.FlowElementProvider.SetJourneyFlow(ActiveUserStore.ActiveUser.Id);
                 Program.MainForm.UpdateData();
                 this.Close();
             }
@@ -88,7 +91,7 @@ namespace DiceTravel.Forms.TripForms
         {
             Program.MainFormDeactivate();
         }
-       
+
     }
 }
 

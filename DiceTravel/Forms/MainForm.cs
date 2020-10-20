@@ -102,7 +102,7 @@ namespace DiceTravel
         //TravelMenu
         private void MenuMeGoalReached_Click(object sender, EventArgs e)
         {
-            GoalReached();
+            DestinationReached();
         }
         private void MenuMeNewJourney_Click(object sender, EventArgs e)
         {
@@ -278,7 +278,7 @@ namespace DiceTravel
         }
         private void BtnNewEntry_Click(object sender, EventArgs e)
         {
-            CreatrEntry();
+            CreateEntry();
         }
         private void BtnNextTripModify_Click(object sender, EventArgs e)
         {
@@ -298,7 +298,7 @@ namespace DiceTravel
 
             FlowLayoutPanel.Controls.Clear();
             List<FlowElementControl> controls = new List<FlowElementControl>();
-            controls.AddRange(FlowElementProvider.FlowElements);            
+            controls.AddRange(FlowElementProvider.FlowElements);
 
             for (int i = 0; i < controls.Count; i++)
             {
@@ -355,28 +355,33 @@ namespace DiceTravel
                 };
 
                 journeyCreateForm.Show();
-
             }
             else
             {
                 MessageBox.Show("You've already started a journey!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-        private void GoalReached()
-        {
-            new TripCreateForm().Show();
-        }
         private void DestinationReached()
         {
-            new TripCreateForm().Show();
+            TripCreateForm tripCreateForm = new TripCreateForm()
+            {
+                Text = Properties.Settings.Default.projectName + " - Destination Reached"
+            };
+
+            tripCreateForm.Show();
         }
         private void UpdateActiveTrip()
         {
             new TripUpdateForm(ActiveUserStore.GetActiveJourney().GetLastTrip()).Show();
         }
-        private void CreatrEntry()
+        private void CreateEntry()
         {
-            new EntryCreateForm().Show();
+            EntryCreateForm entryCreateForm = new EntryCreateForm()
+            {
+                Text = Properties.Settings.Default.projectName + " - Create Entry"
+            };
+
+            entryCreateForm.Show();
         }
         private void UpdateUserData()
         {
@@ -437,7 +442,7 @@ namespace DiceTravel
 
         private void MenuTravelingDestDone_Click(object sender, EventArgs e)
         {
-            GoalReached();
+            DestinationReached();
         }
 
         private void MenuTravelingDestMod_Click(object sender, EventArgs e)
@@ -447,7 +452,7 @@ namespace DiceTravel
 
         private void MenuTravelingNewEntry_Click(object sender, EventArgs e)
         {
-            CreatrEntry();
+            CreateEntry();
         }
 
         private void MenuFriendsMyFriends_Click(object sender, EventArgs e)
@@ -456,8 +461,13 @@ namespace DiceTravel
         }
 
         private void MenuHelpAbout_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("nincs kész!", "Inforamtion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        {            
+            String version = "v1.0";
+            String dotnet = "Microsoft .NET Framework Version 4.8.03752";
+            String mysql = "MySql Community 8.0.19";
+            String licence = "This product is a thesis.\nCreated by Patrik Molnár\nRuander Oktatási Kft.";
+            String about = $"DiceTravel {version}\n\n{dotnet}\n{mysql}\n\n{licence}";
+            MessageBox.Show(about, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void MenuHelpManual_Click(object sender, EventArgs e)
@@ -485,13 +495,13 @@ namespace DiceTravel
 
         private void TxtNextTripTitle_Click(object sender, EventArgs e)
         {
-                Program.MainForm.FlowElementProvider.SetEntryFlow(ActiveUserStore.GetActiveJourney().GetLastTrip().Id);
-                DrawFlow();            
+            Program.MainForm.FlowElementProvider.SetEntryFlow(ActiveUserStore.GetActiveJourney().GetLastTrip().Id);
+            DrawFlow();
         }
 
         private void TxtSearchUser_TextChanged(object sender, EventArgs e)
         {
-            if (TxtSearchUser.Text.Length >2)
+            if (TxtSearchUser.Text.Length > 2)
             {
                 BtnSearchUser.Enabled = true;
             }
